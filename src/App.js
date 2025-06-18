@@ -4,6 +4,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 // Import screens
 import WelcomeScreen from './WelcomeScreen';
+import LoginScreen from './LoginScreen';
+import InterestsScreen from './InterestsScreen';
+import SuccessScreen from './SuccessScreen';
 import SignUpScreen from './SignUpScreen';
 import MainContentScreen from './MainContentScreen';
 import PostDetailScreen from './PostDetailScreen';
@@ -19,8 +22,11 @@ export default function App() {
         screenOptions={{ headerShown: false }}
       >
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
+        <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="SignUp" component={SignUpScreen} />
-        <Stack.Screen name="Main" component={MainContentScreen} />
+        <Stack.Screen name="Interests" component={InterestsScreen} />
+        <Stack.Screen name="Success" component={SuccessScreen} />
+        <Stack.Screen name="MainContent" component={MainContentScreen} />
         <Stack.Screen name="PostDetail" component={PostDetailScreen} />
         <Stack.Screen
           name="CreatorEarnings"

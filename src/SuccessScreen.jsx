@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 
 const SuccessScreen = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome to the Hype!</Text>
