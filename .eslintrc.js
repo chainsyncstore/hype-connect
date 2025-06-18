@@ -1,7 +1,7 @@
 module.exports = {
   root: true,
   extends: '@react-native-community/eslint-config',
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
   parserOptions: {
     requireConfigFile: false,
   },
