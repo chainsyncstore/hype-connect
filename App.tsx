@@ -21,6 +21,7 @@ import CommentSectionScreen from './src/CommentSectionScreen.jsx';
 const Stack = createStackNavigator();
 
 function App() {
+  console.log('App component is being rendered');
   useColorScheme() === 'dark';
 
   return (
