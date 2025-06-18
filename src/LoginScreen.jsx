@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/AntDesign';
+
 
 const LoginScreen = () => {
   return (
@@ -15,7 +15,7 @@ const LoginScreen = () => {
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.header}>
           <TouchableOpacity style={styles.backButton}>
-           <React.Fragment><Icon name="arrowleft" size={24} color="white" /></React.Fragment>
+           <Text style={{color: 'white', fontSize: 24}}>{'<'}</Text>
           </TouchableOpacity>
         </View>
         <Text style={styles.welcomeText}>Welcome back</Text>

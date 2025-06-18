@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, ScrollView, Image, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import AntDesign from 'react-native-vector-icons/AntDesign';
+
 import ReportBlockModal from './ReportBlockModal';
 
 const CommentSectionScreen = () => {
@@ -20,7 +20,7 @@ const CommentSectionScreen = () => {
     <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-          <AntDesign name="arrowleft" size={24} color="white" />
+          <Text style={{color:'white', fontSize:24}}>{'<'}</Text>
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Comments</Text>
       </View>
