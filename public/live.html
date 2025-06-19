@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Live Stream</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #FFFFFF;
+      font-family: sans-serif; /* Added a generic font for better appearance */
+    }
+    .video-placeholder { /* Added a class for the placeholder for easier styling */
+      background-color: black; /* Kept as black as it's already dark */
+      color: white;
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 15px; /* Added some margin below the placeholder */
+    }
+    .tip-buttons-container { /* Added a class for the buttons container */
+      margin-bottom: 15px; /* Added some margin below the buttons */
+    }
+    .tip-buttons-container button {
+      background-color: #333333;
+      color: #FFFFFF;
+      padding: 10px 15px;
+      margin: 5px;
+      border: 1px solid #555555; /* Subtle border */
+      border-radius: 5px; /* Rounded corners */
+      cursor: pointer; /* Pointer cursor on hover */
+    }
+    .tip-buttons-container button:hover { /* Added hover effect for buttons */
+      background-color: #444444;
+    }
+    .viewer-count { /* Added a class for viewer count for potential future styling */
+      /* No specific styles for now, inherits from body */
+    }
+  </style>
+</head>
+<body>
+  <div class="video-placeholder"> {/* Updated to use class */}
+    Live Stream
+  </div>
+  <div class="tip-buttons-container"> {/* Updated to use class */}
+    <button>Send Tip ₦500</button>
+    <button>Send Tip ₦1000</button>
+    <button>Send Tip ₦2500</button>
+  </div>
+  <p class="viewer-count">💬 142 viewers</p> {/* Updated to use class */}
+</body>
+</html>
