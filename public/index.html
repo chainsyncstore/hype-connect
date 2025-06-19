@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <style>
-      html,
-      body,
-      #app-root {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      body {
-        background-color: #1b1b1e;
-        color: #ffffff;
-        -webkit-font-smoothing: antialiased;
-      }
-    </style>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hype Connect</title>
-  </head>
-  <body>
-    <div id="app-root"></div>
-  </body>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'custom-orange': '#F5A623',
+                        'custom-dark': '#1B1B1E',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-custom-dark text-white flex flex-col items-center justify-center min-h-screen">
+    <div class="text-center">
+        <div class="mb-12">
+            <img src="/assets/logo.png" alt="Hype Connect Logo" class="mx-auto h-24 w-auto">
+        </div>
+        <div class="space-y-6">
+            <a href="signup.html" class="bg-custom-orange hover:bg-orange-600 text-white font-bold py-4 px-10 rounded-lg text-xl block w-full md:w-auto md:inline-block">Join Now</a>
+            <a href="login.html" class="bg-custom-orange hover:bg-orange-600 text-white font-bold py-4 px-10 rounded-lg text-xl block w-full md:w-auto md:inline-block">Log In</a>
+        </div>
+    </div>
+</body>
 </html>
