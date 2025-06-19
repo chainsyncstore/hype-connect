@@ -6,6 +6,7 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
+  Image,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
@@ -31,6 +32,8 @@ const SignUpScreen = () => {
           </TouchableOpacity>
           <Text style={styles.headerTitle}>Sign Up</Text>
         </View>
+
+        <Image style={styles.logo} source={require('./assets/logo.png')} />
 
         <View style={styles.inputContainer}>
           <TextInput
@@ -162,6 +165,13 @@ const styles = StyleSheet.create({
     color: '#cbb690',
     fontSize: 14,
     textDecorationLine: 'underline',
+  },
+  logo: {
+    height: 48,
+    aspectRatio: 1,
+    alignSelf: 'center',
+    marginTop: 20,
+    marginBottom: 20,
   },
 });
 

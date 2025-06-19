@@ -6,6 +6,7 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
+  Image,
 } from 'react-native';
 
 const LoginScreen = () => {
@@ -27,6 +28,7 @@ const LoginScreen = () => {
             <Text style={styles.backButtonText}>{'<'}</Text>
           </TouchableOpacity>
         </View>
+        <Image style={styles.logo} source={require('./assets/logo.png')} />
         <Text style={styles.welcomeText}>Welcome back</Text>
 
         <View style={styles.inputContainer}>
@@ -156,6 +158,13 @@ const styles = StyleSheet.create({
   },
   bottomSpace: {
     height: 20,
+  },
+  logo: {
+    height: 48,
+    aspectRatio: 1,
+    alignSelf: 'center',
+    marginTop: 20,
+    marginBottom: 20,
   },
 });
 

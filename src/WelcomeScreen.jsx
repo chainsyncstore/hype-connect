@@ -52,12 +52,7 @@ const WelcomeScreen = () => {
   return (
     <View style={styles.container}>
       <View style={{ ...styles.logoContainer, pointerEvents: 'auto' }}>
-        <Image
-          style={styles.logo}
-          source={{
-            uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAxwEzOQeClCnHKX4TnKD5D7LuAGw3woEpIuKyGk3CeC1RWKwm-SqhrW_YWYAuhug84fk0em05kQah2e6k4c4uMPMLyCUwE7MU4iMngYYHqChG0LPqDgd21BPsyRVt84Ma7BtnOQjbHM6IoT-_ysWhTHrqjC_Qe93sYKL8KvpEtQiB9Xi2HAeXVgdFb-L223HIxI1MYK4RLGc9x9TFuQKAbM2qNUFNIQcNWstbd1Ezd7HZYiFCrLP--b7USN4Hz1l2-ykRJGBQK-BM',
-          }}
-        />
+        <Image style={styles.logo} source={require('./assets/logo.png')} />
       </View>
       <Text style={styles.headline}>
         Connect. <Text style={styles.accentColor}>Create.</Text> Cash Out.
@@ -97,8 +92,9 @@ const styles = StyleSheet.create({
     marginBottom: 40,
   },
   logo: {
-    width: 100,
-    height: 100,
+    height: 48,
+    aspectRatio: 1,
+    alignSelf: 'center',
   },
   headline: {
     fontSize: 30,
