@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import Logo from '../assets/logo.png';
 
 const WelcomeScreen = () => {
   const navigation = useNavigation();
@@ -51,19 +52,14 @@ const WelcomeScreen = () => {
 
   return (
     <View style={styles.container}>
-      <View style={{ ...styles.logoContainer, pointerEvents: 'auto' }}>
-        <Image
-          style={styles.logo}
-          source={{
-            uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAxwEzOQeClCnHKX4TnKD5D7LuAGw3woEpIuKyGk3CeC1RWKwm-SqhrW_YWYAuhug84fk0em05kQah2e6k4c4uMPMLyCUwE7MU4iMngYYHqChG0LPqDgd21BPsyRVt84Ma7BtnOQjbHM6IoT-_ysWhTHrqjC_Qe93sYKL8KvpEtQiB9Xi2HAeXVgdFb-L223HIxI1MYK4RLGc9x9TFuQKAbM2qNUFNIQcNWstbd1Ezd7HZYiFCrLP--b7USN4Hz1l2-ykRJGBQK-BM',
-          }}
-        />
+      <View style={[styles.logoContainer, styles.interactive]}>
+        <Image style={styles.logo} source={Logo} />
       </View>
       <Text style={styles.headline}>
         Connect. <Text style={styles.accentColor}>Create.</Text> Cash Out.
       </Text>
       <Text style={styles.tagline}>For creators</Text>
-      <View style={{ ...styles.buttonContainer, pointerEvents: 'auto' }}>
+      <View style={[styles.buttonContainer, styles.interactive]}>
         <TouchableOpacity
           style={styles.primaryButton}
           onPress={handleJoinToConnect}
@@ -145,6 +141,9 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     textAlign: 'center',
     fontSize: 18,
+  },
+  interactive: {
+    pointerEvents: 'auto',
   },
 });
 
