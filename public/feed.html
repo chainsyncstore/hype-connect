@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Content Feed</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      background-color: #f0f2f5;
+    }
+    .feed {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    .post {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      width: 100%;
+      max-width: 600px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .post-header {
+      display: flex;
+      align-items: center;
+      padding: 10px 15px;
+    }
+    .profile-pic {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+      object-fit: cover;
+    }
+    .username {
+      font-weight: bold;
+    }
+    .post-media {
+      width: 100%;
+      max-height: 750px;
+      object-fit: cover;
+    }
+    .post-caption {
+      padding: 10px 15px;
+    }
+    .post-actions {
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 15px;
+      border-top: 1px solid #eee;
+    }
+    .action-button {
+      background: none;
+      border: none;
+      font-size: 1.5em;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="feed">
+    <div class="post">
+      <div class="post-header">
+        <img src="assets/profile_placeholder.png" alt="Profile Picture" class="profile-pic">
+        <span class="username">dummy_user_1</span>
+      </div>
+      <img src="assets/media_placeholder_1.jpg" alt="Post Media" class="post-media">
+      <div class="post-caption">
+        <p>This is a caption for the first post. #dummy #placeholder</p>
+      </div>
+      <div class="post-actions">
+        <button class="action-button">❤️</button>
+        <button class="action-button">💬</button>
+        <button class="action-button">🔖</button>
+      </div>
+    </div>
+    <div class="post">
+      <div class="post-header">
+        <img src="assets/profile_placeholder.png" alt="Profile Picture" class="profile-pic">
+        <span class="username">dummy_user_2</span>
+      </div>
+      <img src="assets/media_placeholder_2.jpg" alt="Post Media" class="post-media">
+      <div class="post-caption">
+        <p>Another amazing day! #blessed #dummycontent</p>
+      </div>
+      <div class="post-actions">
+        <button class="action-button">❤️</button>
+        <button class="action-button">💬</button>
+        <button class="action-button">🔖</button>
+      </div>
+    </div>
+    <div class="post">
+      <div class="post-header">
+        <img src="assets/profile_placeholder.png" alt="Profile Picture" class="profile-pic">
+        <span class="username">user_the_third</span>
+      </div>
+      <img src="assets/media_placeholder_3.png" alt="Post Media" class="post-media">
+      <div class="post-caption">
+        <p>Coding away on this feed. 💻 #developer #placeholderpost</p>
+      </div>
+      <div class="post-actions">
+        <button class="action-button">❤️</button>
+        <button class="action-button">💬</button>
+        <button class="action-button">🔖</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
