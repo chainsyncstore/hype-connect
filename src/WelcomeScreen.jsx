@@ -31,10 +31,20 @@ uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAxwEzOQeClCnHKX4TnKD5D
       </Text>
       <Text style={styles.tagline}>For creators</Text>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.primaryButton} onPress={handleJoinToConnect}>
+        <TouchableOpacity
+          style={styles.primaryButton}
+          onPress={handleJoinToConnect}
+          onPressIn={() => console.log('Join to Connect button press in')}
+          onPressOut={() => console.log('Join to Connect button press out')}
+        >
           <Text style={styles.primaryButtonText}>Join to Connect</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.secondaryButton} onPress={handleLogin}>
+        <TouchableOpacity
+          style={styles.secondaryButton}
+          onPress={handleLogin}
+          onPressIn={() => console.log('Log In button press in')}
+          onPressOut={() => console.log('Log In button press out')}
+        >
           <Text style={styles.secondaryButtonText}>Log In</Text>
         </TouchableOpacity>
       </View>
