@@ -50,7 +50,7 @@ const CreatorEarningsScreen = () => {
             <p className="text-white text-base font-medium leading-normal">
               Last 30 Days
             </p>
-            <p className="text-white tracking-light text-2xl font-bold leading-tight">
+            <p className="text-white tracking-light text-2xl font-bold leading-tight" selectable={true}>
               $1,250
             </p>
           </div>
@@ -58,7 +58,7 @@ const CreatorEarningsScreen = () => {
             <p className="text-white text-base font-medium leading-normal">
               Lifetime
             </p>
-            <p className="text-white tracking-light text-2xl font-bold leading-tight">
+            <p className="text-white tracking-light text-2xl font-bold leading-tight" selectable={true}>
               $5,750
             </p>
           </div>
@@ -71,7 +71,7 @@ const CreatorEarningsScreen = () => {
             <p className="text-white text-base font-medium leading-normal">
               Tips
             </p>
-            <p className="text-white tracking-light text-2xl font-bold leading-tight">
+            <p className="text-white tracking-light text-2xl font-bold leading-tight" selectable={true}>
               $350
             </p>
           </div>

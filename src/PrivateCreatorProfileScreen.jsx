@@ -40,9 +40,9 @@ const PrivateCreatorProfileScreen = () => {
             }}
             style={styles.profileImage}
           />
-          <Text style={styles.profileName}>Ethan Blake</Text>
-          <Text style={styles.profileTitle}>Illustrator</Text>
-          <Text style={styles.profileLocation}>Based in San Francisco</Text>
+          <Text style={styles.profileName} selectable={true}>Ethan Blake</Text>
+          <Text style={styles.profileTitle} selectable={true}>Illustrator</Text>
+          <Text style={styles.profileLocation} selectable={true}>Based in San Francisco</Text>
         </View>
         <View style={styles.actionButtons}>
           <TouchableOpacity style={styles.editButton}>
@@ -54,19 +54,19 @@ const PrivateCreatorProfileScreen = () => {
         </View>
         <View style={styles.statsSection}>
           <View style={styles.statBox}>
-            <Text style={styles.statNumber}>123</Text>
+            <Text style={styles.statNumber} selectable={true}>123</Text>
             <Text style={styles.statLabel}>Posts</Text>
           </View>
           <View style={styles.statBox}>
-            <Text style={styles.statNumber}>456</Text>
+            <Text style={styles.statNumber} selectable={true}>456</Text>
             <Text style={styles.statLabel}>Followers</Text>
           </View>
           <View style={styles.statBox}>
-            <Text style={styles.statNumber}>789</Text>
+            <Text style={styles.statNumber} selectable={true}>789</Text>
             <Text style={styles.statLabel}>Following</Text>
           </View>
           <View style={styles.statBox}>
-            <Text style={styles.statNumber}>4.5</Text>
+            <Text style={styles.statNumber} selectable={true}>4.5</Text>
             <Text style={styles.statLabel}>Rating</Text>
           </View>
         </View>

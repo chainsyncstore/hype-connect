@@ -81,7 +81,7 @@ const SignUpScreen = () => {
           <Text style={styles.continueButtonText}>Continue</Text>
         </TouchableOpacity>
 
-        <Text style={styles.loginText}>Already have an account? Log in</Text>
+        <Text style={styles.loginText} selectable={true}>Already have an account? Log in</Text>
       </ScrollView>
     </View>
   );

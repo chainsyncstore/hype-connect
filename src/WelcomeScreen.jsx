@@ -59,10 +59,10 @@ const WelcomeScreen = () => {
           }}
         />
       </View>
-      <Text style={styles.headline}>
+       <Text style={styles.headline} selectable={true}>
         Connect. <Text style={styles.accentColor}>Create.</Text> Cash Out.
       </Text>
-      <Text style={styles.tagline}>For creators</Text>
+       <Text style={styles.tagline} selectable={true}>For creators</Text>
       <View style={{ ...styles.buttonContainer, pointerEvents: 'auto' }}>
         <TouchableOpacity
           style={styles.primaryButton}

@@ -61,7 +61,7 @@ const BookNowModal = ({ isVisible, onClose }) => {
                 <h3 className="text-white text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">
                   Estimated Cost
                 </h3>
-                <p className="text-white text-base font-normal leading-normal pb-3 pt-1 px-4">
+                <p className="text-white text-base font-normal leading-normal pb-3 pt-1 px-4" selectable={true}>
                   $250
                 </p>
               </div>

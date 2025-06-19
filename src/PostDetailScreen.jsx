@@ -47,7 +47,7 @@ const PostDetailScreen = () => {
         </View>
       </View>
       <Text style={styles.postCategory}>2d · Photography</Text>
-      <Text style={styles.postDescription}>
+      <Text style={styles.postDescription} selectable={true}>
         Capturing the essence of urban life through a lens. This series explores
         the vibrant streets of Tokyo, showcasing the city's unique blend of
         tradition and modernity. Each shot tells a story, from the bustling
@@ -78,10 +78,10 @@ const PostDetailScreen = () => {
         />
         <View style={styles.commentDetails}>
           <View style={styles.commentHeader}>
-            <Text style={styles.commentName}>Ethan Bennett</Text>
+            <Text style={styles.commentName} selectable={true}>Ethan Bennett</Text>
             <Text style={styles.commentTime}>1d</Text>
           </View>
-          <Text style={styles.commentText}>
+          <Text style={styles.commentText} selectable={true}>
             Absolutely stunning work! The colors and composition are
             breathtaking. You've truly captured the spirit of Tokyo.
           </Text>
@@ -96,10 +96,10 @@ const PostDetailScreen = () => {
         />
         <View style={styles.commentDetails}>
           <View style={styles.commentHeader}>
-            <Text style={styles.commentName}>Olivia Hayes</Text>
+            <Text style={styles.commentName} selectable={true}>Olivia Hayes</Text>
             <Text style={styles.commentTime}>2d</Text>
           </View>
-          <Text style={styles.commentText}>
+          <Text style={styles.commentText} selectable={true}>
             This series is incredible. The way you've used light and shadow to
             highlight the city's architecture is masterful. Each photo is a work
             of art.

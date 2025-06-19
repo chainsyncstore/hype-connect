@@ -16,8 +16,8 @@ const SuccessScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome to the Hype!</Text>
-      <Text style={styles.subtitle}>
+      <Text style={styles.title} selectable={true}>Welcome to the Hype!</Text>
+      <Text style={styles.subtitle} selectable={true}>
         Your creative journey starts now. Explore the feed to connect with
         fellow artists and discover exciting opportunities.
       </Text>

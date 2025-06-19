@@ -53,8 +53,8 @@ const InterestsScreen = () => {
           <View style={styles.progressDot} />
         </View>
 
-        <Text style={styles.title}>What are your creative interests?</Text>
-        <Text style={styles.subtitle}>
+        <Text style={styles.title} selectable={true}>What are your creative interests?</Text>
+        <Text style={styles.subtitle} selectable={true}>
           Select all that apply to help us tailor your experience.
         </Text>
 

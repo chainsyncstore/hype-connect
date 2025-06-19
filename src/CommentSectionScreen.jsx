@@ -121,10 +121,10 @@ const CommentItem = ({ name, time, comment, image }) => (
     <Image style={styles.commentProfileImage} source={{ uri: image }} />
     <View style={styles.commentDetails}>
       <View style={styles.commentHeader}>
-        <Text style={styles.commentName}>{name}</Text>
+        <Text style={styles.commentName} selectable={true}>{name}</Text>
         <Text style={styles.commentTime}>{time}</Text>
       </View>
-      <Text style={styles.commentText}>{comment}</Text>
+      <Text style={styles.commentText} selectable={true}>{comment}</Text>
     </View>
   </View>
 );

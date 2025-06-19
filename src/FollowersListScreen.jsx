@@ -52,8 +52,8 @@ const FollowersListScreen = () => {
           <View key={follower.id} style={styles.followerContainer}>
             <Image source={{ uri: follower.image }} style={styles.avatar} />
             <View style={styles.infoContainer}>
-              <Text style={styles.name}>{follower.name}</Text>
-              <Text style={styles.username}>{follower.username}</Text>
+              <Text style={styles.name} selectable={true}>{follower.name}</Text>
+              <Text style={styles.username} selectable={true}>{follower.username}</Text>
             </View>
             <TouchableOpacity style={styles.followButton}>
               <Text style={styles.followButtonText}>

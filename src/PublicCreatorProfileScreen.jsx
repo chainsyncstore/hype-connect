@@ -46,8 +46,8 @@ const PublicCreatorProfileScreen = () => {
             style={styles.profileImage}
           />
           <View style={styles.profileInfo}>
-            <Text style={styles.name}>Ethan Carter</Text>
-            <Text style={styles.username}>@ethan_carter</Text>
+            <Text style={styles.name} selectable={true}>Ethan Carter</Text>
+            <Text style={styles.username} selectable={true}>@ethan_carter</Text>
             <Text style={styles.bio}>Producer | Photographer</Text>
           </View>
         </View>
@@ -64,7 +64,7 @@ const PublicCreatorProfileScreen = () => {
           </View>
         </View>
 
-        <Text style={styles.description}>
+        <Text style={styles.description} selectable={true}>
           Ethan Carter is a multi-talented creative based in Los Angeles,
           specializing in music production, photography, and songwriting.
         </Text>

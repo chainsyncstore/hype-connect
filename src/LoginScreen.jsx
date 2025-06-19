@@ -27,7 +27,7 @@ const LoginScreen = () => {
             <Text style={styles.backButtonText}>{'<'}</Text>
           </TouchableOpacity>
         </View>
-        <Text style={styles.welcomeText}>Welcome back</Text>
+        <Text style={styles.welcomeText} selectable={true}>Welcome back</Text>
 
         <View style={styles.inputContainer}>
           <Text style={styles.inputLabel}>Email or phone</Text>
@@ -48,7 +48,7 @@ const LoginScreen = () => {
           />
         </View>
 
-        <Text style={styles.forgotPasswordText}>Forgot password?</Text>
+        <Text style={styles.forgotPasswordText} selectable={true}>Forgot password?</Text>
 
         <TouchableOpacity style={styles.loginButton}>
           <Text style={styles.loginButtonText}>Log In</Text>

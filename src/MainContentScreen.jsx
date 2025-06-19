@@ -59,10 +59,10 @@ const MainContentScreen = () => {
             />
             <View style={styles.postDetails}>
               <Text style={styles.postCategory}>Music</Text>
-              <Text style={styles.postTitle}>New track out now!</Text>
+              <Text style={styles.postTitle} selectable={true}>New track out now!</Text>
               <View style={styles.postFooter}>
                 <TouchableOpacity onPress={toggleCreatorCard}>
-                  <Text style={styles.postAuthor}>By @Alex_Beats</Text>
+                  <Text style={styles.postAuthor} selectable={true}>By @Alex_Beats</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.postButton}>
                   <Text style={styles.postButtonText}>123</Text>
@@ -80,7 +80,7 @@ const MainContentScreen = () => {
                 <Text style={styles.postActionText}>🔖 67</Text>
               </View>
             </View>
-            <Text style={styles.postDescription}>
+            <Text style={styles.postDescription} selectable={true}>
               Check out my latest track, a blend of electronic and hip-hop
               beats. Let me know what you think!
             </Text>
@@ -97,10 +97,10 @@ const MainContentScreen = () => {
             />
             <View style={styles.postDetails}>
               <Text style={styles.postCategory}>Art</Text>
-              <Text style={styles.postTitle}>Digital painting</Text>
+              <Text style={styles.postTitle} selectable={true}>Digital painting</Text>
               <View style={styles.postFooter}>
                 <TouchableOpacity onPress={toggleCreatorCard}>
-                  <Text style={styles.postAuthor}>By @Art_by_Sarah</Text>
+                  <Text style={styles.postAuthor} selectable={true}>By @Art_by_Sarah</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.postButton}>
                   <Text style={styles.postButtonText}>210</Text>
@@ -118,7 +118,7 @@ const MainContentScreen = () => {
                 <Text style={styles.postActionText}>🔖 80</Text>
               </View>
             </View>
-            <Text style={styles.postDescription}>
+            <Text style={styles.postDescription} selectable={true}>
               Experimenting with new color palettes and techniques. This piece
               captures the vibrant energy of the city at night.
             </Text>

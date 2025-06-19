@@ -28,9 +28,9 @@ const CreatorCard = () => {
                 }}
               />
               <View style={styles.profileDetails}>
-                <Text style={styles.profileName}>Ethan Carter</Text>
-                <Text style={styles.profileUsername}>@ethan.carter</Text>
-                <Text style={styles.profileTitle}>Photographer</Text>
+                <Text style={styles.profileName} selectable={true}>Ethan Carter</Text>
+                <Text style={styles.profileUsername} selectable={true}>@ethan.carter</Text>
+                <Text style={styles.profileTitle} selectable={true}>Photographer</Text>
               </View>
             </View>
             <View style={styles.interestsContainer}>

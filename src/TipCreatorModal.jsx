@@ -42,8 +42,8 @@ const TipCreatorModal = ({ visible, onClose, onSendTip }) => {
           <TouchableOpacity style={styles.closeButton} onPress={handleClose}>
             <View style={styles.closeIndicator} />
           </TouchableOpacity>
-          <Text style={styles.title}>Send a Tip</Text>
-          <Text style={styles.subtitle}>
+           <Text style={styles.title} selectable={true}>Send a Tip</Text>
+           <Text style={styles.subtitle} selectable={true}>
             Show your appreciation for great content.
           </Text>
 
@@ -66,8 +66,8 @@ const TipCreatorModal = ({ visible, onClose, onSendTip }) => {
             <View style={styles.paymentMethodIcon}>
               {/* Add your payment method icon here */}
             </View>
-            <Text style={styles.paymentMethodText}>Payment Method</Text>
-            <Text style={styles.paymentMethodName}>Flutterwave</Text>
+             <Text style={styles.paymentMethodText} selectable={true}>Payment Method</Text>
+             <Text style={styles.paymentMethodName} selectable={true}>Flutterwave</Text>
           </View>
 
           <TextInput
