@@ -3,7 +3,7 @@
 
 module.exports = {
   eslint: {
-    enable: true, // Re-enable ESLint
+    enable: false, // Disable craco's ESLint handling
   },
   webpack: {
     configure: webpackConfig => {
@@ -27,8 +27,6 @@ module.exports = {
           },
         },
       });
-
-      console.log('Webpack configuration:', webpackConfig); // Debugging Webpack configuration
 
       return webpackConfig;
     },
