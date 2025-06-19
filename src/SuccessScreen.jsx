@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 
 const SuccessScreen = () => {
   const navigation = useNavigation();
+  console.log('SuccessScreen rendered');
+
+  useEffect(() => {
+    console.log('SuccessScreen mounted');
+
+    return () => {
+      console.log('SuccessScreen unmounted');
+    };
+  }, []);
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome to the Hype!</Text>

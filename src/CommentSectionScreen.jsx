@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   StyleSheet,
@@ -15,6 +15,16 @@ import ReportBlockModal from './ReportBlockModal';
 const CommentSectionScreen = () => {
   const navigation = useNavigation();
   const [modalVisible, setModalVisible] = useState(false);
+
+  console.log('CommentSectionScreen rendered');
+
+  useEffect(() => {
+    console.log('CommentSectionScreen mounted');
+
+    return () => {
+      console.log('CommentSectionScreen unmounted');
+    };
+  }, []);
 
   const handleLongPress = () => {
     setModalVisible(true);

@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const BookNowModal = ({ isVisible, onClose }) => {
   if (!isVisible) return null;
+
+  console.log('BookNowModal rendered');
+
+  useEffect(() => {
+    console.log('BookNowModal mounted');
+
+    return () => {
+      console.log('BookNowModal unmounted');
+    };
+  }, []);
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import {
   StyleSheet,
@@ -19,6 +19,16 @@ const MainContentScreen = () => {
   const toggleCreatorCard = () => {
     setIsCreatorCardVisible(!isCreatorCardVisible);
   };
+
+  console.log('MainContentScreen rendered');
+
+  useEffect(() => {
+    console.log('MainContentScreen mounted');
+
+    return () => {
+      console.log('MainContentScreen unmounted');
+    };
+  }, []);
 
   return (
     <View style={styles.container}>

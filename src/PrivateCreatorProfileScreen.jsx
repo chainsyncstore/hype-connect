@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -11,6 +11,16 @@ import ProfileMenuModal from './ProfileMenuModal';
 
 const PrivateCreatorProfileScreen = () => {
   const [menuVisible, setMenuVisible] = useState(false);
+
+  console.log('PrivateCreatorProfileScreen rendered');
+
+  useEffect(() => {
+    console.log('PrivateCreatorProfileScreen mounted');
+
+    return () => {
+      console.log('PrivateCreatorProfileScreen unmounted');
+    };
+  }, []);
 
   return (
     <React.Fragment>

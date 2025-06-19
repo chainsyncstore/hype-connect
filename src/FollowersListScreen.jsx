@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   View,
   Text,
@@ -29,6 +29,16 @@ const followers = [
 ];
 
 const FollowersListScreen = () => {
+  console.log('FollowersListScreen rendered');
+
+  useEffect(() => {
+    console.log('FollowersListScreen mounted');
+
+    return () => {
+      console.log('FollowersListScreen unmounted');
+    };
+  }, []);
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import {
   StyleSheet,
@@ -26,6 +26,16 @@ const InterestsScreen = () => {
     'Vocalist',
     'Performance',
   ];
+
+  console.log('InterestsScreen rendered');
+
+  useEffect(() => {
+    console.log('InterestsScreen mounted');
+
+    return () => {
+      console.log('InterestsScreen unmounted');
+    };
+  }, []);
 
   return (
     <View style={styles.container}>

@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const CreatorEarningsScreen = () => {
   const containerStyle = {
     fontFamily: '"Spline Sans", "Noto Sans", sans-serif',
   };
+
+  console.log('CreatorEarningsScreen rendered');
+
+  useEffect(() => {
+    console.log('CreatorEarningsScreen mounted');
+
+    return () => {
+      console.log('CreatorEarningsScreen unmounted');
+    };
+  }, []);
 
   return (
     <div

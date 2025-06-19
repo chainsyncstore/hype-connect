@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   StyleSheet,
   View,
@@ -9,6 +9,16 @@ import {
 } from 'react-native';
 
 const LoginScreen = () => {
+  console.log('LoginScreen rendered');
+
+  useEffect(() => {
+    console.log('LoginScreen mounted');
+
+    return () => {
+      console.log('LoginScreen unmounted');
+    };
+  }, []);
+
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>

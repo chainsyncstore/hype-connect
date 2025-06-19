@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   View,
   Text,
@@ -9,6 +9,16 @@ import {
 } from 'react-native';
 
 const PublicCreatorProfileScreen = () => {
+  console.log('PublicCreatorProfileScreen rendered');
+
+  useEffect(() => {
+    console.log('PublicCreatorProfileScreen mounted');
+
+    return () => {
+      console.log('PublicCreatorProfileScreen unmounted');
+    };
+  }, []);
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>

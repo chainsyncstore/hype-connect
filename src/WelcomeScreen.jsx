@@ -51,7 +51,7 @@ const WelcomeScreen = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.logoContainer} pointerEvents="auto">
+      <View style={{ ...styles.logoContainer, pointerEvents: 'auto' }}>
         <Image
           style={styles.logo}
           source={{
@@ -63,7 +63,7 @@ const WelcomeScreen = () => {
         Connect. <Text style={styles.accentColor}>Create.</Text> Cash Out.
       </Text>
       <Text style={styles.tagline}>For creators</Text>
-      <View style={styles.buttonContainer} pointerEvents="auto">
+      <View style={{ ...styles.buttonContainer, pointerEvents: 'auto' }}>
         <TouchableOpacity
           style={styles.primaryButton}
           onPress={handleJoinToConnect}

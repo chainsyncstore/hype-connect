@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Modal,
   View,
@@ -10,6 +10,16 @@ import {
 import { StyleSheet } from 'react-native';
 
 const TipCreatorModal = ({ visible, onClose, onSendTip }) => {
+  console.log('TipCreatorModal rendered');
+
+  useEffect(() => {
+    console.log('TipCreatorModal mounted');
+
+    return () => {
+      console.log('TipCreatorModal unmounted');
+    };
+  }, []);
+
   const handleClose = () => {
     console.log('Close button pressed');
     onClose();

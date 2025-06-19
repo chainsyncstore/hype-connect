@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Modal, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 const ReportBlockModal = ({ visible, onClose }) => {
+  console.log('ReportBlockModal rendered');
+
+  useEffect(() => {
+    console.log('ReportBlockModal mounted');
+
+    return () => {
+      console.log('ReportBlockModal unmounted');
+    };
+  }, []);
+
   return (
     <Modal
       animationType="slide"

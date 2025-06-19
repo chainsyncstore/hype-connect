@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   StyleSheet,
   View,
@@ -11,6 +11,16 @@ import { useNavigation } from '@react-navigation/native';
 
 const SignUpScreen = () => {
   const navigation = useNavigation();
+
+  console.log('SignUpScreen rendered');
+
+  useEffect(() => {
+    console.log('SignUpScreen mounted');
+
+    return () => {
+      console.log('SignUpScreen unmounted');
+    };
+  }, []);
 
   return (
     <View style={styles.container}>

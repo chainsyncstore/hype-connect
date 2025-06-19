@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { View, Text, TouchableOpacity, StyleSheet, Modal } from 'react-native';
 import { useState } from 'react';
 
 const ProfileMenuModal = ({ visible, onClose }) => {
   const navigation = useNavigation();
+  console.log('ProfileMenuModal rendered');
+
+  useEffect(() => {
+    console.log('ProfileMenuModal mounted');
+
+    return () => {
+      console.log('ProfileMenuModal unmounted');
+    };
+  }, []);
+
   return (
     <Modal
       animationType="slide"
