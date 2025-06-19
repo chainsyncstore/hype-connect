@@ -5,7 +5,11 @@ import { useNavigation } from '@react-navigation/native';
 const WelcomeScreen = () => {
   const navigation = useNavigation();
 
+  console.log('WelcomeScreen rendered');
+
   useEffect(() => {
+    console.log('WelcomeScreen mounted');
+
     const handleTouchStart = event => {
       console.log('Touch start detected:', {
         identifier: event.touches[0]?.identifier,
@@ -29,6 +33,7 @@ const WelcomeScreen = () => {
     window.addEventListener('touchend', handleTouchEnd);
 
     return () => {
+      console.log('WelcomeScreen unmounted');
       window.removeEventListener('touchstart', handleTouchStart);
       window.removeEventListener('touchend', handleTouchEnd);
     };
