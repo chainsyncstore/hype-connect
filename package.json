@@ -12,9 +12,14 @@
     "web": "craco start"
   },
   "dependencies": {
+    "@babel/cli": "^7.27.2",
+    "@babel/core": "^7.27.4",
+    "@babel/preset-env": "^7.27.2",
+    "@babel/preset-react": "^7.27.1",
     "@react-native/new-app-screen": "0.80.0",
     "@react-navigation/native": "^7.1.11",
     "@react-navigation/stack": "^7.3.4",
+    "babel-loader": "^10.0.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-native": "0.80.0",
@@ -25,11 +30,9 @@
     "react-scripts": "5.0.1"
   },
   "devDependencies": {
-    "@craco/craco": "^7.1.0",
-    "@babel/core": "^7.25.2",
     "@babel/eslint-parser": "^7.27.5",
-    "@babel/preset-env": "^7.25.3",
     "@babel/runtime": "^7.25.0",
+    "@craco/craco": "^7.1.0",
     "@react-native-community/cli": "19.0.0",
     "@react-native-community/cli-platform-android": "19.0.0",
     "@react-native-community/cli-platform-ios": "19.0.0",

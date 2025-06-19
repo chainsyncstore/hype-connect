@@ -14,23 +14,17 @@ const ReportBlockModal = ({ visible, onClose }) => {
           <Text style={styles.modalTitle}>Report or Block</Text>
 
           <TouchableOpacity style={styles.modalOption}>
-            <View style={styles.iconContainer}>
-              {/* Flag Icon */}
-            </View>
+            <View style={styles.iconContainer}>{/* Flag Icon */}</View>
             <Text style={styles.modalOptionText}>Report post</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.modalOption}>
-            <View style={styles.iconContainer}>
-              {/* SpeakerSlash Icon */}
-            </View>
+            <View style={styles.iconContainer}>{/* SpeakerSlash Icon */}</View>
             <Text style={styles.modalOptionText}>Mute this creator</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.modalOption}>
-            <View style={styles.iconContainer}>
-              {/* Users Icon */}
-            </View>
+            <View style={styles.iconContainer}>{/* Users Icon */}</View>
             <Text style={styles.modalOptionText}>Block this creator</Text>
           </TouchableOpacity>
 

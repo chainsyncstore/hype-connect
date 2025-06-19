@@ -3,7 +3,7 @@
 
 module.exports = {
   eslint: {
-    enable: false, // Temporarily disable ESLint
+    enable: true, // Re-enable ESLint
   },
   webpack: {
     configure: webpackConfig => {
@@ -15,6 +15,21 @@ module.exports = {
           fullySpecified: false,
         },
       });
+
+      // Add rule for .jsx files
+      webpackConfig.module.rules.push({
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-react'],
+          },
+        },
+      });
+
+      console.log('Webpack configuration:', webpackConfig); // Debugging Webpack configuration
+
       return webpackConfig;
     },
   },

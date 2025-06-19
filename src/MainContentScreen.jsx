@@ -10,8 +10,6 @@ import {
   Modal,
 } from 'react-native';
 import CreatorCard from './CreatorCard';
-import CreatorEarningsScreen from './CreatorEarningsScreen';
-import ReportBlockModal from './ReportBlockModal';
 
 const MainContentScreen = () => {
   const navigation = useNavigation();
@@ -73,8 +71,8 @@ const MainContentScreen = () => {
               </View>
             </View>
             <Text style={styles.postDescription}>
-              Check out my latest track, a blend of electronic and hip-hop beats.
-              Let me know what you think!
+              Check out my latest track, a blend of electronic and hip-hop
+              beats. Let me know what you think!
             </Text>
           </View>
         </TouchableOpacity>
@@ -126,7 +124,11 @@ const MainContentScreen = () => {
         <View style={styles.bottomSpace} />
       </ScrollView>
 
-      <Modal visible={isCreatorCardVisible} transparent={true} animationType="slide">
+      <Modal
+        visible={isCreatorCardVisible}
+        transparent={true}
+        animationType="slide"
+      >
         <CreatorCard />
       </Modal>
     </View>

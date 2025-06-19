@@ -17,7 +17,13 @@ const ProfileMenuModal = ({ visible, onClose }) => {
           <TouchableOpacity style={styles.closeButton} onPress={onClose}>
             <View style={styles.closeIndicator} />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.menuItem} onPress={() => { onClose(); navigation.navigate('CreatorEarnings'); }}>
+          <TouchableOpacity
+            style={styles.menuItem}
+            onPress={() => {
+              onClose();
+              navigation.navigate('CreatorEarnings');
+            }}
+          >
             <Text style={styles.menuText}>View Earnings</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.menuItem}>

@@ -8,14 +8,13 @@ import {
   ScrollView,
 } from 'react-native';
 
-
 const LoginScreen = () => {
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.header}>
           <TouchableOpacity style={styles.backButton}>
-           <Text style={{color: 'white', fontSize: 24}}>{'<'}</Text>
+            <Text style={styles.backButtonText}>{'<'}</Text>
           </TouchableOpacity>
         </View>
         <Text style={styles.welcomeText}>Welcome back</Text>
@@ -56,9 +55,7 @@ const LoginScreen = () => {
           </TouchableOpacity>
         </View>
 
-        <Text style={styles.signUpText}>
-          Don't have an account? Sign up
-        </Text>
+        <Text style={styles.signUpText}>Don't have an account? Sign up</Text>
         <View style={styles.bottomSpace} />
       </ScrollView>
     </View>
@@ -86,89 +83,69 @@ const styles = StyleSheet.create({
     padding: 8,
   },
   backButtonText: {
-    color: '#fff',
-    fontSize: 20,
+    color: 'white',
+    fontSize: 24,
   },
   welcomeText: {
-    color: '#fff',
-    fontSize: 22,
-    fontWeight: 'bold',
-    textAlign: 'left',
-    width: '80%',
-    paddingBottom: 12,
-    paddingTop: 20,
+    fontSize: 24,
+    color: 'white',
+    marginVertical: 20,
   },
   inputContainer: {
     width: '80%',
     marginBottom: 16,
   },
   inputLabel: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: 'medium',
-    paddingBottom: 8,
+    color: 'white',
+    marginBottom: 8,
   },
   input: {
     backgroundColor: '#493b22',
-    color: '#fff',
-    borderRadius: 12,
-    paddingVertical: 14,
-    paddingHorizontal: 16,
-    fontSize: 16,
+    color: 'white',
+    borderRadius: 8,
+    padding: 12,
   },
   forgotPasswordText: {
     color: '#cbb590',
-    fontSize: 14,
-    textDecorationLine: 'underline',
-    width: '80%',
-    textAlign: 'left',
-    paddingBottom: 20,
-    paddingTop: 4,
+    marginVertical: 10,
   },
   loginButton: {
-    backgroundColor: '#f3ad34',
-    borderRadius: 100,
-    paddingVertical: 14,
-    paddingHorizontal: 48,
-    marginBottom: 16,
+    backgroundColor: '#f4b43d',
+    padding: 12,
+    borderRadius: 8,
+    marginVertical: 20,
   },
   loginButtonText: {
     color: '#231c10',
-    fontSize: 18,
     fontWeight: 'bold',
+    textAlign: 'center',
   },
   orContinueText: {
-    color: '#cbb590',
-    fontSize: 14,
-    paddingBottom: 12,
+    color: 'white',
+    marginVertical: 10,
   },
   socialButtonsContainer: {
-    flexDirection: 'column',
+    flexDirection: 'row',
     justifyContent: 'space-around',
     width: '80%',
-    marginBottom: 16,
+    marginBottom: 20,
   },
   socialButton: {
     backgroundColor: '#493b22',
-    borderRadius: 100,
-    paddingVertical: 12,
-    paddingHorizontal: 24,
-    marginBottom: 8,
+    padding: 12,
+    borderRadius: 8,
   },
   socialButtonText: {
-    color: '#fff',
-    fontSize: 14,
-    fontWeight: 'bold',
+    color: 'white',
+    textAlign: 'center',
   },
   signUpText: {
     color: '#cbb590',
-    fontSize: 14,
     textDecorationLine: 'underline',
-    paddingBottom: 8,
+    marginVertical: 20,
   },
   bottomSpace: {
-    height: 5,
-    backgroundColor: '#231c10',
+    height: 20,
   },
 });
 

@@ -1,10 +1,38 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import SignUpScreen from './SignUpScreen.jsx';
 
 const WelcomeScreen = () => {
   const navigation = useNavigation();
+
+  useEffect(() => {
+    const handleTouchStart = event => {
+      console.log('Touch start detected:', {
+        identifier: event.touches[0]?.identifier,
+        pageX: event.touches[0]?.pageX,
+        pageY: event.touches[0]?.pageY,
+        timestamp: event.timeStamp,
+      });
+    };
+
+    const handleTouchEnd = event => {
+      console.log('Touch end detected:', {
+        identifier: event.changedTouches[0]?.identifier,
+        pageX: event.changedTouches[0]?.pageX,
+        pageY: event.changedTouches[0]?.pageY,
+        timestamp: event.timeStamp,
+      });
+      console.log('Current Touch Bank:', event.targetTouches);
+    };
+
+    window.addEventListener('touchstart', handleTouchStart);
+    window.addEventListener('touchend', handleTouchEnd);
+
+    return () => {
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, []);
 
   const handleJoinToConnect = () => {
     console.log('Join to Connect button pressed');

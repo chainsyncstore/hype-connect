@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, ScrollView, Image, TextInput } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+  Image,
+  TextInput,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import ReportBlockModal from './ReportBlockModal';
@@ -19,8 +27,11 @@ const CommentSectionScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-          <Text style={{color:'white', fontSize:24}}>{'<'}</Text>
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => navigation.goBack()}
+        >
+          <Text style={{ color: 'white', fontSize: 24 }}>{'<'}</Text>
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Comments</Text>
       </View>
@@ -97,10 +108,7 @@ const CommentSectionScreen = () => {
 
 const CommentItem = ({ name, time, comment, image }) => (
   <View style={styles.commentContainer}>
-    <Image
-      style={styles.commentProfileImage}
-      source={{ uri: image }}
-    />
+    <Image style={styles.commentProfileImage} source={{ uri: image }} />
     <View style={styles.commentDetails}>
       <View style={styles.commentHeader}>
         <Text style={styles.commentName}>{name}</Text>

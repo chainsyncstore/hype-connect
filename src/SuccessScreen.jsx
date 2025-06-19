@@ -1,11 +1,6 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import {
-  StyleSheet,
-  View,
-  Text,
-  TouchableOpacity,
-} from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 
 const SuccessScreen = () => {
   const navigation = useNavigation();
@@ -16,7 +11,10 @@ const SuccessScreen = () => {
         Your creative journey starts now. Explore the feed to connect with
         fellow artists and discover exciting opportunities.
       </Text>
-      <TouchableOpacity style={styles.exploreButton} onPress={() => navigation.navigate('MainContent')}>
+      <TouchableOpacity
+        style={styles.exploreButton}
+        onPress={() => navigation.navigate('MainContent')}
+      >
         <Text style={styles.exploreButtonText}>Explore the Feed</Text>
       </TouchableOpacity>
       <View style={styles.bottomSpace} />

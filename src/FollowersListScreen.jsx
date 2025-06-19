@@ -1,9 +1,30 @@
 import React from 'react';
-import { View, Text, Image, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+  StyleSheet,
+} from 'react-native';
 
 const followers = [
-  { id: 1, name: 'Jessica Williams', username: '@jessicaw', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCaK-Kn3CDxrc755_LVFTY36aaV16PpdJZ2fq4kd4nrlCwe3r0EJQTzEAgLIgR2g2SJHXXw9ReJ2jsxj8_6fMDO9Sq_ESYrA8E2mZxShBeYcSOzz93gqw7kv4VW4dVk5gng_RP2lWfclQj5rbkEFmB8IeWDmp2S3rO2tpQsVa4SkxZVktQ7F-HGsR0fuFseuHYERb5LOhsVTojv9_pmPtpWxO3UJOG5bzUwxgxSKBXMF_Sy54DjpQ6sVtdUVLEKesOOZ1Aw7Fq1M30', isFollowing: true },
-  { id: 2, name: 'David Miller', username: '@davidm', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDgMHy-DycAOhTqb9uso0XYNikZltNB84hqraW2FeY4BIr9SxCkSWvPjY5Xl2k89p9GSA7qxzDc04ucDypvfpCOFk8T46pJeghU-cXL4EVffG5sHLB3F_geRSNYRR538CWeeJ5b4J6mY3mCIu7hqn6Ml9SCQTTfqJmCWguF1BTIuhce6xmXhLhtfI_40jxgFGo24SdQLeNOEg1VG4uHb4Mo6-lZ0-WpTbJtl_aAeVYGdBOC5E0fOYjWjmIJUhILLhMlqMa85L4_t_g', isFollowing: false },
+  {
+    id: 1,
+    name: 'Jessica Williams',
+    username: '@jessicaw',
+    image:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuCaK-Kn3CDxrc755_LVFTY36aaV16PpdJZ2fq4kd4nrlCwe3r0EJQTzEAgLIgR2g2SJHXXw9ReJ2jsxj8_6fMDO9Sq_ESYrA8E2mZxShBeYcSOzz93gqw7kv4VW4dVk5gng_RP2lWfclQj5rbkEFmB8IeWDmp2S3rO2tpQsVa4SkxZVktQ7F-HGsR0fuFseuHYERb5LOhsVTojv9_pmPtpWxO3UJOG5bzUwxgxSKBXMF_Sy54DjpQ6sVtdUVLEKesOOZ1Aw7Fq1M30',
+    isFollowing: true,
+  },
+  {
+    id: 2,
+    name: 'David Miller',
+    username: '@davidm',
+    image:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuDgMHy-DycAOhTqb9uso0XYNikZltNB84hqraW2FeY4BIr9SxCkSWvPjY5Xl2k89p9GSA7qxzDc04ucDypvfpCOFk8T46pJeghU-cXL4EVffG5sHLB3F_geRSNYRR538CWeeJ5b4J6mY3mCIu7hqn6Ml9SCQTTfqJmCWguF1BTIuhce6xmXhLhtfI_40jxgFGo24SdQLeNOEg1VG4uHb4Mo6-lZ0-WpTbJtl_aAeVYGdBOC5E0fOYjWjmIJUhILLhMlqMa85L4_t_g',
+    isFollowing: false,
+  },
   // Add more followers here
 ];
 
@@ -17,7 +38,7 @@ const FollowersListScreen = () => {
         <Text style={styles.title}>Followers</Text>
       </View>
       <ScrollView>
-        {followers.map((follower) => (
+        {followers.map(follower => (
           <View key={follower.id} style={styles.followerContainer}>
             <Image source={{ uri: follower.image }} style={styles.avatar} />
             <View style={styles.infoContainer}>
@@ -25,7 +46,9 @@ const FollowersListScreen = () => {
               <Text style={styles.username}>{follower.username}</Text>
             </View>
             <TouchableOpacity style={styles.followButton}>
-              <Text style={styles.followButtonText}>{follower.isFollowing ? 'Unfollow' : 'Follow'}</Text>
+              <Text style={styles.followButtonText}>
+                {follower.isFollowing ? 'Unfollow' : 'Follow'}
+              </Text>
             </TouchableOpacity>
           </View>
         ))}

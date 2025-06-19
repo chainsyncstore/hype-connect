@@ -31,8 +31,7 @@ const PublicCreatorProfileScreen = () => {
         <View style={styles.profileSection}>
           <Image
             source={{
-              uri:
-                'https://lh3.googleusercontent.com/aida-public/AB6AXuCUsD4PV-NWVkwPYLn09JGAUVY_qh6_Cf88fW63-yK_4QsqCPo1T6b2qD3X3vp7x9Zb5s9BVHb_uzo9vtLk0htm-tNV7314rrKkH34YaMPziRnqgwHo4l0hWhbemB-9Huimbkx5XaokEynCNdoCSXrUFMtkBIbqsVxPCgHb8VmGfiWao2q13_21nx3Wjo3eC8V8HYaSvi6pcNfV_ELSzy1YV_ZuqdCAzSPL4YsPnN_XKQbs2A1G8KjwGDWgtonn4sTEw6wrMJRwaXE',
+              uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCUsD4PV-NWVkwPYLn09JGAUVY_qh6_Cf88fW63-yK_4QsqCPo1T6b2qD3X3vp7x9Zb5s9BVHb_uzo9vtLk0htm-tNV7314rrKkH34YaMPziRnqgwHo4l0hWhbemB-9Huimbkx5XaokEynCNdoCSXrUFMtkBIbqsVxPCgHb8VmGfiWao2q13_21nx3Wjo3eC8V8HYaSvi6pcNfV_ELSzy1YV_ZuqdCAzSPL4YsPnN_XKQbs2A1G8KjwGDWgtonn4sTEw6wrMJRwaXE',
             }}
             style={styles.profileImage}
           />
@@ -56,7 +55,8 @@ const PublicCreatorProfileScreen = () => {
         </View>
 
         <Text style={styles.description}>
-          Ethan Carter is a multi-talented creative based in Los Angeles, specializing in music production, photography, and songwriting.
+          Ethan Carter is a multi-talented creative based in Los Angeles,
+          specializing in music production, photography, and songwriting.
         </Text>
 
         <View style={styles.statsContainer}>
@@ -129,8 +129,7 @@ const PublicCreatorProfileScreen = () => {
         <TouchableOpacity style={styles.navItem}>
           <Image
             source={{
-              uri:
-                'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIGZpbGw9ImN1cnJlbnRDb2xvciIgdmlld0JveD0iMCAwIDI1NiAyNTYiPgogICAgPHBhdGggZD0iTTIyNCwxMTUuNTVWMjA4YTE2LDE2LDAsMCwxLTE2LDE2SDE2OGExNiwxNiwwLDAsMS0xNi0xNlYxNjhhOCw4LDAsMCwwLTgtOEgxMTJhOCw4LDAsMCwwLTgsOHY0MGExNiwxNiwwLDAsMS0xNiwxNkg0OGExNiwxNiwwLDAsMS0xNi0xNlYxMTUuNTVhMTYsMTYsMCwwLDEsNS4xNy0xMS43OGw4MC03NS40OC4xMS0uMTFhMTYsMTYsMCwwLDEsMjEuNTMsMCwxLjE0LDEuMTQsMCwwLDAsLjExLjExbDgwLDc1LjQ4QTE2LDE2LDAsMCwxLDIyNCwxMTUuNTVaIj48L3BhdGg+Cjwvc3ZnPg==',
+              uri: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIGZpbGw9ImN1cnJlbnRDb2xvciIgdmlld0JveD0iMCAwIDI1NiAyNTYiPgogICAgPHBhdGggZD0iTTIyNCwxMTUuNTVWMjA4YTE2LDE2LDAsMCwxLTE2LDE2SDE2OGExNiwxNiwwLDAsMS0xNi0xNlYxNjhhOCw4LDAsMCwwLTgtOEgxMTJhOCw4LDAsMCwwLTgsOHY0MGExNiwxNiwwLDAsMS0xNiwxNkg0OGExNiwxNiwwLDAsMS0xNi0xNlYxMTUuNTVhMTYsMTYsMCwwLDEsNS4xNy0xMS43OGw4MC03NS40OC4xMS0uMTFhMTYsMTYsMCwwLDEsMjEuNTMsMCwxLjE0LDEuMTQsMCwwLDAsLjExLjExbDgwLDc1LjQ4QTE2LDE2LDAsMCwxLDIyNCwxMTUuNTVaIj48L3BhdGg+Cjwvc3ZnPg==',
             }}
             style={styles.navIcon}
           />
@@ -138,8 +137,7 @@ const PublicCreatorProfileScreen = () => {
         <TouchableOpacity style={styles.navItem}>
           <Image
             source={{
-              uri:
-                'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIGZpbGw9ImN1cnJlbnRDb2xvciIgdmlld0JveD0iMCAwIDI1NiAyNTYiPgogICAgPHBhdGggZD0iTTIyOS42NiwyMTguMzRsLTUwLjA3LTUwLjA2YTg4LjExLDg4LjExLDAsMSwwLTExLjMxLDExLjMxbDUwLjA2LDUwLjA3YTgsOCwwLDAsMCwxMS4zMi0xMS4zMlptNDAsMTEyYTcyLDcyLDAsMSwxLDcyLDcyQTcyLjA4LDcyLjA4LDAsMCwxLDQwLDExMloiPjwvcGF0aD4KPC9zdmc+',
+              uri: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIGZpbGw9ImN1cnJlbnRDb2xvciIgdmlld0JveD0iMCAwIDI1NiAyNTYiPgogICAgPHBhdGggZD0iTTIyOS42NiwyMTguMzRsLTUwLjA3LTUwLjA2YTg4LjExLDg4LjExLDAsMSwwLTExLjMxLDExLjMxbDUwLjA2LDUwLjA3YTgsOCwwLDAsMCwxMS4zMi0xMS4zMlptNDAsMTEyYTcyLDcyLDAsMSwxLDcyLDcyQTcyLjA4LDcyLjA4LDAsMCwxLDQwLDExMloiPjwvcGF0aD4KPC9zdmc+',
             }}
             style={styles.navIcon}
           />
@@ -147,8 +145,7 @@ const PublicCreatorProfileScreen = () => {
         <TouchableOpacity style={styles.navItem}>
           <Image
             source={{
-              uri:
-                'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIGZpbGw9ImN1cnJlbnRDb2xvciIgdmlld0JveD0iMCAwIDI1NiAyNTYiPgogICAgPHBhdGggZD0iTTIyNCwxMjhhOCw4LDAsMCwxLTgsOEgxMzZ2ODBhOCw4LDAsMCwxLTE2LDBWMTM2SDRhOCw4LDAsMCwxLDAtMTZoODBWMDRhOCw4LDAsMCwxLDE2LDB2ODBIMjE2QTgsOCwwLDAsMSwyMjQsMTI4WiI+PC9wYXRoPgogIDwvc3ZnPg==',
+              uri: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIGZpbGw9ImN1cnJlbnRDb2xvciIgdmlld0JveD0iMCAwIDI1NiAyNTYiPgogICAgPHBhdGggZD0iTTIyNCwxMjhhOCw4LDAsMCwxLTgsOEgxMzZ2ODBhOCw4LDAsMCwxLTE2LDBWMTM2SDRhOCw4LDAsMCwxLDAtMTZoODBWMDRhOCw4LDAsMCwxLDE2LDB2ODBIMjE2QTgsOCwwLDAsMSwyMjQsMTI4WiI+PC9wYXRoPgogIDwvc3ZnPg==',
             }}
             style={styles.navIcon}
           />
@@ -156,8 +153,7 @@ const PublicCreatorProfileScreen = () => {
         <TouchableOpacity style={styles.navItem}>
           <Image
             source={{
-              uri:
-                'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIGZpbGw9ImN1cnJlbnRDb2xvciIgdmlld0JveD0iMCAwIDI1NiAyNTYiPgogICAgPHBhdGggZD0iTTE0MCwxMjhhMTIsMTIsMCwxLDEtMTItMTJBMTIsMTIsMCwwLDEsMTQwLDEyOFpNODQsMTE2YTEyLDEyLDAsMSwwLDEyLDEyQTEyLDEyLDAsMCwwLDE3MiwxMTZaTTIzMiwxMjhBMTExLjE0LDExMS4xNCwwLDAsMSw3OS4xMiwyMTkuODJMNDUuMDcsMjMxLjE3YTE2LDE2LDAsMCwxLTIwLjI0LTIwLjI0bDExLjM1LTM0LjA1QTExMS4xNCwxMTEuMTQsMCwxLDEsMjMyLDEyOFptLTE2LDBBODgsODgsMCwxLDAsNTEuODEsMTcyLjA2YTgsOCwwLDAsMSwuNjYsNi41NEw0MCwyMTYsNzcuNDAyMDMuNTNhNy44NSw3Ljg1LDAsMCwxLDIuNTMtLjQyLDgsOCwwLDAsMSw0LDEuMDhBODgsODgsMCwwLDAsMjE2LDEyOFoiPjwvcGF0aD4KPC9zdmc+',
+              uri: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIGZpbGw9ImN1cnJlbnRDb2xvciIgdmlld0JveD0iMCAwIDI1NiAyNTYiPgogICAgPHBhdGggZD0iTTE0MCwxMjhhMTIsMTIsMCwxLDEtMTItMTJBMTIsMTIsMCwwLDEsMTQwLDEyOFpNODQsMTE2YTEyLDEyLDAsMSwwLDEyLDEyQTEyLDEyLDAsMCwwLDE3MiwxMTZaTTIzMiwxMjhBMTExLjE0LDExMS4xNCwwLDAsMSw3OS4xMiwyMTkuODJMNDUuMDcsMjMxLjE3YTE2LDE2LDAsMCwxLTIwLjI0LTIwLjI0bDExLjM1LTM0LjA1QTExMS4xNCwxMTEuMTQsMCwxLDEsMjMyLDEyOFptLTE2LDBBODgsODgsMCwxLDAsNTEuODEsMTcyLjA2YTgsOCwwLDAsMSwuNjYsNi41NEw0MCwyMTYsNzcuNDAyMDMuNTNhNy44NSw3Ljg1LDAsMCwxLDIuNTMtLjQyLDgsOCwwLDAsMSw0LDEuMDhBODgsODgsMCwwLDAsMjE2LDEyOFoiPjwvcGF0aD4KPC9zdmc+',
             }}
             style={styles.navIcon}
           />
@@ -165,8 +161,7 @@ const PublicCreatorProfileScreen = () => {
         <TouchableOpacity style={styles.navItem}>
           <Image
             source={{
-              uri:
-                'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIGZpbGw9ImN1cnJlbnRDb2xvciIgdmlld0JveD0iMCAwIDI1NiAyNTYiPgogICAgPHBhdGggZD0iTTIzMC45MiwyMTJjLTE1LjIzLTI2LjMzLTM4LjctNDUuMjEtNjYuMDktNTQuMTZhNzIsNzIsMCwxLDAtNzMuNjYsMEM2My43OCwxNjYuNzgsNDAuMzEsMTg1LjY2LDI1LjA4LDIxMmE4LDgsMCwxLDAsMTMuODUsOGMxOC44NC0zMi41Niw1Mi4xNC01Miw4OS4wNy01MnM3MC4yMywxOS40NCw4OS4wNyw1MmE4LDgsMCwxLDAsMTMuODUtOFpNNzIsOTZhNTYsNTYsMCwxLDEsNTYsNTZBNTYuMDYsNTYuMDYsMCwwLDEsNzIsOTZaIj48L3BhdGg+Cjwvc3ZnPg==',
+              uri: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIGZpbGw9ImN1cnJlbnRDb2xvciIgdmlld0JveD0iMCAwIDI1NiAyNTYiPgogICAgPHBhdGggZD0iTTIzMC45MiwyMTJjLTE1LjIzLTI2LjMzLTM4LjctNDUuMjEtNjYuMDktNTQuMTZhNzIsNzIsMCwxLDAtNzMuNjYsMEM2My43OCwxNjYuNzgsNDAuMzEsMTg1LjY2LDI1LjA4LDIxMmE4LDgsMCwxLDAsMTMuODUsOGMxOC44NC0zMi41Niw1Mi4xNC01Miw4OS4wNy01MnM3MC4yMywxOS40NCw4OS4wNyw1MmE4LDgsMCwxLDAsMTMuODUtOFpNNzIsOTZhNTYsNTYsMCwxLDEsNTYsNTZBNTYuMDYsNTYuMDYsMCwwLDEsNzIsOTZaIj48L3BhdGg+Cjwvc3ZnPg==',
             }}
             style={styles.navIcon}
           />

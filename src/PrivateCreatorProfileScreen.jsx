@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 import ProfileMenuModal from './ProfileMenuModal';
 
 const PrivateCreatorProfileScreen = () => {
@@ -9,13 +16,18 @@ const PrivateCreatorProfileScreen = () => {
     <React.Fragment>
       <ScrollView style={styles.container}>
         <View style={styles.header}>
-          <TouchableOpacity style={styles.menuButton} onPress={() => setMenuVisible(true)}>
+          <TouchableOpacity
+            style={styles.menuButton}
+            onPress={() => setMenuVisible(true)}
+          >
             <Text style={styles.menuIcon}>⋮</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.profileSection}>
           <Image
-            source={{ uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC-FWY39n52wWmXVptxh8AG6yRm_Y2kRVpLxqvVygnqB5rM4ER52rmEQNlYyfJEuwKFsmGxqOphcfkxmnK4aQC3zN3LUzh6gDFBJdUTdMRwdEHBLRa6kYUpAfb781_kxW1mGbPstBU6DDLrpMpyqyXS_nlS8FU0MAVrxhor1p0yuYiNwBFzMEe0PtnJbrZuL16hXSIz14X9PRPFHIsh89GULISyz4kyzhWkMH3yObTp6_3IvB_7KMVPsvqdf2sgMFy4Orgg0WtTfj8' }}
+            source={{
+              uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC-FWY39n52wWmXVptxh8AG6yRm_Y2kRVpLxqvVygnqB5rM4ER52rmEQNlYyfJEuwKFsmGxqOphcfkxmnK4aQC3zN3LUzh6gDFBJdUTdMRwdEHBLRa6kYUpAfb781_kxW1mGbPstBU6DDLrpMpyqyXS_nlS8FU0MAVrxhor1p0yuYiNwBFzMEe0PtnJbrZuL16hXSIz14X9PRPFHIsh89GULISyz4kyzhWkMH3yObTp6_3IvB_7KMVPsvqdf2sgMFy4Orgg0WtTfj8',
+            }}
             style={styles.profileImage}
           />
           <Text style={styles.profileName}>Ethan Blake</Text>
@@ -53,11 +65,12 @@ const PrivateCreatorProfileScreen = () => {
           <Text style={styles.inactiveTab}>About</Text>
           <Text style={styles.inactiveTab}>Skills</Text>
         </View>
-        <View style={styles.postsGrid}>
-          {/* Add post images here */}
-        </View>
+        <View style={styles.postsGrid}>{/* Add post images here */}</View>
       </ScrollView>
-      <ProfileMenuModal visible={menuVisible} onClose={() => setMenuVisible(false)} />
+      <ProfileMenuModal
+        visible={menuVisible}
+        onClose={() => setMenuVisible(false)}
+      />
     </React.Fragment>
   );
 };

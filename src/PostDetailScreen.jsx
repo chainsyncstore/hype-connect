@@ -1,13 +1,6 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import {
-  StyleSheet,
-  View,
-  Text,
-  TouchableOpacity,
-  ScrollView,
-  Image,
-} from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
 
 const PostDetailScreen = () => {
   const navigation = useNavigation();
@@ -15,7 +8,10 @@ const PostDetailScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => navigation.goBack()}
+        >
           <Text style={styles.backButtonText}>{'<'}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.shareButton}>
@@ -48,17 +44,20 @@ const PostDetailScreen = () => {
         markets to the serene temples, offering a glimpse into the soul of this
         dynamic metropolis.
       </Text>
-          <View style={styles.postActions}>
-            <View style={styles.postAction}>
-              <Text style={styles.postActionText}>❤️ 2.3K</Text>
-            </View>
-            <TouchableOpacity style={styles.postAction} onPress={() => navigation.navigate('CommentSection')}>
-              <Text style={styles.postActionText}>💬 120</Text>
-            </TouchableOpacity>
-            <View style={styles.postAction}>
-              <Text style={styles.postActionText}>✈️ 50</Text>
-            </View>
-          </View>
+      <View style={styles.postActions}>
+        <View style={styles.postAction}>
+          <Text style={styles.postActionText}>❤️ 2.3K</Text>
+        </View>
+        <TouchableOpacity
+          style={styles.postAction}
+          onPress={() => navigation.navigate('CommentSection')}
+        >
+          <Text style={styles.postActionText}>💬 120</Text>
+        </TouchableOpacity>
+        <View style={styles.postAction}>
+          <Text style={styles.postActionText}>✈️ 50</Text>
+        </View>
+      </View>
       <Text style={styles.commentsTitle}>Comments</Text>
       <View style={styles.commentContainer}>
         <Image
@@ -92,8 +91,8 @@ const PostDetailScreen = () => {
           </View>
           <Text style={styles.commentText}>
             This series is incredible. The way you've used light and shadow to
-            highlight the city's architecture is masterful. Each photo is a
-            work of art.
+            highlight the city's architecture is masterful. Each photo is a work
+            of art.
           </Text>
         </View>
       </View>

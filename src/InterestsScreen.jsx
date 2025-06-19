@@ -56,7 +56,10 @@ const InterestsScreen = () => {
           ))}
         </View>
 
-        <TouchableOpacity style={styles.continueButton} onPress={() => navigation.navigate('Success')}>
+        <TouchableOpacity
+          style={styles.continueButton}
+          onPress={() => navigation.navigate('Success')}
+        >
           <Text style={styles.continueButtonText}>Continue</Text>
         </TouchableOpacity>
         <View style={styles.bottomSpace} />

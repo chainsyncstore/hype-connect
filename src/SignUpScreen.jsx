@@ -5,7 +5,6 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  Image,
   ScrollView,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -65,13 +64,14 @@ const SignUpScreen = () => {
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity style={styles.continueButton} onPress={() => navigation.navigate('Interests')}>
+        <TouchableOpacity
+          style={styles.continueButton}
+          onPress={() => navigation.navigate('Interests')}
+        >
           <Text style={styles.continueButtonText}>Continue</Text>
         </TouchableOpacity>
 
-        <Text style={styles.loginText}>
-          Already have an account? Log in
-        </Text>
+        <Text style={styles.loginText}>Already have an account? Log in</Text>
       </ScrollView>
     </View>
   );
