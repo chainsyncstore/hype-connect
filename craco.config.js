@@ -30,6 +30,9 @@ module.exports = {
 
       console.log('Webpack configuration:', webpackConfig); // Debugging Webpack configuration
 
+      webpackConfig.mode = 'production';
+      webpackConfig.devtool = 'source-map';
+
       return webpackConfig;
     },
   },
