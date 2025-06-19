@@ -3,10 +3,10 @@
 
 module.exports = {
   eslint: {
-    enable: false, // Skip ESLint in create-react-app build
+    enable: false, // Temporarily disable ESLint
   },
   webpack: {
-    configure: (webpackConfig) => {
+    configure: webpackConfig => {
       // Disable the fullySpecified check for @react-navigation/native
       // Disable `fullySpecified` for *all* JS imports so packages that omit extensions (e.g. @react-navigation/*) resolve correctly.
       webpackConfig.module.rules.push({

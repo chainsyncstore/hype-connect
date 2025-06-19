@@ -3,6 +3,16 @@ import { Modal, View, Text, TextInput, TouchableOpacity, ScrollView } from 'reac
 import { StyleSheet } from 'react-native';
 
 const TipCreatorModal = ({ visible, onClose, onSendTip }) => {
+  const handleClose = () => {
+    console.log('Close button pressed');
+    onClose();
+  };
+
+  const handleSendTip = () => {
+    console.log('Send Tip button pressed');
+    onSendTip();
+  };
+
   return (
     <Modal
       animationType="slide"
@@ -12,7 +22,7 @@ const TipCreatorModal = ({ visible, onClose, onSendTip }) => {
     >
       <View style={styles.overlay}>
         <View style={styles.modalContainer}>
-          <TouchableOpacity style={styles.closeButton} onPress={onClose}>
+          <TouchableOpacity style={styles.closeButton} onPress={handleClose}>
             <View style={styles.closeIndicator} />
           </TouchableOpacity>
           <Text style={styles.title}>Send a Tip</Text>
@@ -48,7 +58,7 @@ const TipCreatorModal = ({ visible, onClose, onSendTip }) => {
             multiline
           />
 
-          <TouchableOpacity style={styles.sendButton} onPress={onSendTip}>
+          <TouchableOpacity style={styles.sendButton} onPress={handleSendTip}>
             <Text style={styles.sendButtonText}>Send Tip</Text>
           </TouchableOpacity>
         </View>

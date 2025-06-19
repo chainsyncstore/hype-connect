@@ -7,7 +7,13 @@ const WelcomeScreen = () => {
   const navigation = useNavigation();
 
   const handleJoinToConnect = () => {
+    console.log('Join to Connect button pressed');
     navigation.navigate('SignUp');
+  };
+
+  const handleLogin = () => {
+    console.log('Log In button pressed');
+    navigation.navigate('Login');
   };
 
   return (
@@ -28,7 +34,7 @@ uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAxwEzOQeClCnHKX4TnKD5D
         <TouchableOpacity style={styles.primaryButton} onPress={handleJoinToConnect}>
           <Text style={styles.primaryButtonText}>Join to Connect</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.secondaryButton} onPress={() => navigation.navigate('Login')}>
+        <TouchableOpacity style={styles.secondaryButton} onPress={handleLogin}>
           <Text style={styles.secondaryButtonText}>Log In</Text>
         </TouchableOpacity>
       </View>
