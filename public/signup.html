@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Hype Connect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'custom-orange': '#F5A623',
+                        'custom-dark': '#1B1B1E',
+                        'input-bg': '#2A2A2E', // A slightly lighter shade for inputs
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-custom-dark text-white flex flex-col items-center justify-center min-h-screen px-4">
+    <div class="w-full max-w-md">
+        <h1 class="text-3xl font-bold text-center mb-8">Create Account</h1>
+        <form action="#" method="POST" class="space-y-6">
+            <div>
+                <label for="name" class="block text-sm font-medium text-gray-300">Name</label>
+                <input type="text" name="name" id="name" autocomplete="name" required class="mt-1 block w-full bg-input-bg border border-gray-600 rounded-md shadow-sm py-2 px-3 text-base text-gray-200 focus:outline-none focus:ring-custom-orange focus:border-custom-orange">
+            </div>
+            <div>
+                <label for="email_phone" class="block text-sm font-medium text-gray-300">Email or Phone</label>
+                <input type="text" name="email_phone" id="email_phone" autocomplete="email" required class="mt-1 block w-full bg-input-bg border border-gray-600 rounded-md shadow-sm py-2 px-3 text-base text-gray-200 focus:outline-none focus:ring-custom-orange focus:border-custom-orange">
+            </div>
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-300">Password</label>
+                <input type="password" name="password" id="password" autocomplete="new-password" required class="mt-1 block w-full bg-input-bg border border-gray-600 rounded-md shadow-sm py-2 px-3 text-base text-gray-200 focus:outline-none focus:ring-custom-orange focus:border-custom-orange">
+            </div>
+            <div>
+                <label for="confirm_password" class="block text-sm font-medium text-gray-300">Confirm Password</label>
+                <input type="password" name="confirm_password" id="confirm_password" autocomplete="new-password" required class="mt-1 block w-full bg-input-bg border border-gray-600 rounded-md shadow-sm py-2 px-3 text-base text-gray-200 focus:outline-none focus:ring-custom-orange focus:border-custom-orange">
+            </div>
+            <div>
+                <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-lg font-bold text-white bg-custom-orange hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-custom-orange focus:ring-offset-custom-dark">
+                    Sign Up
+                </button>
+            </div>
+        </form>
+        <p class="mt-8 text-center text-sm text-gray-400">
+            Already have an account? <a href="login.html" class="font-medium text-custom-orange hover:text-orange-400">Log in</a>
+        </p>
+    </div>
+</body>
+</html>
