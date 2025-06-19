@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Gigs</title>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Post a Gig
+        </button>
+        <div class="mt-8 grid gap-8 md:grid-cols-2">
+            {/* Gig Card 1 */}
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="p-6">
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">Graphic Design Services</h2>
+                <p class="text-gray-700 mb-4">Professional logo design and branding for your business. Let's create something amazing together!</p>
+                <div class="flex justify-between items-center">
+                    <p class="text-xl font-bold text-gray-800">$100</p>
+                    <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                        Book
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        {/* Gig Card 2 */}
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="p-6">
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">Web Development</h2>
+                <p class="text-gray-700 mb-4">Custom website development to meet your needs. From simple landing pages to complex web applications.</p>
+                <div class="flex justify-between items-center">
+                    <p class="text-xl font-bold text-gray-800">$500</p>
+                    <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                        Book
+                    </button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div> <!-- This closes the main container div that starts before the Post a Gig button -->
+</body>
+</html>
