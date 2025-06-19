@@ -31,14 +31,14 @@ const PostDetailScreen = () => {
       <Image
         style={styles.postImage}
         source={{
-          uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAp7ZZ9horNvZvcWjejoOv3zIAOo4kAdkGu8aSUO1UBanQOHx1M4Cy4RP68LFLlFQubiPnQUxWAfo-jMAO8M9Fyr9JYHhHZ6mQGO_m6H0iE_d6RP4U0JqaQtKsD6ws-DGgfeo9SX4-H6Qg6n4rXsGt-1yy8s3ZNzOhUTm8_k08KM4DO0iwyGh9SUeL_RLBpEH-jUnzsXO1SDynDrP4qppWWA0eHd5VUaCVQ9i-e4NDcVovFbG8-KgswbYVynIeAVC2N9BZuWQELlBM',
+          uri: '/assets/images/post-main-image.jpg',
         }}
       />
       <View style={styles.profileContainer}>
         <Image
           style={styles.profileImage}
           source={{
-            uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCb-OPiUEWElbbqL6Jlpm1YigcrgBRWFEK7f8kcwoj3asxBGqoYp_6pMmnkdxbF3x1VlLnV_ODQQBVpGOZiHYx12veY_hcgUpo7IWGs4-CgqpTqWnTPgQ6CJFeHYmangOIhlxNFsuUdOHvpEpYInrMkSNiQyV9p5SmdAhjkq_xo-ymFpw8cbF5OKOL_9eKW-38oPjucedy53PFQWmSey5FnY8-E6zRb-cZOjXzPGOSj8_LkEcztdfZVj3ccrSYJupq_uXB9Rf5UM14',
+            uri: '/assets/images/profile-sophia-carter.jpg',
           }}
         />
         <View style={styles.profileDetails}>
@@ -73,7 +73,7 @@ const PostDetailScreen = () => {
         <Image
           style={styles.commentProfileImage}
           source={{
-            uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCGgT3FhkqvoiEJbAeV7Dz7-q-1utbxTe35CNXz2FwLLt0vwarqGh4M19raZFpUt823NwN3h7v-l3EoquhBMNPK9Ur0WclaroPB14z0oEe24mVyd5-gtYDbfMyWLg2AHAmbCoqWCqrnIk1IPfcGhUVOSJVdiWDL6xftPO316mLVhkrC_yq3g-mNSUaSJV3fULhvHUuj80sLl62SA1JhA9dDDWB6S_0_r7FD5hw-j3BA6jbw8N_PPCvaHj98mMMNYg7_8kwkSFhfr00',
+            uri: '/assets/images/comment-profile-ethan-bennett.jpg',
           }}
         />
         <View style={styles.commentDetails}>
@@ -91,7 +91,7 @@ const PostDetailScreen = () => {
         <Image
           style={styles.commentProfileImage}
           source={{
-            uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBp6S5KbyC2CpA7N1f1tky1R0uNtLCSLmnCye3Rdxxe26AyjqossKjTo2TACNb1_6eMiUCIFLzkrEd2BnglSRHvREULbgDE_9T-0qfA7BAS3A3viLZxD89IjeHiJGd3jkXT1mg2Y67s0GN8xBuAl7Ah641U_Fp2_mi-Hw1_al7F1JTFhZGuNrLsnqfUDwDBdidlqNLYDmkDxhUKJYieAR0yTF1CwLlvVNboI6EcsUoox9nZ9hwJVC3ouWqGrnq0wI5dKMkWMhSDAB0',
+            uri: '/assets/images/comment-profile-olivia-hayes.jpg',
           }}
         />
         <View style={styles.commentDetails}>

@@ -55,7 +55,7 @@ const WelcomeScreen = () => {
         <Image
           style={styles.logo}
           source={{
-            uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAxwEzOQeClCnHKX4TnKD5D7LuAGw3woEpIuKyGk3CeC1RWKwm-SqhrW_YWYAuhug84fk0em05kQah2e6k4c4uMPMLyCUwE7MU4iMngYYHqChG0LPqDgd21BPsyRVt84Ma7BtnOQjbHM6IoT-_ysWhTHrqjC_Qe93sYKL8KvpEtQiB9Xi2HAeXVgdFb-L223HIxI1MYK4RLGc9x9TFuQKAbM2qNUFNIQcNWstbd1Ezd7HZYiFCrLP--b7USN4Hz1l2-ykRJGBQK-BM',
+            uri: '/assets/images/welcome-logo.png',
           }}
         />
       </View>

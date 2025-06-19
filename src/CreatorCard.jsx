@@ -24,7 +24,7 @@ const CreatorCard = () => {
               <Image
                 style={styles.profileImage}
                 source={{
-                  uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC0uYL3YKnhwxXy83LDiqc0IGga8yBa0gbCpiquDaH4woJQLEAFMIhNgFAXerkwhhmBCMrNkOOeOasSPt1EAvMR6XzGOfxu8HCq-etC2AwGy0kL79J0CnIUkiy7LUMkJCPSM9P2jlkKJJmKibjv1G_HQ80kC734X78FzGP1ukojMlbP0AYWYLNBPKFAgNTT9lbCN9_1yeMY40-8JyA4L6gLshMvhE8PhF0JwZc-0WmA31vzUupJpgyJNsiwc9tmP8iL7gOA5Bzgi-8',
+                  uri: '/assets/images/profile-ethan-carter.jpg',
                 }}
               />
               <View style={styles.profileDetails}>

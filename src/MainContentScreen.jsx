@@ -54,7 +54,7 @@ const MainContentScreen = () => {
             <Image
               style={styles.postImage}
               source={{
-                uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA7FzR1cYUKJ1-KVHyHlMuiSLCg1pWpdM3cqJZiLHNvuXWhxQhDo6nfCVkkxi52T3BaDtQC8SYa2XiaoIc4Tc8eK-6mj80a1x2xx_sicso5ED5UlSypVoJhXU2Aou_OP5m2TlfGTX5Y50tE-su_f4eWsmyI7u_BldcWqMy6-5gtxW2BC1CUws5-nqR7W2LZsyZ73JSFucam_Dj_1LMBqCrP1k0hXkIwZLo2PwFkF00y83qa1Qt6otm_74imRESC8tvOM35uRbMrFvw',
+                uri: '/assets/images/post-alex-beats-track.png',
               }}
             />
             <View style={styles.postDetails}>
@@ -92,7 +92,7 @@ const MainContentScreen = () => {
             <Image
               style={styles.postImage}
               source={{
-                uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDpb3HZZUDi60aTvAs81QytTRk2ayVUOy05A9pnhS9MQYX7WXtPpOiSV-rPCc0gVWAIdZMTrbmSMHqzuyIU0We_EAp2a-6jLCxX3jMW6aRVuVKRNBk8jTmB0SBKyCUMQsFcZ7Rt03OVe_e3rnLpj-5HbYERYjmom6jC7yI5hHi2gAB4RCj75Zrcn-6xKmeKLs6shXh4aWfRsI2luDLsCipQU8ETykIm9LW5ZLP9dPZ8DqTSLSmCZ2P2s-KGMdDtiB7Y5-GAu8wNAN8',
+                uri: '/assets/images/post-art-by-sarah.png',
               }}
             />
             <View style={styles.postDetails}>

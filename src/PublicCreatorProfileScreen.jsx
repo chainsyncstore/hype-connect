@@ -24,14 +24,14 @@ const PublicCreatorProfileScreen = () => {
       <View style={styles.header}>
         <TouchableOpacity style={styles.backButton}>
           <Image
-            source={{ uri: 'https://via.placeholder.com/24' }}
+            source={{ uri: '/assets/images/placeholder-icon.png' }}
             style={styles.icon}
           />
         </TouchableOpacity>
         <View style={styles.flex} />
         <TouchableOpacity style={styles.shareButton}>
           <Image
-            source={{ uri: 'https://via.placeholder.com/24' }}
+            source={{ uri: '/assets/images/placeholder-icon.png' }}
             style={styles.icon}
           />
         </TouchableOpacity>
@@ -41,7 +41,7 @@ const PublicCreatorProfileScreen = () => {
         <View style={styles.profileSection}>
           <Image
             source={{
-              uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCUsD4PV-NWVkwPYLn09JGAUVY_qh6_Cf88fW63-yK_4QsqCPo1T6b2qD3X3vp7x9Zb5s9BVHb_uzo9vtLk0htm-tNV7314rrKkH34YaMPziRnqgwHo4l0hWhbemB-9Huimbkx5XaokEynCNdoCSXrUFMtkBIbqsVxPCgHb8VmGfiWao2q13_21nx3Wjo3eC8V8HYaSvi6pcNfV_ELSzy1YV_ZuqdCAzSPL4YsPnN_XKQbs2A1G8KjwGDWgtonn4sTEw6wrMJRwaXE',
+              uri: '/assets/images/profile-ethan-carter.jpg',
             }}
             style={styles.profileImage}
           />
@@ -108,7 +108,7 @@ const PublicCreatorProfileScreen = () => {
           <View style={styles.featuredWorkItem}>
             <Image
               source={{
-                uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC9WgC1XjhUEcY2fu9JhjWR9vjlduSQUiTAcDA-GJAm4aaqg6uHxyr9FBzdA2XkzwJYvRIdBWcPMJU7as-FjixGlWFVuwDOvTaQn7Inf59P9tvGJrQp9nkF9SxUwqS3dgkL-PQwcSVOqKgxPkWpFhxK1DdB0C7_okNo7k7E88HfKn4EyBP4KRg-qTQ_yMkOW0WTuN_PJmGv2IJJJ0O71EpVIQrH44wrdWnUhI88TO7Cs_0BVcBVfIU9snJgMBYdRkrc5VSOdZumUxY',
+                uri: '/assets/images/featured-album-1.jpg',
               }}
               style={styles.featuredWorkImage}
             />
@@ -117,7 +117,7 @@ const PublicCreatorProfileScreen = () => {
           <View style={styles.featuredWorkItem}>
             <Image
               source={{
-                uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCbzriAvMNzrmNkcfekgDBMCrWkBLiyIRcWCAlFR20VcH6gmuEJ5u-fpwbbLUTFtCzPxcUQPKkL2gT23_Epi5RbtIf4mddqQ16ETaMbDf5d7dyA1kqD3NwDEQT_3lfAuTl5GdPqgLLp7mpqFsmtE53cMK4miTvXVv9R0_xffB2nsbUEsMkjlgF87mUCfKe1U7aQ-LAlY2YicnRLulVBkGGEsG0bEBF-h1-JQmOWzOxe6Xph2ltGrkBNiCj_L15IE11xY6ZxOYVAlCI',
+                uri: '/assets/images/featured-album-2.jpg',
               }}
               style={styles.featuredWorkImage}
             />
@@ -126,7 +126,7 @@ const PublicCreatorProfileScreen = () => {
           <View style={styles.featuredWorkItem}>
             <Image
               source={{
-                uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCEf4n4EMXchDiO87Mgek94vF5928u1_6mbFh7egxCsO3507p68oeShd4_tgUtXuii_QdPMw4qD9LpSpzwpdvm0oyn2EYsUky-Q9G1UQTpQL9B-_aJCX1sLjNTToabRWncxyy_eze_umnqRLdaRc7AmOo3NknMNFcO8KyNUqdAQt5M-wuD57k-plOEIN9QYbr2oKkIe1VPfGTgyvLIDw63BiuIphgZpUJA8K4FRNET18mXVz4yMGWmGaS_QPxfZMIZSS60vDkPN7dQ',
+                uri: '/assets/images/featured-album-3.jpg',
               }}
               style={styles.featuredWorkImage}
             />
@@ -139,7 +139,7 @@ const PublicCreatorProfileScreen = () => {
         <TouchableOpacity style={styles.navItem}>
           <Image
             source={{
-              uri: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIGZpbGw9ImN1cnJlbnRDb2xvciIgdmlld0JveD0iMCAwIDI1NiAyNTYiPgogICAgPHBhdGggZD0iTTIyNCwxMTUuNTVWMjA4YTE2LDE2LDAsMCwxLTE2LDE2SDE2OGExNiwxNiwwLDAsMS0xNi0xNlYxNjhhOCw4LDAsMCwwLTgtOEgxMTJhOCw4LDAsMCwwLTgsOHY0MGExNiwxNiwwLDAsMS0xNiwxNkg0OGExNiwxNiwwLDAsMS0xNi0xNlYxMTUuNTVhMTYsMTYsMCwwLDEsNS4xNy0xMS43OGw4MC03NS40OC4xMS0uMTFhMTYsMTYsMCwwLDEsMjEuNTMsMCwxLjE0LDEuMTQsMCwwLDAsLjExLjExbDgwLDc1LjQ4QTE2LDE2LDAsMCwxLDIyNCwxMTUuNTVaIj48L3BhdGg+Cjwvc3ZnPg==',
+              uri: '/assets/images/icon-home.svg',
             }}
             style={styles.navIcon}
           />
@@ -147,7 +147,7 @@ const PublicCreatorProfileScreen = () => {
         <TouchableOpacity style={styles.navItem}>
           <Image
             source={{
-              uri: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIGZpbGw9ImN1cnJlbnRDb2xvciIgdmlld0JveD0iMCAwIDI1NiAyNTYiPgogICAgPHBhdGggZD0iTTIyOS42NiwyMTguMzRsLTUwLjA3LTUwLjA2YTg4LjExLDg4LjExLDAsMSwwLTExLjMxLDExLjMxbDUwLjA2LDUwLjA3YTgsOCwwLDAsMCwxMS4zMi0xMS4zMlptNDAsMTEyYTcyLDcyLDAsMSwxLDcyLDcyQTcyLjA4LDcyLjA4LDAsMCwxLDQwLDExMloiPjwvcGF0aD4KPC9zdmc+',
+              uri: '/assets/images/icon-search.svg',
             }}
             style={styles.navIcon}
           />
@@ -155,7 +155,7 @@ const PublicCreatorProfileScreen = () => {
         <TouchableOpacity style={styles.navItem}>
           <Image
             source={{
-              uri: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIGZpbGw9ImN1cnJlbnRDb2xvciIgdmlld0JveD0iMCAwIDI1NiAyNTYiPgogICAgPHBhdGggZD0iTTIyNCwxMjhhOCw4LDAsMCwxLTgsOEgxMzZ2ODBhOCw4LDAsMCwxLTE2LDBWMTM2SDRhOCw4LDAsMCwxLDAtMTZoODBWMDRhOCw4LDAsMCwxLDE2LDB2ODBIMjE2QTgsOCwwLDAsMSwyMjQsMTI4WiI+PC9wYXRoPgogIDwvc3ZnPg==',
+              uri: '/assets/images/icon-add.svg',
             }}
             style={styles.navIcon}
           />
@@ -163,7 +163,7 @@ const PublicCreatorProfileScreen = () => {
         <TouchableOpacity style={styles.navItem}>
           <Image
             source={{
-              uri: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIGZpbGw9ImN1cnJlbnRDb2xvciIgdmlld0JveD0iMCAwIDI1NiAyNTYiPgogICAgPHBhdGggZD0iTTE0MCwxMjhhMTIsMTIsMCwxLDEtMTItMTJBMTIsMTIsMCwwLDEsMTQwLDEyOFpNODQsMTE2YTEyLDEyLDAsMSwwLDEyLDEyQTEyLDEyLDAsMCwwLDE3MiwxMTZaTTIzMiwxMjhBMTExLjE0LDExMS4xNCwwLDAsMSw3OS4xMiwyMTkuODJMNDUuMDcsMjMxLjE3YTE2LDE2LDAsMCwxLTIwLjI0LTIwLjI0bDExLjM1LTM0LjA1QTExMS4xNCwxMTEuMTQsMCwxLDEsMjMyLDEyOFptLTE2LDBBODgsODgsMCwxLDAsNTEuODEsMTcyLjA2YTgsOCwwLDAsMSwuNjYsNi41NEw0MCwyMTYsNzcuNDAyMDMuNTNhNy44NSw3Ljg1LDAsMCwxLDIuNTMtLjQyLDgsOCwwLDAsMSw0LDEuMDhBODgsODgsMCwwLDAsMjE2LDEyOFoiPjwvcGF0aD4KPC9zdmc+',
+              uri: '/assets/images/icon-chat.svg',
             }}
             style={styles.navIcon}
           />
@@ -171,7 +171,7 @@ const PublicCreatorProfileScreen = () => {
         <TouchableOpacity style={styles.navItem}>
           <Image
             source={{
-              uri: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIGZpbGw9ImN1cnJlbnRDb2xvciIgdmlld0JveD0iMCAwIDI1NiAyNTYiPgogICAgPHBhdGggZD0iTTIzMC45MiwyMTJjLTE1LjIzLTI2LjMzLTM4LjctNDUuMjEtNjYuMDktNTQuMTZhNzIsNzIsMCwxLDAtNzMuNjYsMEM2My43OCwxNjYuNzgsNDAuMzEsMTg1LjY2LDI1LjA4LDIxMmE4LDgsMCwxLDAsMTMuODUsOGMxOC44NC0zMi41Niw1Mi4xNC01Miw4OS4wNy01MnM3MC4yMywxOS40NCw4OS4wNyw1MmE4LDgsMCwxLDAsMTMuODUtOFpNNzIsOTZhNTYsNTYsMCwxLDEsNTYsNTZBNTYuMDYsNTYuMDYsMCwwLDEsNzIsOTZaIj48L3BhdGg+Cjwvc3ZnPg==',
+              uri: '/assets/images/icon-profile.svg',
             }}
             style={styles.navIcon}
           />
