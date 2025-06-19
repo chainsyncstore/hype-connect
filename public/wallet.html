@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wallet</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+  <header class="bg-white shadow">
+    <div class="container mx-auto px-6 py-4">
+      <h1 class="text-3xl font-bold text-gray-800 text-center">My Wallet</h1>
+    </div>
+  </header>
+  <main class="container mx-auto px-6 py-8">
+    <section class="bg-white shadow rounded-lg p-6 mb-8">
+      <p class="text-gray-600 text-sm">Total Balance</p>
+      <p class="text-4xl font-bold text-gray-900 mt-1">₦28,000</p>
+    </section>
+
+    <!-- Recent Transactions Section -->
+    <section class="mt-8">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Recent Transactions</h2>
+
+      <!-- Transaction Item 1 -->
+      <div class="bg-white shadow rounded-lg p-4 mb-4 flex justify-between items-center">
+        <div>
+          <p class="font-semibold text-gray-700">Gig Payment</p>
+          <p class="text-sm text-gray-500">Logo Design for Client X</p>
+        </div>
+        <div class="text-right">
+          <p class="font-semibold text-green-500">+ ₦15,000</p>
+          <p class="text-sm text-gray-500">Oct 26, 2023</p>
+        </div>
+      </div>
+
+      <!-- Transaction Item 2 -->
+      <div class="bg-white shadow rounded-lg p-4 mb-4 flex justify-between items-center">
+        <div>
+          <p class="font-semibold text-gray-700">Tip Received</p>
+          <p class="text-sm text-gray-500">From @userXYZ for great service</p>
+        </div>
+        <div class="text-right">
+          <p class="font-semibold text-green-500">+ ₦1,000</p>
+          <p class="text-sm text-gray-500">Oct 25, 2023</p>
+        </div>
+      </div>
+
+      <!-- Transaction Item 3 -->
+      <div class="bg-white shadow rounded-lg p-4 mb-4 flex justify-between items-center">
+        <div>
+          <p class="font-semibold text-gray-700">Withdrawal</p>
+          <p class="text-sm text-gray-500">Bank Transfer to GTBank</p>
+        </div>
+        <div class="text-right">
+          <p class="font-semibold text-red-500">- ₦5,000</p>
+          <p class="text-sm text-gray-500">Oct 24, 2023</p>
+        </div>
+      </div>
+
+      <!-- Transaction Item 4 -->
+      <div class="bg-white shadow rounded-lg p-4 mb-4 flex justify-between items-center">
+        <div>
+          <p class="font-semibold text-gray-700">Platform Fee</p>
+          <p class="text-sm text-gray-500">Monthly subscription</p>
+        </div>
+        <div class="text-right">
+          <p class="font-semibold text-red-500">- ₦500</p>
+          <p class="text-sm text-gray-500">Oct 23, 2023</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Withdraw Funds Button -->
+    <div class="mt-8 text-center">
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow">
+        Withdraw Funds
+      </button>
+    </div>
+  </main>
+</body>
+</html>
