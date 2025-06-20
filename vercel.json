@@ -1,0 +1,13 @@
+{
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' *.supabase.co *.paystack.co 'unsafe-inline'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; img-src 'self' data: *.supabase.co; connect-src 'self' *.supabase.co *.paystack.co https://www.googleapis.com https://accounts.google.com; frame-src *.paystack.co; object-src 'none';"
+        }
+      ]
+    }
+  ]
+}
