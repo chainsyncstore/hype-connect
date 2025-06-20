@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>User Profile</title>
+<script>
+function saveProfile() {
+  // In a real application, you would gather the form data
+  // and send it to a server here.
+  alert('Profile saved!');
+  // You can also log the data to the console for testing:
+  // console.log("Name: " + document.getElementById("name").value);
+  // console.log("Avatar URL: " + document.getElementById("avatar").value);
+  // console.log("Bio: " + document.getElementById("bio").value);
+}
+</script>
+</head>
+<body>
+
+<h2>User Profile</h2>
+
+<form onsubmit="event.preventDefault(); saveProfile();">
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" value="John Doe">
+  </div>
+  <div>
+    <label for="avatar">Avatar URL:</label>
+    <input type="url" id="avatar" name="avatar" value="https://example.com/avatar.png">
+  </div>
+  <div>
+    <label for="bio">Bio:</label>
+    <textarea id="bio" name="bio">Loves coding and hiking.</textarea>
+  </div>
+  <div>
+    <button type="submit">Save</button>
+  </div>
+</form>
+
+</body>
+</html>
