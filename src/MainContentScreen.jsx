@@ -125,12 +125,22 @@ const MainContentScreen = () => {
           </View>
         </TouchableOpacity>
         <View style={styles.bottomNavigation}>
+        <TouchableOpacity>
           <Text>🏠</Text>
-          <Text>🔎</Text>
-          <Text>➕</Text>
-          <Text>🗄️</Text>
-          <Text>👤</Text>
-        </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('GigsMarketplace')}>
+          <Text>💼</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('LiveStream')}>
+          <Text>📺</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Messages')}>
+          <Text>💬</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Wallet')}>
+          <Text>💰</Text>
+        </TouchableOpacity>
+      </View>
         <View style={styles.bottomSpace} />
       </ScrollView>
 
