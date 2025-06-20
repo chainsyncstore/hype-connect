@@ -1,5 +1,3 @@
-// craco.config.js
-// Customize CRA webpack to relax fullySpecified ESM import requirement for @react-navigation/native
 
 module.exports = {
   eslint: {
@@ -7,25 +5,31 @@ module.exports = {
   },
   webpack: {
     configure: (webpackConfig, { env, paths }) => {
-      // Completely disable React Fast Refresh to prevent import issues
+      // Completely disable React Fast Refresh
       if (env === 'development') {
-        // Remove React Refresh plugin
+        // Remove React Refresh webpack plugin
         webpackConfig.plugins = webpackConfig.plugins.filter(
           plugin => plugin.constructor.name !== 'ReactRefreshWebpackPlugin'
         );
         
-        // Remove React Refresh babel plugin
-        const babelRule = webpackConfig.module.rules.find(
-          rule => rule.oneOf
-        );
-        if (babelRule && babelRule.oneOf) {
-          babelRule.oneOf.forEach(rule => {
-            if (rule.use && Array.isArray(rule.use)) {
+        // Remove React Refresh from babel-loader options
+        const oneOfRules = webpackConfig.module.rules.find(rule => rule.oneOf);
+        if (oneOfRules && oneOfRules.oneOf) {
+          oneOfRules.oneOf.forEach(rule => {
+            if (rule.test && rule.test.toString().includes('js') && rule.use) {
               rule.use.forEach(use => {
                 if (use.loader && use.loader.includes('babel-loader')) {
                   if (use.options && use.options.plugins) {
                     use.options.plugins = use.options.plugins.filter(
-                      plugin => !plugin.includes('react-refresh')
+                      plugin => {
+                        if (typeof plugin === 'string') {
+                          return !plugin.includes('react-refresh');
+                        }
+                        if (Array.isArray(plugin)) {
+                          return !plugin[0].includes('react-refresh');
+                        }
+                        return true;
+                      }
                     );
                   }
                 }
@@ -35,7 +39,7 @@ module.exports = {
         }
       }
 
-      // Disable the fullySpecified check
+      // Disable the fullySpecified check for ES modules
       webpackConfig.module.rules.push({
         test: /\.m?js$/,
         resolve: {
