@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -21,17 +22,30 @@ export default function App() {
         initialRouteName="Welcome"
         screenOptions={{ headerShown: false }}
       >
-        <Stack.Screen name="Welcome" component={WelcomeScreen} />
-        <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="SignUp" component={SignUpScreen} />
-        <Stack.Screen name="Interests" component={InterestsScreen} />
-        <Stack.Screen name="Success" component={SuccessScreen} />
-        <Stack.Screen name="MainContent" component={MainContentScreen} />
-        <Stack.Screen name="PostDetail" component={PostDetailScreen} />
-        <Stack.Screen
-          name="CreatorEarnings"
-          component={CreatorEarningsScreen}
-        />
+        <Stack.Screen name="Welcome">
+          {(props) => <WelcomeScreen {...props} />}
+        </Stack.Screen>
+        <Stack.Screen name="Login">
+          {(props) => <LoginScreen {...props} />}
+        </Stack.Screen>
+        <Stack.Screen name="SignUp">
+          {(props) => <SignUpScreen {...props} />}
+        </Stack.Screen>
+        <Stack.Screen name="Interests">
+          {(props) => <InterestsScreen {...props} />}
+        </Stack.Screen>
+        <Stack.Screen name="Success">
+          {(props) => <SuccessScreen {...props} />}
+        </Stack.Screen>
+        <Stack.Screen name="MainContent">
+          {(props) => <MainContentScreen {...props} />}
+        </Stack.Screen>
+        <Stack.Screen name="PostDetail">
+          {(props) => <PostDetailScreen {...props} />}
+        </Stack.Screen>
+        <Stack.Screen name="CreatorEarnings">
+          {(props) => <CreatorEarningsScreen {...props} />}
+        </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );
