@@ -2,6 +2,11 @@
 // Customize CRA webpack to relax fullySpecified ESM import requirement for @react-navigation/native
 
 module.exports = {
+  style: {
+    postcss: {
+      mode: 'file',
+    },
+  },
   eslint: {
     enable: true, // Re-enable ESLint
   },
