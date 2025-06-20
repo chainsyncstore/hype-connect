@@ -20,8 +20,6 @@ const SignUpScreen = (props) => { // Added props here
   const [selectedRole, setSelectedRole] = useState('creator');
   const [loading, setLoading] = useState(false);
 
-  console.log('SignUpScreen rendered');
-
   useEffect(() => {
     console.log('SignUpScreen.jsx: SignUpScreen mounted');
     console.log('SignUpScreen.jsx: Props:', props);

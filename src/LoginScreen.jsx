@@ -17,8 +17,6 @@ const LoginScreen = (props) => { // Added props here
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
-  console.log('LoginScreen rendered');
-
   useEffect(() => {
     console.log('LoginScreen.jsx: LoginScreen mounted');
     console.log('LoginScreen.jsx: Props:', props);

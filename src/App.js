@@ -20,8 +20,7 @@ import AdminDashboardScreen from './AdminDashboardScreen';
 const Stack = createNativeStackNavigator();
 
 function App() {
-  console.log('App component is being rendered');
-  console.log('src/App.js: App component rendering. Initial route: Welcome');
+  console.log("src/App.js: App.js component rendering/mounted");
 
   return (
     <NavigationContainer>
