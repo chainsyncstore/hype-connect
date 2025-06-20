@@ -1,8 +1,16 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
-import Logo from './assets/logo.png';
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+  Image,
+} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-const WelcomeScreen = ({ navigation }) => {
+const WelcomeScreen = () => {
+  const navigation = useNavigation();
   console.log('WelcomeScreen rendered');
 
   useEffect(() => {

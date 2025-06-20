@@ -40,23 +40,52 @@ class ApiService {
     }
   }
 
-  // Auth APIs
+  // Mock Auth APIs for testing
   async login(email, password) {
-    return this.request('/auth/login', {
-      method: 'POST',
-      body: JSON.stringify({ email, password }),
-    });
+    // Simulate API delay
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    // Mock successful login
+    if (email && password) {
+      const mockUser = {
+        id: '123',
+        email: email,
+        name: 'Test User',
+        token: 'mock_jwt_token_12345'
+      };
+      this.setAuthToken(mockUser.token);
+      return { success: true, user: mockUser };
+    } else {
+      throw new Error('Invalid credentials');
+    }
   }
 
   async signup(userData) {
-    return this.request('/auth/signup', {
-      method: 'POST',
-      body: JSON.stringify(userData),
-    });
+    // Simulate API delay
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    // Mock successful signup
+    if (userData.email && userData.password && userData.fullName) {
+      const mockUser = {
+        id: '123',
+        email: userData.email,
+        name: userData.fullName,
+        username: userData.username || userData.email.split('@')[0],
+        role: userData.role || 'creator',
+        token: 'mock_jwt_token_12345'
+      };
+      this.setAuthToken(mockUser.token);
+      return { success: true, user: mockUser };
+    } else {
+      throw new Error('Missing required fields');
+    }
   }
 
   async logout() {
-    return this.request('/auth/logout', { method: 'POST' });
+    // Simulate API delay
+    await new Promise(resolve => setTimeout(resolve, 500));
+    this.setAuthToken(null);
+    return { success: true };
   }
 
   // User Profile APIs
