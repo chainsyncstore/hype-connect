@@ -1,0 +1,152 @@
+Hype Connect 
+
+Product Requirements Document (PRD)
+
+Product Name: Hype Connect
+
+Type: Mobile-first creative gig platform
+
+Target Users: Creators in the entertainment industry — including music producers, artists, photographers, videographers, and other creatives.
+
+
+1. 📌 Executive Summary
+
+Hype Connect is a mobile-first platform designed to connect creatives in the entertainment industry for paid collaborations and gigs. The platform blends the functionality of a freelance marketplace (like Fiverr) with the social discovery of a content feed (like TikTok), enhanced by live streaming, tipping, DMs, and algorithmic discovery. It will feature secure escrow-based payments, creator ranking systems, and performance bragging rights for top earners to encourage virality.
+
+2. 🎯 Goals & Objectives
+	•	Connect: Creators discover and connect with each other through content and search.
+	•	Collaborate: Post or respond to paid gigs and bookings.
+	•	Monetize: Creators earn via gigs, live streams, and tips.
+	•	Show Off: Top creators can publicly share their success (like “I made ₦X on Hype Connect”) to build credibility and drive platform virality.
+
+3. 🧑‍💻 Target Users:
+
+User Type	Description
+Creators	Individuals offering services: music producers, artists, videographers, etc.
+Clients	Other creators, managers, or businesses booking creative work
+Admins/Moderators	Internal team managing user activity and disputes
+
+4. 📱 Core Features (MVP Scope)
+
+A. Authentication
+	•	Email or phone-based signup/login
+	•	Profile setup: name, bio, services offered, skills, rate card, media gallery
+
+B. Feed & Content Discovery
+	•	“For You” feed powered by recommendation algorithm
+	•	Video/image/text post support
+	•	Like, save, and comment interactions
+
+C. Creator Profiles
+	•	Display services, rates, portfolio
+	•	Rating system
+	•	Contact and booking buttons
+
+D. Gigs & Bookings
+	•	Post a gig or offer a service
+	•	Booking flow with:
+	•	Pricing & scope
+	•	Secure escrow
+	•	Deadline & file delivery
+	•	Dispute and resolution center
+
+E. Live Streaming + Tipping
+	•	Creators go live to promote their skills or behind-the-scenes
+	•	Viewers can send tips
+	•	Tip receipts shown in wallet
+
+F. Wallet & Payouts
+	•	View earnings from gigs, tips, streams
+	•	Withdrawal to bank via Flutterwave
+	•	Transaction history
+
+G. Messaging (DMs)
+	•	In-app messaging between users
+	•	Media and file sharing
+	•	Booking reminders in chat
+
+H. Admin/Moderation Tools
+	•	View reported users/posts
+	•	Ban/suspend accounts
+	•	Approve disputes
+	•	Metrics dashboard
+
+⸻
+
+5. 🎨 Design & Branding
+	•	Dark Theme: #1B1B1E (background), #F5A623 (accent), #FFFFFF (text)
+	•	Logo: Colorful waveform “H” logo (provided)
+	•	Aesthetic: Street culture meets professional UI — edgy but clean
+
+Tools:
+	•	Design: Galileo AI + Figma
+	•	Prototyping: Figma Clickable Demo
+	•	UI Dev: Tailwind CSS (CDN version), HTML demo via VS Code or IDE
+
+6. ⚙️ Technical Overview
+
+Stack	Description
+Frontend	Expo EAS (for mobile), Tailwind CSS + HTML (for web demo)
+Backend	Node.js / Express (planned), optional Firebase for prototype
+Database	Supabase/PostgreSQL or Firebase
+Auth	Supabase Auth or Firebase Auth
+Payments	Flutterwave (escrow & payouts)
+Media Hosting	Cloudinary or Firebase Storage
+Notifications	Twilio (for SMS), Firebase Cloud Messaging (push)
+
+7. 📁 File & Project Structure (Web Demo)
+
+hype-connect/
+├── index.html              # Welcome
+├── signup.html             # Join to Connect
+├── login.html              # Log In
+├── feed.html               # Discovery feed
+├── profile.html            # Creator profiles
+├── gigs.html               # Booking and gig marketplace
+├── live.html               # Live stream & tipping
+├── wallet.html             # Wallet & payouts
+├── messages.html           # DMs
+├── assets/                 # Static files (logo, dummy images)
+├── css/
+│   └── styles.css
+├── js/
+│   └── main.js
+└── README.md
+
+8. 💰 Monetization Model
+	•	Commission-based (Phase 2+)
+	•	10–15% fee on each completed gig
+	•	Tips are free from platform cut (initially)
+	•	Premium Boost (Phase 3+)
+	•	Creators can promote their profiles or posts
+	•	Creator Leaderboard
+	•	Top earners get special badge + bragging rights
+	•	Optional: Monthly leaderboard bonuses
+
+⸻
+
+9. 🔐 Security & Compliance
+	•	Escrow with Flutterwave or Wallet-as-a-Service
+	•	Email/phone verification
+	•	Moderator tools to remove bad actors
+	•	SSL, rate limiting, spam filters
+
+⸻
+
+10. 🚀 Development Roadmap
+
+Phase	Scope
+Phase 1	Clickable demo with linked HTML pages & UI designs
+Phase 2	Mobile app MVP using Expo EAS with real user flows
+Phase 3	Add backend APIs, escrow, tipping, and live streaming
+Phase 4	Launch in Nigeria, soft-test with 100 creators
+Phase 5	Add premium features & scale outside Nigeria
+
+11. 📎 API & Service Credentials (To Set Up Later)
+
+Service	Purpose	Notes
+Flutterwave	Payments & payouts	Supports NG + global; test keys
+Cloudinary	Media uploads	Secure image/video hosting
+Supabase	Auth + DB + storage	Optionally Firebase
+Twilio	SMS verification	Optional
+Firebase	Fallback for messaging or push notifications	

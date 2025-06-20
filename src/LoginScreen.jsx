@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -6,12 +6,48 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
+  Alert,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import ApiService from './services/api';
 
 const LoginScreen = () => {
+  const navigation = useNavigation();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  console.log('LoginScreen rendered');
+
   useEffect(() => {
     return () => {};
   }, []);
+
+  const handleLogin = async () => {
+    if (!email || !password) {
+      Alert.alert('Error', 'Please fill in all fields');
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const response = await ApiService.login(email, password);
+      if (response.success) {
+        Alert.alert('Success', 'Login successful!', [
+          { text: 'OK', onPress: () => navigation.navigate('MainContent') },
+        ]);
+      }
+    } catch (error) {
+      Alert.alert('Error', error.message || 'Login failed');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGoToSignup = () => {
+    navigation.navigate('SignUp');
+  };
+
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
@@ -28,6 +64,10 @@ const LoginScreen = () => {
             style={styles.input}
             placeholder="Enter your email or phone"
             placeholderTextColor="#cbb590"
+            value={email}
+            onChangeText={setEmail}
+            keyboardType="email-address"
+            autoCapitalize="none"
           />
         </View>
 
@@ -38,13 +78,21 @@ const LoginScreen = () => {
             placeholder="Enter your password"
             placeholderTextColor="#cbb590"
             secureTextEntry={true}
+            value={password}
+            onChangeText={setPassword}
           />
         </View>
 
         <Text style={styles.forgotPasswordText}>Forgot password?</Text>
 
-        <TouchableOpacity style={styles.loginButton}>
-          <Text style={styles.loginButtonText}>Log In</Text>
+        <TouchableOpacity
+          style={[styles.loginButton, loading && styles.loginButtonDisabled]}
+          onPress={handleLogin}
+          disabled={loading}
+        >
+          <Text style={styles.loginButtonText}>
+            {loading ? 'Logging in...' : 'Log In'}
+          </Text>
         </TouchableOpacity>
 
         <Text style={styles.orContinueText}>Or continue with</Text>
@@ -58,7 +106,9 @@ const LoginScreen = () => {
           </TouchableOpacity>
         </View>
 
-        <Text style={styles.signUpText}>Don't have an account? Sign up</Text>
+        <TouchableOpacity onPress={handleGoToSignup}>
+          <Text style={styles.signUpText}>Don't have an account? Sign up</Text>
+        </TouchableOpacity>
         <View style={styles.bottomSpace} />
       </ScrollView>
     </View>
@@ -117,6 +167,9 @@ const styles = StyleSheet.create({
     padding: 12,
     borderRadius: 8,
     marginVertical: 20,
+  },
+  loginButtonDisabled: {
+    backgroundColor: '#cbb590',
   },
   loginButtonText: {
     color: '#231c10',

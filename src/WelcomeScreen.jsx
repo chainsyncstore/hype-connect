@@ -1,28 +1,74 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
-import Logo from './assets/logo.png';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
-const WelcomeScreen = ({ goTo }) => {
+const WelcomeScreen = ({ navigation }) => {
   useEffect(() => {
-    // Any side effects here
+    console.log('WelcomeScreen mounted');
+
+    const handleTouchStart = event => {
+      console.log('Touch start detected:', {
+        identifier: event.touches[0]?.identifier,
+        pageX: event.touches[0]?.pageX,
+        pageY: event.touches[0]?.pageY,
+        timestamp: event.timeStamp,
+      });
+    };
+
+    const handleTouchEnd = event => {
+      console.log('Touch end detected:', {
+        identifier: event.changedTouches[0]?.identifier,
+        pageX: event.changedTouches[0]?.pageX,
+        pageY: event.touches[0]?.pageY,
+        timestamp: event.timeStamp,
+      });
+      console.log('Current Touch Bank:', event.targetTouches);
+    };
+
+    window.addEventListener('touchstart', handleTouchStart);
+    window.addEventListener('touchend', handleTouchEnd);
+
+    return () => {
+      console.log('WelcomeScreen unmounted');
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchend', handleTouchEnd);
+    };
   }, []);
+
+  const handleJoinToConnect = () => {
+    navigation.navigate('SignUp');
+  };
+
+  const handleLogin = () => {
+    navigation.navigate('Login');
+  };
 
   return (
     <View style={styles.container}>
-      <Image source={Logo} style={styles.logo} />
-      <Text style={styles.title}>Welcome to Hype Connect</Text>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => (goTo ? goTo('login') : null)}
-      >
-        <Text style={styles.buttonText}>Login</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => (goTo ? goTo('signup') : null)}
-      >
-        <Text style={styles.buttonText}>Sign Up</Text>
-      </TouchableOpacity>
+      <View style={[styles.logo, styles.interactive]}>
+        <Text style={styles.logoText}>H</Text>
+      </View>
+      <Text style={styles.headline}>
+        Connect. <Text style={styles.accentColor}>Create.</Text> Cash Out.
+      </Text>
+      <Text style={styles.tagline}>For creators</Text>
+      <View style={[styles.buttonContainer, styles.interactive]}>
+        <TouchableOpacity
+          style={styles.primaryButton}
+          onPress={handleJoinToConnect}
+          onPressIn={() => console.log('Join to Connect button press in')}
+          onPressOut={() => console.log('Join to Connect button press out')}
+        >
+          <Text style={styles.primaryButtonText}>Join to Connect</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.secondaryButton}
+          onPress={handleLogin}
+          onPressIn={() => console.log('Log In button press in')}
+          onPressOut={() => console.log('Log In button press out')}
+        >
+          <Text style={styles.secondaryButtonText}>Log In</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -35,27 +81,63 @@ const styles = StyleSheet.create({
     backgroundColor: '#221c11',
   },
   logo: {
-    width: 120,
-    height: 120,
-    marginBottom: 24,
+    width: 100,
+    height: 100,
+    backgroundColor: '#F5A623',
+    borderRadius: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  title: {
-    color: '#fff',
-    fontSize: 24,
+  logoText: {
+    fontSize: 48,
     fontWeight: 'bold',
+    color: '#1B1B1E',
+  },
+  headline: {
+    color: '#fff',
+    fontSize: 28,
+    fontWeight: 'bold',
+    marginTop: 32,
+    marginBottom: 8,
+  },
+  accentColor: {
+    color: '#F5A623',
+  },
+  tagline: {
+    color: '#cbb590',
+    fontSize: 18,
     marginBottom: 32,
   },
-  button: {
+  buttonContainer: {
+    flexDirection: 'row',
+    marginTop: 16,
+  },
+  primaryButton: {
     backgroundColor: '#eead3e',
     borderRadius: 100,
     paddingHorizontal: 32,
     paddingVertical: 12,
-    marginVertical: 8,
+    marginHorizontal: 8,
   },
-  buttonText: {
+  primaryButtonText: {
     color: '#221c11',
     fontSize: 18,
     fontWeight: 'bold',
+  },
+  secondaryButton: {
+    backgroundColor: '#493b22',
+    borderRadius: 100,
+    paddingHorizontal: 32,
+    paddingVertical: 12,
+    marginHorizontal: 8,
+  },
+  secondaryButtonText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  interactive: {
+    // For touch feedback if needed
   },
 });
 

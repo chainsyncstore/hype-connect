@@ -1,0 +1,44 @@
+Compiled with problems:
+×
+ERROR in ./src/CreatorCard.jsx 1:40-111
+Module not found: Error: You attempted to import /home/runner/workspace/node_modules/react-refresh/runtime.js which falls outside of the project src/ directory. Relative imports outside of src/ are not supported.
+You can either move it inside src/, or add a symlink to it from project's node_modules/.
+ERROR in ./src/InterestsScreen.jsx 1:40-111
+Module not found: Error: You attempted to import /home/runner/workspace/node_modules/react-refresh/runtime.js which falls outside of the project src/ directory. Relative imports outside of src/ are not supported.
+You can either move it inside src/, or add a symlink to it from project's node_modules/.
+ERROR in ./src/LoginScreen.jsx 1:40-111
+Module not found: Error: You attempted to import /home/runner/workspace/node_modules/react-refresh/runtime.js which falls outside of the project src/ directory. Relative imports outside of src/ are not supported.
+You can either move it inside src/, or add a symlink to it from project's node_modules/.
+ERROR in ./src/MainContentScreen.jsx 1:40-111
+Module not found: Error: You attempted to import /home/runner/workspace/node_modules/react-refresh/runtime.js which falls outside of the project src/ directory. Relative imports outside of src/ are not supported.
+You can either move it inside src/, or add a symlink to it from project's node_modules/.
+ERROR in ./src/SignUpScreen.jsx 1:40-111
+Module not found: Error: You attempted to import /home/runner/workspace/node_modules/react-refresh/runtime.js which falls outside of the project src/ directory. Relative imports outside of src/ are not supported.
+You can either move it inside src/, or add a symlink to it from project's node_modules/.
+ERROR in ./src/WebApp.js 1:40-111
+Module not found: Error: You attempted to import /home/runner/workspace/node_modules/react-refresh/runtime.js which falls outside of the project src/ directory. Relative imports outside of src/ are not supported.
+You can either move it inside src/, or add a symlink to it from project's node_modules/.
+ERROR in ./src/WelcomeScreen.jsx 1:40-111
+Module not found: Error: You attempted to import /home/runner/workspace/node_modules/react-refresh/runtime.js which falls outside of the project src/ directory. Relative imports outside of src/ are not supported.
+You can either move it inside src/, or add a symlink to it from project's node_modules/.
+ERROR in ./src/index.js 1:40-111
+Module not found: Error: You attempted to import /home/runner/workspace/node_modules/react-refresh/runtime.js which falls outside of the project src/ directory. Relative imports outside of src/ are not supported.
+You can either move it inside src/, or add a symlink to it from project's node_modules/.
+ERROR in ./src/services/api.js 1:40-111
+Module not found: Error: You attempted to import /home/runner/workspace/node_modules/react-refresh/runtime.js which falls outside of the project src/ directory. Relative imports outside of src/ are not supported.
+You can either move it inside src/, or add a symlink to it from project's node_modules/.
+ERROR in ./src/webIndex.js 1:40-111
+Module not found: Error: You attempted to import /home/runner/workspace/node_modules/react-refresh/runtime.js which falls outside of the project src/ directory. Relative imports outside of src/ are not supported.
+You can either move it inside src/, or add a symlink to it from project's node_modules/.
+ERROR
+[eslint] 
+src/WebApp.js
+  Line 53:23:  Insert `⏎`  prettier/prettier
+
+src/index.js
+  Line 1:1:  Delete `⏎`  prettier/prettier
+
+src/webIndex.js
+  Line 1:1:  Delete `⏎`  prettier/prettier
+
+Search for the keywords to learn more about each error.

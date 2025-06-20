@@ -1,0 +1,62 @@
+Compiled with problems:
+×
+ERROR
+[eslint] 
+src/LoginScreen.jsx
+  Line 41:76:  Insert `,`  prettier/prettier
+  Line 92:26:  Delete `·`  prettier/prettier
+  Line 93:78:  Delete `·`  prettier/prettier
+
+src/MainContentScreen.jsx
+  Line 128:9:   Insert `··`                                                                                                                                                                                                  prettier/prettier
+  Line 129:1:   Insert `··`                                                                                                                                                                                                  prettier/prettier
+  Line 130:9:   Insert `··`                                                                                                                                                                                                  prettier/prettier
+  Line 131:1:   Replace `········<TouchableOpacity·onPress={()·=>·navigation.navigate('GigsMarketplace')}` with `··········<TouchableOpacity⏎············onPress={()·=>·navigation.navigate('GigsMarketplace')}⏎··········`  prettier/prettier
+  Line 132:1:   Insert `··`                                                                                                                                                                                                  prettier/prettier
+  Line 133:1:   Insert `··`                                                                                                                                                                                                  prettier/prettier
+  Line 134:9:   Insert `··`                                                                                                                                                                                                  prettier/prettier
+  Line 135:11:  Insert `··`                                                                                                                                                                                                  prettier/prettier
+  Line 136:1:   Insert `··`                                                                                                                                                                                                  prettier/prettier
+  Line 137:1:   Replace `········` with `··········`                                                                                                                                                                         prettier/prettier
+  Line 138:11:  Insert `··`                                                                                                                                                                                                  prettier/prettier
+  Line 139:1:   Insert `··`                                                                                                                                                                                                  prettier/prettier
+  Line 140:1:   Insert `··`                                                                                                                                                                                                  prettier/prettier
+  Line 141:11:  Insert `··`                                                                                                                                                                                                  prettier/prettier
+  Line 142:1:   Insert `··`                                                                                                                                                                                                  prettier/prettier
+  Line 143:1:   Insert `··`                                                                                                                                                                                                  prettier/prettier
+  Line 275:34:  Insert `⏎`                                                                                                                                                                                                   prettier/prettier
+
+src/SignUpScreen.jsx
+  Line 46:27:   Insert `,`                                                                                                                                                                                                                                                                                                                            prettier/prettier
+  Line 48:1:    Delete `······`                                                                                                                                                                                                                                                                                                                       prettier/prettier
+  Line 52:74:   Insert `,`                                                                                                                                                                                                                                                                                                                            prettier/prettier
+  Line 121:28:  Delete `·`                                                                                                                                                                                                                                                                                                                            prettier/prettier
+  Line 122:21:  Replace `styles.roleButton,·selectedRole·===·'creator'·&&·styles.roleButtonSelected` with `⏎··············styles.roleButton,⏎··············selectedRole·===·'creator'·&&·styles.roleButtonSelected,⏎············`                                                                                                                     prettier/prettier
+  Line 125:18:  Replace `·style={[styles.roleButtonText,·selectedRole·===·'creator'·&&·styles.roleButtonTextSelected]}>Creator` with `⏎··············style={[⏎················styles.roleButtonText,⏎················selectedRole·===·'creator'·&&·styles.roleButtonTextSelected,⏎··············]}⏎············>⏎··············Creator⏎············`  prettier/prettier
+  Line 127:28:  Delete `·`                                                                                                                                                                                                                                                                                                                            prettier/prettier
+  Line 128:21:  Replace `styles.roleButton,·selectedRole·===·'client'·&&·styles.roleButtonSelected` with `⏎··············styles.roleButton,⏎··············selectedRole·===·'client'·&&·styles.roleButtonSelected,⏎············`                                                                                                                       prettier/prettier
+  Line 131:18:  Replace `·style={[styles.roleButtonText,·selectedRole·===·'client'·&&·styles.roleButtonTextSelected]}>Client` with `⏎··············style={[⏎················styles.roleButtonText,⏎················selectedRole·===·'client'·&&·styles.roleButtonTextSelected,⏎··············]}⏎············>⏎··············Client⏎············`      prettier/prettier
+  Line 136:19:  Replace `styles.continueButton,·loading·&&·styles.continueButtonDisabled` with `⏎············styles.continueButton,⏎············loading·&&·styles.continueButtonDisabled,⏎··········`                                                                                                                                                 prettier/prettier
+
+src/WebApp.js
+  Line 53:23:  Insert `⏎`  prettier/prettier
+
+src/WelcomeScreen.jsx
+  Line 2:9:     Replace `⏎··View,⏎··Text,⏎··TouchableOpacity,⏎··StyleSheet,⏎··Image,⏎` with `·View,·Text,·TouchableOpacity,·StyleSheet,·Image·`  prettier/prettier
+  Line 165:30:  Insert `⏎`                                                                                                                       prettier/prettier
+
+src/index.js
+  Line 1:1:  Delete `⏎`  prettier/prettier
+
+src/services/api.js
+  Line 1:1:    Delete `⏎`     prettier/prettier
+  Line 47:1:   Delete `····`  prettier/prettier
+  Line 54:38:  Insert `,`     prettier/prettier
+  Line 66:1:   Delete `····`  prettier/prettier
+  Line 75:38:  Insert `,`     prettier/prettier
+  Line 204:8:  Insert `,`     prettier/prettier
+
+src/webIndex.js
+  Line 1:1:  Delete `⏎`  prettier/prettier
+
+Search for the keywords to learn more about each error.

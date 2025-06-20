@@ -1,41 +1,53 @@
 import React, { useState } from 'react';
-import './input.css';
-
-// Import your screens but we'll render them conditionally
+import { View } from 'react-native';
 import WelcomeScreen from './WelcomeScreen';
 import LoginScreen from './LoginScreen';
 import SignUpScreen from './SignUpScreen';
-import InterestsScreen from './InterestsScreen';
 import MainContentScreen from './MainContentScreen';
+import InterestsScreen from './InterestsScreen';
 
 const WebApp = () => {
-  const [screen, setScreen] = useState('welcome');
+  const [currentScreen, setCurrentScreen] = useState('Welcome');
+  const [user, setUser] = useState(null);
 
-  // Simple navigation logic for web
-  const goTo = nextScreen => setScreen(nextScreen);
+  const navigateToScreen = screenName => {
+    setCurrentScreen(screenName);
+  };
 
-  let ScreenComponent;
-  switch (screen) {
-    case 'welcome':
-      ScreenComponent = <WelcomeScreen goTo={goTo} />;
-      break;
-    case 'login':
-      ScreenComponent = <LoginScreen goTo={goTo} />;
-      break;
-    case 'signup':
-      ScreenComponent = <SignUpScreen goTo={goTo} />;
-      break;
-    case 'interests':
-      ScreenComponent = <InterestsScreen goTo={goTo} />;
-      break;
-    case 'main':
-      ScreenComponent = <MainContentScreen goTo={goTo} />;
-      break;
-    default:
-      ScreenComponent = <WelcomeScreen goTo={goTo} />;
-  }
+  const renderScreen = () => {
+    const navigation = {
+      navigate: navigateToScreen,
+    };
 
-  return <div className="web-app">{ScreenComponent}</div>;
+    switch (currentScreen) {
+      case 'Welcome':
+        return <WelcomeScreen navigation={navigation} />;
+      case 'Login':
+        return <LoginScreen navigation={navigation} setUser={setUser} />;
+      case 'SignUp':
+        return <SignUpScreen navigation={navigation} setUser={setUser} />;
+      case 'MainContent':
+        return <MainContentScreen navigation={navigation} user={user} />;
+      case 'Interests':
+        return <InterestsScreen navigation={navigation} />;
+      default:
+        return <WelcomeScreen navigation={navigation} />;
+    }
+  };
+
+  return (
+    <View
+      style={{
+        height: '100vh',
+        width: '100vw',
+        backgroundColor: '#1b1b1e',
+        color: '#ffffff',
+        overflow: 'hidden',
+      }}
+    >
+      {renderScreen()}
+    </View>
+  );
 };
 
 export default WebApp;
