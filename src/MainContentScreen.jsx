@@ -22,13 +22,13 @@ const MainContentScreen = () => {
 
   console.log('MainContentScreen rendered');
 
-  useEffect(() => {
+  /*useEffect(() => {
     console.log('MainContentScreen mounted');
 
     return () => {
       console.log('MainContentScreen unmounted');
     };
-  }, []);
+  }, []);*/
 
   return (
     <View style={styles.container}>
