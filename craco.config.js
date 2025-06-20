@@ -32,6 +32,10 @@ module.exports = {
                       }
                     );
                   }
+                  // Ensure react-refresh is completely disabled
+                  if (use.options && use.options.env) {
+                    delete use.options.env.development;
+                  }
                 }
               });
             }
@@ -46,6 +50,15 @@ module.exports = {
           fullySpecified: false,
         },
       });
+
+      // Add fallbacks for node modules
+      webpackConfig.resolve.fallback = {
+        ...webpackConfig.resolve.fallback,
+        "crypto": false,
+        "stream": false,
+        "buffer": false,
+        "util": false
+      };
 
       return webpackConfig;
     },
