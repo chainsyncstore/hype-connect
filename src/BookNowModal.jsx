@@ -3,14 +3,8 @@ import React, { useEffect } from 'react';
 const BookNowModal = ({ isVisible, onClose }) => {
   if (!isVisible) return null;
 
-  console.log('BookNowModal rendered');
-
   useEffect(() => {
-    console.log('BookNowModal mounted');
-
-    return () => {
-      console.log('BookNowModal unmounted');
-    };
+    return () => {};
   }, []);
 
   return (

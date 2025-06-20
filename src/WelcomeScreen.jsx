@@ -6,47 +6,28 @@ import Logo from './assets/logo.png';
 const WelcomeScreen = () => {
   const navigation = useNavigation();
 
-  console.log('WelcomeScreen rendered');
-
   useEffect(() => {
-    console.log('WelcomeScreen mounted');
-
+    // Ensuring this line is rewritten
     const handleTouchStart = event => {
-      console.log('Touch start detected:', {
-        identifier: event.touches[0]?.identifier,
-        pageX: event.touches[0]?.pageX,
-        pageY: event.touches[0]?.pageY,
-        timestamp: event.timeStamp,
-      });
+      // Ensuring this line is rewritten
     };
 
-    const handleTouchEnd = event => {
-      console.log('Touch end detected:', {
-        identifier: event.changedTouches[0]?.identifier,
-        pageX: event.changedTouches[0]?.pageX,
-        pageY: event.changedTouches[0]?.pageY,
-        timestamp: event.timeStamp,
-      });
-      console.log('Current Touch Bank:', event.targetTouches);
-    };
+    const handleTouchEnd = event => {};
 
     window.addEventListener('touchstart', handleTouchStart);
     window.addEventListener('touchend', handleTouchEnd);
 
     return () => {
-      console.log('WelcomeScreen unmounted');
       window.removeEventListener('touchstart', handleTouchStart);
       window.removeEventListener('touchend', handleTouchEnd);
     };
   }, []);
 
   const handleJoinToConnect = () => {
-    console.log('Join to Connect button pressed');
     navigation.navigate('SignUp');
   };
 
   const handleLogin = () => {
-    console.log('Log In button pressed');
     navigation.navigate('Login');
   };
 
@@ -63,17 +44,10 @@ const WelcomeScreen = () => {
         <TouchableOpacity
           style={styles.primaryButton}
           onPress={handleJoinToConnect}
-          onPressIn={() => console.log('Join to Connect button press in')}
-          onPressOut={() => console.log('Join to Connect button press out')}
         >
           <Text style={styles.primaryButtonText}>Join to Connect</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.secondaryButton}
-          onPress={handleLogin}
-          onPressIn={() => console.log('Log In button press in')}
-          onPressOut={() => console.log('Log In button press out')}
-        >
+        <TouchableOpacity style={styles.secondaryButton} onPress={handleLogin}>
           <Text style={styles.secondaryButtonText}>Log In</Text>
         </TouchableOpacity>
       </View>

@@ -5,14 +5,9 @@ import { useState } from 'react';
 
 const ProfileMenuModal = ({ visible, onClose }) => {
   const navigation = useNavigation();
-  console.log('ProfileMenuModal rendered');
 
   useEffect(() => {
-    console.log('ProfileMenuModal mounted');
-
-    return () => {
-      console.log('ProfileMenuModal unmounted');
-    };
+    return () => {};
   }, []);
 
   return (

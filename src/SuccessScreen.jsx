@@ -4,16 +4,10 @@ import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 
 const SuccessScreen = () => {
   const navigation = useNavigation();
-  console.log('SuccessScreen rendered');
 
   useEffect(() => {
-    console.log('SuccessScreen mounted');
-
-    return () => {
-      console.log('SuccessScreen unmounted');
-    };
+    return () => {};
   }, []);
-
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome to the Hype!</Text>

@@ -29,14 +29,8 @@ const followers = [
 ];
 
 const FollowersListScreen = () => {
-  console.log('FollowersListScreen rendered');
-
   useEffect(() => {
-    console.log('FollowersListScreen mounted');
-
-    return () => {
-      console.log('FollowersListScreen unmounted');
-    };
+    return () => {};
   }, []);
 
   return (

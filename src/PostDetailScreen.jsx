@@ -5,16 +5,9 @@ import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
 const PostDetailScreen = () => {
   const navigation = useNavigation();
 
-  console.log('PostDetailScreen rendered');
-
   useEffect(() => {
-    console.log('PostDetailScreen mounted');
-
-    return () => {
-      console.log('PostDetailScreen unmounted');
-    };
+    return () => {};
   }, []);
-
   return (
     <View style={styles.container}>
       <View style={styles.header}>
