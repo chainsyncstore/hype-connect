@@ -37,10 +37,7 @@ const CommentSectionScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity
-          style={styles.backButton}
-          onPress={() => navigation.goBack()}
-        >
+        <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
           <Text style={{ color: 'white', fontSize: 24 }}>{'<'}</Text>
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Comments</Text>

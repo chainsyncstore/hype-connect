@@ -1,12 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
-  ScrollView,
-} from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
 import ProfileMenuModal from './ProfileMenuModal';
 
 const PrivateCreatorProfileScreen = () => {
@@ -26,10 +19,7 @@ const PrivateCreatorProfileScreen = () => {
     <React.Fragment>
       <ScrollView style={styles.container}>
         <View style={styles.header}>
-          <TouchableOpacity
-            style={styles.menuButton}
-            onPress={() => setMenuVisible(true)}
-          >
+          <TouchableOpacity style={styles.menuButton} onPress={() => setMenuVisible(true)}>
             <Text style={styles.menuIcon}>⋮</Text>
           </TouchableOpacity>
         </View>
@@ -77,10 +67,7 @@ const PrivateCreatorProfileScreen = () => {
         </View>
         <View style={styles.postsGrid}>{/* Add post images here */}</View>
       </ScrollView>
-      <ProfileMenuModal
-        visible={menuVisible}
-        onClose={() => setMenuVisible(false)}
-      />
+      <ProfileMenuModal visible={menuVisible} onClose={() => setMenuVisible(false)} />
     </React.Fragment>
   );
 };

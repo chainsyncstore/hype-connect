@@ -1,14 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  FlatList,
-  TouchableOpacity,
-  TextInput,
-  Image,
-} from 'react-native';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, TextInput, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import ApiService from './services/api';
 
@@ -108,7 +99,7 @@ const MessagesScreen = () => {
         },
         {
           id: 5,
-          text: 'Perfect! Let\'s do it. Thanks for the collaboration!',
+          text: "Perfect! Let's do it. Thanks for the collaboration!",
           sender: 'other',
           timestamp: '10:30 AM',
         },
@@ -127,7 +118,7 @@ const MessagesScreen = () => {
         sender: 'me',
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       };
-      setMessages(prev => [...prev, message]);
+      setMessages((prev) => [...prev, message]);
       setNewMessage('');
     } catch (error) {
       console.error('Failed to send message:', error);
@@ -207,10 +198,7 @@ const MessagesScreen = () => {
           <Text style={styles.backButton}>←</Text>
         </TouchableOpacity>
         <View style={styles.chatUserInfo}>
-          <Image
-            source={{ uri: selectedConversation.user.avatar }}
-            style={styles.chatAvatar}
-          />
+          <Image source={{ uri: selectedConversation.user.avatar }} style={styles.chatAvatar} />
           <View>
             <Text style={styles.chatUserName}>{selectedConversation.user.name}</Text>
             <Text style={styles.onlineStatus}>

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import {
   View,
@@ -110,17 +109,11 @@ const GigsMarketplaceScreen = () => {
   const renderCategoryFilter = (category) => (
     <TouchableOpacity
       key={category}
-      style={[
-        styles.categoryButton,
-        selectedCategory === category && styles.selectedCategory,
-      ]}
+      style={[styles.categoryButton, selectedCategory === category && styles.selectedCategory]}
       onPress={() => setSelectedCategory(category)}
     >
       <Text
-        style={[
-          styles.categoryText,
-          selectedCategory === category && styles.selectedCategoryText,
-        ]}
+        style={[styles.categoryText, selectedCategory === category && styles.selectedCategoryText]}
       >
         {category}
       </Text>

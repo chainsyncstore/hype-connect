@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import {
   View,
@@ -82,26 +81,22 @@ const AdminDashboardScreen = () => {
   };
 
   const handleReportAction = (reportId, action) => {
-    Alert.alert(
-      'Confirm Action',
-      `Are you sure you want to ${action} this report?`,
-      [
-        { text: 'Cancel', style: 'cancel' },
-        {
-          text: 'Confirm',
-          onPress: () => {
-            setReportedContent(prev =>
-              prev.map(report =>
-                report.id === reportId
-                  ? { ...report, status: action === 'approve' ? 'resolved' : 'dismissed' }
-                  : report
-              )
-            );
-            Alert.alert('Success', `Report ${action}d successfully`);
-          },
+    Alert.alert('Confirm Action', `Are you sure you want to ${action} this report?`, [
+      { text: 'Cancel', style: 'cancel' },
+      {
+        text: 'Confirm',
+        onPress: () => {
+          setReportedContent((prev) =>
+            prev.map((report) =>
+              report.id === reportId
+                ? { ...report, status: action === 'approve' ? 'resolved' : 'dismissed' }
+                : report
+            )
+          );
+          Alert.alert('Success', `Report ${action}d successfully`);
         },
-      ]
-    );
+      },
+    ]);
   };
 
   const renderStatCard = (title, value, color = '#F5A623') => (
@@ -154,7 +149,11 @@ const AdminDashboardScreen = () => {
       <View style={styles.statsGrid}>
         {renderStatCard('Total Users', dashboardData.totalUsers.toLocaleString())}
         {renderStatCard('Active Gigs', dashboardData.activeGigs.toLocaleString())}
-        {renderStatCard('Total Revenue', `₦${dashboardData.totalRevenue.toLocaleString()}`, '#4CAF50')}
+        {renderStatCard(
+          'Total Revenue',
+          `₦${dashboardData.totalRevenue.toLocaleString()}`,
+          '#4CAF50'
+        )}
         {renderStatCard('Pending Reports', dashboardData.pendingReports.toString(), '#FF4444')}
       </View>
 

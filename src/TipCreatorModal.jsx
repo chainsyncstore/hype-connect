@@ -1,12 +1,5 @@
 import React, { useEffect } from 'react';
-import {
-  Modal,
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  ScrollView,
-} from 'react-native';
+import { Modal, View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import { StyleSheet } from 'react-native';
 
 const TipCreatorModal = ({ visible, onClose, onSendTip }) => {
@@ -31,24 +24,17 @@ const TipCreatorModal = ({ visible, onClose, onSendTip }) => {
   };
 
   return (
-    <Modal
-      animationType="slide"
-      transparent={true}
-      visible={visible}
-      onRequestClose={onClose}
-    >
+    <Modal animationType="slide" transparent={true} visible={visible} onRequestClose={onClose}>
       <View style={styles.overlay}>
         <View style={styles.modalContainer}>
           <TouchableOpacity style={styles.closeButton} onPress={handleClose}>
             <View style={styles.closeIndicator} />
           </TouchableOpacity>
           <Text style={styles.title}>Send a Tip</Text>
-          <Text style={styles.subtitle}>
-            Show your appreciation for great content.
-          </Text>
+          <Text style={styles.subtitle}>Show your appreciation for great content.</Text>
 
           <ScrollView horizontal contentContainerStyle={styles.amountContainer}>
-            {[500, 1000, 5000].map(amount => (
+            {[500, 1000, 5000].map((amount) => (
               <TouchableOpacity key={amount} style={styles.amountButton}>
                 <Text style={styles.amountText}>₦{amount}</Text>
               </TouchableOpacity>
@@ -63,9 +49,7 @@ const TipCreatorModal = ({ visible, onClose, onSendTip }) => {
           />
 
           <View style={styles.paymentMethodContainer}>
-            <View style={styles.paymentMethodIcon}>
-              {/* Add your payment method icon here */}
-            </View>
+            <View style={styles.paymentMethodIcon}>{/* Add your payment method icon here */}</View>
             <Text style={styles.paymentMethodText}>Payment Method</Text>
             <Text style={styles.paymentMethodName}>Flutterwave</Text>
           </View>

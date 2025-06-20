@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import {
   View,
@@ -98,7 +97,10 @@ const WalletScreen = () => {
         bankDetails,
       });
 
-      Alert.alert('Success', 'Withdrawal request submitted! Funds will be transferred within 24 hours.');
+      Alert.alert(
+        'Success',
+        'Withdrawal request submitted! Funds will be transferred within 24 hours.'
+      );
       setShowWithdrawModal(false);
       setWithdrawAmount('');
       setBankDetails({ accountNumber: '', bankName: '', accountName: '' });
@@ -117,10 +119,7 @@ const WalletScreen = () => {
       </View>
       <View style={styles.transactionRight}>
         <Text
-          style={[
-            styles.transactionAmount,
-            { color: item.amount > 0 ? '#4CAF50' : '#FF4444' },
-          ]}
+          style={[styles.transactionAmount, { color: item.amount > 0 ? '#4CAF50' : '#FF4444' }]}
         >
           {item.amount > 0 ? '+' : ''}₦{Math.abs(item.amount).toLocaleString()}
         </Text>
@@ -141,13 +140,8 @@ const WalletScreen = () => {
 
       <View style={styles.balanceCard}>
         <Text style={styles.balanceLabel}>Available Balance</Text>
-        <Text style={styles.balanceAmount}>
-          ₦{walletData.balance.toLocaleString()}
-        </Text>
-        <TouchableOpacity
-          style={styles.withdrawButton}
-          onPress={() => setShowWithdrawModal(true)}
-        >
+        <Text style={styles.balanceAmount}>₦{walletData.balance.toLocaleString()}</Text>
+        <TouchableOpacity style={styles.withdrawButton} onPress={() => setShowWithdrawModal(true)}>
           <Text style={styles.withdrawButtonText}>Withdraw Funds</Text>
         </TouchableOpacity>
       </View>
@@ -155,15 +149,11 @@ const WalletScreen = () => {
       <View style={styles.statsContainer}>
         <View style={styles.statCard}>
           <Text style={styles.statLabel}>Total Earnings</Text>
-          <Text style={styles.statAmount}>
-            ₦{walletData.totalEarnings.toLocaleString()}
-          </Text>
+          <Text style={styles.statAmount}>₦{walletData.totalEarnings.toLocaleString()}</Text>
         </View>
         <View style={styles.statCard}>
           <Text style={styles.statLabel}>Pending</Text>
-          <Text style={styles.statAmount}>
-            ₦{walletData.pendingEarnings.toLocaleString()}
-          </Text>
+          <Text style={styles.statAmount}>₦{walletData.pendingEarnings.toLocaleString()}</Text>
         </View>
       </View>
 
@@ -186,7 +176,7 @@ const WalletScreen = () => {
         <View style={styles.modalOverlay}>
           <View style={styles.withdrawModal}>
             <Text style={styles.modalTitle}>Withdraw Funds</Text>
-            
+
             <TextInput
               style={styles.input}
               placeholder="Withdrawal amount (₦)"
@@ -201,9 +191,7 @@ const WalletScreen = () => {
               placeholder="Account Number"
               placeholderTextColor="#c0b29b"
               value={bankDetails.accountNumber}
-              onChangeText={(text) =>
-                setBankDetails({ ...bankDetails, accountNumber: text })
-              }
+              onChangeText={(text) => setBankDetails({ ...bankDetails, accountNumber: text })}
               keyboardType="numeric"
             />
 
@@ -212,9 +200,7 @@ const WalletScreen = () => {
               placeholder="Bank Name"
               placeholderTextColor="#c0b29b"
               value={bankDetails.bankName}
-              onChangeText={(text) =>
-                setBankDetails({ ...bankDetails, bankName: text })
-              }
+              onChangeText={(text) => setBankDetails({ ...bankDetails, bankName: text })}
             />
 
             <TextInput
@@ -222,14 +208,10 @@ const WalletScreen = () => {
               placeholder="Account Name"
               placeholderTextColor="#c0b29b"
               value={bankDetails.accountName}
-              onChangeText={(text) =>
-                setBankDetails({ ...bankDetails, accountName: text })
-              }
+              onChangeText={(text) => setBankDetails({ ...bankDetails, accountName: text })}
             />
 
-            <Text style={styles.feeNotice}>
-              Withdrawal fee: ₦100 | Processing time: 24 hours
-            </Text>
+            <Text style={styles.feeNotice}>Withdrawal fee: ₦100 | Processing time: 24 hours</Text>
 
             <View style={styles.modalButtons}>
               <TouchableOpacity
@@ -238,10 +220,7 @@ const WalletScreen = () => {
               >
                 <Text style={styles.cancelButtonText}>Cancel</Text>
               </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.confirmButton}
-                onPress={handleWithdrawal}
-              >
+              <TouchableOpacity style={styles.confirmButton} onPress={handleWithdrawal}>
                 <Text style={styles.confirmButtonText}>Withdraw</Text>
               </TouchableOpacity>
             </View>

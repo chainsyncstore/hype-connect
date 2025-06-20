@@ -11,10 +11,7 @@ const PostDetailScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity
-          style={styles.backButton}
-          onPress={() => navigation.goBack()}
-        >
+        <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
           <Text style={styles.backButtonText}>{'<'}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.shareButton}>
@@ -41,11 +38,10 @@ const PostDetailScreen = () => {
       </View>
       <Text style={styles.postCategory}>2d · Photography</Text>
       <Text style={styles.postDescription}>
-        Capturing the essence of urban life through a lens. This series explores
-        the vibrant streets of Tokyo, showcasing the city's unique blend of
-        tradition and modernity. Each shot tells a story, from the bustling
-        markets to the serene temples, offering a glimpse into the soul of this
-        dynamic metropolis.
+        Capturing the essence of urban life through a lens. This series explores the vibrant streets
+        of Tokyo, showcasing the city's unique blend of tradition and modernity. Each shot tells a
+        story, from the bustling markets to the serene temples, offering a glimpse into the soul of
+        this dynamic metropolis.
       </Text>
       <View style={styles.postActions}>
         <View style={styles.postAction}>
@@ -75,8 +71,8 @@ const PostDetailScreen = () => {
             <Text style={styles.commentTime}>1d</Text>
           </View>
           <Text style={styles.commentText}>
-            Absolutely stunning work! The colors and composition are
-            breathtaking. You've truly captured the spirit of Tokyo.
+            Absolutely stunning work! The colors and composition are breathtaking. You've truly
+            captured the spirit of Tokyo.
           </Text>
         </View>
       </View>
@@ -93,9 +89,8 @@ const PostDetailScreen = () => {
             <Text style={styles.commentTime}>2d</Text>
           </View>
           <Text style={styles.commentText}>
-            This series is incredible. The way you've used light and shadow to
-            highlight the city's architecture is masterful. Each photo is a work
-            of art.
+            This series is incredible. The way you've used light and shadow to highlight the city's
+            architecture is masterful. Each photo is a work of art.
           </Text>
         </View>
       </View>

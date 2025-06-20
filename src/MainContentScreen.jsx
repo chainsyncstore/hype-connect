@@ -1,14 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import {
-  StyleSheet,
-  View,
-  Text,
-  TouchableOpacity,
-  ScrollView,
-  Image,
-  Modal,
-} from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, ScrollView, Image, Modal } from 'react-native';
 import CreatorCard from './CreatorCard';
 
 const MainContentScreen = () => {
@@ -81,8 +73,8 @@ const MainContentScreen = () => {
               </View>
             </View>
             <Text style={styles.postDescription}>
-              Check out my latest track, a blend of electronic and hip-hop
-              beats. Let me know what you think!
+              Check out my latest track, a blend of electronic and hip-hop beats. Let me know what
+              you think!
             </Text>
           </View>
         </TouchableOpacity>
@@ -119,36 +111,32 @@ const MainContentScreen = () => {
               </View>
             </View>
             <Text style={styles.postDescription}>
-              Experimenting with new color palettes and techniques. This piece
-              captures the vibrant energy of the city at night.
+              Experimenting with new color palettes and techniques. This piece captures the vibrant
+              energy of the city at night.
             </Text>
           </View>
         </TouchableOpacity>
         <View style={styles.bottomNavigation}>
-        <TouchableOpacity>
-          <Text>🏠</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('GigsMarketplace')}>
-          <Text>💼</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('LiveStream')}>
-          <Text>📺</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Messages')}>
-          <Text>💬</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Wallet')}>
-          <Text>💰</Text>
-        </TouchableOpacity>
-      </View>
+          <TouchableOpacity>
+            <Text>🏠</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('GigsMarketplace')}>
+            <Text>💼</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('LiveStream')}>
+            <Text>📺</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Messages')}>
+            <Text>💬</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Wallet')}>
+            <Text>💰</Text>
+          </TouchableOpacity>
+        </View>
         <View style={styles.bottomSpace} />
       </ScrollView>
 
-      <Modal
-        visible={isCreatorCardVisible}
-        transparent={true}
-        animationType="slide"
-      >
+      <Modal visible={isCreatorCardVisible} transparent={true} animationType="slide">
         <CreatorCard />
       </Modal>
     </View>

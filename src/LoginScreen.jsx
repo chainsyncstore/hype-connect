@@ -90,9 +90,7 @@ const LoginScreen = () => {
           onPress={handleLogin}
           disabled={loading}
         >
-          <Text style={styles.loginButtonText}>
-            {loading ? 'Logging in...' : 'Log In'}
-          </Text>
+          <Text style={styles.loginButtonText}>{loading ? 'Logging in...' : 'Log In'}</Text>
         </TouchableOpacity>
 
         <Text style={styles.orContinueText}>Or continue with</Text>

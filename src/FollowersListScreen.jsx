@@ -1,12 +1,5 @@
 import React, { useEffect } from 'react';
-import {
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  ScrollView,
-  StyleSheet,
-} from 'react-native';
+import { View, Text, Image, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
 
 const followers = [
   {
@@ -42,7 +35,7 @@ const FollowersListScreen = () => {
         <Text style={styles.title}>Followers</Text>
       </View>
       <ScrollView>
-        {followers.map(follower => (
+        {followers.map((follower) => (
           <View key={follower.id} style={styles.followerContainer}>
             <Image source={{ uri: follower.image }} style={styles.avatar} />
             <View style={styles.infoContainer}>

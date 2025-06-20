@@ -16,10 +16,7 @@ const BookNowModal = ({ isVisible, onClose }) => {
         <div>
           <div className="flex absolute top-0 left-0 h-full w-full flex-col justify-end items-stretch bg-[#141414]/40">
             <div className="flex flex-col items-stretch bg-[#221c11]">
-              <button
-                onClick={onClose}
-                className="flex h-5 w-full items-center justify-center"
-              >
+              <button onClick={onClose} className="flex h-5 w-full items-center justify-center">
                 <div className="h-1 w-9 rounded-full bg-[#675332]"></div>
               </button>
               <div className="flex-1">

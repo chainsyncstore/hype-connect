@@ -47,20 +47,12 @@ const CreatorEarningsScreen = () => {
         </h3>
         <div className="flex flex-wrap gap-4 p-4">
           <div className="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl p-6 bg-[#483a23]">
-            <p className="text-white text-base font-medium leading-normal">
-              Last 30 Days
-            </p>
-            <p className="text-white tracking-light text-2xl font-bold leading-tight">
-              $1,250
-            </p>
+            <p className="text-white text-base font-medium leading-normal">Last 30 Days</p>
+            <p className="text-white tracking-light text-2xl font-bold leading-tight">$1,250</p>
           </div>
           <div className="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl p-6 bg-[#483a23]">
-            <p className="text-white text-base font-medium leading-normal">
-              Lifetime
-            </p>
-            <p className="text-white tracking-light text-2xl font-bold leading-tight">
-              $5,750
-            </p>
+            <p className="text-white text-base font-medium leading-normal">Lifetime</p>
+            <p className="text-white tracking-light text-2xl font-bold leading-tight">$5,750</p>
           </div>
         </div>
         <h2 className="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">
@@ -68,12 +60,8 @@ const CreatorEarningsScreen = () => {
         </h2>
         <div className="flex flex-wrap gap-4 p-4">
           <div className="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl p-6 border border-[#675332]">
-            <p className="text-white text-base font-medium leading-normal">
-              Tips
-            </p>
-            <p className="text-white tracking-light text-2xl font-bold leading-tight">
-              $350
-            </p>
+            <p className="text-white text-base font-medium leading-normal">Tips</p>
+            <p className="text-white tracking-light text-2xl font-bold leading-tight">$350</p>
           </div>
         </div>
       </div>

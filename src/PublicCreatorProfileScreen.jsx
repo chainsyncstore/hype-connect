@@ -1,12 +1,5 @@
 import React, { useEffect } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  ScrollView,
-  TouchableOpacity,
-} from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
 
 const PublicCreatorProfileScreen = () => {
   console.log('PublicCreatorProfileScreen rendered');
@@ -23,17 +16,11 @@ const PublicCreatorProfileScreen = () => {
     <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity style={styles.backButton}>
-          <Image
-            source={{ uri: 'https://via.placeholder.com/24' }}
-            style={styles.icon}
-          />
+          <Image source={{ uri: 'https://via.placeholder.com/24' }} style={styles.icon} />
         </TouchableOpacity>
         <View style={styles.flex} />
         <TouchableOpacity style={styles.shareButton}>
-          <Image
-            source={{ uri: 'https://via.placeholder.com/24' }}
-            style={styles.icon}
-          />
+          <Image source={{ uri: 'https://via.placeholder.com/24' }} style={styles.icon} />
         </TouchableOpacity>
       </View>
 
@@ -65,8 +52,8 @@ const PublicCreatorProfileScreen = () => {
         </View>
 
         <Text style={styles.description}>
-          Ethan Carter is a multi-talented creative based in Los Angeles,
-          specializing in music production, photography, and songwriting.
+          Ethan Carter is a multi-talented creative based in Los Angeles, specializing in music
+          production, photography, and songwriting.
         </Text>
 
         <View style={styles.statsContainer}>

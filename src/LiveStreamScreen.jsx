@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import {
   View,
@@ -29,7 +28,7 @@ const LiveStreamScreen = () => {
     // Mock real-time updates
     const interval = setInterval(() => {
       if (isStreaming) {
-        setViewers(prev => prev + Math.floor(Math.random() * 3) - 1);
+        setViewers((prev) => prev + Math.floor(Math.random() * 3) - 1);
         // Simulate incoming tips and comments
         if (Math.random() > 0.7) {
           const mockTip = {
@@ -38,8 +37,8 @@ const LiveStreamScreen = () => {
             amount: Math.floor(Math.random() * 5000) + 500,
             timestamp: new Date(),
           };
-          setTips(prev => [mockTip, ...prev]);
-          setTotalEarnings(prev => prev + mockTip.amount);
+          setTips((prev) => [mockTip, ...prev]);
+          setTotalEarnings((prev) => prev + mockTip.amount);
         }
       }
     }, 3000);
@@ -86,7 +85,7 @@ const LiveStreamScreen = () => {
         text: newComment,
         timestamp: new Date(),
       };
-      setComments(prev => [comment, ...prev]);
+      setComments((prev) => [comment, ...prev]);
       setNewComment('');
     }
   };
@@ -106,8 +105,8 @@ const LiveStreamScreen = () => {
         amount,
         timestamp: new Date(),
       };
-      setTips(prev => [tip, ...prev]);
-      setTotalEarnings(prev => prev + amount);
+      setTips((prev) => [tip, ...prev]);
+      setTotalEarnings((prev) => prev + amount);
       setShowTipModal(false);
       setTipAmount('');
       Alert.alert('Success', `Tip of ₦${amount} sent!`);
@@ -143,7 +142,7 @@ const LiveStreamScreen = () => {
 
         <View style={styles.setupContainer}>
           <Text style={styles.setupTitle}>Start Your Live Stream</Text>
-          
+
           <TextInput
             style={styles.titleInput}
             placeholder="Enter stream title..."
@@ -152,10 +151,7 @@ const LiveStreamScreen = () => {
             onChangeText={setStreamTitle}
           />
 
-          <TouchableOpacity
-            style={styles.startButton}
-            onPress={startStream}
-          >
+          <TouchableOpacity style={styles.startButton} onPress={startStream}>
             <Text style={styles.startButtonText}>🔴 Go Live</Text>
           </TouchableOpacity>
 
@@ -219,10 +215,7 @@ const LiveStreamScreen = () => {
         <TouchableOpacity style={styles.sendButton} onPress={sendComment}>
           <Text>Send</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.tipButton}
-          onPress={() => setShowTipModal(true)}
-        >
+        <TouchableOpacity style={styles.tipButton} onPress={() => setShowTipModal(true)}>
           <Text style={styles.tipButtonText}>💰 Tip</Text>
         </TouchableOpacity>
       </View>
@@ -245,16 +238,10 @@ const LiveStreamScreen = () => {
               keyboardType="numeric"
             />
             <View style={styles.modalButtons}>
-              <TouchableOpacity
-                style={styles.cancelButton}
-                onPress={() => setShowTipModal(false)}
-              >
+              <TouchableOpacity style={styles.cancelButton} onPress={() => setShowTipModal(false)}>
                 <Text style={styles.cancelButtonText}>Cancel</Text>
               </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.confirmButton}
-                onPress={sendTip}
-              >
+              <TouchableOpacity style={styles.confirmButton} onPress={sendTip}>
                 <Text style={styles.confirmButtonText}>Send Tip</Text>
               </TouchableOpacity>
             </View>

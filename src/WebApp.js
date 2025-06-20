@@ -10,7 +10,7 @@ const WebApp = () => {
   const [currentScreen, setCurrentScreen] = useState('Welcome');
   const [user, setUser] = useState(null);
 
-  const navigateToScreen = screenName => {
+  const navigateToScreen = (screenName) => {
     setCurrentScreen(screenName);
   };
 
