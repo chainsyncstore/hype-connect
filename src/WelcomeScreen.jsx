@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 import {
-  StyleSheet,
   View,
   Text,
   TouchableOpacity,
-  ScrollView,
+  StyleSheet,
   Image,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -29,7 +28,7 @@ const WelcomeScreen = () => {
       console.log('Touch end detected:', {
         identifier: event.changedTouches[0]?.identifier,
         pageX: event.changedTouches[0]?.pageX,
-        pageY: event.changedTouches[0]?.pageY,
+        pageY: event.touches[0]?.pageY,
         timestamp: event.timeStamp,
       });
       console.log('Current Touch Bank:', event.targetTouches);
@@ -58,7 +57,9 @@ const WelcomeScreen = () => {
   return (
     <View style={styles.container}>
       <View style={[styles.logoContainer, styles.interactive]}>
-        <Image style={styles.logo} source={Logo} />
+        <View style={styles.logo}>
+          <Text style={styles.logoText}>H</Text>
+        </View>
       </View>
       <Text style={styles.headline}>
         Connect. <Text style={styles.accentColor}>Create.</Text> Cash Out.
@@ -100,6 +101,15 @@ const styles = StyleSheet.create({
   logo: {
     width: 100,
     height: 100,
+    backgroundColor: '#F5A623',
+    borderRadius: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  logoText: {
+    fontSize: 48,
+    fontWeight: 'bold',
+    color: '#1B1B1E',
   },
   headline: {
     fontSize: 30,
