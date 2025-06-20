@@ -7,6 +7,7 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
+import BottomNavigationBar from './components/BottomNavigationBar'; // Import the new component
 
 const PublicCreatorProfileScreen = () => {
   console.log('PublicCreatorProfileScreen rendered');
@@ -135,48 +136,8 @@ const PublicCreatorProfileScreen = () => {
         </ScrollView>
       </ScrollView>
 
-      <View style={styles.bottomNav}>
-        <TouchableOpacity style={styles.navItem}>
-          <Image
-            source={{
-              uri: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIGZpbGw9ImN1cnJlbnRDb2xvciIgdmlld0JveD0iMCAwIDI1NiAyNTYiPgogICAgPHBhdGggZD0iTTIyNCwxMTUuNTVWMjA4YTE2LDE2LDAsMCwxLTE2LDE2SDE2OGExNiwxNiwwLDAsMS0xNi0xNlYxNjhhOCw4LDAsMCwwLTgtOEgxMTJhOCw4LDAsMCwwLTgsOHY0MGExNiwxNiwwLDAsMS0xNiwxNkg0OGExNiwxNiwwLDAsMS0xNi0xNlYxMTUuNTVhMTYsMTYsMCwwLDEsNS4xNy0xMS43OGw4MC03NS40OC4xMS0uMTFhMTYsMTYsMCwwLDEsMjEuNTMsMCwxLjE0LDEuMTQsMCwwLDAsLjExLjExbDgwLDc1LjQ4QTE2LDE2LDAsMCwxLDIyNCwxMTUuNTVaIj48L3BhdGg+Cjwvc3ZnPg==',
-            }}
-            style={styles.navIcon}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
-          <Image
-            source={{
-              uri: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIGZpbGw9ImN1cnJlbnRDb2xvciIgdmlld0JveD0iMCAwIDI1NiAyNTYiPgogICAgPHBhdGggZD0iTTIyOS42NiwyMTguMzRsLTUwLjA3LTUwLjA2YTg4LjExLDg4LjExLDAsMSwwLTExLjMxLDExLjMxbDUwLjA2LDUwLjA3YTgsOCwwLDAsMCwxMS4zMi0xMS4zMlptNDAsMTEyYTcyLDcyLDAsMSwxLDcyLDcyQTcyLjA4LDcyLjA4LDAsMCwxLDQwLDExMloiPjwvcGF0aD4KPC9zdmc+',
-            }}
-            style={styles.navIcon}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
-          <Image
-            source={{
-              uri: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIGZpbGw9ImN1cnJlbnRDb2xvciIgdmlld0JveD0iMCAwIDI1NiAyNTYiPgogICAgPHBhdGggZD0iTTIyNCwxMjhhOCw4LDAsMCwxLTgsOEgxMzZ2ODBhOCw4LDAsMCwxLTE2LDBWMTM2SDRhOCw4LDAsMCwxLDAtMTZoODBWMDRhOCw4LDAsMCwxLDE2LDB2ODBIMjE2QTgsOCwwLDAsMSwyMjQsMTI4WiI+PC9wYXRoPgogIDwvc3ZnPg==',
-            }}
-            style={styles.navIcon}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
-          <Image
-            source={{
-              uri: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIGZpbGw9ImN1cnJlbnRDb2xvciIgdmlld0JveD0iMCAwIDI1NiAyNTYiPgogICAgPHBhdGggZD0iTTE0MCwxMjhhMTIsMTIsMCwxLDEtMTItMTJBMTIsMTIsMCwwLDEsMTQwLDEyOFpNODQsMTE2YTEyLDEyLDAsMSwwLDEyLDEyQTEyLDEyLDAsMCwwLDE3MiwxMTZaTTIzMiwxMjhBMTExLjE0LDExMS4xNCwwLDAsMSw3OS4xMiwyMTkuODJMNDUuMDcsMjMxLjE3YTE2LDE2LDAsMCwxLTIwLjI0LTIwLjI0bDExLjM1LTM0LjA1QTExMS4xNCwxMTEuMTQsMCwxLDEsMjMyLDEyOFptLTE2LDBBODgsODgsMCwxLDAsNTEuODEsMTcyLjA2YTgsOCwwLDAsMSwuNjYsNi41NEw0MCwyMTYsNzcuNDAyMDMuNTNhNy44NSw3Ljg1LDAsMCwxLDIuNTMtLjQyLDgsOCwwLDAsMSw0LDEuMDhBODgsODgsMCwwLDAsMjE2LDEyOFoiPjwvcGF0aD4KPC9zdmc+',
-            }}
-            style={styles.navIcon}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
-          <Image
-            source={{
-              uri: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIGZpbGw9ImN1cnJlbnRDb2xvciIgdmlld0JveD0iMCAwIDI1NiAyNTYiPgogICAgPHBhdGggZD0iTTIzMC45MiwyMTJjLTE1LjIzLTI2LjMzLTM4LjctNDUuMjEtNjYuMDktNTQuMTZhNzIsNzIsMCwxLDAtNzMuNjYsMEM2My43OCwxNjYuNzgsNDAuMzEsMTg1LjY2LDI1LjA4LDIxMmE4LDgsMCwxLDAsMTMuODUsOGMxOC44NC0zMi41Niw1Mi4xNC01Miw4OS4wNy01MnM3MC4yMywxOS40NCw4OS4wNyw1MmE4LDgsMCwxLDAsMTMuODUtOFpNNzIsOTZhNTYsNTYsMCwxLDEsNTYsNTZBNTYuMDYsNTYuMDYsMCwwLDEsNzIsOTZaIj48L3BhdGg+Cjwvc3ZnPg==',
-            }}
-            style={styles.navIcon}
-          />
-        </TouchableOpacity>
-      </View>
+      {/* Replace inline navigation with the component */}
+      <BottomNavigationBar />
     </View>
   );
 };
@@ -409,24 +370,8 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: 'normal',
   },
-  bottomNav: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    backgroundColor: '#2f291d',
-    borderTopWidth: 1,
-    borderColor: '#423929',
-    paddingVertical: 8,
-  },
-  navItem: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  navIcon: {
-    width: 24,
-    height: 24,
-    tintColor: '#c0b29b',
-  },
+  // Removed bottomNav, navItem, and navIcon styles as they are now
+  // handled by the BottomNavigationBar component.
 });
 
 export default PublicCreatorProfileScreen;

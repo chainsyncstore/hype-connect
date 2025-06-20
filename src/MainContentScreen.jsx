@@ -10,6 +10,7 @@ import {
   Modal,
 } from 'react-native';
 import CreatorCard from './CreatorCard';
+import BottomNavigationBar from './components/BottomNavigationBar'; // Import the new component
 
 const MainContentScreen = () => {
   const navigation = useNavigation();
@@ -124,28 +125,12 @@ const MainContentScreen = () => {
             </Text>
           </View>
         </TouchableOpacity>
-        <View style={styles.bottomNavigation}>
-          <TouchableOpacity>
-            <Text>🏠</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigation.navigate('GigsMarketplace')}
-          >
-            <Text>💼</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('LiveStream')}>
-            <Text>📺</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Messages')}>
-            <Text>💬</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Wallet')}>
-            <Text>💰</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.bottomSpace} />
+        {/* Replace inline navigation with the component */}
       </ScrollView>
 
+      {/* Bottom Navigation Bar */}
+      <BottomNavigationBar />
+      {/* The Modal and other parts of the screen remain unchanged */}
       <Modal
         visible={isCreatorCardVisible}
         transparent={true}
@@ -262,16 +247,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     paddingVertical: 8,
   },
-  bottomNavigation: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    backgroundColor: '#332a19',
-    paddingVertical: 12,
-  },
-  bottomSpace: {
-    height: 5,
-    backgroundColor: '#332a19',
-  },
+  // Removed bottomNavigation and bottomSpace styles as they are now encapsulated
+  // or handled by the BottomNavigationBar component and its container.
+  // If MainContentScreen still needs specific spacing for where the
+  // BottomNavigationBar is placed, those styles might need to be adjusted
+  // or kept (e.g., if ScrollView needs paddingBottom).
+  // For now, assuming BottomNavigationBar handles its own styling.
 });
 
 export default MainContentScreen;
