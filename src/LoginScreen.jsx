@@ -38,7 +38,7 @@ const LoginScreen = () => {
       const response = await ApiService.login(email, password);
       if (response.success) {
         Alert.alert('Success', 'Login successful!', [
-          { text: 'OK', onPress: () => navigation.navigate('MainContent') }
+          { text: 'OK', onPress: () => navigation.navigate('MainContent') },
         ]);
       }
     } catch (error) {
@@ -89,8 +89,8 @@ const LoginScreen = () => {
 
         <Text style={styles.forgotPasswordText}>Forgot password?</Text>
 
-        <TouchableOpacity 
-          style={[styles.loginButton, loading && styles.loginButtonDisabled]} 
+        <TouchableOpacity
+          style={[styles.loginButton, loading && styles.loginButtonDisabled]}
           onPress={handleLogin}
           disabled={loading}
         >

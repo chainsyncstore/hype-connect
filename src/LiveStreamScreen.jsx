@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import {
   View,
@@ -70,7 +69,10 @@ const LiveStreamScreen = () => {
       await ApiService.endLiveStream('mock-stream-id');
       setIsStreaming(false);
       setViewers(0);
-      Alert.alert('Stream Ended', `Total earnings: ₦${totalEarnings.toLocaleString()}`);
+      Alert.alert(
+        'Stream Ended',
+        `Total earnings: ₦${totalEarnings.toLocaleString()}`,
+      );
     } catch (error) {
       console.error('Failed to end stream:', error);
       setIsStreaming(false);
@@ -143,7 +145,7 @@ const LiveStreamScreen = () => {
 
         <View style={styles.setupContainer}>
           <Text style={styles.setupTitle}>Start Your Live Stream</Text>
-          
+
           <TextInput
             style={styles.titleInput}
             placeholder="Enter stream title..."
@@ -152,15 +154,13 @@ const LiveStreamScreen = () => {
             onChangeText={setStreamTitle}
           />
 
-          <TouchableOpacity
-            style={styles.startButton}
-            onPress={startStream}
-          >
+          <TouchableOpacity style={styles.startButton} onPress={startStream}>
             <Text style={styles.startButtonText}>🔴 Go Live</Text>
           </TouchableOpacity>
 
           <Text style={styles.setupHint}>
-            Share your creative process, showcase your skills, and earn tips from viewers!
+            Share your creative process, showcase your skills, and earn tips
+            from viewers!
           </Text>
         </View>
       </View>
@@ -183,7 +183,9 @@ const LiveStreamScreen = () => {
 
       <View style={styles.streamContent}>
         <Text style={styles.streamTitle}>{streamTitle}</Text>
-        <Text style={styles.earnings}>Earnings: ₦{totalEarnings.toLocaleString()}</Text>
+        <Text style={styles.earnings}>
+          Earnings: ₦{totalEarnings.toLocaleString()}
+        </Text>
       </View>
 
       <View style={styles.interactionPanel}>
@@ -192,7 +194,7 @@ const LiveStreamScreen = () => {
           <FlatList
             data={tips.slice(0, 3)}
             renderItem={renderTip}
-            keyExtractor={(item) => item.id.toString()}
+            keyExtractor={item => item.id.toString()}
             style={styles.tipsList}
           />
         </View>
@@ -202,7 +204,7 @@ const LiveStreamScreen = () => {
           <FlatList
             data={comments.slice(0, 5)}
             renderItem={renderComment}
-            keyExtractor={(item) => item.id.toString()}
+            keyExtractor={item => item.id.toString()}
             style={styles.commentsList}
           />
         </View>
@@ -251,10 +253,7 @@ const LiveStreamScreen = () => {
               >
                 <Text style={styles.cancelButtonText}>Cancel</Text>
               </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.confirmButton}
-                onPress={sendTip}
-              >
+              <TouchableOpacity style={styles.confirmButton} onPress={sendTip}>
                 <Text style={styles.confirmButtonText}>Send Tip</Text>
               </TouchableOpacity>
             </View>

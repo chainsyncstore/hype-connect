@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import {
   View,
@@ -107,7 +106,7 @@ const GigsMarketplaceScreen = () => {
     </TouchableOpacity>
   );
 
-  const renderCategoryFilter = (category) => (
+  const renderCategoryFilter = category => (
     <TouchableOpacity
       key={category}
       style={[
@@ -160,7 +159,7 @@ const GigsMarketplaceScreen = () => {
       <FlatList
         data={gigs}
         renderItem={renderGigCard}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={item => item.id.toString()}
         numColumns={2}
         contentContainerStyle={styles.gigsGrid}
         showsVerticalScrollIndicator={false}

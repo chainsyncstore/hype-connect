@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import {
   View,
@@ -74,7 +73,7 @@ const MessagesScreen = () => {
     }
   };
 
-  const loadMessages = async (conversationId) => {
+  const loadMessages = async conversationId => {
     try {
       const data = await ApiService.getMessages(conversationId);
       setMessages(data);
@@ -108,7 +107,7 @@ const MessagesScreen = () => {
         },
         {
           id: 5,
-          text: 'Perfect! Let\'s do it. Thanks for the collaboration!',
+          text: "Perfect! Let's do it. Thanks for the collaboration!",
           sender: 'other',
           timestamp: '10:30 AM',
         },
@@ -125,7 +124,10 @@ const MessagesScreen = () => {
         id: Date.now(),
         text: newMessage,
         sender: 'me',
-        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        timestamp: new Date().toLocaleTimeString([], {
+          hour: '2-digit',
+          minute: '2-digit',
+        }),
       };
       setMessages(prev => [...prev, message]);
       setNewMessage('');
@@ -193,7 +195,7 @@ const MessagesScreen = () => {
         <FlatList
           data={conversations}
           renderItem={renderConversation}
-          keyExtractor={(item) => item.id.toString()}
+          keyExtractor={item => item.id.toString()}
           style={styles.conversationsList}
         />
       </View>
@@ -212,7 +214,9 @@ const MessagesScreen = () => {
             style={styles.chatAvatar}
           />
           <View>
-            <Text style={styles.chatUserName}>{selectedConversation.user.name}</Text>
+            <Text style={styles.chatUserName}>
+              {selectedConversation.user.name}
+            </Text>
             <Text style={styles.onlineStatus}>
               {selectedConversation.user.online ? 'Online' : 'Offline'}
             </Text>
@@ -226,7 +230,7 @@ const MessagesScreen = () => {
       <FlatList
         data={messages}
         renderItem={renderMessage}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={item => item.id.toString()}
         style={styles.messagesList}
         contentContainerStyle={styles.messagesContent}
       />

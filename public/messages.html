@@ -1,117 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; object-src 'none';" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; object-src 'none';"
+    />
     <title>Messages</title>
     <link rel="stylesheet" href="/css/styles.css" />
-</head>
-<body class="bg-gray-100 antialiased">
-
-    <div id="chatListContainer" class="container mx-auto p-4 md:p-6 lg:p-8 max-w-3xl">
-        <h1 class="text-3xl font-bold mb-6 text-gray-800">Recent Chats</h1>
-        <div id="chatList" class="bg-white rounded-lg shadow-md overflow-hidden">
-            <!-- Chat items will be added here -->
-            <div id="chat-1" class="p-4 border-b border-gray-200 hover:bg-gray-50 cursor-pointer transition duration-150 ease-in-out">
-                <h3 class="font-semibold text-lg text-gray-700">User123</h3>
-                <p class="text-sm text-gray-600 truncate">Hey, how are you doing? Just checking in.</p>
-            </div>
-            <div id="chat-2" class="p-4 border-b border-gray-200 hover:bg-gray-50 cursor-pointer transition duration-150 ease-in-out">
-                <h3 class="font-semibold text-lg text-gray-700">JaneDoe</h3>
-                <p class="text-sm text-gray-600 truncate">Let's discuss the project details later today.</p>
-            </div>
+  </head>
+  <body class="bg-gray-100 antialiased">
+    <div
+      id="chatListContainer"
+      class="container mx-auto p-4 md:p-6 lg:p-8 max-w-3xl"
+    >
+      <h1 class="text-3xl font-bold mb-6 text-gray-800">Recent Chats</h1>
+      <div id="chatList" class="bg-white rounded-lg shadow-md overflow-hidden">
+        <!-- Chat items will be added here -->
+        <div
+          id="chat-1"
+          class="p-4 border-b border-gray-200 hover:bg-gray-50 cursor-pointer transition duration-150 ease-in-out"
+        >
+          <h3 class="font-semibold text-lg text-gray-700">User123</h3>
+          <p class="text-sm text-gray-600 truncate">
+            Hey, how are you doing? Just checking in.
+          </p>
         </div>
+        <div
+          id="chat-2"
+          class="p-4 border-b border-gray-200 hover:bg-gray-50 cursor-pointer transition duration-150 ease-in-out"
+        >
+          <h3 class="font-semibold text-lg text-gray-700">JaneDoe</h3>
+          <p class="text-sm text-gray-600 truncate">
+            Let's discuss the project details later today.
+          </p>
+        </div>
+      </div>
     </div>
 
-    <div id="chatWindowContainer" class="container mx-auto p-4 md:p-6 lg:p-8 max-w-3xl hidden">
-        <div class="bg-white rounded-lg shadow-md flex flex-col h-full" style="max-height: 700px;">
-            <div id="chatWindowHeader" class="p-4 border-b border-gray-200 flex items-center">
-                <button id="backButton" class="text-blue-600 hover:text-blue-800 font-semibold p-2 rounded-md -ml-2 mr-2 transition duration-150 ease-in-out">&lt; Back</button>
-                <h2 id="chatWindowTitle" class="text-xl font-semibold text-gray-800">Chat with User</h2>
-            </div>
-            <div id="chatMessages" class="p-4 flex-grow h-96 overflow-y-auto space-y-4 bg-gray-50">
-                <!-- Messages will be added here -->
-                <div class="flex justify-start">
-                    <div class="bg-blue-500 text-white p-3 rounded-lg max-w-xs lg:max-w-md shadow">
-                        Hello!
-                    </div>
-                </div>
-                <div class="flex justify-end">
-                    <div class="bg-gray-200 text-gray-800 p-3 rounded-lg max-w-xs lg:max-w-md shadow">
-                        Hi there! Doing well, thanks for asking.
-                    </div>
-                </div>
-                <div class="flex justify-start">
-                    <div class="bg-blue-500 text-white p-3 rounded-lg max-w-xs lg:max-w-md shadow">
-                        Great! I wanted to follow up on our previous conversation.
-                    </div>
-                </div>
-                <div class="flex justify-end">
-                    <div class="bg-gray-200 text-gray-800 p-3 rounded-lg max-w-xs lg:max-w-md shadow">
-                        Sure, I'm available now.
-                    </div>
-                </div>
-            </div>
-            <div id="chatInput" class="p-4 border-t border-gray-200 bg-white">
-                <div class="flex items-center space-x-2">
-                    <input type="text" placeholder="Type a message..." class="flex-grow p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition duration-150 ease-in-out">
-                    <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold p-3 rounded-lg transition duration-150 ease-in-out shadow hover:shadow-md">
-                        Send
-                    </button>
-                </div>
-            </div>
+    <div
+      id="chatWindowContainer"
+      class="container mx-auto p-4 md:p-6 lg:p-8 max-w-3xl hidden"
+    >
+      <div
+        class="bg-white rounded-lg shadow-md flex flex-col h-full"
+        style="max-height: 700px"
+      >
+        <div
+          id="chatWindowHeader"
+          class="p-4 border-b border-gray-200 flex items-center"
+        >
+          <button
+            id="backButton"
+            class="text-blue-600 hover:text-blue-800 font-semibold p-2 rounded-md -ml-2 mr-2 transition duration-150 ease-in-out"
+          >
+            &lt; Back
+          </button>
+          <h2 id="chatWindowTitle" class="text-xl font-semibold text-gray-800">
+            Chat with User
+          </h2>
         </div>
+        <div
+          id="chatMessages"
+          class="p-4 flex-grow h-96 overflow-y-auto space-y-4 bg-gray-50"
+        >
+          <!-- Messages will be added here -->
+          <div class="flex justify-start">
+            <div
+              class="bg-blue-500 text-white p-3 rounded-lg max-w-xs lg:max-w-md shadow"
+            >
+              Hello!
+            </div>
+          </div>
+          <div class="flex justify-end">
+            <div
+              class="bg-gray-200 text-gray-800 p-3 rounded-lg max-w-xs lg:max-w-md shadow"
+            >
+              Hi there! Doing well, thanks for asking.
+            </div>
+          </div>
+          <div class="flex justify-start">
+            <div
+              class="bg-blue-500 text-white p-3 rounded-lg max-w-xs lg:max-w-md shadow"
+            >
+              Great! I wanted to follow up on our previous conversation.
+            </div>
+          </div>
+          <div class="flex justify-end">
+            <div
+              class="bg-gray-200 text-gray-800 p-3 rounded-lg max-w-xs lg:max-w-md shadow"
+            >
+              Sure, I'm available now.
+            </div>
+          </div>
+        </div>
+        <div id="chatInput" class="p-4 border-t border-gray-200 bg-white">
+          <div class="flex items-center space-x-2">
+            <input
+              type="text"
+              placeholder="Type a message..."
+              class="flex-grow p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition duration-150 ease-in-out"
+            />
+            <button
+              class="bg-blue-500 hover:bg-blue-600 text-white font-semibold p-3 rounded-lg transition duration-150 ease-in-out shadow hover:shadow-md"
+            >
+              Send
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Get references to DOM elements
-            const chatListContainer = document.getElementById('chatListContainer');
-            const chatWindowContainer = document.getElementById('chatWindowContainer');
-            const chatList = document.getElementById('chatList'); // Though not directly used for its children in this version, good to have.
-            const backButton = document.getElementById('backButton');
-            const chatWindowTitle = document.getElementById('chatWindowTitle');
+      document.addEventListener('DOMContentLoaded', function () {
+        // Get references to DOM elements
+        const chatListContainer = document.getElementById('chatListContainer');
+        const chatWindowContainer = document.getElementById(
+          'chatWindowContainer',
+        );
+        const chatList = document.getElementById('chatList'); // Though not directly used for its children in this version, good to have.
+        const backButton = document.getElementById('backButton');
+        const chatWindowTitle = document.getElementById('chatWindowTitle');
 
-            const chatItems = [
-                document.getElementById('chat-1'),
-                document.getElementById('chat-2')
-            ];
+        const chatItems = [
+          document.getElementById('chat-1'),
+          document.getElementById('chat-2'),
+        ];
 
-            // Event Listener for Chat Items
-            chatItems.forEach(item => {
-                if (item) {
-                    item.addEventListener('click', function () {
-                        // Hide chatListContainer
-                        chatListContainer.classList.add('hidden');
-                        // Show chatWindowContainer
-                        chatWindowContainer.classList.remove('hidden');
+        // Event Listener for Chat Items
+        chatItems.forEach(item => {
+          if (item) {
+            item.addEventListener('click', function () {
+              // Hide chatListContainer
+              chatListContainer.classList.add('hidden');
+              // Show chatWindowContainer
+              chatWindowContainer.classList.remove('hidden');
 
-                        // Get username from the clicked chat item
-                        const username = item.querySelector('h3').innerText;
-                        // Update chatWindowTitle
-                        chatWindowTitle.innerText = 'Chat with ' + username;
+              // Get username from the clicked chat item
+              const username = item.querySelector('h3').innerText;
+              // Update chatWindowTitle
+              chatWindowTitle.innerText = 'Chat with ' + username;
 
-                        // Optional: Scroll to top of messages
-                        const chatMessages = document.getElementById('chatMessages');
-                        if (chatMessages) {
-                            chatMessages.scrollTop = 0;
-                        }
-                    });
-                }
+              // Optional: Scroll to top of messages
+              const chatMessages = document.getElementById('chatMessages');
+              if (chatMessages) {
+                chatMessages.scrollTop = 0;
+              }
             });
-
-            // Event Listener for "Back" Button
-            if (backButton) {
-                backButton.addEventListener('click', function () {
-                    // Hide chatWindowContainer
-                    chatWindowContainer.classList.add('hidden');
-                    // Show chatListContainer
-                    chatListContainer.classList.remove('hidden');
-                });
-            }
+          }
         });
-    </script>
 
-</body>
+        // Event Listener for "Back" Button
+        if (backButton) {
+          backButton.addEventListener('click', function () {
+            // Hide chatWindowContainer
+            chatWindowContainer.classList.add('hidden');
+            // Show chatListContainer
+            chatListContainer.classList.remove('hidden');
+          });
+        }
+      });
+    </script>
+  </body>
 </html>

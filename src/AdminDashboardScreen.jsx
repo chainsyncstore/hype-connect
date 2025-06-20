@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import {
   View,
@@ -93,14 +92,17 @@ const AdminDashboardScreen = () => {
             setReportedContent(prev =>
               prev.map(report =>
                 report.id === reportId
-                  ? { ...report, status: action === 'approve' ? 'resolved' : 'dismissed' }
-                  : report
-              )
+                  ? {
+                      ...report,
+                      status: action === 'approve' ? 'resolved' : 'dismissed',
+                    }
+                  : report,
+              ),
             );
             Alert.alert('Success', `Report ${action}d successfully`);
           },
         },
-      ]
+      ],
     );
   };
 
@@ -152,10 +154,24 @@ const AdminDashboardScreen = () => {
   const renderOverview = () => (
     <ScrollView style={styles.tabContent}>
       <View style={styles.statsGrid}>
-        {renderStatCard('Total Users', dashboardData.totalUsers.toLocaleString())}
-        {renderStatCard('Active Gigs', dashboardData.activeGigs.toLocaleString())}
-        {renderStatCard('Total Revenue', `₦${dashboardData.totalRevenue.toLocaleString()}`, '#4CAF50')}
-        {renderStatCard('Pending Reports', dashboardData.pendingReports.toString(), '#FF4444')}
+        {renderStatCard(
+          'Total Users',
+          dashboardData.totalUsers.toLocaleString(),
+        )}
+        {renderStatCard(
+          'Active Gigs',
+          dashboardData.activeGigs.toLocaleString(),
+        )}
+        {renderStatCard(
+          'Total Revenue',
+          `₦${dashboardData.totalRevenue.toLocaleString()}`,
+          '#4CAF50',
+        )}
+        {renderStatCard(
+          'Pending Reports',
+          dashboardData.pendingReports.toString(),
+          '#FF4444',
+        )}
       </View>
 
       <View style={styles.section}>
@@ -163,7 +179,7 @@ const AdminDashboardScreen = () => {
         <FlatList
           data={recentActivity}
           renderItem={renderActivityItem}
-          keyExtractor={(item) => item.id.toString()}
+          keyExtractor={item => item.id.toString()}
           scrollEnabled={false}
         />
       </View>
@@ -175,7 +191,7 @@ const AdminDashboardScreen = () => {
       <FlatList
         data={reportedContent}
         renderItem={renderReportItem}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={item => item.id.toString()}
         showsVerticalScrollIndicator={false}
       />
     </View>
@@ -196,7 +212,12 @@ const AdminDashboardScreen = () => {
           style={[styles.tab, activeTab === 'overview' && styles.activeTab]}
           onPress={() => setActiveTab('overview')}
         >
-          <Text style={[styles.tabText, activeTab === 'overview' && styles.activeTabText]}>
+          <Text
+            style={[
+              styles.tabText,
+              activeTab === 'overview' && styles.activeTabText,
+            ]}
+          >
             Overview
           </Text>
         </TouchableOpacity>
@@ -204,7 +225,12 @@ const AdminDashboardScreen = () => {
           style={[styles.tab, activeTab === 'reports' && styles.activeTab]}
           onPress={() => setActiveTab('reports')}
         >
-          <Text style={[styles.tabText, activeTab === 'reports' && styles.activeTabText]}>
+          <Text
+            style={[
+              styles.tabText,
+              activeTab === 'reports' && styles.activeTabText,
+            ]}
+          >
             Reports ({dashboardData.pendingReports})
           </Text>
         </TouchableOpacity>

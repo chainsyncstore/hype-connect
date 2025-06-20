@@ -1,4 +1,3 @@
-
 // API Service Layer for Hype Connect
 const API_BASE_URL = 'https://your-api-endpoint.com/api/v1';
 const SUPABASE_URL = 'YOUR_SUPABASE_URL';
@@ -44,14 +43,14 @@ class ApiService {
   async login(email, password) {
     // Simulate API delay
     await new Promise(resolve => setTimeout(resolve, 1000));
-    
+
     // Mock successful login
     if (email && password) {
       const mockUser = {
         id: '123',
         email: email,
         name: 'Test User',
-        token: 'mock_jwt_token_12345'
+        token: 'mock_jwt_token_12345',
       };
       this.setAuthToken(mockUser.token);
       return { success: true, user: mockUser };
@@ -63,7 +62,7 @@ class ApiService {
   async signup(userData) {
     // Simulate API delay
     await new Promise(resolve => setTimeout(resolve, 1000));
-    
+
     // Mock successful signup
     if (userData.email && userData.password && userData.fullName) {
       const mockUser = {
@@ -72,7 +71,7 @@ class ApiService {
         name: userData.fullName,
         username: userData.username || userData.email.split('@')[0],
         role: userData.role || 'creator',
-        token: 'mock_jwt_token_12345'
+        token: 'mock_jwt_token_12345',
       };
       this.setAuthToken(mockUser.token);
       return { success: true, user: mockUser };
@@ -201,7 +200,7 @@ class ApiService {
       {
         method: 'POST',
         body: formData,
-      }
+      },
     );
 
     return response.json();

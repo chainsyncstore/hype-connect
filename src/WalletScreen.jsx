@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import {
   View,
@@ -98,7 +97,10 @@ const WalletScreen = () => {
         bankDetails,
       });
 
-      Alert.alert('Success', 'Withdrawal request submitted! Funds will be transferred within 24 hours.');
+      Alert.alert(
+        'Success',
+        'Withdrawal request submitted! Funds will be transferred within 24 hours.',
+      );
       setShowWithdrawModal(false);
       setWithdrawAmount('');
       setBankDetails({ accountNumber: '', bankName: '', accountName: '' });
@@ -172,7 +174,7 @@ const WalletScreen = () => {
         <FlatList
           data={transactions}
           renderItem={renderTransaction}
-          keyExtractor={(item) => item.id.toString()}
+          keyExtractor={item => item.id.toString()}
           showsVerticalScrollIndicator={false}
         />
       </View>
@@ -186,7 +188,7 @@ const WalletScreen = () => {
         <View style={styles.modalOverlay}>
           <View style={styles.withdrawModal}>
             <Text style={styles.modalTitle}>Withdraw Funds</Text>
-            
+
             <TextInput
               style={styles.input}
               placeholder="Withdrawal amount (₦)"
@@ -201,7 +203,7 @@ const WalletScreen = () => {
               placeholder="Account Number"
               placeholderTextColor="#c0b29b"
               value={bankDetails.accountNumber}
-              onChangeText={(text) =>
+              onChangeText={text =>
                 setBankDetails({ ...bankDetails, accountNumber: text })
               }
               keyboardType="numeric"
@@ -212,7 +214,7 @@ const WalletScreen = () => {
               placeholder="Bank Name"
               placeholderTextColor="#c0b29b"
               value={bankDetails.bankName}
-              onChangeText={(text) =>
+              onChangeText={text =>
                 setBankDetails({ ...bankDetails, bankName: text })
               }
             />
@@ -222,7 +224,7 @@ const WalletScreen = () => {
               placeholder="Account Name"
               placeholderTextColor="#c0b29b"
               value={bankDetails.accountName}
-              onChangeText={(text) =>
+              onChangeText={text =>
                 setBankDetails({ ...bankDetails, accountName: text })
               }
             />

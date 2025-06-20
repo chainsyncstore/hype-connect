@@ -1,4 +1,3 @@
-
 module.exports = {
   presets: [
     '@babel/preset-env',
@@ -20,7 +19,7 @@ module.exports = {
     development: {
       plugins: [
         // Explicitly exclude react-refresh
-      ]
-    }
-  }
+      ],
+    },
+  },
 };
