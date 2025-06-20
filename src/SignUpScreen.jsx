@@ -8,6 +8,7 @@ import {
   ScrollView,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import Logo from './assets/logo.png';
 
 const SignUpScreen = () => {
   const navigation = useNavigation();

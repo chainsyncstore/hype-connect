@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
+import Logo from './assets/logo.png';
 
 const LoginScreen = () => {
   console.log('LoginScreen rendered');
