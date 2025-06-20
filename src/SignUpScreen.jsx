@@ -43,13 +43,13 @@ const SignUpScreen = () => {
         email,
         username,
         password,
-        role: selectedRole
+        role: selectedRole,
       };
-      
+
       const response = await ApiService.signup(userData);
       if (response.success) {
         Alert.alert('Success', 'Account created successfully!', [
-          { text: 'OK', onPress: () => navigation.navigate('Interests') }
+          { text: 'OK', onPress: () => navigation.navigate('Interests') },
         ]);
       }
     } catch (error) {
@@ -118,22 +118,45 @@ const SignUpScreen = () => {
         </View>
 
         <View style={styles.roleContainer}>
-          <TouchableOpacity 
-            style={[styles.roleButton, selectedRole === 'creator' && styles.roleButtonSelected]}
+          <TouchableOpacity
+            style={[
+              styles.roleButton,
+              selectedRole === 'creator' && styles.roleButtonSelected,
+            ]}
             onPress={() => setSelectedRole('creator')}
           >
-            <Text style={[styles.roleButtonText, selectedRole === 'creator' && styles.roleButtonTextSelected]}>Creator</Text>
+            <Text
+              style={[
+                styles.roleButtonText,
+                selectedRole === 'creator' && styles.roleButtonTextSelected,
+              ]}
+            >
+              Creator
+            </Text>
           </TouchableOpacity>
-          <TouchableOpacity 
-            style={[styles.roleButton, selectedRole === 'client' && styles.roleButtonSelected]}
+          <TouchableOpacity
+            style={[
+              styles.roleButton,
+              selectedRole === 'client' && styles.roleButtonSelected,
+            ]}
             onPress={() => setSelectedRole('client')}
           >
-            <Text style={[styles.roleButtonText, selectedRole === 'client' && styles.roleButtonTextSelected]}>Client</Text>
+            <Text
+              style={[
+                styles.roleButtonText,
+                selectedRole === 'client' && styles.roleButtonTextSelected,
+              ]}
+            >
+              Client
+            </Text>
           </TouchableOpacity>
         </View>
 
         <TouchableOpacity
-          style={[styles.continueButton, loading && styles.continueButtonDisabled]}
+          style={[
+            styles.continueButton,
+            loading && styles.continueButtonDisabled,
+          ]}
           onPress={handleSignup}
           disabled={loading}
         >

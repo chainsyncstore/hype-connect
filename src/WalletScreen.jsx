@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import {
   View,
@@ -98,7 +97,10 @@ const WalletScreen = () => {
         bankDetails,
       });
 
-      Alert.alert('Success', 'Withdrawal request submitted! Funds will be transferred within 24 hours.');
+      Alert.alert(
+        'Success',
+        'Withdrawal request submitted! Funds will be transferred within 24 hours.'
+      );
       setShowWithdrawModal(false);
       setWithdrawAmount('');
       setBankDetails({ accountNumber: '', bankName: '', accountName: '' });
@@ -186,7 +188,7 @@ const WalletScreen = () => {
         <View style={styles.modalOverlay}>
           <View style={styles.withdrawModal}>
             <Text style={styles.modalTitle}>Withdraw Funds</Text>
-            
+
             <TextInput
               style={styles.input}
               placeholder="Withdrawal amount (₦)"
