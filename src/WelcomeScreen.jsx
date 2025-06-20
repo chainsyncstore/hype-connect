@@ -12,19 +12,37 @@ const WelcomeScreen = () => {
     console.log('WelcomeScreen mounted');
 
     const handleTouchStart = event => {
+      if (!event.touches || event.touches.length === 0) {
+        console.log('Touch start detected, but no touch data available.');
+        return;
+      }
+      const touch = event.touches[0];
+      if (!touch) {
+        console.log('Touch start detected, but touch object is null.');
+        return;
+      }
       console.log('Touch start detected:', {
-        identifier: event.touches[0]?.identifier,
-        pageX: event.touches[0]?.pageX,
-        pageY: event.touches[0]?.pageY,
+        identifier: touch.identifier,
+        pageX: touch.pageX,
+        pageY: touch.pageY,
         timestamp: event.timeStamp,
       });
     };
 
     const handleTouchEnd = event => {
+      if (!event.changedTouches || event.changedTouches.length === 0) {
+        console.log('Touch end detected, but no touch data available.');
+        return;
+      }
+      const touch = event.changedTouches[0];
+      if (!touch) {
+        console.log('Touch end detected, but touch object is null.');
+        return;
+      }
       console.log('Touch end detected:', {
-        identifier: event.changedTouches[0]?.identifier,
-        pageX: event.changedTouches[0]?.pageX,
-        pageY: event.changedTouches[0]?.pageY,
+        identifier: touch.identifier,
+        pageX: touch.pageX,
+        pageY: touch.pageY,
         timestamp: event.timeStamp,
       });
       console.log('Current Touch Bank:', event.targetTouches);
