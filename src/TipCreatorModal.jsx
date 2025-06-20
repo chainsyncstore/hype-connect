@@ -48,7 +48,7 @@ const TipCreatorModal = ({ visible, onClose, onSendTip }) => {
           </Text>
 
           <ScrollView horizontal contentContainerStyle={styles.amountContainer}>
-            {[500, 1000, 5000].map(amount => (
+            {[500, 1000, 5000].map((amount) => (
               <TouchableOpacity key={amount} style={styles.amountButton}>
                 <Text style={styles.amountText}>₦{amount}</Text>
               </TouchableOpacity>

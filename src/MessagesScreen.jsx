@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import {
   View,
@@ -108,7 +107,7 @@ const MessagesScreen = () => {
         },
         {
           id: 5,
-          text: 'Perfect! Let\'s do it. Thanks for the collaboration!',
+          text: "Perfect! Let's do it. Thanks for the collaboration!",
           sender: 'other',
           timestamp: '10:30 AM',
         },
@@ -125,9 +124,12 @@ const MessagesScreen = () => {
         id: Date.now(),
         text: newMessage,
         sender: 'me',
-        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        timestamp: new Date().toLocaleTimeString([], {
+          hour: '2-digit',
+          minute: '2-digit',
+        }),
       };
-      setMessages(prev => [...prev, message]);
+      setMessages((prev) => [...prev, message]);
       setNewMessage('');
     } catch (error) {
       console.error('Failed to send message:', error);
@@ -212,7 +214,9 @@ const MessagesScreen = () => {
             style={styles.chatAvatar}
           />
           <View>
-            <Text style={styles.chatUserName}>{selectedConversation.user.name}</Text>
+            <Text style={styles.chatUserName}>
+              {selectedConversation.user.name}
+            </Text>
             <Text style={styles.onlineStatus}>
               {selectedConversation.user.online ? 'Online' : 'Offline'}
             </Text>

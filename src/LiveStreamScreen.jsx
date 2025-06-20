@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import {
   View,
@@ -29,7 +28,7 @@ const LiveStreamScreen = () => {
     // Mock real-time updates
     const interval = setInterval(() => {
       if (isStreaming) {
-        setViewers(prev => prev + Math.floor(Math.random() * 3) - 1);
+        setViewers((prev) => prev + Math.floor(Math.random() * 3) - 1);
         // Simulate incoming tips and comments
         if (Math.random() > 0.7) {
           const mockTip = {
@@ -38,8 +37,8 @@ const LiveStreamScreen = () => {
             amount: Math.floor(Math.random() * 5000) + 500,
             timestamp: new Date(),
           };
-          setTips(prev => [mockTip, ...prev]);
-          setTotalEarnings(prev => prev + mockTip.amount);
+          setTips((prev) => [mockTip, ...prev]);
+          setTotalEarnings((prev) => prev + mockTip.amount);
         }
       }
     }, 3000);
@@ -70,7 +69,10 @@ const LiveStreamScreen = () => {
       await ApiService.endLiveStream('mock-stream-id');
       setIsStreaming(false);
       setViewers(0);
-      Alert.alert('Stream Ended', `Total earnings: ₦${totalEarnings.toLocaleString()}`);
+      Alert.alert(
+        'Stream Ended',
+        `Total earnings: ₦${totalEarnings.toLocaleString()}`
+      );
     } catch (error) {
       console.error('Failed to end stream:', error);
       setIsStreaming(false);
@@ -86,7 +88,7 @@ const LiveStreamScreen = () => {
         text: newComment,
         timestamp: new Date(),
       };
-      setComments(prev => [comment, ...prev]);
+      setComments((prev) => [comment, ...prev]);
       setNewComment('');
     }
   };
@@ -106,8 +108,8 @@ const LiveStreamScreen = () => {
         amount,
         timestamp: new Date(),
       };
-      setTips(prev => [tip, ...prev]);
-      setTotalEarnings(prev => prev + amount);
+      setTips((prev) => [tip, ...prev]);
+      setTotalEarnings((prev) => prev + amount);
       setShowTipModal(false);
       setTipAmount('');
       Alert.alert('Success', `Tip of ₦${amount} sent!`);
@@ -143,7 +145,7 @@ const LiveStreamScreen = () => {
 
         <View style={styles.setupContainer}>
           <Text style={styles.setupTitle}>Start Your Live Stream</Text>
-          
+
           <TextInput
             style={styles.titleInput}
             placeholder="Enter stream title..."
@@ -152,15 +154,13 @@ const LiveStreamScreen = () => {
             onChangeText={setStreamTitle}
           />
 
-          <TouchableOpacity
-            style={styles.startButton}
-            onPress={startStream}
-          >
+          <TouchableOpacity style={styles.startButton} onPress={startStream}>
             <Text style={styles.startButtonText}>🔴 Go Live</Text>
           </TouchableOpacity>
 
           <Text style={styles.setupHint}>
-            Share your creative process, showcase your skills, and earn tips from viewers!
+            Share your creative process, showcase your skills, and earn tips
+            from viewers!
           </Text>
         </View>
       </View>
@@ -183,7 +183,9 @@ const LiveStreamScreen = () => {
 
       <View style={styles.streamContent}>
         <Text style={styles.streamTitle}>{streamTitle}</Text>
-        <Text style={styles.earnings}>Earnings: ₦{totalEarnings.toLocaleString()}</Text>
+        <Text style={styles.earnings}>
+          Earnings: ₦{totalEarnings.toLocaleString()}
+        </Text>
       </View>
 
       <View style={styles.interactionPanel}>
@@ -251,10 +253,7 @@ const LiveStreamScreen = () => {
               >
                 <Text style={styles.cancelButtonText}>Cancel</Text>
               </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.confirmButton}
-                onPress={sendTip}
-              >
+              <TouchableOpacity style={styles.confirmButton} onPress={sendTip}>
                 <Text style={styles.confirmButtonText}>Send Tip</Text>
               </TouchableOpacity>
             </View>

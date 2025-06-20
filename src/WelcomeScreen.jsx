@@ -5,7 +5,7 @@ const WelcomeScreen = ({ navigation }) => {
   useEffect(() => {
     console.log('WelcomeScreen mounted');
 
-    const handleTouchStart = event => {
+    const handleTouchStart = (event) => {
       console.log('Touch start detected:', {
         identifier: event.touches[0]?.identifier,
         pageX: event.touches[0]?.pageX,
@@ -14,7 +14,7 @@ const WelcomeScreen = ({ navigation }) => {
       });
     };
 
-    const handleTouchEnd = event => {
+    const handleTouchEnd = (event) => {
       console.log('Touch end detected:', {
         identifier: event.changedTouches[0]?.identifier,
         pageX: event.changedTouches[0]?.pageX,
