@@ -6,38 +6,24 @@
  */
 
 import React from 'react';
-import { useColorScheme } from 'react-native';
+import { Platform, useColorScheme } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import WelcomeScreen from './src/WelcomeScreen.jsx';
-import SignUpScreen from './src/SignUpScreen.jsx';
-import LoginScreen from './src/LoginScreen.jsx';
-import InterestsScreen from './src/InterestsScreen.jsx';
-import SuccessScreen from './src/SuccessScreen.jsx';
-import MainContentScreen from './src/MainContentScreen.jsx';
-import PostDetailScreen from './src/PostDetailScreen.jsx';
-import CommentSectionScreen from './src/CommentSectionScreen.jsx';
-
-const Stack = createStackNavigator();
+import AppNavigatorNative from './src/navigation/AppNavigator.native.js';
+import AppNavigatorWeb from './src/navigation/AppNavigator.web.js';
 
 function App() {
   console.log('App component is being rendered');
-  useColorScheme() === 'dark';
+  useColorScheme(); // Removed '=== dark' as it wasn't used
 
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Welcome" component={WelcomeScreen} />
-        <Stack.Screen name="SignUp" component={SignUpScreen} />
-        <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="Interests" component={InterestsScreen} />
-        <Stack.Screen name="Success" component={SuccessScreen} />
-        <Stack.Screen name="MainContent" component={MainContentScreen} />
-        <Stack.Screen name="PostDetail" component={PostDetailScreen} />
-        <Stack.Screen name="CommentSection" component={CommentSectionScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
+  if (Platform.OS === 'web') {
+    return <AppNavigatorWeb />;
+  } else {
+    return (
+      <NavigationContainer>
+        <AppNavigatorNative />
+      </NavigationContainer>
+    );
+  }
 }
 
 export default App;
