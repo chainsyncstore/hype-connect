@@ -12,6 +12,7 @@ import {
 import CreatorCard from './CreatorCard';
 
 const MainContentScreen = () => {
+  console.log('MainContentScreen is rendering');
   const navigation = useNavigation();
 
   const [isCreatorCardVisible, setIsCreatorCardVisible] = useState(false);

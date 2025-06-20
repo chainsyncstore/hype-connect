@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 
 const InterestsScreen = () => {
+  console.log('InterestsScreen is rendering');
   const navigation = useNavigation();
   const interests = [
     'Music Production',

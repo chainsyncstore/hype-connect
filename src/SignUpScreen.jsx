@@ -10,6 +10,7 @@ import {
 import { useNavigation } from '@react-navigation/native';
 
 const SignUpScreen = () => {
+  console.log('SignUpScreen is rendering');
   const navigation = useNavigation();
 
   console.log('SignUpScreen rendered');

@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 
 const LoginScreen = () => {
+  console.log('LoginScreen is rendering');
   console.log('LoginScreen rendered');
 
   useEffect(() => {

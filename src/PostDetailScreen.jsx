@@ -3,6 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
 
 const PostDetailScreen = () => {
+  console.log('PostDetailScreen is rendering');
   const navigation = useNavigation();
 
   console.log('PostDetailScreen rendered');

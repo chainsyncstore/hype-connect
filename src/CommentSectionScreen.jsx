@@ -13,6 +13,7 @@ import { useNavigation } from '@react-navigation/native';
 import ReportBlockModal from './ReportBlockModal';
 
 const CommentSectionScreen = () => {
+  console.log('CommentSectionScreen is rendering');
   const navigation = useNavigation();
   const [modalVisible, setModalVisible] = useState(false);
 

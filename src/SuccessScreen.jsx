@@ -3,6 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 
 const SuccessScreen = () => {
+  console.log('SuccessScreen is rendering');
   const navigation = useNavigation();
   console.log('SuccessScreen rendered');
 

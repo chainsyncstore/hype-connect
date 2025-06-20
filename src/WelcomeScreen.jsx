@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import Logo from './assets/logo.png';
 
 const WelcomeScreen = () => {
+  console.log('WelcomeScreen is rendering');
   const navigation = useNavigation();
 
   console.log('WelcomeScreen rendered');

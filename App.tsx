@@ -26,6 +26,7 @@ function App() {
 
   return (
     <NavigationContainer>
+      {console.log('NavigationContainer is rendering')}
       <Stack.Navigator>
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
         <Stack.Screen name="SignUp" component={SignUpScreen} />
