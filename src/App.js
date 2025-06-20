@@ -21,6 +21,7 @@ const Stack = createNativeStackNavigator();
 
 function App() {
   console.log('App component is being rendered');
+  console.log('src/App.js: App component rendering. Initial route: Welcome');
 
   return (
     <NavigationContainer>

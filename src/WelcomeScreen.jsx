@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 const WelcomeScreen = ({ navigation }) => {
+  console.log('src/WelcomeScreen.jsx: navigation prop:', navigation);
   useEffect(() => {
     console.log('WelcomeScreen mounted');
 
@@ -35,10 +36,12 @@ const WelcomeScreen = ({ navigation }) => {
   }, []);
 
   const handleJoinToConnect = () => {
+    console.log('src/WelcomeScreen.jsx: Attempting to navigate to SignUp...');
     navigation.navigate('SignUp');
   };
 
   const handleLogin = () => {
+    console.log('src/WelcomeScreen.jsx: Attempting to navigate to Login...');
     navigation.navigate('Login');
   };
 

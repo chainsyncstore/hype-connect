@@ -11,7 +11,7 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import ApiService from './services/api';
 
-const LoginScreen = () => {
+const LoginScreen = (props) => { // Added props here
   const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -20,8 +20,12 @@ const LoginScreen = () => {
   console.log('LoginScreen rendered');
 
   useEffect(() => {
-    return () => {};
-  }, []);
+    console.log('LoginScreen.jsx: LoginScreen mounted');
+    console.log('LoginScreen.jsx: Props:', props);
+    return () => {
+      console.log('LoginScreen.jsx: LoginScreen unmounted');
+    };
+  }, [props]); // Added props to dependency array
 
   const handleLogin = async () => {
     if (!email || !password) {
