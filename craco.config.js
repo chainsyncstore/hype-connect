@@ -7,15 +7,31 @@ module.exports = {
   },
   webpack: {
     configure: (webpackConfig, { env, paths }) => {
-      // Disable React Fast Refresh for better compatibility
+      // Completely disable React Fast Refresh to prevent import issues
       if (env === 'development') {
-        const reactRefreshPlugin = webpackConfig.plugins.find(
-          plugin => plugin.constructor.name === 'ReactRefreshWebpackPlugin'
+        // Remove React Refresh plugin
+        webpackConfig.plugins = webpackConfig.plugins.filter(
+          plugin => plugin.constructor.name !== 'ReactRefreshWebpackPlugin'
         );
-        if (reactRefreshPlugin) {
-          webpackConfig.plugins = webpackConfig.plugins.filter(
-            plugin => plugin !== reactRefreshPlugin
-          );
+        
+        // Remove React Refresh babel plugin
+        const babelRule = webpackConfig.module.rules.find(
+          rule => rule.oneOf
+        );
+        if (babelRule && babelRule.oneOf) {
+          babelRule.oneOf.forEach(rule => {
+            if (rule.use && Array.isArray(rule.use)) {
+              rule.use.forEach(use => {
+                if (use.loader && use.loader.includes('babel-loader')) {
+                  if (use.options && use.options.plugins) {
+                    use.options.plugins = use.options.plugins.filter(
+                      plugin => !plugin.includes('react-refresh')
+                    );
+                  }
+                }
+              });
+            }
+          });
         }
       }
 
