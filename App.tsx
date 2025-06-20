@@ -17,6 +17,7 @@ import SuccessScreen from './src/SuccessScreen.jsx';
 import MainContentScreen from './src/MainContentScreen.jsx';
 import PostDetailScreen from './src/PostDetailScreen.jsx';
 import CommentSectionScreen from './src/CommentSectionScreen.jsx';
+import ErrorBoundary from './src/ErrorBoundary.js'; // Import ErrorBoundary
 
 const Stack = createStackNavigator();
 
@@ -25,9 +26,10 @@ function App() {
   useColorScheme() === 'dark';
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Welcome" component={WelcomeScreen} />
+    <ErrorBoundary> {/* Wrap NavigationContainer with ErrorBoundary */}
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Welcome" component={WelcomeScreen} />
         <Stack.Screen name="SignUp" component={SignUpScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Interests" component={InterestsScreen} />
@@ -37,6 +39,7 @@ function App() {
         <Stack.Screen name="CommentSection" component={CommentSectionScreen} />
       </Stack.Navigator>
     </NavigationContainer>
+    </ErrorBoundary>
   );
 }
 
