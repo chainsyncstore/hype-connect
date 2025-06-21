@@ -1,11 +1,11 @@
-modules = ["nodejs-18", "web"]
-run = "npm run start"
+modules = ["nodejs-18", "web", "java-graalvm22.3"]
+run = "npm run build"
 
 [nix]
 channel = "stable-24_05"
 
 [deployment]
-run = ["sh", "-c", "npm run start"]
+run = ["sh", "-c", "npm run build"]
 
 [[ports]]
 localPort = 3000
