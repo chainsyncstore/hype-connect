@@ -1,30 +1,33 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" href="/css/styles.css" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; object-src 'none';"
-    />
-    <meta name="theme-color" content="#1B1B1E" />
-    <meta name="description" content="Hype Connect - Creative Gig Platform" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Hype Connect</title>
     <style>
-      body {
+      * {
         margin: 0;
         padding: 0;
-        background-color: #1b1b1e;
-        color: #ffffff;
+        box-sizing: border-box;
       }
-      #app-root {
+      
+      html, body {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+      }
+      
+      #root {
         height: 100vh;
         width: 100vw;
+        display: flex;
+        flex-direction: column;
       }
     </style>
   </head>
   <body>
-    <div id="app-root"></div>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
   </body>
 </html>

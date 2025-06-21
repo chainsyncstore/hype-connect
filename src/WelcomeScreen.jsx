@@ -1,7 +1,11 @@
+
 import React, { useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-const WelcomeScreen = ({ navigation }) => {
+const WelcomeScreen = () => {
+  const navigation = useNavigation();
+
   useEffect(() => {
     console.log('WelcomeScreen mounted');
 
@@ -24,21 +28,27 @@ const WelcomeScreen = ({ navigation }) => {
       console.log('Current Touch Bank:', event.targetTouches);
     };
 
-    window.addEventListener('touchstart', handleTouchStart);
-    window.addEventListener('touchend', handleTouchEnd);
+    if (typeof window !== 'undefined') {
+      window.addEventListener('touchstart', handleTouchStart);
+      window.addEventListener('touchend', handleTouchEnd);
+    }
 
     return () => {
       console.log('WelcomeScreen unmounted');
-      window.removeEventListener('touchstart', handleTouchStart);
-      window.removeEventListener('touchend', handleTouchEnd);
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('touchstart', handleTouchStart);
+        window.removeEventListener('touchend', handleTouchEnd);
+      }
     };
   }, []);
 
   const handleJoinToConnect = () => {
+    console.log('Navigating to SignUp');
     navigation.navigate('SignUp');
   };
 
   const handleLogin = () => {
+    console.log('Navigating to Login');
     navigation.navigate('Login');
   };
 

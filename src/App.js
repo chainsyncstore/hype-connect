@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -19,11 +20,32 @@ import AdminDashboardScreen from './AdminDashboardScreen';
 
 const Stack = createNativeStackNavigator();
 
+const linking = {
+  prefixes: ['http://localhost:3000', 'https://your-repl-url.repl.co'],
+  config: {
+    screens: {
+      Welcome: '',
+      SignUp: 'signup',
+      Login: 'login',
+      Interests: 'interests',
+      Success: 'success',
+      MainContent: 'main',
+      PostDetail: 'post/:id',
+      CommentSection: 'comments/:id',
+      Gigs: 'gigs',
+      LiveStream: 'live',
+      Wallet: 'wallet',
+      Messages: 'messages',
+      Admin: 'admin',
+    },
+  },
+};
+
 function App() {
   console.log('App component is being rendered');
 
   return (
-    <NavigationContainer>
+    <NavigationContainer linking={linking}>
       <Stack.Navigator
         initialRouteName="Welcome"
         screenOptions={{
