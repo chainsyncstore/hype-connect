@@ -20,13 +20,14 @@ const SignUpScreen = () => {
   const [selectedRole, setSelectedRole] = useState('creator');
   const [loading, setLoading] = useState(false);
 
-  console.log('SignUpScreen rendered');
+  console.log('[SignUpScreen] Component rendering'); // Added for debugging
 
   useEffect(() => {
-    console.log('SignUpScreen mounted');
+    console.log('[SignUpScreen] useEffect mounting'); // Added for debugging
+    console.log('SignUpScreen mounted'); // Original log
 
     return () => {
-      console.log('SignUpScreen unmounted');
+      console.log('SignUpScreen unmounted'); // Original log
     };
   }, []);
 

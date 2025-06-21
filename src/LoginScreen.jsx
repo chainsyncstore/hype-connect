@@ -17,9 +17,10 @@ const LoginScreen = () => {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
-  console.log('LoginScreen rendered');
+  console.log('[LoginScreen] Component rendering'); // Added for debugging
 
   useEffect(() => {
+    console.log('[LoginScreen] useEffect mounting'); // Added for debugging
     return () => {};
   }, []);
 
