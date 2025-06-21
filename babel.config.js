@@ -1,25 +1,9 @@
-module.exports = {
-  presets: [
-    '@babel/preset-env',
-    'module:metro-react-native-babel-preset',
-    [
-      '@babel/preset-react',
-      {
-        runtime: 'automatic', // Enable modern JSX transform
-      },
-    ],
-  ],
-  plugins: [
-    '@babel/plugin-transform-optional-chaining',
-    ['@babel/plugin-transform-class-properties', { loose: true }],
-    ['@babel/plugin-transform-private-methods', { loose: true }],
-    ['@babel/plugin-transform-private-property-in-object', { loose: true }],
-  ],
-  env: {
-    development: {
-      plugins: [
-        // Explicitly exclude react-refresh
-      ],
-    },
-  },
+module.exports = function(api) {
+  api.cache(true);
+  return {
+    presets: ['babel-preset-expo'],
+    // Plugins can be added here if specific ones are needed beyond what babel-preset-expo provides
+    // For example, if you still need react-native-reanimated/plugin, it would go here.
+    // plugins: ['react-native-reanimated/plugin'],
+  };
 };
