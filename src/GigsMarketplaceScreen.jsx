@@ -9,11 +9,9 @@ import {
   Image,
   ScrollView,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import ApiService from './services/api';
 
-const GigsMarketplaceScreen = () => {
-  const navigation = useNavigation();
+const GigsMarketplaceScreen = ({ navigation }) => {
   const [gigs, setGigs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');

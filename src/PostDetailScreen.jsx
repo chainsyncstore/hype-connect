@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
-import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
 
-const PostDetailScreen = () => {
-  const navigation = useNavigation();
+const PostDetailScreen = ({ navigation }) => {
 
   useEffect(() => {
     return () => {};

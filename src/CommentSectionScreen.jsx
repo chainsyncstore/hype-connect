@@ -8,12 +8,10 @@ import {
   Image,
   TextInput,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 
 import ReportBlockModal from './ReportBlockModal';
 
-const CommentSectionScreen = () => {
-  const navigation = useNavigation();
+const CommentSectionScreen = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
 
   console.log('CommentSectionScreen rendered');

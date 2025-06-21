@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
-import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 
-const SuccessScreen = () => {
-  const navigation = useNavigation();
+const SuccessScreen = ({ navigation }) => {
 
   useEffect(() => {
     return () => {};

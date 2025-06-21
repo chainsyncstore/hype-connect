@@ -28,7 +28,7 @@ const followers = [
   // Add more followers here
 ];
 
-const FollowersListScreen = () => {
+const FollowersListScreen = ({ navigation }) => {
   useEffect(() => {
     return () => {};
   }, []);

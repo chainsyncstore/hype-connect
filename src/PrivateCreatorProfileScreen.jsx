@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import ProfileMenuModal from './ProfileMenuModal';
 
-const PrivateCreatorProfileScreen = () => {
+const PrivateCreatorProfileScreen = ({ navigation }) => {
   const [menuVisible, setMenuVisible] = useState(false);
 
   console.log('PrivateCreatorProfileScreen rendered');
@@ -80,6 +80,7 @@ const PrivateCreatorProfileScreen = () => {
       <ProfileMenuModal
         visible={menuVisible}
         onClose={() => setMenuVisible(false)}
+        navigation={navigation}
       />
     </React.Fragment>
   );
