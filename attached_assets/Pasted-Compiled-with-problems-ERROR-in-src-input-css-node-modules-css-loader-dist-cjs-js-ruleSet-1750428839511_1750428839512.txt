@@ -56,7 +56,7 @@ ERROR in ./src/webIndex.js 1:40-111
 Module not found: Error: You attempted to import /home/runner/workspace/node_modules/react-refresh/runtime.js which falls outside of the project src/ directory. Relative imports outside of src/ are not supported.
 You can either move it inside src/, or add a symlink to it from project's node_modules/.
 ERROR
-[eslint] 
+[eslint]
 src/LoginScreen.jsx
   Line 41:76:  Insert `,`  prettier/prettier
   Line 92:26:  Delete `·`  prettier/prettier

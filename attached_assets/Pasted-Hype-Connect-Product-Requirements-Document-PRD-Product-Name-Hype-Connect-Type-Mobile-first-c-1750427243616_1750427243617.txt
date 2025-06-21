@@ -1,4 +1,4 @@
-Hype Connect 
+Hype Connect
 
 Product Requirements Document (PRD)
 
@@ -149,4 +149,4 @@ Flutterwave	Payments & payouts	Supports NG + global; test keys
 Cloudinary	Media uploads	Secure image/video hosting
 Supabase	Auth + DB + storage	Optionally Firebase
 Twilio	SMS verification	Optional
-Firebase	Fallback for messaging or push notifications	
+Firebase	Fallback for messaging or push notifications

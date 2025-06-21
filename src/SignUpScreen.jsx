@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import {
   StyleSheet,
@@ -63,14 +64,15 @@ const SignUpScreen = () => {
     navigation.navigate('Login');
   };
 
+  const handleGoBack = () => {
+    navigation.goBack();
+  };
+
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.header}>
-          <TouchableOpacity
-            style={styles.backButton}
-            onPress={() => navigation.goBack()}
-          >
+          <TouchableOpacity style={styles.backButton} onPress={handleGoBack}>
             <Text style={styles.backButtonText}>{'<'}</Text>
           </TouchableOpacity>
           <Text style={styles.headerTitle}>Sign Up</Text>

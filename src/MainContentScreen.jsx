@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigation } from '@react-navigation/native';
 import {
   StyleSheet,
   View,
@@ -11,8 +10,7 @@ import {
 } from 'react-native';
 import CreatorCard from './CreatorCard';
 
-const MainContentScreen = () => {
-  const navigation = useNavigation();
+const MainContentScreen = ({ navigation }) => {
 
   const [isCreatorCardVisible, setIsCreatorCardVisible] = useState(false);
 

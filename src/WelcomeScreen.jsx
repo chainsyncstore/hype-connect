@@ -1,44 +1,54 @@
+
 import React, { useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-const WelcomeScreen = ({ navigation }) => {
-  // useEffect(() => {
-  //   console.log('WelcomeScreen mounted');
-  //
-  //   const handleTouchStart = (event) => {
-  //     console.log('Touch start detected:', {
-  //       identifier: event.touches[0]?.identifier,
-  //       pageX: event.touches[0]?.pageX,
-  //       pageY: event.touches[0]?.pageY,
-  //       timestamp: event.timeStamp,
-  //     });
-  //   };
-  //
-  //   const handleTouchEnd = (event) => {
-  //     console.log('Touch end detected:', {
-  //       identifier: event.changedTouches[0]?.identifier,
-  //       pageX: event.changedTouches[0]?.pageX,
-  //       pageY: event.touches[0]?.pageY,
-  //       timestamp: event.timeStamp,
-  //     });
-  //     console.log('Current Touch Bank:', event.targetTouches);
-  //   };
-  //
-  //   window.addEventListener('touchstart', handleTouchStart);
-  //   window.addEventListener('touchend', handleTouchEnd);
-  //
-  //   return () => {
-  //     console.log('WelcomeScreen unmounted');
-  //     window.removeEventListener('touchstart', handleTouchStart);
-  //     window.removeEventListener('touchend', handleTouchEnd);
-  //   };
-  // }, []);
+const WelcomeScreen = () => {
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    console.log('WelcomeScreen mounted');
+
+    const handleTouchStart = (event) => {
+      console.log('Touch start detected:', {
+        identifier: event.touches[0]?.identifier,
+        pageX: event.touches[0]?.pageX,
+        pageY: event.touches[0]?.pageY,
+        timestamp: event.timeStamp,
+      });
+    };
+
+    const handleTouchEnd = (event) => {
+      console.log('Touch end detected:', {
+        identifier: event.changedTouches[0]?.identifier,
+        pageX: event.changedTouches[0]?.pageX,
+        pageY: event.touches[0]?.pageY,
+        timestamp: event.timeStamp,
+      });
+      console.log('Current Touch Bank:', event.targetTouches);
+    };
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('touchstart', handleTouchStart);
+      window.addEventListener('touchend', handleTouchEnd);
+    }
+
+    return () => {
+      console.log('WelcomeScreen unmounted');
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('touchstart', handleTouchStart);
+        window.removeEventListener('touchend', handleTouchEnd);
+      }
+    };
+  }, []);
 
   const handleJoinToConnect = () => {
+    console.log('Navigating to SignUp');
     navigation.navigate('SignUp');
   };
 
   const handleLogin = () => {
+    console.log('Navigating to Login');
     navigation.navigate('Login');
   };
 

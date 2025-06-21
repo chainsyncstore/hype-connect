@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-const PublicCreatorProfileScreen = () => {
+const PublicCreatorProfileScreen = ({ navigation }) => {
   console.log('PublicCreatorProfileScreen rendered');
 
   useEffect(() => {

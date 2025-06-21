@@ -8,11 +8,9 @@ import {
   TextInput,
   Image,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import ApiService from './services/api';
 
-const MessagesScreen = () => {
-  const navigation = useNavigation();
+const MessagesScreen = ({ navigation }) => {
   const [conversations, setConversations] = useState([]);
   const [selectedConversation, setSelectedConversation] = useState(null);
   const [messages, setMessages] = useState([]);

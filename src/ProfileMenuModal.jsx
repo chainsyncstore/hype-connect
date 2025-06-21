@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
-import { useNavigation } from '@react-navigation/native';
 import { View, Text, TouchableOpacity, StyleSheet, Modal } from 'react-native';
-import { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 const ProfileMenuModal = ({ visible, onClose }) => {
   const navigation = useNavigation();

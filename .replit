@@ -1,11 +1,11 @@
-modules = ["nodejs-18", "web"]
-run = "npm run start"
+modules = ["nodejs-18", "web", "java-graalvm22.3"]
+run = "npm run build"
 
 [nix]
 channel = "stable-24_05"
 
 [deployment]
-run = ["sh", "-c", "npm run start"]
+run = ["sh", "-c", "npm run build"]
 
 [[ports]]
 localPort = 3000
@@ -22,6 +22,10 @@ runButton = "Start Development Server"
 name = "Start Development Server"
 author = 44061600
 mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm install"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"

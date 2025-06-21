@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { useNavigation } from '@react-navigation/native';
 import {
   StyleSheet,
   View,
@@ -8,8 +7,7 @@ import {
   ScrollView,
 } from 'react-native';
 
-const InterestsScreen = () => {
-  const navigation = useNavigation();
+const InterestsScreen = ({ navigation }) => {
   const interests = [
     'Music Production',
     'Videography',

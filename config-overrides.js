@@ -1,15 +1,28 @@
-module.exports = function override(config, env) {
-  // Add a rule to handle .mjs files and disable fullySpecified
-  // This is to handle issues like the one with @react-navigation/native
-  // Ensure config.module and config.module.rules exist
-  config.module = config.module || {};
-  config.module.rules = config.module.rules || [];
 
-  config.module.rules.push({
-    test: /\.m?js$/,
-    resolve: {
-      fullySpecified: false,
+const { override, addBabelPlugin, disableEsLint } = require('customize-cra');
+
+module.exports = override(
+  disableEsLint(),
+  addBabelPlugin([
+    'react-refresh/babel',
+    {
+      skipEnvCheck: true,
     },
-  });
-  return config;
-};
+  ]),
+  (config) => {
+    // Disable react-refresh for production builds
+    if (process.env.NODE_ENV === 'production') {
+      config.plugins = config.plugins.filter(
+        (plugin) => !plugin.constructor.name.includes('ReactRefreshPlugin')
+      );
+    }
+
+    // Fix module resolution for react-refresh
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      'react-refresh/runtime': require.resolve('react-refresh/runtime'),
+    };
+
+    return config;
+  }
+);

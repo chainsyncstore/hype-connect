@@ -1,7 +1,7 @@
 Compiled with problems:
 ×
 ERROR
-[eslint] 
+[eslint]
 src/LoginScreen.jsx
   Line 41:76:  Insert `,`  prettier/prettier
   Line 92:26:  Delete `·`  prettier/prettier

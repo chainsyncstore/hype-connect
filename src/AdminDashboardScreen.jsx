@@ -8,10 +8,8 @@ import {
   Alert,
   ScrollView,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 
-const AdminDashboardScreen = () => {
-  const navigation = useNavigation();
+const AdminDashboardScreen = ({ navigation }) => {
   const [activeTab, setActiveTab] = useState('overview');
   const [dashboardData, setDashboardData] = useState({
     totalUsers: 0,
