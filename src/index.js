@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 import React from 'react';
 import { AppRegistry } from 'react-native';
@@ -13,3 +14,6 @@ if (typeof document !== 'undefined') {
     rootTag: document.getElementById('root') || document.getElementById('app-root'),
   });
 }
+=======
+import './webIndex';
+>>>>>>> chainsyncstore/feat/upgrade-craco-v7

@@ -97,7 +97,11 @@ const WalletScreen = ({ navigation }) => {
 
       Alert.alert(
         'Success',
+<<<<<<< HEAD
         'Withdrawal request submitted! Funds will be transferred within 24 hours.'
+=======
+        'Withdrawal request submitted! Funds will be transferred within 24 hours.',
+>>>>>>> chainsyncstore/feat/upgrade-craco-v7
       );
       setShowWithdrawModal(false);
       setWithdrawAmount('');
@@ -172,7 +176,7 @@ const WalletScreen = ({ navigation }) => {
         <FlatList
           data={transactions}
           renderItem={renderTransaction}
-          keyExtractor={(item) => item.id.toString()}
+          keyExtractor={item => item.id.toString()}
           showsVerticalScrollIndicator={false}
         />
       </View>
@@ -201,7 +205,7 @@ const WalletScreen = ({ navigation }) => {
               placeholder="Account Number"
               placeholderTextColor="#c0b29b"
               value={bankDetails.accountNumber}
-              onChangeText={(text) =>
+              onChangeText={text =>
                 setBankDetails({ ...bankDetails, accountNumber: text })
               }
               keyboardType="numeric"
@@ -212,7 +216,7 @@ const WalletScreen = ({ navigation }) => {
               placeholder="Bank Name"
               placeholderTextColor="#c0b29b"
               value={bankDetails.bankName}
-              onChangeText={(text) =>
+              onChangeText={text =>
                 setBankDetails({ ...bankDetails, bankName: text })
               }
             />
@@ -222,7 +226,7 @@ const WalletScreen = ({ navigation }) => {
               placeholder="Account Name"
               placeholderTextColor="#c0b29b"
               value={bankDetails.accountName}
-              onChangeText={(text) =>
+              onChangeText={text =>
                 setBankDetails({ ...bankDetails, accountName: text })
               }
             />

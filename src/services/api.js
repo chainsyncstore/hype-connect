@@ -42,7 +42,11 @@ class ApiService {
   // Mock Auth APIs for testing
   async login(email, password) {
     // Simulate API delay
+<<<<<<< HEAD
     await new Promise((resolve) => setTimeout(resolve, 1000));
+=======
+    await new Promise(resolve => setTimeout(resolve, 1000));
+>>>>>>> chainsyncstore/feat/upgrade-craco-v7
 
     // Mock successful login
     if (email && password) {
@@ -61,7 +65,11 @@ class ApiService {
 
   async signup(userData) {
     // Simulate API delay
+<<<<<<< HEAD
     await new Promise((resolve) => setTimeout(resolve, 1000));
+=======
+    await new Promise(resolve => setTimeout(resolve, 1000));
+>>>>>>> chainsyncstore/feat/upgrade-craco-v7
 
     // Mock successful signup
     if (userData.email && userData.password && userData.fullName) {
@@ -200,7 +208,7 @@ class ApiService {
       {
         method: 'POST',
         body: formData,
-      }
+      },
     );
 
     return response.json();

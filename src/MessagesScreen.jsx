@@ -71,7 +71,7 @@ const MessagesScreen = ({ navigation }) => {
     }
   };
 
-  const loadMessages = async (conversationId) => {
+  const loadMessages = async conversationId => {
     try {
       const data = await ApiService.getMessages(conversationId);
       setMessages(data);
@@ -193,7 +193,7 @@ const MessagesScreen = ({ navigation }) => {
         <FlatList
           data={conversations}
           renderItem={renderConversation}
-          keyExtractor={(item) => item.id.toString()}
+          keyExtractor={item => item.id.toString()}
           style={styles.conversationsList}
         />
       </View>
@@ -228,7 +228,7 @@ const MessagesScreen = ({ navigation }) => {
       <FlatList
         data={messages}
         renderItem={renderMessage}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={item => item.id.toString()}
         style={styles.messagesList}
         contentContainerStyle={styles.messagesContent}
       />

@@ -104,7 +104,7 @@ const GigsMarketplaceScreen = ({ navigation }) => {
     </TouchableOpacity>
   );
 
-  const renderCategoryFilter = (category) => (
+  const renderCategoryFilter = category => (
     <TouchableOpacity
       key={category}
       style={[
@@ -157,7 +157,7 @@ const GigsMarketplaceScreen = ({ navigation }) => {
       <FlatList
         data={gigs}
         renderItem={renderGigCard}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={item => item.id.toString()}
         numColumns={2}
         contentContainerStyle={styles.gigsGrid}
         showsVerticalScrollIndicator={false}

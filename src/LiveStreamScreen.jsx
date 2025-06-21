@@ -69,7 +69,11 @@ const LiveStreamScreen = ({ navigation }) => {
       setViewers(0);
       Alert.alert(
         'Stream Ended',
+<<<<<<< HEAD
         `Total earnings: ₦${totalEarnings.toLocaleString()}`
+=======
+        `Total earnings: ₦${totalEarnings.toLocaleString()}`,
+>>>>>>> chainsyncstore/feat/upgrade-craco-v7
       );
     } catch (error) {
       console.error('Failed to end stream:', error);
@@ -192,7 +196,7 @@ const LiveStreamScreen = ({ navigation }) => {
           <FlatList
             data={tips.slice(0, 3)}
             renderItem={renderTip}
-            keyExtractor={(item) => item.id.toString()}
+            keyExtractor={item => item.id.toString()}
             style={styles.tipsList}
           />
         </View>
@@ -202,7 +206,7 @@ const LiveStreamScreen = ({ navigation }) => {
           <FlatList
             data={comments.slice(0, 5)}
             renderItem={renderComment}
-            keyExtractor={(item) => item.id.toString()}
+            keyExtractor={item => item.id.toString()}
             style={styles.commentsList}
           />
         </View>
