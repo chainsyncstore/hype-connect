@@ -2,37 +2,37 @@ import React, { useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 const WelcomeScreen = ({ navigation }) => {
-  useEffect(() => {
-    console.log('WelcomeScreen mounted');
-
-    const handleTouchStart = (event) => {
-      console.log('Touch start detected:', {
-        identifier: event.touches[0]?.identifier,
-        pageX: event.touches[0]?.pageX,
-        pageY: event.touches[0]?.pageY,
-        timestamp: event.timeStamp,
-      });
-    };
-
-    const handleTouchEnd = (event) => {
-      console.log('Touch end detected:', {
-        identifier: event.changedTouches[0]?.identifier,
-        pageX: event.changedTouches[0]?.pageX,
-        pageY: event.touches[0]?.pageY,
-        timestamp: event.timeStamp,
-      });
-      console.log('Current Touch Bank:', event.targetTouches);
-    };
-
-    window.addEventListener('touchstart', handleTouchStart);
-    window.addEventListener('touchend', handleTouchEnd);
-
-    return () => {
-      console.log('WelcomeScreen unmounted');
-      window.removeEventListener('touchstart', handleTouchStart);
-      window.removeEventListener('touchend', handleTouchEnd);
-    };
-  }, []);
+  // useEffect(() => {
+  //   console.log('WelcomeScreen mounted');
+  //
+  //   const handleTouchStart = (event) => {
+  //     console.log('Touch start detected:', {
+  //       identifier: event.touches[0]?.identifier,
+  //       pageX: event.touches[0]?.pageX,
+  //       pageY: event.touches[0]?.pageY,
+  //       timestamp: event.timeStamp,
+  //     });
+  //   };
+  //
+  //   const handleTouchEnd = (event) => {
+  //     console.log('Touch end detected:', {
+  //       identifier: event.changedTouches[0]?.identifier,
+  //       pageX: event.changedTouches[0]?.pageX,
+  //       pageY: event.touches[0]?.pageY,
+  //       timestamp: event.timeStamp,
+  //     });
+  //     console.log('Current Touch Bank:', event.targetTouches);
+  //   };
+  //
+  //   window.addEventListener('touchstart', handleTouchStart);
+  //   window.addEventListener('touchend', handleTouchEnd);
+  //
+  //   return () => {
+  //     console.log('WelcomeScreen unmounted');
+  //     window.removeEventListener('touchstart', handleTouchStart);
+  //     window.removeEventListener('touchend', handleTouchEnd);
+  //   };
+  // }, []);
 
   const handleJoinToConnect = () => {
     navigation.navigate('SignUp');
