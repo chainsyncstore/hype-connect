@@ -2,8 +2,7 @@ import React, { useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Modal } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const ProfileMenuModal = ({ visible, onClose }) => {
-  const navigation = useNavigation();
+const ProfileMenuModal = ({ visible, onClose, navigation }) => {
 
   useEffect(() => {
     return () => {};
