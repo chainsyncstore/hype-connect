@@ -1,0 +1,115 @@
+Compiled with problems:
+×
+ERROR in ./src/input.css (./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[5].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[5].use[2]!./node_modules/source-map-loader/dist/cjs.js!./src/input.css)
+Module build failed (from ./node_modules/postcss-loader/dist/cjs.js):
+Error: It looks like you're trying to use `tailwindcss` directly as a PostCSS plugin. The PostCSS plugin has moved to a separate package, so to continue using Tailwind CSS with PostCSS you'll need to install `@tailwindcss/postcss` and update your PostCSS configuration.
+    at We (/home/runner/workspace/node_modules/tailwindcss/dist/lib.js:35:2121)
+    at LazyResult.runOnRoot (/home/runner/workspace/node_modules/postcss/lib/lazy-result.js:361:16)
+    at LazyResult.runAsync (/home/runner/workspace/node_modules/postcss/lib/lazy-result.js:290:26)
+    at LazyResult.async (/home/runner/workspace/node_modules/postcss/lib/lazy-result.js:192:30)
+    at LazyResult.then (/home/runner/workspace/node_modules/postcss/lib/lazy-result.js:436:17)
+ERROR in ./src/CreatorCard.jsx 1:40-111
+Module not found: Error: You attempted to import /home/runner/workspace/node_modules/react-refresh/runtime.js which falls outside of the project src/ directory. Relative imports outside of src/ are not supported.
+You can either move it inside src/, or add a symlink to it from project's node_modules/.
+ERROR in ./src/CreatorEarningsScreen.jsx 1:40-111
+Module not found: Error: You attempted to import /home/runner/workspace/node_modules/react-refresh/runtime.js which falls outside of the project src/ directory. Relative imports outside of src/ are not supported.
+You can either move it inside src/, or add a symlink to it from project's node_modules/.
+ERROR in ./src/InterestsScreen.jsx 1:40-111
+Module not found: Error: You attempted to import /home/runner/workspace/node_modules/react-refresh/runtime.js which falls outside of the project src/ directory. Relative imports outside of src/ are not supported.
+You can either move it inside src/, or add a symlink to it from project's node_modules/.
+ERROR in ./src/LoginScreen.jsx 1:40-111
+Module not found: Error: You attempted to import /home/runner/workspace/node_modules/react-refresh/runtime.js which falls outside of the project src/ directory. Relative imports outside of src/ are not supported.
+You can either move it inside src/, or add a symlink to it from project's node_modules/.
+ERROR in ./src/MainContentScreen.jsx 1:40-111
+Module not found: Error: You attempted to import /home/runner/workspace/node_modules/react-refresh/runtime.js which falls outside of the project src/ directory. Relative imports outside of src/ are not supported.
+You can either move it inside src/, or add a symlink to it from project's node_modules/.
+ERROR in ./src/PostDetailScreen.jsx 1:40-111
+Module not found: Error: You attempted to import /home/runner/workspace/node_modules/react-refresh/runtime.js which falls outside of the project src/ directory. Relative imports outside of src/ are not supported.
+You can either move it inside src/, or add a symlink to it from project's node_modules/.
+ERROR in ./src/SignUpScreen.jsx 1:40-111
+Module not found: Error: You attempted to import /home/runner/workspace/node_modules/react-refresh/runtime.js which falls outside of the project src/ directory. Relative imports outside of src/ are not supported.
+You can either move it inside src/, or add a symlink to it from project's node_modules/.
+ERROR in ./src/SuccessScreen.jsx 1:40-111
+Module not found: Error: You attempted to import /home/runner/workspace/node_modules/react-refresh/runtime.js which falls outside of the project src/ directory. Relative imports outside of src/ are not supported.
+You can either move it inside src/, or add a symlink to it from project's node_modules/.
+ERROR in ./src/WebApp.js 1:40-111
+Module not found: Error: You attempted to import /home/runner/workspace/node_modules/react-refresh/runtime.js which falls outside of the project src/ directory. Relative imports outside of src/ are not supported.
+You can either move it inside src/, or add a symlink to it from project's node_modules/.
+ERROR in ./src/WelcomeScreen.jsx 1:40-111
+Module not found: Error: You attempted to import /home/runner/workspace/node_modules/react-refresh/runtime.js which falls outside of the project src/ directory. Relative imports outside of src/ are not supported.
+You can either move it inside src/, or add a symlink to it from project's node_modules/.
+ERROR in ./src/index.js 1:40-111
+Module not found: Error: You attempted to import /home/runner/workspace/node_modules/react-refresh/runtime.js which falls outside of the project src/ directory. Relative imports outside of src/ are not supported.
+You can either move it inside src/, or add a symlink to it from project's node_modules/.
+ERROR in ./src/services/api.js 1:40-111
+Module not found: Error: You attempted to import /home/runner/workspace/node_modules/react-refresh/runtime.js which falls outside of the project src/ directory. Relative imports outside of src/ are not supported.
+You can either move it inside src/, or add a symlink to it from project's node_modules/.
+ERROR in ./src/webIndex.js 1:40-111
+Module not found: Error: You attempted to import /home/runner/workspace/node_modules/react-refresh/runtime.js which falls outside of the project src/ directory. Relative imports outside of src/ are not supported.
+You can either move it inside src/, or add a symlink to it from project's node_modules/.
+ERROR
+[eslint]
+src/LoginScreen.jsx
+  Line 41:76:  Insert `,`  prettier/prettier
+  Line 92:26:  Delete `·`  prettier/prettier
+  Line 93:78:  Delete `·`  prettier/prettier
+
+src/MainContentScreen.jsx
+  Line 128:9:   Insert `··`                                                                                                                                                                                                  prettier/prettier
+  Line 129:1:   Insert `··`                                                                                                                                                                                                  prettier/prettier
+  Line 130:9:   Insert `··`                                                                                                                                                                                                  prettier/prettier
+  Line 131:1:   Replace `········<TouchableOpacity·onPress={()·=>·navigation.navigate('GigsMarketplace')}` with `··········<TouchableOpacity⏎············onPress={()·=>·navigation.navigate('GigsMarketplace')}⏎··········`  prettier/prettier
+  Line 132:1:   Insert `··`                                                                                                                                                                                                  prettier/prettier
+  Line 133:1:   Insert `··`                                                                                                                                                                                                  prettier/prettier
+  Line 134:9:   Insert `··`                                                                                                                                                                                                  prettier/prettier
+  Line 135:11:  Insert `··`                                                                                                                                                                                                  prettier/prettier
+  Line 136:1:   Insert `··`                                                                                                                                                                                                  prettier/prettier
+  Line 137:1:   Replace `········` with `··········`                                                                                                                                                                         prettier/prettier
+  Line 138:11:  Insert `··`                                                                                                                                                                                                  prettier/prettier
+  Line 139:1:   Insert `··`                                                                                                                                                                                                  prettier/prettier
+  Line 140:1:   Insert `··`                                                                                                                                                                                                  prettier/prettier
+  Line 141:11:  Insert `··`                                                                                                                                                                                                  prettier/prettier
+  Line 142:1:   Insert `··`                                                                                                                                                                                                  prettier/prettier
+  Line 143:1:   Insert `··`                                                                                                                                                                                                  prettier/prettier
+  Line 275:34:  Insert `⏎`                                                                                                                                                                                                   prettier/prettier
+
+src/SignUpScreen.jsx
+  Line 46:27:   Insert `,`                                                                                                                                                                                                                                                                                                                            prettier/prettier
+  Line 48:1:    Delete `······`                                                                                                                                                                                                                                                                                                                       prettier/prettier
+  Line 52:74:   Insert `,`                                                                                                                                                                                                                                                                                                                            prettier/prettier
+  Line 121:28:  Delete `·`                                                                                                                                                                                                                                                                                                                            prettier/prettier
+  Line 122:21:  Replace `styles.roleButton,·selectedRole·===·'creator'·&&·styles.roleButtonSelected` with `⏎··············styles.roleButton,⏎··············selectedRole·===·'creator'·&&·styles.roleButtonSelected,⏎············`                                                                                                                     prettier/prettier
+  Line 125:18:  Replace `·style={[styles.roleButtonText,·selectedRole·===·'creator'·&&·styles.roleButtonTextSelected]}>Creator` with `⏎··············style={[⏎················styles.roleButtonText,⏎················selectedRole·===·'creator'·&&·styles.roleButtonTextSelected,⏎··············]}⏎············>⏎··············Creator⏎············`  prettier/prettier
+  Line 127:28:  Delete `·`                                                                                                                                                                                                                                                                                                                            prettier/prettier
+  Line 128:21:  Replace `styles.roleButton,·selectedRole·===·'client'·&&·styles.roleButtonSelected` with `⏎··············styles.roleButton,⏎··············selectedRole·===·'client'·&&·styles.roleButtonSelected,⏎············`                                                                                                                       prettier/prettier
+  Line 131:18:  Replace `·style={[styles.roleButtonText,·selectedRole·===·'client'·&&·styles.roleButtonTextSelected]}>Client` with `⏎··············style={[⏎················styles.roleButtonText,⏎················selectedRole·===·'client'·&&·styles.roleButtonTextSelected,⏎··············]}⏎············>⏎··············Client⏎············`      prettier/prettier
+  Line 136:19:  Replace `styles.continueButton,·loading·&&·styles.continueButtonDisabled` with `⏎············styles.continueButton,⏎············loading·&&·styles.continueButtonDisabled,⏎··········`                                                                                                                                                 prettier/prettier
+
+src/WebApp.js
+  Line 1:1:    Delete `⏎`                                                                                                                                       prettier/prettier
+  Line 20:15:  Replace `(screenName)` with `screenName`                                                                                                         prettier/prettier
+  Line 26:6:   Insert `,`                                                                                                                                       prettier/prettier
+  Line 53:9:   Replace `·style={{·⏎······height:·'100vh',·⏎······width:·'100vw',·⏎` with `⏎······style={{⏎········height:·'100vh',⏎········width:·'100vw',⏎··`  prettier/prettier
+  Line 57:1:   Replace `······` with `········`                                                                                                                 prettier/prettier
+  Line 58:1:   Replace `······overflow:·'hidden'` with `········overflow:·'hidden',`                                                                            prettier/prettier
+  Line 59:5:   Replace `}}` with `··}}⏎····`                                                                                                                    prettier/prettier
+
+src/WelcomeScreen.jsx
+  Line 61:44:   'Logo' is not defined  no-undef
+  Line 155:30:  Insert `⏎`             prettier/prettier
+
+src/index.js
+  Line 1:1:  Delete `⏎`  prettier/prettier
+
+src/services/api.js
+  Line 1:1:    Delete `⏎`     prettier/prettier
+  Line 47:1:   Delete `····`  prettier/prettier
+  Line 54:38:  Insert `,`     prettier/prettier
+  Line 66:1:   Delete `····`  prettier/prettier
+  Line 75:38:  Insert `,`     prettier/prettier
+  Line 204:8:  Insert `,`     prettier/prettier
+
+src/webIndex.js
+  Line 1:1:  Delete `⏎`  prettier/prettier
+
+Search for the keywords to learn more about each error.

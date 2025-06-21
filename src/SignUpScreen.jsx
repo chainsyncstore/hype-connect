@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+
+import React, { useEffect, useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -6,11 +7,19 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
+  Alert,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import ApiService from './services/api';
 
 const SignUpScreen = () => {
   const navigation = useNavigation();
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [selectedRole, setSelectedRole] = useState('creator');
+  const [loading, setLoading] = useState(false);
 
   console.log('SignUpScreen rendered');
 
@@ -22,11 +31,48 @@ const SignUpScreen = () => {
     };
   }, []);
 
+  const handleSignup = async () => {
+    if (!fullName || !email || !username || !password) {
+      Alert.alert('Error', 'Please fill in all fields');
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const userData = {
+        fullName,
+        email,
+        username,
+        password,
+        role: selectedRole,
+      };
+
+      const response = await ApiService.signup(userData);
+      if (response.success) {
+        Alert.alert('Success', 'Account created successfully!', [
+          { text: 'OK', onPress: () => navigation.navigate('Interests') },
+        ]);
+      }
+    } catch (error) {
+      Alert.alert('Error', error.message || 'Signup failed');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGoToLogin = () => {
+    navigation.navigate('Login');
+  };
+
+  const handleGoBack = () => {
+    navigation.goBack();
+  };
+
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.header}>
-          <TouchableOpacity style={styles.backButton}>
+          <TouchableOpacity style={styles.backButton} onPress={handleGoBack}>
             <Text style={styles.backButtonText}>{'<'}</Text>
           </TouchableOpacity>
           <Text style={styles.headerTitle}>Sign Up</Text>
@@ -37,6 +83,8 @@ const SignUpScreen = () => {
             style={styles.input}
             placeholder="Full Name"
             placeholderTextColor="#cbb690"
+            value={fullName}
+            onChangeText={setFullName}
           />
         </View>
 
@@ -45,6 +93,10 @@ const SignUpScreen = () => {
             style={styles.input}
             placeholder="Email"
             placeholderTextColor="#cbb690"
+            value={email}
+            onChangeText={setEmail}
+            keyboardType="email-address"
+            autoCapitalize="none"
           />
         </View>
 
@@ -53,6 +105,9 @@ const SignUpScreen = () => {
             style={styles.input}
             placeholder="Username"
             placeholderTextColor="#cbb690"
+            value={username}
+            onChangeText={setUsername}
+            autoCapitalize="none"
           />
         </View>
 
@@ -62,26 +117,62 @@ const SignUpScreen = () => {
             placeholder="Password"
             placeholderTextColor="#cbb690"
             secureTextEntry={true}
+            value={password}
+            onChangeText={setPassword}
           />
         </View>
 
         <View style={styles.roleContainer}>
-          <TouchableOpacity style={styles.roleButton}>
-            <Text style={styles.roleButtonText}>Creator</Text>
+          <TouchableOpacity
+            style={[
+              styles.roleButton,
+              selectedRole === 'creator' && styles.roleButtonSelected,
+            ]}
+            onPress={() => setSelectedRole('creator')}
+          >
+            <Text
+              style={[
+                styles.roleButtonText,
+                selectedRole === 'creator' && styles.roleButtonTextSelected,
+              ]}
+            >
+              Creator
+            </Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.roleButton}>
-            <Text style={styles.roleButtonText}>Client</Text>
+          <TouchableOpacity
+            style={[
+              styles.roleButton,
+              selectedRole === 'client' && styles.roleButtonSelected,
+            ]}
+            onPress={() => setSelectedRole('client')}
+          >
+            <Text
+              style={[
+                styles.roleButtonText,
+                selectedRole === 'client' && styles.roleButtonTextSelected,
+              ]}
+            >
+              Client
+            </Text>
           </TouchableOpacity>
         </View>
 
         <TouchableOpacity
-          style={styles.continueButton}
-          onPress={() => navigation.navigate('Interests')}
+          style={[
+            styles.continueButton,
+            loading && styles.continueButtonDisabled,
+          ]}
+          onPress={handleSignup}
+          disabled={loading}
         >
-          <Text style={styles.continueButtonText}>Continue</Text>
+          <Text style={styles.continueButtonText}>
+            {loading ? 'Creating Account...' : 'Continue'}
+          </Text>
         </TouchableOpacity>
 
-        <Text style={styles.loginText}>Already have an account? Log in</Text>
+        <TouchableOpacity onPress={handleGoToLogin}>
+          <Text style={styles.loginText}>Already have an account? Log in</Text>
+        </TouchableOpacity>
       </ScrollView>
     </View>
   );
@@ -142,9 +233,15 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 24,
   },
+  roleButtonSelected: {
+    backgroundColor: '#f4b43d',
+  },
   roleButtonText: {
     color: '#cbb690',
     fontSize: 16,
+  },
+  roleButtonTextSelected: {
+    color: '#231c10',
   },
   continueButton: {
     backgroundColor: '#f4b43d',
@@ -152,6 +249,9 @@ const styles = StyleSheet.create({
     paddingVertical: 14,
     paddingHorizontal: 48,
     marginBottom: 16,
+  },
+  continueButtonDisabled: {
+    backgroundColor: '#cbb690',
   },
   continueButtonText: {
     color: '#231c10',

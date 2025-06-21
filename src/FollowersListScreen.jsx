@@ -28,15 +28,9 @@ const followers = [
   // Add more followers here
 ];
 
-const FollowersListScreen = () => {
-  console.log('FollowersListScreen rendered');
-
+const FollowersListScreen = ({ navigation }) => {
   useEffect(() => {
-    console.log('FollowersListScreen mounted');
-
-    return () => {
-      console.log('FollowersListScreen unmounted');
-    };
+    return () => {};
   }, []);
 
   return (
@@ -48,7 +42,7 @@ const FollowersListScreen = () => {
         <Text style={styles.title}>Followers</Text>
       </View>
       <ScrollView>
-        {followers.map(follower => (
+        {followers.map((follower) => (
           <View key={follower.id} style={styles.followerContainer}>
             <Image source={{ uri: follower.image }} style={styles.avatar} />
             <View style={styles.infoContainer}>

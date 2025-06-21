@@ -1,38 +1,83 @@
+
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-// Import screens
+// Import all screens
 import WelcomeScreen from './WelcomeScreen';
+import SignUpScreen from './SignUpScreen';
 import LoginScreen from './LoginScreen';
 import InterestsScreen from './InterestsScreen';
 import SuccessScreen from './SuccessScreen';
-import SignUpScreen from './SignUpScreen';
 import MainContentScreen from './MainContentScreen';
 import PostDetailScreen from './PostDetailScreen';
-import CreatorEarningsScreen from './CreatorEarningsScreen';
+import CommentSectionScreen from './CommentSectionScreen';
+import GigsMarketplaceScreen from './GigsMarketplaceScreen';
+import LiveStreamScreen from './LiveStreamScreen';
+import WalletScreen from './WalletScreen';
+import MessagesScreen from './MessagesScreen';
+import AdminDashboardScreen from './AdminDashboardScreen';
+import PrivateCreatorProfileScreen from './PrivateCreatorProfileScreen';
+import PublicCreatorProfileScreen from './PublicCreatorProfileScreen';
+import FollowersListScreen from './FollowersListScreen';
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
 
-export default function App() {
+const linking = {
+  prefixes: ['http://localhost:3000', 'https://your-repl-url.repl.co'],
+  config: {
+    screens: {
+      Welcome: '',
+      SignUp: 'signup',
+      Login: 'login',
+      Interests: 'interests',
+      Success: 'success',
+      MainContent: 'main',
+      PostDetail: 'post/:id',
+      CommentSection: 'comments/:id',
+      GigsMarketplace: 'gigs',
+      LiveStream: 'live',
+      Wallet: 'wallet',
+      Messages: 'messages',
+      AdminDashboard: 'admin',
+      PrivateCreatorProfile: 'profile/private',
+      PublicCreatorProfile: 'profile/:id',
+      FollowersList: 'followers/:id',
+    },
+  },
+};
+
+function App() {
+  console.log('App component is being rendered');
+
   return (
-    <NavigationContainer>
+    <NavigationContainer linking={linking}>
       <Stack.Navigator
         initialRouteName="Welcome"
-        screenOptions={{ headerShown: false }}
+        screenOptions={{
+          headerShown: false,
+          gestureEnabled: true,
+        }}
       >
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
-        <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="SignUp" component={SignUpScreen} />
+        <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Interests" component={InterestsScreen} />
         <Stack.Screen name="Success" component={SuccessScreen} />
         <Stack.Screen name="MainContent" component={MainContentScreen} />
         <Stack.Screen name="PostDetail" component={PostDetailScreen} />
-        <Stack.Screen
-          name="CreatorEarnings"
-          component={CreatorEarningsScreen}
-        />
+        <Stack.Screen name="CommentSection" component={CommentSectionScreen} />
+        <Stack.Screen name="GigsMarketplace" component={GigsMarketplaceScreen} />
+        <Stack.Screen name="LiveStream" component={LiveStreamScreen} />
+        <Stack.Screen name="Wallet" component={WalletScreen} />
+        <Stack.Screen name="Messages" component={MessagesScreen} />
+        <Stack.Screen name="AdminDashboard" component={AdminDashboardScreen} />
+        <Stack.Screen name="PrivateCreatorProfile" component={PrivateCreatorProfileScreen} />
+        <Stack.Screen name="PublicCreatorProfile" component={PublicCreatorProfileScreen} />
+        <Stack.Screen name="FollowersList" component={FollowersListScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
+
+export default App;

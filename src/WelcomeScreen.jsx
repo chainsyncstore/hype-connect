@@ -1,17 +1,15 @@
+
 import React, { useEffect } from 'react';
-import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import Logo from './assets/logo.png';
 
 const WelcomeScreen = () => {
   const navigation = useNavigation();
 
-  console.log('WelcomeScreen rendered');
-
   useEffect(() => {
     console.log('WelcomeScreen mounted');
 
-    const handleTouchStart = event => {
+    const handleTouchStart = (event) => {
       console.log('Touch start detected:', {
         identifier: event.touches[0]?.identifier,
         pageX: event.touches[0]?.pageX,
@@ -20,40 +18,44 @@ const WelcomeScreen = () => {
       });
     };
 
-    const handleTouchEnd = event => {
+    const handleTouchEnd = (event) => {
       console.log('Touch end detected:', {
         identifier: event.changedTouches[0]?.identifier,
         pageX: event.changedTouches[0]?.pageX,
-        pageY: event.changedTouches[0]?.pageY,
+        pageY: event.touches[0]?.pageY,
         timestamp: event.timeStamp,
       });
       console.log('Current Touch Bank:', event.targetTouches);
     };
 
-    window.addEventListener('touchstart', handleTouchStart);
-    window.addEventListener('touchend', handleTouchEnd);
+    if (typeof window !== 'undefined') {
+      window.addEventListener('touchstart', handleTouchStart);
+      window.addEventListener('touchend', handleTouchEnd);
+    }
 
     return () => {
       console.log('WelcomeScreen unmounted');
-      window.removeEventListener('touchstart', handleTouchStart);
-      window.removeEventListener('touchend', handleTouchEnd);
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('touchstart', handleTouchStart);
+        window.removeEventListener('touchend', handleTouchEnd);
+      }
     };
   }, []);
 
   const handleJoinToConnect = () => {
-    console.log('Join to Connect button pressed');
+    console.log('Navigating to SignUp');
     navigation.navigate('SignUp');
   };
 
   const handleLogin = () => {
-    console.log('Log In button pressed');
+    console.log('Navigating to Login');
     navigation.navigate('Login');
   };
 
   return (
     <View style={styles.container}>
-      <View style={[styles.logoContainer, styles.interactive]}>
-        <Image style={styles.logo} source={Logo} />
+      <View style={[styles.logo, styles.interactive]}>
+        <Text style={styles.logoText}>H</Text>
       </View>
       <Text style={styles.headline}>
         Connect. <Text style={styles.accentColor}>Create.</Text> Cash Out.
@@ -84,66 +86,68 @@ const WelcomeScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1B1B1E',
-    alignItems: 'center',
     justifyContent: 'center',
-    padding: 24,
-  },
-  logoContainer: {
-    marginBottom: 40,
+    alignItems: 'center',
+    backgroundColor: '#221c11',
   },
   logo: {
     width: 100,
     height: 100,
+    backgroundColor: '#F5A623',
+    borderRadius: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  logoText: {
+    fontSize: 48,
+    fontWeight: 'bold',
+    color: '#1B1B1E',
   },
   headline: {
-    fontSize: 30,
-    fontWeight: '900',
-    textAlign: 'center',
-    marginBottom: 16,
-    lineHeight: 36,
-    color: '#FFFFFF',
+    color: '#fff',
+    fontSize: 28,
+    fontWeight: 'bold',
+    marginTop: 32,
+    marginBottom: 8,
   },
   accentColor: {
     color: '#F5A623',
   },
   tagline: {
-    fontSize: 16,
-    textAlign: 'center',
-    color: '#A0A0A0',
-    marginBottom: 48,
+    color: '#cbb590',
+    fontSize: 18,
+    marginBottom: 32,
   },
   buttonContainer: {
-    width: '100%',
-    maxWidth: 320,
+    flexDirection: 'row',
+    marginTop: 16,
   },
   primaryButton: {
-    backgroundColor: '#F5A623',
-    borderRadius: 8,
-    paddingVertical: 16,
-    marginBottom: 16,
+    backgroundColor: '#eead3e',
+    borderRadius: 100,
+    paddingHorizontal: 32,
+    paddingVertical: 12,
+    marginHorizontal: 8,
   },
   primaryButtonText: {
-    color: '#1B1B1E',
-    fontWeight: '600',
-    textAlign: 'center',
+    color: '#221c11',
     fontSize: 18,
+    fontWeight: 'bold',
   },
   secondaryButton: {
-    backgroundColor: 'transparent',
-    borderRadius: 8,
-    paddingVertical: 16,
-    borderWidth: 2,
-    borderColor: '#F5A623',
+    backgroundColor: '#493b22',
+    borderRadius: 100,
+    paddingHorizontal: 32,
+    paddingVertical: 12,
+    marginHorizontal: 8,
   },
   secondaryButtonText: {
-    color: '#F5A623',
-    fontWeight: '600',
-    textAlign: 'center',
+    color: '#fff',
     fontSize: 18,
+    fontWeight: 'bold',
   },
   interactive: {
-    pointerEvents: 'auto',
+    // For touch feedback if needed
   },
 });
 

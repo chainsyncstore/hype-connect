@@ -2,16 +2,9 @@ import React, { useEffect } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
 
 const CreatorCard = () => {
-  console.log('CreatorCard rendered');
-
   useEffect(() => {
-    console.log('CreatorCard mounted');
-
-    return () => {
-      console.log('CreatorCard unmounted');
-    };
+    return () => {};
   }, []);
-
   return (
     <View style={styles.container}>
       <View style={styles.overlay}>

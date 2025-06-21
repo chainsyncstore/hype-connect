@@ -1,20 +1,11 @@
 import React, { useEffect } from 'react';
-import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
 
-const PostDetailScreen = () => {
-  const navigation = useNavigation();
-
-  console.log('PostDetailScreen rendered');
+const PostDetailScreen = ({ navigation }) => {
 
   useEffect(() => {
-    console.log('PostDetailScreen mounted');
-
-    return () => {
-      console.log('PostDetailScreen unmounted');
-    };
+    return () => {};
   }, []);
-
   return (
     <View style={styles.container}>
       <View style={styles.header}>

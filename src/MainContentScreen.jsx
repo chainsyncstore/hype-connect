@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigation } from '@react-navigation/native';
 import {
   StyleSheet,
   View,
@@ -11,8 +10,7 @@ import {
 } from 'react-native';
 import CreatorCard from './CreatorCard';
 
-const MainContentScreen = () => {
-  const navigation = useNavigation();
+const MainContentScreen = ({ navigation }) => {
 
   const [isCreatorCardVisible, setIsCreatorCardVisible] = useState(false);
 
@@ -125,11 +123,23 @@ const MainContentScreen = () => {
           </View>
         </TouchableOpacity>
         <View style={styles.bottomNavigation}>
-          <Text>🏠</Text>
-          <Text>🔎</Text>
-          <Text>➕</Text>
-          <Text>🗄️</Text>
-          <Text>👤</Text>
+          <TouchableOpacity>
+            <Text>🏠</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('GigsMarketplace')}
+          >
+            <Text>💼</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('LiveStream')}>
+            <Text>📺</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Messages')}>
+            <Text>💬</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Wallet')}>
+            <Text>💰</Text>
+          </TouchableOpacity>
         </View>
         <View style={styles.bottomSpace} />
       </ScrollView>
