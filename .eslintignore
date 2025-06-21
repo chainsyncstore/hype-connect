@@ -1,7 +1,3 @@
-<<<<<<< HEAD
 build
 dist
 node_modules
-=======
-dist/
->>>>>>> chainsyncstore/feat/upgrade-craco-v7

@@ -51,11 +51,7 @@ function App() {
   console.log('App component is being rendered');
 
   return (
-<<<<<<< HEAD
-    <NavigationContainer linking={linking}>
-=======
     <NavigationContainer>
->>>>>>> chainsyncstore/feat/upgrade-craco-v7
       <Stack.Navigator
         initialRouteName="Welcome"
         screenOptions={{
