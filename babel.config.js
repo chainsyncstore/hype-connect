@@ -5,21 +5,22 @@ module.exports = {
     [
       '@babel/preset-react',
       {
-        runtime: 'automatic', // Enable modern JSX transform
+        runtime: 'automatic',
       },
     ],
+    '@babel/preset-typescript',
+    '@babel/preset-flow'
   ],
   plugins: [
     '@babel/plugin-transform-optional-chaining',
     ['@babel/plugin-transform-class-properties', { loose: true }],
     ['@babel/plugin-transform-private-methods', { loose: true }],
     ['@babel/plugin-transform-private-property-in-object', { loose: true }],
+    '@babel/plugin-transform-flow-strip-types'
   ],
   env: {
     development: {
-      plugins: [
-        // Explicitly exclude react-refresh
-      ],
+      plugins: ['react-refresh/babel'],
     },
   },
 };
