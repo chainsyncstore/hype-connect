@@ -100,7 +100,7 @@ const AdminDashboardScreen = ({ navigation }) => {
             Alert.alert('Success', `Report ${action}d successfully`);
           },
         },
-      ]
+      ],
     );
   };
 
@@ -177,7 +177,7 @@ const AdminDashboardScreen = ({ navigation }) => {
         <FlatList
           data={recentActivity}
           renderItem={renderActivityItem}
-          keyExtractor={(item) => item.id.toString()}
+          keyExtractor={item => item.id.toString()}
           scrollEnabled={false}
         />
       </View>
@@ -189,7 +189,7 @@ const AdminDashboardScreen = ({ navigation }) => {
       <FlatList
         data={reportedContent}
         renderItem={renderReportItem}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={item => item.id.toString()}
         showsVerticalScrollIndicator={false}
       />
     </View>

@@ -117,7 +117,11 @@
         // Get references to DOM elements
         const chatListContainer = document.getElementById('chatListContainer');
         const chatWindowContainer = document.getElementById(
+<<<<<<< HEAD
           'chatWindowContainer'
+=======
+          'chatWindowContainer',
+>>>>>>> chainsyncstore/feat/upgrade-craco-v7
         );
         const chatList = document.getElementById('chatList'); // Though not directly used for its children in this version, good to have.
         const backButton = document.getElementById('backButton');
@@ -129,7 +133,11 @@
         ];
 
         // Event Listener for Chat Items
+<<<<<<< HEAD
         chatItems.forEach((item) => {
+=======
+        chatItems.forEach(item => {
+>>>>>>> chainsyncstore/feat/upgrade-craco-v7
           if (item) {
             item.addEventListener('click', function () {
               // Hide chatListContainer

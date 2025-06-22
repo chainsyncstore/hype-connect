@@ -200,7 +200,7 @@ class ApiService {
       {
         method: 'POST',
         body: formData,
-      }
+      },
     );
 
     return response.json();

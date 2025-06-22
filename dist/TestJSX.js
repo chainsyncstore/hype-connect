@@ -18,8 +18,13 @@ var TestJSX = function TestJSX() {
         __self: _this,
         __source: { fileName: _jsxFileName, lineNumber: 6, columnNumber: 7 },
       },
+<<<<<<< HEAD
       'Hello, JSX!'
     )
+=======
+      'Hello, JSX!',
+    ),
+>>>>>>> chainsyncstore/feat/upgrade-craco-v7
   );
 };
 var _default = (exports.default = TestJSX);

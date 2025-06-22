@@ -117,7 +117,11 @@ var WelcomeScreen = function WelcomeScreen() {
         },
         __self: _this,
         __source: { fileName: _jsxFileName, lineNumber: 56, columnNumber: 9 },
+<<<<<<< HEAD
       })
+=======
+      }),
+>>>>>>> chainsyncstore/feat/upgrade-craco-v7
     ),
     _react.default.createElement(
       _reactNative.Text,
@@ -138,9 +142,15 @@ var WelcomeScreen = function WelcomeScreen() {
             columnNumber: 18,
           },
         },
+<<<<<<< HEAD
         'Create.'
       ),
       ' Cash Out.'
+=======
+        'Create.',
+      ),
+      ' Cash Out.',
+>>>>>>> chainsyncstore/feat/upgrade-craco-v7
     ),
     _react.default.createElement(
       _reactNative.Text,
@@ -149,7 +159,11 @@ var WelcomeScreen = function WelcomeScreen() {
         __self: _this,
         __source: { fileName: _jsxFileName, lineNumber: 66, columnNumber: 7 },
       },
+<<<<<<< HEAD
       'For creators'
+=======
+      'For creators',
+>>>>>>> chainsyncstore/feat/upgrade-craco-v7
     ),
     _react.default.createElement(
       _reactNative.View,
@@ -184,8 +198,13 @@ var WelcomeScreen = function WelcomeScreen() {
               columnNumber: 11,
             },
           },
+<<<<<<< HEAD
           'Join to Connect'
         )
+=======
+          'Join to Connect',
+        ),
+>>>>>>> chainsyncstore/feat/upgrade-craco-v7
       ),
       _react.default.createElement(
         _reactNative.TouchableOpacity,
@@ -212,10 +231,17 @@ var WelcomeScreen = function WelcomeScreen() {
               columnNumber: 11,
             },
           },
+<<<<<<< HEAD
           'Log In'
         )
       )
     )
+=======
+          'Log In',
+        ),
+      ),
+    ),
+>>>>>>> chainsyncstore/feat/upgrade-craco-v7
   );
 };
 var styles = _reactNative.StyleSheet.create({

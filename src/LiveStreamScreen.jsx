@@ -192,7 +192,7 @@ const LiveStreamScreen = ({ navigation }) => {
           <FlatList
             data={tips.slice(0, 3)}
             renderItem={renderTip}
-            keyExtractor={(item) => item.id.toString()}
+            keyExtractor={item => item.id.toString()}
             style={styles.tipsList}
           />
         </View>
@@ -202,7 +202,7 @@ const LiveStreamScreen = ({ navigation }) => {
           <FlatList
             data={comments.slice(0, 5)}
             renderItem={renderComment}
-            keyExtractor={(item) => item.id.toString()}
+            keyExtractor={item => item.id.toString()}
             style={styles.commentsList}
           />
         </View>

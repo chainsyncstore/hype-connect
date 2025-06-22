@@ -51,7 +51,7 @@ function App() {
   console.log('App component is being rendered');
 
   return (
-    <NavigationContainer linking={linking}>
+    <NavigationContainer>
       <Stack.Navigator
         initialRouteName="Welcome"
         screenOptions={{
