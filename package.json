@@ -36,12 +36,9 @@
     "@babel/plugin-proposal-optional-chaining": "^7.21.0",
     "@babel/plugin-transform-optional-chaining": "^7.27.1",
     "@babel/runtime": "^7.25.0",
-<<<<<<< HEAD
-=======
     "@eslint/compat": "^1.3.0",
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^9.29.0",
->>>>>>> chainsyncstore/feature/phase3-eslint-node-upgrade
     "@react-native-community/cli": "19.0.0",
     "@react-native-community/cli-platform-android": "19.0.0",
     "@react-native-community/cli-platform-ios": "19.0.0",
