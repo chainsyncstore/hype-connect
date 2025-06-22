@@ -94,13 +94,8 @@ const AdminDashboardScreen = ({ navigation }) => {
                       ...report,
                       status: action === 'approve' ? 'resolved' : 'dismissed',
                     }
-<<<<<<< HEAD
                   : report
               )
-=======
-                  : report,
-              ),
->>>>>>> chainsyncstore/feat/upgrade-craco-v7
             );
             Alert.alert('Success', `Report ${action}d successfully`);
           },
@@ -159,37 +154,21 @@ const AdminDashboardScreen = ({ navigation }) => {
       <View style={styles.statsGrid}>
         {renderStatCard(
           'Total Users',
-<<<<<<< HEAD
           dashboardData.totalUsers.toLocaleString()
         )}
         {renderStatCard(
           'Active Gigs',
           dashboardData.activeGigs.toLocaleString()
-=======
-          dashboardData.totalUsers.toLocaleString(),
-        )}
-        {renderStatCard(
-          'Active Gigs',
-          dashboardData.activeGigs.toLocaleString(),
->>>>>>> chainsyncstore/feat/upgrade-craco-v7
         )}
         {renderStatCard(
           'Total Revenue',
           `₦${dashboardData.totalRevenue.toLocaleString()}`,
-<<<<<<< HEAD
           '#4CAF50'
-=======
-          '#4CAF50',
->>>>>>> chainsyncstore/feat/upgrade-craco-v7
         )}
         {renderStatCard(
           'Pending Reports',
           dashboardData.pendingReports.toString(),
-<<<<<<< HEAD
           '#FF4444'
-=======
-          '#FF4444',
->>>>>>> chainsyncstore/feat/upgrade-craco-v7
         )}
       </View>
 

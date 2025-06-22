@@ -97,11 +97,7 @@ const WalletScreen = ({ navigation }) => {
 
       Alert.alert(
         'Success',
-<<<<<<< HEAD
         'Withdrawal request submitted! Funds will be transferred within 24 hours.'
-=======
-        'Withdrawal request submitted! Funds will be transferred within 24 hours.',
->>>>>>> chainsyncstore/feat/upgrade-craco-v7
       );
       setShowWithdrawModal(false);
       setWithdrawAmount('');

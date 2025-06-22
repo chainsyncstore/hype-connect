@@ -69,11 +69,7 @@ const LiveStreamScreen = ({ navigation }) => {
       setViewers(0);
       Alert.alert(
         'Stream Ended',
-<<<<<<< HEAD
         `Total earnings: ₦${totalEarnings.toLocaleString()}`
-=======
-        `Total earnings: ₦${totalEarnings.toLocaleString()}`,
->>>>>>> chainsyncstore/feat/upgrade-craco-v7
       );
     } catch (error) {
       console.error('Failed to end stream:', error);
