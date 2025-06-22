@@ -8,6 +8,8 @@ module.exports = {
         runtime: 'automatic', // Enable modern JSX transform
       },
     ],
+    '@babel/preset-typescript',
+    '@babel/preset-flow'
   ],
   plugins: [
     '@babel/plugin-transform-optional-chaining',
@@ -16,7 +18,7 @@ module.exports = {
     ['@babel/plugin-transform-private-property-in-object', { loose: true }],
     '@babel/plugin-transform-flow-strip-types'
   ],
-
+  env: {
     development: {
       plugins: ['react-refresh/babel'],
     },
