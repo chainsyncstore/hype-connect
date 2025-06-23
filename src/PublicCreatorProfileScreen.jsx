@@ -1,432 +1,147 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   View,
   Text,
-  StyleSheet,
   Image,
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
+import WebHeader from './WebHeader'; // Import WebHeader
 
-const PublicCreatorProfileScreen = ({ navigation }) => {
-  console.log('PublicCreatorProfileScreen rendered');
+// PRD Colors: #1B1B1E (background), #F5A623 (accent), #FFFFFF (text)
 
-  useEffect(() => {
-    console.log('PublicCreatorProfileScreen mounted');
+const PublicCreatorProfileScreen = ({ navigation, route }) => {
+  const profileData = {
+    name: 'Ethan Carter',
+    username: '@ethan_carter',
+    bio: 'Producer | Photographer | Songwriter',
+    profileImageUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cHJvZmlsZSUyMHBpY3R1cmV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=100&q=60',
+    tags: ['🎧 Producer', '📸 Photographer', '🎵 Songwriter'],
+    description: 'Ethan Carter is a multi-talented creative based in Los Angeles, specializing in music production, photography, and songwriting. Open for collaborations and commissioned work.',
+    stats: {
+      followers: '1.2K',
+      gigsCompleted: '50',
+      rating: '4.8',
+    },
+    services: [
+      { name: 'Beat Production', rate: '₦50,000/track' },
+      { name: 'Event Photography', rate: '₦25,000/hr' },
+      { name: 'Songwriting Consultation', rate: '₦30,000/session' },
+    ],
+    featuredWork: [
+      { id: 'fw1', title: 'Summer Vibes EP', imageUrl: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YWxidW0lMjBjb3ZlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=150&q=60' },
+      { id: 'fw2', title: 'Urban Portraits', imageUrl: 'https://images.unsplash.com/photo-1506157786151-b8491531f063?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YWxidW0lMjBjb3ZlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=150&q=60' },
+      { id: 'fw3', title: 'Lofi Beats Vol. 3', imageUrl: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YWxidW0lMjBjb3ZlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=150&q=60' },
+    ],
+  };
 
-    return () => {
-      console.log('PublicCreatorProfileScreen unmounted');
-    };
-  }, []);
+  // const handleBack = () => navigation.goBack(); // WebHeader might handle global back, or specific back for profile context
+  const handleShare = () => console.log("Share action");
+  const handleFollow = () => console.log("Follow action");
+  const handleTip = () => navigation.navigate('TipCreatorModal', { creatorId: profileData.username, creatorName: profileData.name });
+  const handleBookNow = (serviceName = "General Consultation", serviceRate = "N/A") => {
+    navigation.navigate('BookingModal', {
+      gigTitle: serviceName,
+      creatorName: profileData.name,
+      price: serviceRate.startsWith('₦') ? parseFloat(serviceRate.replace('₦','').replace(',','')) : undefined
+    });
+  };
+  const handleContact = () => navigation.navigate('Messages', { screen: 'Chat', params: { userId: profileData.username, userName: profileData.name } });
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <TouchableOpacity style={styles.backButton}>
-          <Image
-            source={{ uri: 'https://via.placeholder.com/24' }}
-            style={styles.icon}
-          />
-        </TouchableOpacity>
-        <View style={styles.flex} />
-        <TouchableOpacity style={styles.shareButton}>
-          <Image
-            source={{ uri: 'https://via.placeholder.com/24' }}
-            style={styles.icon}
-          />
-        </TouchableOpacity>
-      </View>
-
-      <ScrollView contentContainerStyle={styles.content}>
-        <View style={styles.profileSection}>
-          <Image
-            source={{
-              uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCUsD4PV-NWVkwPYLn09JGAUVY_qh6_Cf88fW63-yK_4QsqCPo1T6b2qD3X3vp7x9Zb5s9BVHb_uzo9vtLk0htm-tNV7314rrKkH34YaMPziRnqgwHo4l0hWhbemB-9Huimbkx5XaokEynCNdoCSXrUFMtkBIbqsVxPCgHb8VmGfiWao2q13_21nx3Wjo3eC8V8HYaSvi6pcNfV_ELSzy1YV_ZuqdCAzSPL4YsPnN_XKQbs2A1G8KjwGDWgtonn4sTEw6wrMJRwaXE',
-            }}
-            style={styles.profileImage}
-          />
-          <View style={styles.profileInfo}>
-            <Text style={styles.name}>Ethan Carter</Text>
-            <Text style={styles.username}>@ethan_carter</Text>
-            <Text style={styles.bio}>Producer | Photographer</Text>
-          </View>
+    <View className="flex-1 bg-primary">
+      <WebHeader />
+      {/* The screen specific header with back and share is removed, WebHeader provides general nav.
+          If specific share functionality for this profile is needed, it can be added into the content area.
+      */}
+      <ScrollView contentContainerStyle={{ paddingBottom: 20 }}>
+        {/* Profile specific header info (like name) could go here if not in WebHeader */}
+         <View className="p-4 items-center bg-gray-800 md:hidden"> {/* Mobile specific header bar below WebHeader */}
+            <Text className="text-white text-xl font-bold">{profileData.name}'s Profile</Text>
         </View>
 
-        <View style={styles.tagsContainer}>
-          <View style={styles.tag}>
-            <Text style={styles.tagText}>🎧 Producer</Text>
-          </View>
-          <View style={styles.tag}>
-            <Text style={styles.tagText}>📸 Photographer</Text>
-          </View>
-          <View style={styles.tag}>
-            <Text style={styles.tagText}>🎵 Songwriter</Text>
-          </View>
-        </View>
 
-        <Text style={styles.description}>
-          Ethan Carter is a multi-talented creative based in Los Angeles,
-          specializing in music production, photography, and songwriting.
-        </Text>
+        <View className="items-center p-4 md:p-6">
+          <Image
+            source={{ uri: profileData.profileImageUrl }}
+            className="w-32 h-32 rounded-full mb-4 border-2 border-accent"
+          />
+          <Text className="text-white text-2xl font-bold">{profileData.name}</Text>
+          <Text className="text-gray-400 text-base mb-1">{profileData.username}</Text>
+          <Text className="text-gray-300 text-center text-sm mb-3">{profileData.bio}</Text>
 
-        <View style={styles.statsContainer}>
-          <View style={styles.statBox}>
-            <Text style={styles.statNumber}>1.2K</Text>
-            <Text style={styles.statLabel}>Followers</Text>
+          <View className="flex-row flex-wrap justify-center mb-4">
+            {profileData.tags.map(tag => (
+              <View key={tag} className="bg-gray-700 rounded-full px-3 py-1 m-1">
+                <Text className="text-accent text-xs font-semibold">{tag}</Text>
+              </View>
+            ))}
           </View>
-          <View style={styles.statBox}>
-            <Text style={styles.statNumber}>50</Text>
-            <Text style={styles.statLabel}>Gigs Completed</Text>
-          </View>
-          <View style={styles.statBox}>
-            <Text style={styles.statNumber}>4.8</Text>
-            <Text style={styles.statLabel}>Rating</Text>
-          </View>
-        </View>
 
-        <View style={styles.buttonsContainer}>
-          <TouchableOpacity style={styles.followButton}>
-            <Text style={styles.followButtonText}>Follow</Text>
+          <Text className="text-gray-300 text-sm text-center mb-6 mx-4 md:max-w-xl">{profileData.description}</Text>
+
+          <View className="flex-row justify-around w-full max-w-md bg-gray-800 p-3 rounded-lg mb-6">
+            <View className="items-center px-2">
+              <Text className="text-white text-lg font-bold">{profileData.stats.followers}</Text>
+              <Text className="text-gray-400 text-xs">Followers</Text>
+            </View>
+            <View className="items-center px-2">
+              <Text className="text-white text-lg font-bold">{profileData.stats.gigsCompleted}</Text>
+              <Text className="text-gray-400 text-xs text-center">Gigs Completed</Text>
+            </View>
+            <View className="items-center px-2">
+              <Text className="text-white text-lg font-bold">⭐ {profileData.stats.rating}</Text>
+              <Text className="text-gray-400 text-xs">Rating</Text>
+            </View>
+          </View>
+
+          <View className="flex-col sm:flex-row justify-center w-full max-w-md mb-4">
+            <TouchableOpacity onPress={handleFollow} className="bg-accent flex-1 rounded-full py-3 px-4 mx-1 mb-2 sm:mb-0">
+              <Text className="text-primary font-bold text-center text-sm">Follow</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={handleContact} className="bg-gray-700 flex-1 border border-accent rounded-full py-3 px-4 mx-1">
+              <Text className="text-accent font-bold text-center text-sm">Message</Text>
+            </TouchableOpacity>
+          </View>
+          <TouchableOpacity onPress={() => handleBookNow()} className="bg-accent w-full max-w-md rounded-full py-3 px-6 mb-3">
+            <Text className="text-primary font-bold text-center text-lg">Book Creator</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.tipButton}>
-            <Text style={styles.tipButtonText}>Tip</Text>
+           <TouchableOpacity onPress={handleTip} className="border border-accent w-full max-w-md rounded-full py-3 px-6 mb-6">
+            <Text className="text-accent font-bold text-center text-lg">Send Tip</Text>
           </TouchableOpacity>
+
+          <View className="w-full max-w-md mb-6">
+            <Text className="text-white text-xl font-semibold mb-3">Services & Rates</Text>
+            {profileData.services.map(service => (
+              <View key={service.name} className="bg-gray-800 p-3 rounded-lg mb-2">
+                <View className="flex-row justify-between items-center mb-1">
+                    <Text className="text-gray-300 flex-shrink mr-2">{service.name}</Text>
+                    <Text className="text-accent font-semibold">{service.rate}</Text>
+                </View>
+                <TouchableOpacity
+                    onPress={() => handleBookNow(service.name, service.rate)}
+                    className="bg-accent/20 border border-accent rounded-md py-1 px-3 mt-1 self-start">
+                    <Text className="text-accent text-xs">Book this service</Text>
+                </TouchableOpacity>
+              </View>
+            ))}
+          </View>
+
+          <View className="w-full mb-6">
+            <Text className="text-white text-xl font-semibold mb-3 px-4 md:px-0">Featured Work</Text>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 4, paddingLeft:10 }}>
+              {profileData.featuredWork.map(item => (
+                <TouchableOpacity key={item.id} className="mr-3 w-32 sm:w-36">
+                  <Image source={{ uri: item.imageUrl }} className="w-full h-32 sm:h-36 rounded-lg mb-1" />
+                  <Text className="text-gray-300 text-xs text-center truncate">{item.title}</Text>
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
+          </View>
         </View>
-
-        <TouchableOpacity style={styles.bookButton}>
-          <Text style={styles.bookButtonText}>Book Now</Text>
-        </TouchableOpacity>
-
-        <Text style={styles.featuredWorkTitle}>Featured Work</Text>
-
-        <ScrollView
-          horizontal
-          style={styles.featuredWorkScroll}
-          contentContainerStyle={styles.featuredWorkContent}
-          showsHorizontalScrollIndicator={false}
-        >
-          <View style={styles.featuredWorkItem}>
-            <Image
-              source={{
-                uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC9WgC1XjhUEcY2fu9JhjWR9vjlduSQUiTAcDA-GJAm4aaqg6uHxyr9FBzdA2XkzwJYvRIdBWcPMJU7as-FjixGlWFVuwDOvTaQn7Inf59P9tvGJrQp9nkF9SxUwqS3dgkL-PQwcSVOqKgxPkWpFhxK1DdB0C7_okNo7k7E88HfKn4EyBP4KRg-qTQ_yMkOW0WTuN_PJmGv2IJJJ0O71EpVIQrH44wrdWnUhI88TO7Cs_0BVcBVfIU9snJgMBYdRkrc5VSOdZumUxY',
-              }}
-              style={styles.featuredWorkImage}
-            />
-            <Text style={styles.featuredWorkText}>Album 1</Text>
-          </View>
-          <View style={styles.featuredWorkItem}>
-            <Image
-              source={{
-                uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCbzriAvMNzrmNkcfekgDBMCrWkBLiyIRcWCAlFR20VcH6gmuEJ5u-fpwbbLUTFtCzPxcUQPKkL2gT23_Epi5RbtIf4mddqQ16ETaMbDf5d7dyA1kqD3NwDEQT_3lfAuTl5GdPqgLLp7mpqFsmtE53cMK4miTvXVv9R0_xffB2nsbUEsMkjlgF87mUCfKe1U7aQ-LAlY2YicnRLulVBkGGEsG0bEBF-h1-JQmOWzOxe6Xph2ltGrkBNiCj_L15IE11xY6ZxOYVAlCI',
-              }}
-              style={styles.featuredWorkImage}
-            />
-            <Text style={styles.featuredWorkText}>Album 2</Text>
-          </View>
-          <View style={styles.featuredWorkItem}>
-            <Image
-              source={{
-                uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCEf4n4EMXchDiO87Mgek94vF5928u1_6mbFh7egxCsO3507p68oeShd4_tgUtXuii_QdPMw4qD9LpSpzwpdvm0oyn2EYsUky-Q9G1UQTpQL9B-_aJCX1sLjNTToabRWncxyy_eze_umnqRLdaRc7AmOo3NknMNFcO8KyNUqdAQt5M-wuD57k-plOEIN9QYbr2oKkIe1VPfGTgyvLIDw63BiuIphgZpUJA8K4FRNET18mXVz4yMGWmGaS_QPxfZMIZSS60vDkPN7dQ',
-              }}
-              style={styles.featuredWorkImage}
-            />
-            <Text style={styles.featuredWorkText}>Album 3</Text>
-          </View>
-        </ScrollView>
       </ScrollView>
-
-      <View style={styles.bottomNav}>
-        <TouchableOpacity style={styles.navItem}>
-          <Image
-            source={{
-              uri: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIGZpbGw9ImN1cnJlbnRDb2xvciIgdmlld0JveD0iMCAwIDI1NiAyNTYiPgogICAgPHBhdGggZD0iTTIyNCwxMTUuNTVWMjA4YTE2LDE2LDAsMCwxLTE2LDE2SDE2OGExNiwxNiwwLDAsMS0xNi0xNlYxNjhhOCw4LDAsMCwwLTgtOEgxMTJhOCw4LDAsMCwwLTgsOHY0MGExNiwxNiwwLDAsMS0xNiwxNkg0OGExNiwxNiwwLDAsMS0xNi0xNlYxMTUuNTVhMTYsMTYsMCwwLDEsNS4xNy0xMS43OGw4MC03NS40OC4xMS0uMTFhMTYsMTYsMCwwLDEsMjEuNTMsMCwxLjE0LDEuMTQsMCwwLDAsLjExLjExbDgwLDc1LjQ4QTE2LDE2LDAsMCwxLDIyNCwxMTUuNTVaIj48L3BhdGg+Cjwvc3ZnPg==',
-            }}
-            style={styles.navIcon}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
-          <Image
-            source={{
-              uri: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIGZpbGw9ImN1cnJlbnRDb2xvciIgdmlld0JveD0iMCAwIDI1NiAyNTYiPgogICAgPHBhdGggZD0iTTIyOS42NiwyMTguMzRsLTUwLjA3LTUwLjA2YTg4LjExLDg4LjExLDAsMSwwLTExLjMxLDExLjMxbDUwLjA2LDUwLjA3YTgsOCwwLDAsMCwxMS4zMi0xMS4zMlptNDAsMTEyYTcyLDcyLDAsMSwxLDcyLDcyQTcyLjA4LDcyLjA4LDAsMCwxLDQwLDExMloiPjwvcGF0aD4KPC9zdmc+',
-            }}
-            style={styles.navIcon}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
-          <Image
-            source={{
-              uri: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIGZpbGw9ImN1cnJlbnRDb2xvciIgdmlld0JveD0iMCAwIDI1NiAyNTYiPgogICAgPHBhdGggZD0iTTIyNCwxMjhhOCw4LDAsMCwxLTgsOEgxMzZ2ODBhOCw4LDAsMCwxLTE2LDBWMTM2SDRhOCw4LDAsMCwxLDAtMTZoODBWMDRhOCw4LDAsMCwxLDE2LDB2ODBIMjE2QTgsOCwwLDAsMSwyMjQsMTI4WiI+PC9wYXRoPgogIDwvc3ZnPg==',
-            }}
-            style={styles.navIcon}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
-          <Image
-            source={{
-              uri: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIGZpbGw9ImN1cnJlbnRDb2xvciIgdmlld0JveD0iMCAwIDI1NiAyNTYiPgogICAgPHBhdGggZD0iTTE0MCwxMjhhMTIsMTIsMCwxLDEtMTItMTJBMTIsMTIsMCwwLDEsMTQwLDEyOFpNODQsMTE2YTEyLDEyLDAsMSwwLDEyLDEyQTEyLDEyLDAsMCwwLDE3MiwxMTZaTTIzMiwxMjhBMTExLjE0LDExMS4xNCwwLDAsMSw3OS4xMiwyMTkuODJMNDUuMDcsMjMxLjE3YTE2LDE2LDAsMCwxLTIwLjI0LTIwLjI0bDExLjM1LTM0LjA1QTExMS4xNCwxMTEuMTQsMCwxLDEsMjMyLDEyOFptLTE2LDBBODgsODgsMCwxLDAsNTEuODEsMTcyLjA2YTgsOCwwLDAsMSwuNjYsNi41NEw0MCwyMTYsNzcuNDAyMDMuNTNhNy44NSw3Ljg1LDAsMCwxLDIuNTMtLjQyLDgsOCwwLDAsMSw0LDEuMDhBODgsODgsMCwwLDAsMjE2LDEyOFoiPjwvcGF0aD4KPC9zdmc+',
-            }}
-            style={styles.navIcon}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
-          <Image
-            source={{
-              uri: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIGZpbGw9ImN1cnJlbnRDb2xvciIgdmlld0JveD0iMCAwIDI1NiAyNTYiPgogICAgPHBhdGggZD0iTTIzMC45MiwyMTJjLTE1LjIzLTI2LjMzLTM4LjctNDUuMjEtNjYuMDktNTQuMTZhNzIsNzIsMCwxLDAtNzMuNjYsMEM2My43OCwxNjYuNzgsNDAuMzEsMTg1LjY2LDI1LjA4LDIxMmE4LDgsMCwxLDAsMTMuODUsOGMxOC44NC0zMi41Niw1Mi4xNC01Miw4OS4wNy01MnM3MC4yMywxOS40NCw4OS4wNyw1MmE4LDgsMCwxLDAsMTMuODUtOFpNNzIsOTZhNTYsNTYsMCwxLDEsNTYsNTZBNTYuMDYsNTYuMDYsMCwwLDEsNzIsOTZaIj48L3BhdGg+Cjwvc3ZnPg==',
-            }}
-            style={styles.navIcon}
-          />
-        </TouchableOpacity>
-      </View>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#1f1b14',
-    fontFamily: 'Spline Sans, Noto Sans, sans-serif',
-  },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#1f1b14',
-    paddingHorizontal: 16,
-    paddingBottom: 8,
-    paddingTop: 20,
-    justifyContent: 'space-between',
-  },
-  backButton: {
-    padding: 8,
-  },
-  shareButton: {
-    padding: 8,
-  },
-  icon: {
-    width: 24,
-    height: 24,
-    tintColor: 'white',
-  },
-  flex: {
-    flex: 1,
-  },
-  content: {
-    alignItems: 'center',
-    padding: 16,
-  },
-  profileSection: {
-    flexDirection: 'column',
-    alignItems: 'center',
-    marginBottom: 16,
-  },
-  profileImage: {
-    width: 128,
-    height: 128,
-    borderRadius: 64,
-    marginBottom: 8,
-  },
-  profileInfo: {
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  name: {
-    color: 'white',
-    fontSize: 22,
-    fontWeight: 'bold',
-    letterSpacing: -0.33,
-    textAlign: 'center',
-  },
-  username: {
-    color: '#c0b29b',
-    fontSize: 16,
-    fontWeight: 'normal',
-    textAlign: 'center',
-  },
-  bio: {
-    color: '#c0b29b',
-    fontSize: 16,
-    fontWeight: 'normal',
-    textAlign: 'center',
-  },
-  tagsContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    paddingLeft: 12,
-    paddingRight: 12,
-    paddingBottom: 12,
-    gap: 12,
-  },
-  tag: {
-    backgroundColor: '#423929',
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 20,
-  },
-  tagText: {
-    color: 'white',
-    fontSize: 14,
-    fontWeight: '500',
-  },
-  description: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: 'normal',
-    paddingHorizontal: 24,
-    paddingBottom: 24,
-    paddingTop: 8,
-    textAlign: 'center',
-  },
-  statsContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    paddingHorizontal: 16,
-    paddingBottom: 16,
-    justifyContent: 'center',
-  },
-  statBox: {
-    flexDirection: 'column',
-    alignItems: 'center',
-    padding: 12,
-    borderWidth: 1,
-    borderColor: '#5e513b',
-    borderRadius: 8,
-    minWidth: 111,
-    flex: 1,
-    marginHorizontal: 4,
-  },
-  statNumber: {
-    color: 'white',
-    fontSize: 24,
-    fontWeight: 'bold',
-    letterSpacing: -0.48,
-  },
-  statLabel: {
-    color: '#c0b29b',
-    fontSize: 14,
-    fontWeight: 'normal',
-  },
-  buttonsContainer: {
-    flexDirection: 'row',
-    paddingHorizontal: 16,
-    paddingBottom: 16,
-    justifyContent: 'center',
-  },
-  followButton: {
-    backgroundColor: '#eedcbe',
-    paddingHorizontal: 24,
-    paddingVertical: 12,
-    borderRadius: 24,
-    marginHorizontal: 8,
-    flexGrow: 1,
-  },
-  followButtonText: {
-    color: '#1f1b14',
-    fontSize: 14,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    letterSpacing: 0.21,
-  },
-  tipButton: {
-    backgroundColor: '#423929',
-    paddingHorizontal: 24,
-    paddingVertical: 12,
-    borderRadius: 24,
-    marginHorizontal: 8,
-    flexGrow: 1,
-  },
-  tipButtonText: {
-    color: 'white',
-    fontSize: 14,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    letterSpacing: 0.21,
-  },
-  bookButton: {
-    backgroundColor: '#eedcbe',
-    paddingHorizontal: 24,
-    paddingVertical: 12,
-    borderRadius: 24,
-    marginHorizontal: 16,
-    marginBottom: 16,
-  },
-  bookButtonText: {
-    color: '#1f1b14',
-    fontSize: 14,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    letterSpacing: 0.21,
-  },
-  featuredWorkTitle: {
-    color: 'white',
-    fontSize: 22,
-    fontWeight: 'bold',
-    letterSpacing: -0.33,
-    paddingHorizontal: 16,
-    paddingBottom: 12,
-    paddingTop: 20,
-  },
-  featuredWorkScroll: {
-    paddingHorizontal: 16,
-  },
-  featuredWorkContent: {
-    flexDirection: 'row',
-    paddingHorizontal: 16,
-    paddingBottom: 16,
-    gap: 12,
-  },
-  featuredWorkItem: {
-    marginRight: 16,
-  },
-  featuredWorkImage: {
-    width: 120,
-    height: 120,
-    borderRadius: 12,
-  },
-  featuredWorkText: {
-    color: 'white',
-    fontSize: 14,
-    textAlign: 'center',
-    marginTop: 4,
-  },
-  albumContainer: {
-    flexDirection: 'column',
-    minWidth: 160,
-  },
-  albumImage: {
-    width: 160,
-    height: 160,
-    borderRadius: 12,
-    marginBottom: 8,
-  },
-  albumTitle: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: '500',
-  },
-  albumArtist: {
-    color: '#c0b29b',
-    fontSize: 14,
-    fontWeight: 'normal',
-  },
-  bottomNav: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    backgroundColor: '#2f291d',
-    borderTopWidth: 1,
-    borderColor: '#423929',
-    paddingVertical: 8,
-  },
-  navItem: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  navIcon: {
-    width: 24,
-    height: 24,
-    tintColor: '#c0b29b',
-  },
-});
 
 export default PublicCreatorProfileScreen;

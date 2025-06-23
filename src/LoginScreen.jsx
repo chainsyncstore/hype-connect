@@ -1,48 +1,36 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
-  StyleSheet,
   View,
   Text,
   TextInput,
   TouchableOpacity,
   ScrollView,
-  Alert,
+  Alert, // Keep Alert for UI feedback if needed, or remove if strictly no logic
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import ApiService from './services/api';
+// import ApiService from './services/api'; // Comment out for Phase 1
+
+// PRD Colors: #1B1B1E (background), #F5A623 (accent), #FFFFFF (text)
 
 const LoginScreen = () => {
   const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false); // Comment out for Phase 1
 
-  console.log('LoginScreen rendered');
-
-  useEffect(() => {
-    return () => {};
-  }, []);
-
-  const handleLogin = async () => {
+  const handleLogin = () => { // Simplified for Phase 1
     if (!email || !password) {
-      Alert.alert('Error', 'Please fill in all fields');
+      Alert.alert('Demo', 'Please fill in all fields'); // UI feedback
       return;
     }
-
-    setLoading(true);
-    try {
-      const response = await ApiService.login(email, password);
-      if (response.success) {
-        Alert.alert('Success', 'Login successful!', [
-          { text: 'OK', onPress: () => navigation.navigate('MainContent') },
-        ]);
-      }
-    } catch (error) {
-      Alert.alert('Error', error.message || 'Login failed');
-    } finally {
-      setLoading(false);
-    }
+    // setLoading(true); // Phase 1: No loading state
+    console.log('Attempting login with:', email, password); // Simulate
+    // In Phase 1, directly navigate or show success message for demo purposes
+    Alert.alert('Demo Success', 'Login successful! (Demo)', [
+      { text: 'OK', onPress: () => navigation.navigate('MainContent') },
+    ]);
+    // setLoading(false);
   };
 
   const handleGoToSignup = () => {
@@ -54,21 +42,21 @@ const LoginScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <View style={styles.header}>
-          <TouchableOpacity style={styles.backButton} onPress={handleGoBack}>
-            <Text style={styles.backButtonText}>{'<'}</Text>
+    <View className="flex-1 bg-primary">
+      <ScrollView contentContainerStyle={{ alignItems: 'center', paddingBottom: 20 }} className="pt-5">
+        <View className="flex-row items-center w-full px-4 py-4">
+          <TouchableOpacity onPress={handleGoBack} className="p-2">
+            <Text className="text-white text-2xl">{'<'}</Text>
           </TouchableOpacity>
         </View>
-        <Text style={styles.welcomeText}>Welcome back</Text>
+        <Text className="text-white text-2xl font-bold my-5">Welcome back</Text>
 
-        <View style={styles.inputContainer}>
-          <Text style={styles.inputLabel}>Email or phone</Text>
+        <View className="w-4/5 sm:w-3/5 lg:w-2/5 mb-4">
+          <Text className="text-white mb-2 ml-1">Email or phone</Text>
           <TextInput
-            style={styles.input}
+            className="bg-gray-700 text-white rounded-lg p-3"
             placeholder="Enter your email or phone"
-            placeholderTextColor="#cbb590"
+            placeholderTextColor="#A0A0A0" // Lighter placeholder for dark bg
             value={email}
             onChangeText={setEmail}
             keyboardType="email-address"
@@ -76,138 +64,54 @@ const LoginScreen = () => {
           />
         </View>
 
-        <View style={styles.inputContainer}>
-          <Text style={styles.inputLabel}>Password</Text>
+        <View className="w-4/5 sm:w-3/5 lg:w-2/5 mb-4">
+          <Text className="text-white mb-2 ml-1">Password</Text>
           <TextInput
-            style={styles.input}
+            className="bg-gray-700 text-white rounded-lg p-3"
             placeholder="Enter your password"
-            placeholderTextColor="#cbb590"
+            placeholderTextColor="#A0A0A0"
             secureTextEntry={true}
             value={password}
             onChangeText={setPassword}
           />
         </View>
 
-        <Text style={styles.forgotPasswordText}>Forgot password?</Text>
+        <TouchableOpacity className="w-4/5 sm:w-3/5 lg:w-2/5 items-end mb-5">
+          <Text className="text-accent text-sm">Forgot password?</Text>
+        </TouchableOpacity>
 
         <TouchableOpacity
-          style={[styles.loginButton, loading && styles.loginButtonDisabled]}
+          // className={`bg-accent py-3 rounded-lg my-5 w-4/5 sm:w-3/5 lg:w-2/5 ${loading ? 'opacity-50' : ''}`} // Phase 1: No loading state
+          className="bg-accent py-3 rounded-lg my-5 w-4/5 sm:w-3/5 lg:w-2/5"
           onPress={handleLogin}
-          disabled={loading}
+          // disabled={loading} // Phase 1: No loading state
         >
-          <Text style={styles.loginButtonText}>
-            {loading ? 'Logging in...' : 'Log In'}
+          <Text className="text-primary font-bold text-center text-lg">
+            {/* {loading ? 'Logging in...' : 'Log In'} */}
+            Log In
           </Text>
         </TouchableOpacity>
 
-        <Text style={styles.orContinueText}>Or continue with</Text>
+        <Text className="text-gray-400 my-3">Or continue with</Text>
 
-        <View style={styles.socialButtonsContainer}>
-          <TouchableOpacity style={styles.socialButton}>
-            <Text style={styles.socialButtonText}>Continue with Google</Text>
+        <View className="flex-row justify-around w-4/5 sm:w-3/5 lg:w-2/5 mb-5">
+          <TouchableOpacity className="bg-gray-700 p-3 rounded-lg flex-1 mx-2 items-center">
+            <Text className="text-white">Google</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.socialButton}>
-            <Text style={styles.socialButtonText}>Continue with Apple</Text>
+          <TouchableOpacity className="bg-gray-700 p-3 rounded-lg flex-1 mx-2 items-center">
+            <Text className="text-white">Apple</Text>
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity onPress={handleGoToSignup}>
-          <Text style={styles.signUpText}>Don't have an account? Sign up</Text>
+        <TouchableOpacity onPress={handleGoToSignup} className="my-5">
+          <Text className="text-accent underline">
+            Don't have an account? Sign up
+          </Text>
         </TouchableOpacity>
-        <View style={styles.bottomSpace} />
+        <View className="h-5" />
       </ScrollView>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#231c10',
-  },
-  scrollContainer: {
-    alignItems: 'center',
-    paddingBottom: 20,
-  },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#231c10',
-    paddingVertical: 16,
-    paddingHorizontal: 16,
-    width: '100%',
-  },
-  backButton: {
-    padding: 8,
-  },
-  backButtonText: {
-    color: 'white',
-    fontSize: 24,
-  },
-  welcomeText: {
-    fontSize: 24,
-    color: 'white',
-    marginVertical: 20,
-  },
-  inputContainer: {
-    width: '80%',
-    marginBottom: 16,
-  },
-  inputLabel: {
-    color: 'white',
-    marginBottom: 8,
-  },
-  input: {
-    backgroundColor: '#493b22',
-    color: 'white',
-    borderRadius: 8,
-    padding: 12,
-  },
-  forgotPasswordText: {
-    color: '#cbb590',
-    marginVertical: 10,
-  },
-  loginButton: {
-    backgroundColor: '#f4b43d',
-    padding: 12,
-    borderRadius: 8,
-    marginVertical: 20,
-  },
-  loginButtonDisabled: {
-    backgroundColor: '#cbb590',
-  },
-  loginButtonText: {
-    color: '#231c10',
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  orContinueText: {
-    color: 'white',
-    marginVertical: 10,
-  },
-  socialButtonsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    width: '80%',
-    marginBottom: 20,
-  },
-  socialButton: {
-    backgroundColor: '#493b22',
-    padding: 12,
-    borderRadius: 8,
-  },
-  socialButtonText: {
-    color: 'white',
-    textAlign: 'center',
-  },
-  signUpText: {
-    color: '#cbb590',
-    textDecorationLine: 'underline',
-    marginVertical: 20,
-  },
-  bottomSpace: {
-    height: 20,
-  },
-});
 
 export default LoginScreen;

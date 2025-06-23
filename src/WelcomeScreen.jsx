@@ -1,46 +1,15 @@
 
-import React, { useEffect } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import React from 'react';
+import { View, Text, TouchableOpacity, Image } from 'react-native'; // Added Image
 import { useNavigation } from '@react-navigation/native';
+
+// Assuming your logo is in src/assets/logo.png as per file structure
+// For web, you might need to ensure this path is resolvable or use a different import method
+// For now, let's assume it works or we'll use a placeholder if it doesn't load.
+// const logo = require('../assets/logo.png'); // This might not work well with Tailwind for web bg
 
 const WelcomeScreen = () => {
   const navigation = useNavigation();
-
-  useEffect(() => {
-    console.log('WelcomeScreen mounted');
-
-    const handleTouchStart = (event) => {
-      console.log('Touch start detected:', {
-        identifier: event.touches[0]?.identifier,
-        pageX: event.touches[0]?.pageX,
-        pageY: event.touches[0]?.pageY,
-        timestamp: event.timeStamp,
-      });
-    };
-
-    const handleTouchEnd = (event) => {
-      console.log('Touch end detected:', {
-        identifier: event.changedTouches[0]?.identifier,
-        pageX: event.changedTouches[0]?.pageX,
-        pageY: event.touches[0]?.pageY,
-        timestamp: event.timeStamp,
-      });
-      console.log('Current Touch Bank:', event.targetTouches);
-    };
-
-    if (typeof window !== 'undefined') {
-      window.addEventListener('touchstart', handleTouchStart);
-      window.addEventListener('touchend', handleTouchEnd);
-    }
-
-    return () => {
-      console.log('WelcomeScreen unmounted');
-      if (typeof window !== 'undefined') {
-        window.removeEventListener('touchstart', handleTouchStart);
-        window.removeEventListener('touchend', handleTouchEnd);
-      }
-    };
-  }, []);
 
   const handleJoinToConnect = () => {
     console.log('Navigating to SignUp');
@@ -52,103 +21,42 @@ const WelcomeScreen = () => {
     navigation.navigate('Login');
   };
 
+  // PRD Colors: #1B1B1E (background), #F5A623 (accent), #FFFFFF (text)
+  // Existing styles had #221c11 as bg, #eead3e and #493b22 for buttons.
+  // Will align with PRD.
+
   return (
-    <View style={styles.container}>
-      <View style={[styles.logo, styles.interactive]}>
-        <Text style={styles.logoText}>H</Text>
+    <View className="flex-1 justify-center items-center bg-primary p-4">
+      {/* Logo - Using text H for now as in original, styled like logo */}
+      <View className="w-24 h-24 bg-accent rounded-full items-center justify-center mb-8">
+        {/* If using an actual image logo:
+          <Image source={logo} className="w-20 h-20" resizeMode="contain" />
+        */}
+        <Text className="text-5xl font-bold text-primary">H</Text>
       </View>
-      <Text style={styles.headline}>
-        Connect. <Text style={styles.accentColor}>Create.</Text> Cash Out.
+
+      <Text className="text-white text-3xl font-bold text-center mb-2">
+        Connect. <Text className="text-accent">Create.</Text> Cash Out.
       </Text>
-      <Text style={styles.tagline}>For creators</Text>
-      <View style={[styles.buttonContainer, styles.interactive]}>
+      <Text className="text-gray-400 text-lg mb-8">For creators</Text>
+
+      <View className="flex-col sm:flex-row">
         <TouchableOpacity
-          style={styles.primaryButton}
+          className="bg-accent rounded-full py-3 px-8 m-2 w-64 sm:w-auto"
           onPress={handleJoinToConnect}
-          onPressIn={() => console.log('Join to Connect button press in')}
-          onPressOut={() => console.log('Join to Connect button press out')}
         >
-          <Text style={styles.primaryButtonText}>Join to Connect</Text>
+          <Text className="text-primary text-lg font-bold text-center">Join to Connect</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={styles.secondaryButton}
+          // Using a slightly darker shade of primary for secondary button background, or a border approach
+          className="bg-gray-700 rounded-full py-3 px-8 m-2 w-64 sm:w-auto border border-accent"
           onPress={handleLogin}
-          onPressIn={() => console.log('Log In button press in')}
-          onPressOut={() => console.log('Log In button press out')}
         >
-          <Text style={styles.secondaryButtonText}>Log In</Text>
+          <Text className="text-white text-lg font-bold text-center">Log In</Text>
         </TouchableOpacity>
       </View>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#221c11',
-  },
-  logo: {
-    width: 100,
-    height: 100,
-    backgroundColor: '#F5A623',
-    borderRadius: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  logoText: {
-    fontSize: 48,
-    fontWeight: 'bold',
-    color: '#1B1B1E',
-  },
-  headline: {
-    color: '#fff',
-    fontSize: 28,
-    fontWeight: 'bold',
-    marginTop: 32,
-    marginBottom: 8,
-  },
-  accentColor: {
-    color: '#F5A623',
-  },
-  tagline: {
-    color: '#cbb590',
-    fontSize: 18,
-    marginBottom: 32,
-  },
-  buttonContainer: {
-    flexDirection: 'row',
-    marginTop: 16,
-  },
-  primaryButton: {
-    backgroundColor: '#eead3e',
-    borderRadius: 100,
-    paddingHorizontal: 32,
-    paddingVertical: 12,
-    marginHorizontal: 8,
-  },
-  primaryButtonText: {
-    color: '#221c11',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  secondaryButton: {
-    backgroundColor: '#493b22',
-    borderRadius: 100,
-    paddingHorizontal: 32,
-    paddingVertical: 12,
-    marginHorizontal: 8,
-  },
-  secondaryButtonText: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  interactive: {
-    // For touch feedback if needed
-  },
-});
 
 export default WelcomeScreen;
