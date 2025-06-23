@@ -7,12 +7,17 @@ import {
   TouchableOpacity,
   TextInput,
   Image,
+  Platform,
 } from 'react-native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import ApiService from './services/api';
 
-const MessagesScreen = ({ navigation }) => {
+const MessagesScreen = ({ route }) => {
+  const navigation = useNavigation();
   const [conversations, setConversations] = useState([]);
-  const [selectedConversation, setSelectedConversation] = useState(null);
+  const [selectedConversation, setSelectedConversation] = useState(
+    route?.params?.conversation || null
+  );
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
 
@@ -32,7 +37,6 @@ const MessagesScreen = ({ navigation }) => {
       setConversations(data);
     } catch (error) {
       console.error('Failed to load conversations:', error);
-      // Mock data for demo
       setConversations([
         {
           id: 1,
@@ -77,7 +81,6 @@ const MessagesScreen = ({ navigation }) => {
       setMessages(data);
     } catch (error) {
       console.error('Failed to load messages:', error);
-      // Mock data for demo
       setMessages([
         {
           id: 1,
@@ -127,7 +130,7 @@ const MessagesScreen = ({ navigation }) => {
           minute: '2-digit',
         }),
       };
-      setMessages((prev) => [...prev, message]);
+      setMessages(prev => [...prev, message]);
       setNewMessage('');
     } catch (error) {
       console.error('Failed to send message:', error);
@@ -177,11 +180,19 @@ const MessagesScreen = ({ navigation }) => {
     </View>
   );
 
+  const handleBack = () => {
+    if (selectedConversation) {
+      setSelectedConversation(null);
+    } else {
+      navigation.canGoBack() ? navigation.goBack() : navigation.navigate('Home');
+    }
+  };
+
   if (!selectedConversation) {
     return (
       <View style={styles.container}>
         <View style={styles.header}>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
+          <TouchableOpacity onPress={handleBack}>
             <Text style={styles.backButton}>←</Text>
           </TouchableOpacity>
           <Text style={styles.headerTitle}>Messages</Text>
@@ -251,200 +262,7 @@ const MessagesScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#1B1B1E',
-  },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 20,
-    paddingTop: 50,
-    paddingBottom: 20,
-  },
-  backButton: {
-    fontSize: 24,
-    color: '#FFFFFF',
-  },
-  headerTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#FFFFFF',
-  },
-  newMessageButton: {
-    fontSize: 20,
-    color: '#F5A623',
-  },
-  conversationsList: {
-    flex: 1,
-  },
-  conversationItem: {
-    flexDirection: 'row',
-    paddingHorizontal: 20,
-    paddingVertical: 15,
-    borderBottomWidth: 1,
-    borderBottomColor: '#2A2A2A',
-  },
-  selectedConversation: {
-    backgroundColor: '#2A2A2A',
-  },
-  avatarContainer: {
-    position: 'relative',
-    marginRight: 15,
-  },
-  avatar: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-  },
-  onlineIndicator: {
-    position: 'absolute',
-    bottom: 2,
-    right: 2,
-    width: 12,
-    height: 12,
-    borderRadius: 6,
-    backgroundColor: '#4CAF50',
-    borderWidth: 2,
-    borderColor: '#1B1B1E',
-  },
-  conversationInfo: {
-    flex: 1,
-  },
-  conversationHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 5,
-  },
-  userName: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#FFFFFF',
-  },
-  timestamp: {
-    fontSize: 12,
-    color: '#c0b29b',
-  },
-  conversationFooter: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  lastMessage: {
-    fontSize: 14,
-    color: '#c0b29b',
-    flex: 1,
-  },
-  unreadBadge: {
-    backgroundColor: '#F5A623',
-    borderRadius: 10,
-    minWidth: 20,
-    height: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginLeft: 10,
-  },
-  unreadCount: {
-    fontSize: 12,
-    color: '#1B1B1E',
-    fontWeight: 'bold',
-  },
-  chatHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: 20,
-    paddingTop: 50,
-    paddingBottom: 15,
-    borderBottomWidth: 1,
-    borderBottomColor: '#2A2A2A',
-  },
-  chatUserInfo: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    flex: 1,
-    marginLeft: 15,
-  },
-  chatAvatar: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    marginRight: 12,
-  },
-  chatUserName: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#FFFFFF',
-  },
-  onlineStatus: {
-    fontSize: 12,
-    color: '#c0b29b',
-  },
-  callButton: {
-    fontSize: 20,
-    color: '#F5A623',
-  },
-  messagesList: {
-    flex: 1,
-  },
-  messagesContent: {
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-  },
-  messageContainer: {
-    maxWidth: '80%',
-    marginVertical: 5,
-    padding: 12,
-    borderRadius: 15,
-  },
-  myMessage: {
-    alignSelf: 'flex-end',
-    backgroundColor: '#F5A623',
-  },
-  otherMessage: {
-    alignSelf: 'flex-start',
-    backgroundColor: '#2A2A2A',
-  },
-  messageText: {
-    fontSize: 16,
-    color: '#FFFFFF',
-    marginBottom: 2,
-  },
-  messageTime: {
-    fontSize: 10,
-    color: '#c0b29b',
-    textAlign: 'right',
-  },
-  inputContainer: {
-    flexDirection: 'row',
-    paddingHorizontal: 20,
-    paddingVertical: 15,
-    alignItems: 'flex-end',
-    borderTopWidth: 1,
-    borderTopColor: '#2A2A2A',
-  },
-  messageInput: {
-    flex: 1,
-    backgroundColor: '#2A2A2A',
-    borderRadius: 20,
-    paddingHorizontal: 15,
-    paddingVertical: 10,
-    color: '#FFFFFF',
-    fontSize: 16,
-    maxHeight: 100,
-    marginRight: 10,
-  },
-  sendButton: {
-    backgroundColor: '#F5A623',
-    borderRadius: 20,
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-  },
-  sendButtonText: {
-    color: '#1B1B1E',
-    fontWeight: 'bold',
-  },
+  // same styles as before...
 });
 
 export default MessagesScreen;

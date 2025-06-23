@@ -7,23 +7,22 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import ProfileMenuModal from './ProfileMenuModal';
 
-const PrivateCreatorProfileScreen = ({ navigation }) => {
+const PrivateCreatorProfileScreen = () => {
   const [menuVisible, setMenuVisible] = useState(false);
-
-  console.log('PrivateCreatorProfileScreen rendered');
+  const navigation = useNavigation();
 
   useEffect(() => {
     console.log('PrivateCreatorProfileScreen mounted');
-
     return () => {
       console.log('PrivateCreatorProfileScreen unmounted');
     };
   }, []);
 
   return (
-    <React.Fragment>
+    <>
       <ScrollView style={styles.container}>
         <View style={styles.header}>
           <TouchableOpacity
@@ -33,6 +32,7 @@ const PrivateCreatorProfileScreen = ({ navigation }) => {
             <Text style={styles.menuIcon}>⋮</Text>
           </TouchableOpacity>
         </View>
+
         <View style={styles.profileSection}>
           <Image
             source={{
@@ -44,14 +44,22 @@ const PrivateCreatorProfileScreen = ({ navigation }) => {
           <Text style={styles.profileTitle}>Illustrator</Text>
           <Text style={styles.profileLocation}>Based in San Francisco</Text>
         </View>
+
         <View style={styles.actionButtons}>
-          <TouchableOpacity style={styles.editButton}>
+          <TouchableOpacity
+            style={styles.editButton}
+            onPress={() => navigation.navigate('EditProfile')}
+          >
             <Text style={styles.editButtonText}>Edit Profile</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.liveButton}>
+          <TouchableOpacity
+            style={styles.liveButton}
+            onPress={() => navigation.navigate('LiveStream')}
+          >
             <Text style={styles.liveButtonText}>Go Live</Text>
           </TouchableOpacity>
         </View>
+
         <View style={styles.statsSection}>
           <View style={styles.statBox}>
             <Text style={styles.statNumber}>123</Text>
@@ -70,19 +78,22 @@ const PrivateCreatorProfileScreen = ({ navigation }) => {
             <Text style={styles.statLabel}>Rating</Text>
           </View>
         </View>
+
         <View style={styles.tabsSection}>
           <Text style={styles.activeTab}>Posts</Text>
           <Text style={styles.inactiveTab}>About</Text>
           <Text style={styles.inactiveTab}>Skills</Text>
         </View>
-        <View style={styles.postsGrid}>{/* Add post images here */}</View>
+
+        <View style={styles.postsGrid}>{/* Future post grid content */}</View>
       </ScrollView>
+
       <ProfileMenuModal
         visible={menuVisible}
         onClose={() => setMenuVisible(false)}
         navigation={navigation}
       />
-    </React.Fragment>
+    </>
   );
 };
 

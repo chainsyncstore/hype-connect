@@ -1,19 +1,44 @@
 import React, { useEffect } from 'react';
+import { Platform, TouchableOpacity, Text } from 'react-native';
+import { Link } from 'react-router-dom';
 
-const CreatorEarningsScreen = () => {
+const CreatorEarningsScreen = ({ navigation }) => {
   const containerStyle = {
     fontFamily: '"Spline Sans", "Noto Sans", sans-serif',
   };
 
-  console.log('CreatorEarningsScreen rendered');
-
   useEffect(() => {
     console.log('CreatorEarningsScreen mounted');
-
     return () => {
       console.log('CreatorEarningsScreen unmounted');
     };
   }, []);
+
+  const BackButton = () => {
+    if (Platform.OS === 'web') {
+      return (
+        <Link to="/" className="text-white flex size-12 shrink-0 items-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24px"
+            height="24px"
+            fill="currentColor"
+            viewBox="0 0 256 256"
+          >
+            <path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z" />
+          </svg>
+        </Link>
+      );
+    }
+
+    return (
+      <TouchableOpacity onPress={() => navigation.goBack()}>
+        <Text className="text-white flex size-12 shrink-0 items-center">
+          {'<'}
+        </Text>
+      </TouchableOpacity>
+    );
+  };
 
   return (
     <div
@@ -22,26 +47,12 @@ const CreatorEarningsScreen = () => {
     >
       <div>
         <div className="flex items-center bg-[#221c11] p-4 pb-2 justify-between">
-          <div
-            className="text-white flex size-12 shrink-0 items-center"
-            data-icon="ArrowLeft"
-            data-size="24px"
-            data-weight="regular"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24px"
-              height="24px"
-              fill="currentColor"
-              viewBox="0 0 256 256"
-            >
-              <path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z" />
-            </svg>
-          </div>
+          <BackButton />
           <h2 className="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">
             Earnings
           </h2>
         </div>
+
         <h3 className="text-white tracking-light text-2xl font-bold leading-tight px-4 text-left pb-2 pt-5">
           Total Earnings
         </h3>
@@ -63,6 +74,7 @@ const CreatorEarningsScreen = () => {
             </p>
           </div>
         </div>
+
         <h2 className="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">
           Earnings Breakdown
         </h2>

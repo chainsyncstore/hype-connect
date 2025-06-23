@@ -1,26 +1,25 @@
-module.exports = {
-  presets: [
-    '@babel/preset-env',
-    'module:metro-react-native-babel-preset',
-    [
-      '@babel/preset-react',
-      {
-        runtime: 'automatic', // Enable modern JSX transform
-      },
+module.exports = function (api) {
+  api.cache(true);
+
+  return {
+    presets: ['babel-preset-expo'],
+    plugins: [
+      '@babel/plugin-proposal-class-properties',
+      '@babel/plugin-proposal-object-rest-spread',
+      '@babel/plugin-transform-runtime',
+      // Only for Web
+      [
+        'module-resolver',
+        {
+          alias: {
+            // Optional: add any needed aliases here
+          },
+        },
+      ],
     ],
-    '@babel/preset-typescript',
-    '@babel/preset-flow'
-  ],
-  plugins: [
-    '@babel/plugin-transform-optional-chaining',
-    ['@babel/plugin-transform-class-properties', { loose: true }],
-    ['@babel/plugin-transform-private-methods', { loose: true }],
-    ['@babel/plugin-transform-private-property-in-object', { loose: true }],
-    '@babel/plugin-transform-flow-strip-types'
-  ],
-  env: {
-    development: {
-      plugins: ['react-refresh/babel'],
-    },
-  },
+    // 👇 Prevents Babel from trying to compile node_modules
+    ignore: [
+      /node_modules\/(?!react-native|expo|@expo|@unimodules|@react-native|react-native-web|@react-navigation)/,
+    ],
+  };
 };

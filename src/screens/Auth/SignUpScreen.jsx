@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import {
   StyleSheet,
@@ -12,8 +11,10 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import ApiService from './services/api';
 
-const SignUpScreen = () => {
-  const navigation = useNavigation();
+const SignUpScreen = ({ navigation: propNavigation }) => {
+  const nativeNavigation = useNavigation();
+  const navigation = propNavigation || nativeNavigation;
+
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
@@ -21,11 +22,8 @@ const SignUpScreen = () => {
   const [selectedRole, setSelectedRole] = useState('creator');
   const [loading, setLoading] = useState(false);
 
-  console.log('SignUpScreen rendered');
-
   useEffect(() => {
     console.log('SignUpScreen mounted');
-
     return () => {
       console.log('SignUpScreen unmounted');
     };
@@ -60,19 +58,11 @@ const SignUpScreen = () => {
     }
   };
 
-  const handleGoToLogin = () => {
-    navigation.navigate('Login');
-  };
-
-  const handleGoBack = () => {
-    navigation.goBack();
-  };
-
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.header}>
-          <TouchableOpacity style={styles.backButton} onPress={handleGoBack}>
+          <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
             <Text style={styles.backButtonText}>{'<'}</Text>
           </TouchableOpacity>
           <Text style={styles.headerTitle}>Sign Up</Text>
@@ -116,7 +106,7 @@ const SignUpScreen = () => {
             style={styles.input}
             placeholder="Password"
             placeholderTextColor="#cbb690"
-            secureTextEntry={true}
+            secureTextEntry
             value={password}
             onChangeText={setPassword}
           />
@@ -139,6 +129,7 @@ const SignUpScreen = () => {
               Creator
             </Text>
           </TouchableOpacity>
+
           <TouchableOpacity
             style={[
               styles.roleButton,
@@ -170,7 +161,7 @@ const SignUpScreen = () => {
           </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={handleGoToLogin}>
+        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
           <Text style={styles.loginText}>Already have an account? Log in</Text>
         </TouchableOpacity>
       </ScrollView>

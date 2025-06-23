@@ -6,8 +6,12 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-const InterestsScreen = ({ navigation }) => {
+const InterestsScreen = ({ navigation: propNavigation }) => {
+  const nativeNavigation = useNavigation();
+  const navigation = propNavigation || nativeNavigation;
+
   const interests = [
     'Music Production',
     'Videography',
@@ -25,11 +29,8 @@ const InterestsScreen = ({ navigation }) => {
     'Performance',
   ];
 
-  console.log('InterestsScreen rendered');
-
   useEffect(() => {
     console.log('InterestsScreen mounted');
-
     return () => {
       console.log('InterestsScreen unmounted');
     };
@@ -39,7 +40,7 @@ const InterestsScreen = ({ navigation }) => {
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.header}>
-          <TouchableOpacity style={styles.backButton}>
+          <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
             <Text style={styles.backButtonText}>{'<'}</Text>
           </TouchableOpacity>
           <Text style={styles.headerTitle}>Interests</Text>
@@ -70,6 +71,7 @@ const InterestsScreen = ({ navigation }) => {
         >
           <Text style={styles.continueButtonText}>Continue</Text>
         </TouchableOpacity>
+
         <View style={styles.bottomSpace} />
       </ScrollView>
     </View>
@@ -154,6 +156,7 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     paddingVertical: 8,
     paddingHorizontal: 16,
+    margin: 6,
   },
   interestButtonText: {
     color: '#fff',

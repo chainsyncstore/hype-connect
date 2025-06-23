@@ -8,10 +8,13 @@ import {
   TextInput,
   Image,
   ScrollView,
+  Platform,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import ApiService from './services/api';
 
-const GigsMarketplaceScreen = ({ navigation }) => {
+const GigsMarketplaceScreen = () => {
+  const navigation = useNavigation();
   const [gigs, setGigs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
@@ -42,7 +45,6 @@ const GigsMarketplaceScreen = ({ navigation }) => {
       setGigs(response.data || []);
     } catch (error) {
       console.error('Failed to load gigs:', error);
-      // Mock data for demo
       setGigs([
         {
           id: 1,
@@ -104,7 +106,7 @@ const GigsMarketplaceScreen = ({ navigation }) => {
     </TouchableOpacity>
   );
 
-  const renderCategoryFilter = category => (
+  const renderCategoryFilter = (category) => (
     <TouchableOpacity
       key={category}
       style={[
@@ -157,7 +159,7 @@ const GigsMarketplaceScreen = ({ navigation }) => {
       <FlatList
         data={gigs}
         renderItem={renderGigCard}
-        keyExtractor={item => item.id.toString()}
+        keyExtractor={(item) => item.id.toString()}
         numColumns={2}
         contentContainerStyle={styles.gigsGrid}
         showsVerticalScrollIndicator={false}
@@ -176,7 +178,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 20,
-    paddingTop: 50,
+    paddingTop: Platform.OS === 'web' ? 20 : 50,
     paddingBottom: 20,
   },
   backButton: {

@@ -9,9 +9,11 @@ import {
   Alert,
   Modal,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import ApiService from './services/api';
 
-const LiveStreamScreen = ({ navigation }) => {
+const LiveStreamScreen = () => {
+  const navigation = useNavigation();
   const [isStreaming, setIsStreaming] = useState(false);
   const [streamTitle, setStreamTitle] = useState('');
   const [viewers, setViewers] = useState(0);

@@ -1,11 +1,15 @@
 import React, { useEffect } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-const SuccessScreen = ({ navigation }) => {
+const SuccessScreen = ({ navigation: propNavigation }) => {
+  const nativeNavigation = useNavigation();
+  const navigation = propNavigation || nativeNavigation;
 
   useEffect(() => {
     return () => {};
   }, []);
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome to the Hype!</Text>
