@@ -9,7 +9,8 @@ import {
   Alert,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import ApiService from './services/api';
+-import ApiService from './services/api';
++import ApiService from '../../services/api';
 
 const SignUpScreen = ({ navigation: propNavigation }) => {
   const nativeNavigation = useNavigation();

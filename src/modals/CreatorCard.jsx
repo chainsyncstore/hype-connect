@@ -9,9 +9,24 @@ const CreatorCard = () => {
     <View style={styles.container}>
       <View style={styles.overlay}>
         <View style={styles.card}>
-          <TouchableOpacity style={styles.closeButton}>
-            <View style={styles.closeButtonLine} />
-          </TouchableOpacity>
+// src/modals/CreatorCard.jsx
+
+import React from 'react';
+import { TouchableOpacity, View, /* ... */ } from 'react-native';
+
+const CreatorCard = ({ onClose }) => {
+  return (
+    <View style={styles.container}>
+      {/* ...other modal content... */}
+      <TouchableOpacity style={styles.closeButton} onPress={onClose}>
+        <View style={styles.closeButtonLine} />
+      </TouchableOpacity>
+      {/* ... */}
+    </View>
+  );
+};
+
+export default CreatorCard;
           <View style={styles.content}>
             <View style={styles.profileContainer}>
               <Image

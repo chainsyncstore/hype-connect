@@ -262,7 +262,19 @@ const MessagesScreen = ({ route }) => {
 };
 
 const styles = StyleSheet.create({
-  // same styles as before...
+  container: {
+    flex: 1,
+    backgroundColor: '#1B1B1E',
+  },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    paddingTop: 50,
+    paddingBottom: 20,
+  },
+  // Add remaining styles...
 });
 
 export default MessagesScreen;

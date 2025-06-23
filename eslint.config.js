@@ -23,7 +23,7 @@ const compat = new FlatCompat({
     allConfig: js.configs.all
 });
 
-module.exports = defineConfig([
+module.exports = [
     {
         files: ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"], // Apply this config to relevant files
         languageOptions: {

@@ -14,10 +14,9 @@ export default function UploadScreen() {
       quality: 1,
     });
 
-    if (!result.cancelled) {
+    if (!result.canceled) {
       setImage(result.uri);
-    }
-  };
+    }  };
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>

@@ -10,7 +10,8 @@ import {
   Modal,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import ApiService from './services/api';
+-import ApiService from './services/api';
++import ApiService from '../../services/api';
 
 const LiveStreamScreen = () => {
   const navigation = useNavigation();
@@ -26,8 +27,8 @@ const LiveStreamScreen = () => {
 
   useEffect(() => {
     // Mock real-time updates
-    const interval = setInterval(() => {
       if (isStreaming) {
+        setViewers((prev) => Math.max(0, prev + Math.floor(Math.random() * 3) - 1));
         setViewers((prev) => prev + Math.floor(Math.random() * 3) - 1);
         // Simulate incoming tips and comments
         if (Math.random() > 0.7) {
@@ -191,11 +192,21 @@ const LiveStreamScreen = () => {
       <View style={styles.interactionPanel}>
         <View style={styles.tipsSection}>
           <Text style={styles.sectionTitle}>Recent Tips</Text>
-          <FlatList
-            data={tips.slice(0, 3)}
-            renderItem={renderTip}
-            keyExtractor={item => item.id.toString()}
-            style={styles.tipsList}
+// Around line 195 in LiveStreamScreen.jsx
+<FlatList
+  data={(tips || []).slice(0, 3)}
+  renderItem={renderTip}
+  keyExtractor={item => item.id.toString()}
+  style={styles.tipsList}
+/>
+
+// …later, around line 206
+<FlatList
+  data={(comments || []).slice(0, 5)}
+  renderItem={renderComment}
+  keyExtractor={item => item.id.toString()}
+  style={styles.commentsList}
+/>
           />
         </View>
 

@@ -1,6 +1,7 @@
-const Stack = createNativeStackNavigator(
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+const Stack = createNativeStackNavigator();
+
 export default function AuthStack() {
-  return (
-export default function AuthStack() {
-  return null;  // Replace with navigator config
+  return null;  // TODO: Replace with navigator config
 }

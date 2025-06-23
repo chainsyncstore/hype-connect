@@ -10,8 +10,10 @@ import {
   Platform,
 } from 'react-native';
 
-import { Link } from 'react-router-dom';
-import ReportBlockModal from './ReportBlockModal';
+
+-import ReportBlockModal from './ReportBlockModal';
++import ReportBlockModal from '../../modals/ReportBlockModal';
++import ReportBlockModal from '../../modals/ReportBlockModal';
 
 const CommentSectionScreen = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -96,15 +98,23 @@ const CommentSectionScreen = ({ navigation }) => {
           <Text>Send</Text>
         </TouchableOpacity>
       </View>
-
-      <View style={styles.bottomNavigation}>
-        {Platform.OS === 'web' ? (
-          <>
-            <Link to="/" style={styles.navItem}>🏠</Link>
-            <Link to="/search" style={styles.navItem}>🔎</Link>
-            <Link to="/create" style={styles.navItem}>➕</Link>
-            <Link to="/archive" style={styles.navItem}>🗄️</Link>
-            <Link to="/profile" style={styles.navItem}>👤</Link>
+           <>
+             <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+               <Text style={styles.navItem}>🏠</Text>
+             </TouchableOpacity>
+             <TouchableOpacity onPress={() => navigation.navigate('Search')}>
+               <Text style={styles.navItem}>🔎</Text>
+             </TouchableOpacity>
+             <TouchableOpacity onPress={() => navigation.navigate('Create')}>
+               <Text style={styles.navItem}>➕</Text>
+             </TouchableOpacity>
+             <TouchableOpacity onPress={() => navigation.navigate('Archive')}>
+               <Text style={styles.navItem}>🗄️</Text>
+             </TouchableOpacity>
+             <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+               <Text style={styles.navItem}>👤</Text>
+             </TouchableOpacity>
+           </>
           </>
         ) : (
           <>

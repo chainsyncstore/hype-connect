@@ -10,7 +10,8 @@ import {
   TextInput,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import ApiService from './services/api';
+-import ApiService from './services/api';
++import ApiService from '../../services/api';
 
 const WalletScreen = () => {
   const navigation = useNavigation();

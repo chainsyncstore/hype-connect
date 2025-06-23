@@ -9,11 +9,11 @@ import {
   Modal,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import CreatorCard from './CreatorCard';
+-import CreatorCard from './CreatorCard';
++import CreatorCard from '../../modals/CreatorCard';
 
-const MainContentScreen = ({ navigation: propNavigation }) => {
-  const nativeNavigation = useNavigation();
-  const navigation = propNavigation || nativeNavigation;
+const MainContentScreen = () => {
+  const navigation = useNavigation();
 
   const [isCreatorCardVisible, setIsCreatorCardVisible] = useState(false);
 
@@ -162,6 +162,128 @@ const MainContentScreen = ({ navigation: propNavigation }) => {
 
 const styles = StyleSheet.create({
   // [same styles as before]
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#1B1B1E',
+  },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    paddingTop: 50,
+    paddingBottom: 20,
+  },
+  headerTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#FFFFFF',
+  },
+  settingsButton: {
+    padding: 8,
+  },
+  tabContainer: {
+    flexDirection: 'row',
+    paddingHorizontal: 20,
+    marginBottom: 10,
+  },
+  tabButton: {
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    marginRight: 10,
+  },
+  tabButtonActive: {
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    marginRight: 10,
+    borderBottomWidth: 2,
+    borderBottomColor: '#F5A623',
+  },
+  tabButtonText: {
+    color: '#999',
+    fontSize: 16,
+  },
+  tabButtonTextActive: {
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  postContainer: {
+    backgroundColor: '#2A2A2A',
+    marginHorizontal: 20,
+    marginBottom: 20,
+    borderRadius: 10,
+    padding: 15,
+  },
+  postImage: {
+    width: '100%',
+    height: 200,
+    borderRadius: 10,
+    marginBottom: 10,
+  },
+  postDetails: {
+    marginBottom: 10,
+  },
+  postCategory: {
+    color: '#F5A623',
+    fontSize: 12,
+    marginBottom: 5,
+  },
+  postTitle: {
+    color: '#FFFFFF',
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  postFooter: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  postAuthor: {
+    color: '#999',
+    fontSize: 14,
+  },
+  postButton: {
+    backgroundColor: '#F5A623',
+    paddingHorizontal: 15,
+    paddingVertical: 5,
+    borderRadius: 15,
+  },
+  postButtonText: {
+    color: '#1B1B1E',
+    fontWeight: 'bold',
+  },
+  postActions: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginBottom: 10,
+  },
+  postAction: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  postActionText: {
+    color: '#999',
+    fontSize: 14,
+  },
+  postDescription: {
+    color: '#CCCCCC',
+    fontSize: 14,
+    lineHeight: 20,
+  },
+  bottomNavigation: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    backgroundColor: '#2A2A2A',
+    paddingVertical: 15,
+    marginTop: 20,
+    marginHorizontal: 20,
+    borderRadius: 10,
+  },
+  bottomSpace: {
+    height: 20,
+  },
 });
-
 export default MainContentScreen;

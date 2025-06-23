@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
-import { Platform, TouchableOpacity, Text } from 'react-native';
-import { Link } from 'react-router-dom';
-
+-import { Platform, TouchableOpacity, Text } from 'react-native';
+-import { Link } from 'react-router-dom';
++import { Platform, TouchableOpacity, Text, View } from 'react-native';
++import { useNavigation } from '@react-navigation/native';
 const CreatorEarningsScreen = ({ navigation }) => {
   const containerStyle = {
     fontFamily: '"Spline Sans", "Noto Sans", sans-serif',
