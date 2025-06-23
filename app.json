@@ -1,41 +1,36 @@
 {
   "expo": {
     "name": "HypeConnect",
-    "slug": "hypeconnect",
+    "slug": "hype-connect",
     "version": "1.0.0",
     "orientation": "portrait",
     "scheme": "hypeconnect",
-    "platforms": ["ios", "android", "web"],
-    "icon": "./assets/icon.png",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
+    "main": "expo-router/entry",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "plugins": [
+      "expo-router"
+    ],
     "assetBundlePatterns": [
-      "*/"
+      "**/*"
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.yourcompany.hypeconnect"
+      "bundleIdentifier": "com.yourcompany.hypeconnect",
+      "newArchEnabled": false
     },
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.yourcompany.hypeconnect"
+      "package": "com.yourcompany.hypeconnect",
+      "newArchEnabled": false
     },
     "web": {
       "output": "static"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "REPLACE-WITH-YOUR-EAS-ID"
-      }
-    },
-    "sdkVersion": "51.0.0"
+    }
   }
 }
