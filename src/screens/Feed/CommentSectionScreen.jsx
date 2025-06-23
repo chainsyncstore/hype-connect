@@ -7,13 +7,11 @@ import {
   ScrollView,
   Image,
   TextInput,
-  Platform,
+  Platform, 
 } from 'react-native';
 
-
--import ReportBlockModal from './ReportBlockModal';
-+import ReportBlockModal from '../../modals/ReportBlockModal';
-+import ReportBlockModal from '../../modals/ReportBlockModal';
+// Corrected import path and removed duplicate
+import ReportBlockModal from '../../modals/ReportBlockModal'; 
 
 const CommentSectionScreen = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -49,7 +47,7 @@ const CommentSectionScreen = ({ navigation }) => {
       </View>
 
       <ScrollView>
-        {[{
+        {[{ // Ensure this array of comments is intended and correctly structured
           name: "Liam Carter",
           time: "2d",
           comment: "This is a great opportunity for any creative looking to expand their portfolio and network with industry leaders. I'm definitely applying!",
@@ -98,45 +96,7 @@ const CommentSectionScreen = ({ navigation }) => {
           <Text>Send</Text>
         </TouchableOpacity>
       </View>
-           <>
-             <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-               <Text style={styles.navItem}>🏠</Text>
-             </TouchableOpacity>
-             <TouchableOpacity onPress={() => navigation.navigate('Search')}>
-               <Text style={styles.navItem}>🔎</Text>
-             </TouchableOpacity>
-             <TouchableOpacity onPress={() => navigation.navigate('Create')}>
-               <Text style={styles.navItem}>➕</Text>
-             </TouchableOpacity>
-             <TouchableOpacity onPress={() => navigation.navigate('Archive')}>
-               <Text style={styles.navItem}>🗄️</Text>
-             </TouchableOpacity>
-             <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
-               <Text style={styles.navItem}>👤</Text>
-             </TouchableOpacity>
-           </>
-          </>
-        ) : (
-          <>
-            <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-              <Text style={styles.navItem}>🏠</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('Search')}>
-              <Text style={styles.navItem}>🔎</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('Create')}>
-              <Text style={styles.navItem}>➕</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('Archive')}>
-              <Text style={styles.navItem}>🗄️</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
-              <Text style={styles.navItem}>👤</Text>
-            </TouchableOpacity>
-          </>
-        )}
-      </View>
-
+      
       <ReportBlockModal visible={modalVisible} onClose={handleCloseModal} />
     </View>
   );
@@ -157,7 +117,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     flex: 1,
-    paddingRight: 40,
+    paddingRight: 40, 
   },
   commentContainer: {
     flexDirection: 'row',
@@ -197,22 +157,11 @@ const styles = StyleSheet.create({
     color: '#fff',
     borderRadius: 20,
     paddingHorizontal: 16,
-    paddingVertical: 8,
+    paddingVertical: Platform.OS === 'ios' ? 10 : 8, 
     fontSize: 14,
   },
   sendButton: { paddingHorizontal: 16, paddingVertical: 8 },
-  bottomNavigation: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    backgroundColor: '#332a19',
-    paddingVertical: 12,
-  },
-  bottomSpace: { height: 5, backgroundColor: '#332a19' },
-  navItem: {
-    color: '#fff',
-    fontSize: 20,
-    textDecorationLine: 'none',
-  },
+  bottomSpace: { height: 5 }, 
 });
 
 export default CommentSectionScreen;
