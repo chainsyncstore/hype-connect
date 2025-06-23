@@ -1,166 +1,59 @@
 import React, { useState, useEffect } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  FlatList,
-  TouchableOpacity,
-  TextInput,
-  Image,
-  Platform,
-} from 'react-native';
-import { useNavigation, useFocusEffect } from '@react-navigation/native';
-import ApiService from './services/api';
+import { View, Text, FlatList, TouchableOpacity, TextInput, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import WebHeader from '../../components/WebHeader';
 
-const MessagesScreen = ({ route }) => {
-  const navigation = useNavigation();
-  const [conversations, setConversations] = useState([]);
-  const [selectedConversation, setSelectedConversation] = useState(
-    route?.params?.conversation || null
-  );
+const placeholderAvatar = 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=50&q=60';
+
+const MessagesScreen = ({ navigation: propNavigation }) => {
+  const nativeNavigation = useNavigation();
+  const navigation = propNavigation || nativeNavigation;
+
+  const [conversations, setConversations] = useState([
+    { id: '1', user: { name: 'Beat Maker Pro', avatar: placeholderAvatar, online: true }, lastMessage: 'Thanks for the collaboration! The track sounds amazing.', timestamp: '10:30 AM', unreadCount: 2 },
+    { id: '2', user: { name: 'Visual Artist', avatar: placeholderAvatar, online: false }, lastMessage: 'When can we start the project? Let me know your availability.', timestamp: 'Yesterday', unreadCount: 0 },
+    { id: '3', user: { name: 'DJ Hype', avatar: placeholderAvatar, online: true }, lastMessage: 'Next gig is on Friday, you in?', timestamp: '2 days ago', unreadCount: 1 },
+  ]);
+  const [selectedConversation, setSelectedConversation] = useState(null);
   const [messages, setMessages] = useState([]);
-  const [newMessage, setNewMessage] = useState('');
-
-  useEffect(() => {
-    loadConversations();
-  }, []);
 
   useEffect(() => {
     if (selectedConversation) {
-      loadMessages(selectedConversation.id);
+      setMessages([
+        { id: 'm1', text: 'Hey! I love your music style. Want to collaborate?', sender: 'other', timestamp: '10:00 AM' },
+        { id: 'm2', text: 'Absolutely! What did you have in mind?', sender: 'me', timestamp: '10:05 AM' },
+        { id: 'm3', text: 'I need a beat for my new track. Can you help with that?', sender: 'other', timestamp: '10:15 AM' },
+        { id: 'm4', text: 'Sure! My rate is ₦50,000 for a custom beat. Deal?', sender: 'me', timestamp: '10:20 AM' },
+        { id: 'm5', text: "Perfect! Let's do it. Thanks for the collaboration!", sender: 'other', timestamp: '10:30 AM' },
+      ]);
+    } else {
+      setMessages([]);
     }
   }, [selectedConversation]);
 
-  const loadConversations = async () => {
-    try {
-      const data = await ApiService.getConversations();
-      setConversations(data);
-    } catch (error) {
-      console.error('Failed to load conversations:', error);
-      setConversations([
-        {
-          id: 1,
-          user: {
-            name: 'Beat Maker Pro',
-            avatar: 'https://via.placeholder.com/50',
-            online: true,
-          },
-          lastMessage: 'Thanks for the collaboration!',
-          timestamp: '10:30 AM',
-          unreadCount: 2,
-        },
-        {
-          id: 2,
-          user: {
-            name: 'Visual Artist',
-            avatar: 'https://via.placeholder.com/50',
-            online: false,
-          },
-          lastMessage: 'When can we start the project?',
-          timestamp: 'Yesterday',
-          unreadCount: 0,
-        },
-        {
-          id: 3,
-          user: {
-            name: 'Music Producer',
-            avatar: 'https://via.placeholder.com/50',
-            online: true,
-          },
-          lastMessage: 'The track sounds amazing!',
-          timestamp: '2 days ago',
-          unreadCount: 1,
-        },
-      ]);
-    }
+  const handleSendMessage = () => {
+    alert("Message Sent (Demo)!");
   };
 
-  const loadMessages = async conversationId => {
-    try {
-      const data = await ApiService.getMessages(conversationId);
-      setMessages(data);
-    } catch (error) {
-      console.error('Failed to load messages:', error);
-      setMessages([
-        {
-          id: 1,
-          text: 'Hey! I love your music style. Want to collaborate?',
-          sender: 'other',
-          timestamp: '10:00 AM',
-        },
-        {
-          id: 2,
-          text: 'Absolutely! What did you have in mind?',
-          sender: 'me',
-          timestamp: '10:05 AM',
-        },
-        {
-          id: 3,
-          text: 'I need a beat for my new track. Can you help?',
-          sender: 'other',
-          timestamp: '10:15 AM',
-        },
-        {
-          id: 4,
-          text: 'Sure! My rate is ₦50,000 for a custom beat. Deal?',
-          sender: 'me',
-          timestamp: '10:20 AM',
-        },
-        {
-          id: 5,
-          text: "Perfect! Let's do it. Thanks for the collaboration!",
-          sender: 'other',
-          timestamp: '10:30 AM',
-        },
-      ]);
-    }
-  };
-
-  const sendMessage = async () => {
-    if (!newMessage.trim() || !selectedConversation) return;
-
-    try {
-      await ApiService.sendMessage(selectedConversation.id, newMessage);
-      const message = {
-        id: Date.now(),
-        text: newMessage,
-        sender: 'me',
-        timestamp: new Date().toLocaleTimeString([], {
-          hour: '2-digit',
-          minute: '2-digit',
-        }),
-      };
-      setMessages(prev => [...prev, message]);
-      setNewMessage('');
-    } catch (error) {
-      console.error('Failed to send message:', error);
-    }
-  };
-
-  const renderConversation = ({ item }) => (
+  const ConversationItem = ({ item, onPress, isSelected }) => (
     <TouchableOpacity
-      style={[
-        styles.conversationItem,
-        selectedConversation?.id === item.id && styles.selectedConversation,
-      ]}
-      onPress={() => setSelectedConversation(item)}
+      onPress={onPress}
+      className={`flex-row p-3 border-b border-gray-700 items-center ${isSelected ? 'bg-gray-700' : ''}`}
     >
-      <View style={styles.avatarContainer}>
-        <Image source={{ uri: item.user.avatar }} style={styles.avatar} />
-        {item.user.online && <View style={styles.onlineIndicator} />}
+      <View className="relative mr-3">
+        <Image source={{ uri: item.user.avatar }} className="w-12 h-12 rounded-full" />
+        {item.user.online && <View className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-gray-800" />}
       </View>
-      <View style={styles.conversationInfo}>
-        <View style={styles.conversationHeader}>
-          <Text style={styles.userName}>{item.user.name}</Text>
-          <Text style={styles.timestamp}>{item.timestamp}</Text>
+      <View className="flex-1">
+        <View className="flex-row justify-between items-center mb-0.5">
+          <Text className="text-white font-semibold text-sm">{item.user.name}</Text>
+          <Text className="text-gray-400 text-xs">{item.timestamp}</Text>
         </View>
-        <View style={styles.conversationFooter}>
-          <Text style={styles.lastMessage} numberOfLines={1}>
-            {item.lastMessage}
-          </Text>
+        <View className="flex-row justify-between items-center">
+          <Text className="text-gray-400 text-xs flex-1" numberOfLines={1}>{item.lastMessage}</Text>
           {item.unreadCount > 0 && (
-            <View style={styles.unreadBadge}>
-              <Text style={styles.unreadCount}>{item.unreadCount}</Text>
+            <View className="bg-accent rounded-full w-5 h-5 justify-center items-center ml-2">
+              <Text className="text-primary text-xs font-bold">{item.unreadCount}</Text>
             </View>
           )}
         </View>
@@ -168,113 +61,88 @@ const MessagesScreen = ({ route }) => {
     </TouchableOpacity>
   );
 
-  const renderMessage = ({ item }) => (
-    <View
-      style={[
-        styles.messageContainer,
-        item.sender === 'me' ? styles.myMessage : styles.otherMessage,
-      ]}
-    >
-      <Text style={styles.messageText}>{item.text}</Text>
-      <Text style={styles.messageTime}>{item.timestamp}</Text>
+  const MessageBubble = ({ item }) => (
+    <View className={`my-1 flex-row ${item.sender === 'me' ? 'justify-end' : 'justify-start'}`}>
+      <View className={`max-w-[70%] p-2.5 rounded-xl ${item.sender === 'me' ? 'bg-accent rounded-br-none' : 'bg-gray-700 rounded-bl-none'}`}>
+        <Text className={`text-xs ${item.sender === 'me' ? 'text-primary' : 'text-white'}`}>{item.text}</Text>
+        <Text className={`text-[10px] mt-1 ${item.sender === 'me' ? 'text-primary/70' : 'text-gray-400'} text-right`}>{item.timestamp}</Text>
+      </View>
     </View>
   );
 
-  const handleBack = () => {
-    if (selectedConversation) {
-      setSelectedConversation(null);
-    } else {
-      navigation.canGoBack() ? navigation.goBack() : navigation.navigate('Home');
-    }
-  };
-
-  if (!selectedConversation) {
-    return (
-      <View style={styles.container}>
-        <View style={styles.header}>
-          <TouchableOpacity onPress={handleBack}>
-            <Text style={styles.backButton}>←</Text>
-          </TouchableOpacity>
-          <Text style={styles.headerTitle}>Messages</Text>
-          <TouchableOpacity>
-            <Text style={styles.newMessageButton}>✏️</Text>
-          </TouchableOpacity>
-        </View>
-
-        <FlatList
-          data={conversations}
-          renderItem={renderConversation}
-          keyExtractor={item => item.id.toString()}
-          style={styles.conversationsList}
-        />
-      </View>
-    );
-  }
-
   return (
-    <View style={styles.container}>
-      <View style={styles.chatHeader}>
-        <TouchableOpacity onPress={() => setSelectedConversation(null)}>
-          <Text style={styles.backButton}>←</Text>
-        </TouchableOpacity>
-        <View style={styles.chatUserInfo}>
-          <Image
-            source={{ uri: selectedConversation.user.avatar }}
-            style={styles.chatAvatar}
-          />
-          <View>
-            <Text style={styles.chatUserName}>
-              {selectedConversation.user.name}
-            </Text>
-            <Text style={styles.onlineStatus}>
-              {selectedConversation.user.online ? 'Online' : 'Offline'}
-            </Text>
+    <View className="flex-1 bg-primary">
+      <WebHeader />
+      <View className="flex-1 md:flex-row" style={{ height: 'calc(100vh - 60px)' }}> {/* Assuming WebHeader is ~60px */}
+
+        {/* Conversations List (Left Panel on Desktop) */}
+        <View className={`md:w-1/3 border-r border-gray-700 bg-gray-800 flex-col ${selectedConversation && 'hidden md:flex'} h-full`}>
+          <View className="flex-row justify-between items-center px-4 py-3 border-b border-gray-700">
+            <Text className="text-white text-lg font-bold">Messages</Text>
+            <TouchableOpacity onPress={() => alert("New Message (Demo)")} className="p-1">
+              <Text className="text-accent text-xl">✏️</Text>
+            </TouchableOpacity>
           </View>
+          <FlatList
+            data={conversations}
+            renderItem={({ item }) => (
+              <ConversationItem
+                item={item}
+                onPress={() => setSelectedConversation(item)}
+                isSelected={selectedConversation?.id === item.id}
+              />
+            )}
+            keyExtractor={item => item.id}
+            className="flex-1"
+          />
         </View>
-        <TouchableOpacity>
-          <Text style={styles.callButton}>📞</Text>
-        </TouchableOpacity>
-      </View>
 
-      <FlatList
-        data={messages}
-        renderItem={renderMessage}
-        keyExtractor={item => item.id.toString()}
-        style={styles.messagesList}
-        contentContainerStyle={styles.messagesContent}
-      />
+        {/* Chat View (Right Panel on Desktop) */}
+        {selectedConversation ? (
+          <View className="flex-1 md:w-2/3 flex flex-col bg-gray-800 h-full">
+            <View className="flex-row items-center px-4 py-3 bg-gray-900 border-b border-gray-700">
+              <TouchableOpacity onPress={() => setSelectedConversation(null)} className="p-1 mr-2 md:hidden">
+                <Text className="text-white text-2xl">‹</Text>
+              </TouchableOpacity>
+              <Image source={{ uri: selectedConversation.user.avatar }} className="w-8 h-8 rounded-full mr-2.5" />
+              <View className="flex-1">
+                <Text className="text-white font-semibold text-sm">{selectedConversation.user.name}</Text>
+                <Text className="text-gray-400 text-xs">{selectedConversation.user.online ? 'Online' : 'Offline'}</Text>
+              </View>
+              <TouchableOpacity onPress={() => alert("Call (Demo)")} className="p-1">
+                <Text className="text-accent text-xl">📞</Text>
+              </TouchableOpacity>
+            </View>
 
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.messageInput}
-          placeholder="Type a message..."
-          placeholderTextColor="#c0b29b"
-          value={newMessage}
-          onChangeText={setNewMessage}
-          multiline
-        />
-        <TouchableOpacity style={styles.sendButton} onPress={sendMessage}>
-          <Text style={styles.sendButtonText}>Send</Text>
-        </TouchableOpacity>
+            <FlatList
+              data={messages}
+              renderItem={MessageBubble}
+              keyExtractor={item => item.id}
+              className="flex-1 p-3"
+              contentContainerStyle={{ paddingBottom: 5 }}
+              inverted
+            />
+
+            <View className="flex-row items-center p-3 border-t border-gray-700 bg-gray-900">
+              <TextInput
+                className="flex-1 bg-gray-700 text-white rounded-full px-4 py-2 text-sm mr-2"
+                placeholder="Type a message..."
+                placeholderTextColor="#A0A0A0"
+                multiline
+              />
+              <TouchableOpacity onPress={handleSendMessage} className="bg-accent rounded-full p-2.5">
+                <Text className="text-primary font-semibold text-sm">Send</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        ) : (
+          <View className="hidden md:flex md:w-2/3 flex-1 items-center justify-center bg-gray-800 h-full">
+            <Text className="text-gray-400 text-lg">Select a conversation to start chatting.</Text>
+          </View>
+        )}
       </View>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#1B1B1E',
-  },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 20,
-    paddingTop: 50,
-    paddingBottom: 20,
-  },
-  // Add remaining styles...
-});
 
 export default MessagesScreen;

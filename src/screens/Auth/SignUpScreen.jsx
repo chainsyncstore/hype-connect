@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
-  StyleSheet,
   View,
   Text,
   TextInput,
@@ -9,8 +8,6 @@ import {
   Alert,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
--import ApiService from './services/api';
-+import ApiService from '../../services/api';
 
 const SignUpScreen = ({ navigation: propNavigation }) => {
   const nativeNavigation = useNavigation();
@@ -20,70 +17,52 @@ const SignUpScreen = ({ navigation: propNavigation }) => {
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [selectedRole, setSelectedRole] = useState('creator');
-  const [loading, setLoading] = useState(false);
+  const [selectedRole, setSelectedRole] = useState('creator'); // 'creator' or 'client'
 
-  useEffect(() => {
-    console.log('SignUpScreen mounted');
-    return () => {
-      console.log('SignUpScreen unmounted');
-    };
-  }, []);
-
-  const handleSignup = async () => {
+  const handleSignup = () => {
     if (!fullName || !email || !username || !password) {
-      Alert.alert('Error', 'Please fill in all fields');
+      Alert.alert('Demo', 'Please fill in all fields');
       return;
     }
+    console.log('Attempting signup with:', { fullName, email, username, password, selectedRole });
+    Alert.alert('Demo Success', 'Account created successfully! (Demo)', [
+      { text: 'OK', onPress: () => navigation.navigate('Interests') },
+    ]);
+  };
 
-    setLoading(true);
-    try {
-      const userData = {
-        fullName,
-        email,
-        username,
-        password,
-        role: selectedRole,
-      };
+  const handleGoBack = () => {
+    navigation.goBack();
+  };
 
-      const response = await ApiService.signup(userData);
-      if (response.success) {
-        Alert.alert('Success', 'Account created successfully!', [
-          { text: 'OK', onPress: () => navigation.navigate('Interests') },
-        ]);
-      }
-    } catch (error) {
-      Alert.alert('Error', error.message || 'Signup failed');
-    } finally {
-      setLoading(false);
-    }
+  const handleGoToLogin = () => {
+    navigation.navigate('Login');
   };
 
   return (
-    <View style={styles.container}>
-      <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <View style={styles.header}>
-          <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-            <Text style={styles.backButtonText}>{'<'}</Text>
+    <View className="flex-1 bg-primary">
+      <ScrollView contentContainerStyle={{ alignItems: 'center', paddingBottom: 20 }} className="pt-5">
+        <View className="flex-row items-center w-full px-4 py-4">
+          <TouchableOpacity onPress={handleGoBack} className="p-2 absolute left-4 z-10">
+            <Text className="text-white text-2xl">{'<'}</Text>
           </TouchableOpacity>
-          <Text style={styles.headerTitle}>Sign Up</Text>
+          <Text className="text-white text-xl font-bold text-center flex-1">Sign Up</Text>
         </View>
 
-        <View style={styles.inputContainer}>
+        <View className="w-4/5 sm:w-3/5 lg:w-2/5 mb-4 mt-5">
           <TextInput
-            style={styles.input}
+            className="bg-gray-700 text-white rounded-lg p-3"
             placeholder="Full Name"
-            placeholderTextColor="#cbb690"
+            placeholderTextColor="#A0A0A0"
             value={fullName}
             onChangeText={setFullName}
           />
         </View>
 
-        <View style={styles.inputContainer}>
+        <View className="w-4/5 sm:w-3/5 lg:w-2/5 mb-4">
           <TextInput
-            style={styles.input}
+            className="bg-gray-700 text-white rounded-lg p-3"
             placeholder="Email"
-            placeholderTextColor="#cbb690"
+            placeholderTextColor="#A0A0A0"
             value={email}
             onChangeText={setEmail}
             keyboardType="email-address"
@@ -91,170 +70,68 @@ const SignUpScreen = ({ navigation: propNavigation }) => {
           />
         </View>
 
-        <View style={styles.inputContainer}>
+        <View className="w-4/5 sm:w-3/5 lg:w-2/5 mb-4">
           <TextInput
-            style={styles.input}
+            className="bg-gray-700 text-white rounded-lg p-3"
             placeholder="Username"
-            placeholderTextColor="#cbb690"
+            placeholderTextColor="#A0A0A0"
             value={username}
             onChangeText={setUsername}
             autoCapitalize="none"
           />
         </View>
 
-        <View style={styles.inputContainer}>
+        <View className="w-4/5 sm:w-3/5 lg:w-2/5 mb-4">
           <TextInput
-            style={styles.input}
+            className="bg-gray-700 text-white rounded-lg p-3"
             placeholder="Password"
-            placeholderTextColor="#cbb690"
-            secureTextEntry
+            placeholderTextColor="#A0A0A0"
+            secureTextEntry={true}
             value={password}
             onChangeText={setPassword}
           />
         </View>
 
-        <View style={styles.roleContainer}>
+        {/* Role Selection */}
+        <Text className="text-white mt-3 mb-2">I am a:</Text>
+        <View className="flex-row justify-center w-4/5 sm:w-3/5 lg:w-2/5 mb-6">
           <TouchableOpacity
-            style={[
-              styles.roleButton,
-              selectedRole === 'creator' && styles.roleButtonSelected,
-            ]}
+            className={`flex-1 py-3 mx-1 rounded-lg items-center justify-center ${selectedRole === 'creator' ? 'bg-accent' : 'bg-gray-700 border border-accent'}`}
             onPress={() => setSelectedRole('creator')}
           >
-            <Text
-              style={[
-                styles.roleButtonText,
-                selectedRole === 'creator' && styles.roleButtonTextSelected,
-              ]}
-            >
+            <Text className={`${selectedRole === 'creator' ? 'text-primary' : 'text-accent'} font-bold`}>
               Creator
             </Text>
           </TouchableOpacity>
 
           <TouchableOpacity
-            style={[
-              styles.roleButton,
-              selectedRole === 'client' && styles.roleButtonSelected,
-            ]}
+            className={`flex-1 py-3 mx-1 rounded-lg items-center justify-center ${selectedRole === 'client' ? 'bg-accent' : 'bg-gray-700 border border-accent'}`}
             onPress={() => setSelectedRole('client')}
           >
-            <Text
-              style={[
-                styles.roleButtonText,
-                selectedRole === 'client' && styles.roleButtonTextSelected,
-              ]}
-            >
+            <Text className={`${selectedRole === 'client' ? 'text-primary' : 'text-accent'} font-bold`}>
               Client
             </Text>
           </TouchableOpacity>
         </View>
 
         <TouchableOpacity
-          style={[
-            styles.continueButton,
-            loading && styles.continueButtonDisabled,
-          ]}
+          className="bg-accent py-3 rounded-lg my-3 w-4/5 sm:w-3/5 lg:w-2/5"
           onPress={handleSignup}
-          disabled={loading}
         >
-          <Text style={styles.continueButtonText}>
-            {loading ? 'Creating Account...' : 'Continue'}
+          <Text className="text-primary font-bold text-center text-lg">
+            Continue
           </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-          <Text style={styles.loginText}>Already have an account? Log in</Text>
+        <TouchableOpacity onPress={handleGoToLogin} className="my-5">
+          <Text className="text-accent underline">
+            Already have an account? Log in
+          </Text>
         </TouchableOpacity>
+        <View className="h-5" />
       </ScrollView>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#231c10',
-  },
-  scrollContainer: {
-    alignItems: 'center',
-    paddingBottom: 20,
-  },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#231c10',
-    paddingVertical: 16,
-    paddingHorizontal: 16,
-    width: '100%',
-  },
-  backButton: {
-    padding: 8,
-  },
-  backButtonText: {
-    color: '#fff',
-    fontSize: 20,
-  },
-  headerTitle: {
-    color: '#fff',
-    fontSize: 20,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    flex: 1,
-  },
-  inputContainer: {
-    width: '80%',
-    marginBottom: 16,
-  },
-  input: {
-    backgroundColor: '#493b22',
-    color: '#fff',
-    borderRadius: 12,
-    paddingVertical: 14,
-    paddingHorizontal: 16,
-    fontSize: 16,
-  },
-  roleContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    width: '80%',
-    marginBottom: 16,
-  },
-  roleButton: {
-    backgroundColor: '#493b22',
-    borderRadius: 20,
-    paddingVertical: 12,
-    paddingHorizontal: 24,
-  },
-  roleButtonSelected: {
-    backgroundColor: '#f4b43d',
-  },
-  roleButtonText: {
-    color: '#cbb690',
-    fontSize: 16,
-  },
-  roleButtonTextSelected: {
-    color: '#231c10',
-  },
-  continueButton: {
-    backgroundColor: '#f4b43d',
-    borderRadius: 20,
-    paddingVertical: 14,
-    paddingHorizontal: 48,
-    marginBottom: 16,
-  },
-  continueButtonDisabled: {
-    backgroundColor: '#cbb690',
-  },
-  continueButtonText: {
-    color: '#231c10',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  loginText: {
-    color: '#cbb690',
-    fontSize: 14,
-    textDecorationLine: 'underline',
-  },
-});
 
 export default SignUpScreen;

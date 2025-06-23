@@ -1,289 +1,109 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
-  StyleSheet,
   View,
   Text,
   TouchableOpacity,
   ScrollView,
   Image,
-  Modal,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
--import CreatorCard from './CreatorCard';
-+import CreatorCard from '../../modals/CreatorCard';
+import WebHeader from '../../components/WebHeader'; // Corrected path for WebHeader
 
-const MainContentScreen = () => {
-  const navigation = useNavigation();
+// PRD Colors: #1B1B1E (background), #F5A623 (accent), #FFFFFF (text)
+const CommentIcon = () => <Text className="text-gray-400">💬</Text>;
+const TipIcon = () => <Text className="text-gray-400">$</Text>;
+const SaveIcon = () => <Text className="text-gray-400">🔖</Text>;
 
-  const [isCreatorCardVisible, setIsCreatorCardVisible] = useState(false);
+const MainContentScreen = ({ navigation: propNavigation }) => {
+  const nativeNavigation = useNavigation();
+  const navigation = propNavigation || nativeNavigation;
 
-  const toggleCreatorCard = () => {
-    setIsCreatorCardVisible(!isCreatorCardVisible);
-  };
+  const [activeTab, setActiveTab] = useState('For You');
 
-  useEffect(() => {
-    console.log('MainContentScreen mounted');
-    return () => {
-      console.log('MainContentScreen unmounted');
-    };
-  }, []);
+  const posts = [
+    {
+      id: '1',
+      imageUri: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bXVzaWN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60',
+      category: 'Music',
+      title: 'New track out now!',
+      author: '@Alex_Beats',
+      authorId: 'alex_beats_id',
+      comments: '45',
+      tips: '23',
+      saves: '67',
+      description: 'Check out my latest track, a blend of electronic and hip-hop beats. Let me know what you think!',
+    },
+    {
+      id: '2',
+      imageUri: 'https://images.unsplash.com/photo-1547891654-e66ed7ebb968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXJ0fGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60',
+      category: 'Art',
+      title: 'Digital painting',
+      author: '@Art_by_Sarah',
+      authorId: 'sarah_art_id',
+      comments: '78',
+      tips: '42',
+      saves: '80',
+      description: 'Experimenting with new color palettes and techniques. This piece captures the vibrant energy of the city at night.',
+    },
+  ];
 
-  return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>Hype Connect</Text>
-        <TouchableOpacity style={styles.settingsButton}>
-          <Text>⚙️</Text>
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.tabContainer}>
-        <TouchableOpacity style={styles.tabButtonActive}>
-          <Text style={styles.tabButtonTextActive}>For You</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.tabButton}>
-          <Text style={styles.tabButtonText}>Following</Text>
-        </TouchableOpacity>
-      </View>
-
-      <ScrollView>
-        {/* Post 1 */}
-        <TouchableOpacity onPress={() => navigation.navigate('PostDetail')}>
-          <View style={styles.postContainer}>
-            <Image
-              style={styles.postImage}
-              source={{
-                uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA7FzR1cYUKJ1-KVHyHlMuiSLCg1pWpdM3cqJZiLHNvuXWhxQhDo6nfCVkkxi52T3BaDtQC8SYa2XiaoIc4Tc8eK-6mj80a1x2xx_sicso5ED5UlSypVoJhXU2Aou_OP5m2TlfGTX5Y50tE-su_f4eWsmyI7u_BldcWqMy6-5gtxW2BC1CUws5-nqR7W2LZsyZ73JSFucam_Dj_1LMBqCrP1k0hXkIwZLo2PwFkF00y83qa1Qt6otm_74imRESC8tvOM35uRbMrFvw',
-              }}
-            />
-            <View style={styles.postDetails}>
-              <Text style={styles.postCategory}>Music</Text>
-              <Text style={styles.postTitle}>New track out now!</Text>
-              <View style={styles.postFooter}>
-                <TouchableOpacity onPress={toggleCreatorCard}>
-                  <Text style={styles.postAuthor}>By @Alex_Beats</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.postButton}>
-                  <Text style={styles.postButtonText}>123</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-            <View style={styles.postActions}>
-              <View style={styles.postAction}>
-                <Text style={styles.postActionText}>💬 45</Text>
-              </View>
-              <View style={styles.postAction}>
-                <Text style={styles.postActionText}>$ 23</Text>
-              </View>
-              <View style={styles.postAction}>
-                <Text style={styles.postActionText}>🔖 67</Text>
-              </View>
-            </View>
-            <Text style={styles.postDescription}>
-              Check out my latest track, a blend of electronic and hip-hop
-              beats. Let me know what you think!
-            </Text>
-          </View>
-        </TouchableOpacity>
-
-        {/* Post 2 */}
-        <TouchableOpacity onPress={() => navigation.navigate('PostDetail')}>
-          <View style={styles.postContainer}>
-            <Image
-              style={styles.postImage}
-              source={{
-                uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDpb3HZZUDi60aTvAs81QytTRk2ayVUOy05A9pnhS9MQYX7WXtPpOiSV-rPCc0gVWAIdZMTrbmSMHqzuyIU0We_EAp2a-6jLCxX3jMW6aRVuVKRNBk8jTmB0SBKyCUMQsFcZ7Rt03OVe_e3rnLpj-5HbYERYjmom6jC7yI5hHi2gAB4RCj75Zrcn-6xKmeKLs6shXh4aWfRsI2luDLsCipQU8ETykIm9LW5ZLP9dPZ8DqTSLSmCZ2P2s-KGMdDtiB7Y5-GAu8wNAN8',
-              }}
-            />
-            <View style={styles.postDetails}>
-              <Text style={styles.postCategory}>Art</Text>
-              <Text style={styles.postTitle}>Digital painting</Text>
-              <View style={styles.postFooter}>
-                <TouchableOpacity onPress={toggleCreatorCard}>
-                  <Text style={styles.postAuthor}>By @Art_by_Sarah</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.postButton}>
-                  <Text style={styles.postButtonText}>210</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-            <View style={styles.postActions}>
-              <View style={styles.postAction}>
-                <Text style={styles.postActionText}>💬 78</Text>
-              </View>
-              <View style={styles.postAction}>
-                <Text style={styles.postActionText}>$ 42</Text>
-              </View>
-              <View style={styles.postAction}>
-                <Text style={styles.postActionText}>🔖 80</Text>
-              </View>
-            </View>
-            <Text style={styles.postDescription}>
-              Experimenting with new color palettes and techniques. This piece
-              captures the vibrant energy of the city at night.
-            </Text>
-          </View>
-        </TouchableOpacity>
-
-        {/* Bottom Navigation */}
-        <View style={styles.bottomNavigation}>
-          <TouchableOpacity>
-            <Text>🏠</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('GigsMarketplace')}>
-            <Text>💼</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('LiveStream')}>
-            <Text>📺</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Messages')}>
-            <Text>💬</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Wallet')}>
-            <Text>💰</Text>
+  const PostItem = ({ post }) => (
+    <TouchableOpacity onPress={() => navigation.navigate('PostDetail', { postId: post.id })} className="bg-gray-800 rounded-lg overflow-hidden mb-6 mx-auto w-full max-w-md sm:max-w-lg md:max-w-xl">
+      <Image source={{ uri: post.imageUri }} className="w-full h-64" resizeMode="cover" />
+      <View className="p-4">
+        <Text className="text-gray-400 text-xs uppercase">{post.category}</Text>
+        <Text className="text-white text-xl font-bold my-1">{post.title}</Text>
+        <View className="flex-row justify-between items-center mt-1 mb-2">
+          <TouchableOpacity onPress={() => navigation.navigate('PublicCreatorProfile', { creatorId: post.authorId })}>
+            <Text className="text-accent text-sm">{post.author}</Text>
           </TouchableOpacity>
         </View>
+        <Text className="text-gray-300 text-sm mb-3 leading-relaxed">{post.description}</Text>
+        <View className="flex-row justify-around items-center border-t border-gray-700 pt-2">
+          <TouchableOpacity className="flex-row items-center p-2">
+            <CommentIcon />
+            <Text className="text-gray-400 ml-1 text-xs">{post.comments}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity className="flex-row items-center p-2">
+            <TipIcon />
+            <Text className="text-gray-400 ml-1 text-xs">{post.tips}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity className="flex-row items-center p-2">
+            <SaveIcon />
+            <Text className="text-gray-400 ml-1 text-xs">{post.saves}</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </TouchableOpacity>
+  );
 
-        <View style={styles.bottomSpace} />
+  return (
+    <View className="flex-1 bg-primary">
+      <WebHeader />
+
+      {/* Tabs - These are specific to the Feed screen so they stay below WebHeader */}
+      <View className="flex-row bg-gray-800 border-b border-gray-700">
+        <TouchableOpacity
+          onPress={() => setActiveTab('For You')}
+          className={`flex-1 py-3 items-center ${activeTab === 'For You' ? 'border-b-2 border-accent' : ''}`}
+        >
+          <Text className={`${activeTab === 'For You' ? 'text-accent' : 'text-gray-400'} font-semibold`}>For You</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => setActiveTab('Following')}
+          className={`flex-1 py-3 items-center ${activeTab === 'Following' ? 'border-b-2 border-accent' : ''}`}
+        >
+          <Text className={`${activeTab === 'Following' ? 'text-accent' : 'text-gray-400'} font-semibold`}>Following</Text>
+        </TouchableOpacity>
+      </View>
+
+      {/* Feed Content */}
+      <ScrollView className="flex-1 p-4">
+        {posts.map(post => <PostItem key={post.id} post={post} navigation={navigation} />)}
+        <View className="h-16" />
       </ScrollView>
-
-      {/* Creator Card Modal */}
-      <Modal
-        visible={isCreatorCardVisible}
-        transparent={true}
-        animationType="slide"
-        onRequestClose={toggleCreatorCard}
-      >
-        <CreatorCard />
-      </Modal>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  // [same styles as before]
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#1B1B1E',
-  },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 20,
-    paddingTop: 50,
-    paddingBottom: 20,
-  },
-  headerTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#FFFFFF',
-  },
-  settingsButton: {
-    padding: 8,
-  },
-  tabContainer: {
-    flexDirection: 'row',
-    paddingHorizontal: 20,
-    marginBottom: 10,
-  },
-  tabButton: {
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-    marginRight: 10,
-  },
-  tabButtonActive: {
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-    marginRight: 10,
-    borderBottomWidth: 2,
-    borderBottomColor: '#F5A623',
-  },
-  tabButtonText: {
-    color: '#999',
-    fontSize: 16,
-  },
-  tabButtonTextActive: {
-    color: '#FFFFFF',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-  postContainer: {
-    backgroundColor: '#2A2A2A',
-    marginHorizontal: 20,
-    marginBottom: 20,
-    borderRadius: 10,
-    padding: 15,
-  },
-  postImage: {
-    width: '100%',
-    height: 200,
-    borderRadius: 10,
-    marginBottom: 10,
-  },
-  postDetails: {
-    marginBottom: 10,
-  },
-  postCategory: {
-    color: '#F5A623',
-    fontSize: 12,
-    marginBottom: 5,
-  },
-  postTitle: {
-    color: '#FFFFFF',
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 10,
-  },
-  postFooter: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  postAuthor: {
-    color: '#999',
-    fontSize: 14,
-  },
-  postButton: {
-    backgroundColor: '#F5A623',
-    paddingHorizontal: 15,
-    paddingVertical: 5,
-    borderRadius: 15,
-  },
-  postButtonText: {
-    color: '#1B1B1E',
-    fontWeight: 'bold',
-  },
-  postActions: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginBottom: 10,
-  },
-  postAction: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  postActionText: {
-    color: '#999',
-    fontSize: 14,
-  },
-  postDescription: {
-    color: '#CCCCCC',
-    fontSize: 14,
-    lineHeight: 20,
-  },
-  bottomNavigation: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    backgroundColor: '#2A2A2A',
-    paddingVertical: 15,
-    marginTop: 20,
-    marginHorizontal: 20,
-    borderRadius: 10,
-  },
-  bottomSpace: {
-    height: 20,
-  },
-});
 export default MainContentScreen;
