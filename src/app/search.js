@@ -1,4 +1,4 @@
-import SearchFeedScreen from '../src/screens/SearchFeedScreen';
+import SearchFeedScreen from '../screens/Feed/SearchFeedScreen';
 
 export default function Search() {
   return <SearchFeedScreen />;

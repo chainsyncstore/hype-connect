@@ -1,4 +1,4 @@
-import UploadScreen from '../src/screens/UploadScreen';
+import UploadScreen from '../screens/Profile/UploadScreen';
 
 export default function Upload() {
   return <UploadScreen />;
