@@ -12,7 +12,7 @@ const WelcomeScreen = () => {
   return (
     <View className="flex-1 justify-center items-center bg-primary p-4">
       <WebHeader />
-      <Image source={require('../../assets/images/logo.PNG')} className="w-36 h-36 mb-8" resizeMode="contain" />
+      <Image source={require('../../assets/images/logo.png')} className="w-36 h-36 mb-8" resizeMode="contain" />
       
       <Text className="text-white text-3xl font-bold text-center mb-2">
         Connect. <Text className="text-accent">Create.</Text> Cash Out.
