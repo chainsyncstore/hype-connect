@@ -1,3 +1,3 @@
 // src/app/(auth)/welcome.jsx
-import WelcomeScreen from '../../../screens/WelcomeScreen';
+import WelcomeScreen from '../../screens/WelcomeScreen';
 export default WelcomeScreen;
