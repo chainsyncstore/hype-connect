@@ -1,5 +1,4 @@
 const { getDefaultConfig } = require('@react-native/metro-config');
-const { withTailwind } = require('tailwindcss-react-native');
 
 /**
  * @type {import('expo/metro-config').MetroConfig}
@@ -9,4 +8,4 @@ const config = getDefaultConfig(__dirname, {
   unstable_enablePackageExports: false,
 });
 
-module.exports = withTailwind(config);
+module.exports = config;
