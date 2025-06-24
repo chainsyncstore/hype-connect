@@ -8,8 +8,7 @@ import {
   ScrollView,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
--import ProfileMenuModal from './ProfileMenuModal';
-+import ProfileMenuModal from '../../modals/ProfileMenuModal';
+import ProfileMenuModal from '../../modals/ProfileMenuModal'; // This should be the only, clean import for this modal
 
 const PrivateCreatorProfileScreen = () => {
   const [menuVisible, setMenuVisible] = useState(false);
