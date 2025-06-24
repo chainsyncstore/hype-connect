@@ -2,14 +2,16 @@ import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
-  StyleSheet,
   FlatList,
   TouchableOpacity,
   Alert,
   ScrollView,
 } from 'react-native';
+import { useRouter } from 'expo-router';
+import WebHeader from '../../components/WebHeader';
 
-const AdminDashboardScreen = ({ navigation }) => {
+const AdminDashboardScreen = () => {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState('overview');
   const [dashboardData, setDashboardData] = useState({
     totalUsers: 0,
@@ -104,54 +106,56 @@ const AdminDashboardScreen = ({ navigation }) => {
     );
   };
 
-  const renderStatCard = (title, value, color = '#F5A623') => (
-    <View style={styles.statCard}>
-      <Text style={styles.statTitle}>{title}</Text>
-      <Text style={[styles.statValue, { color }]}>{value}</Text>
+  const renderStatCard = (title, value, color = 'text-accent') => (
+    <View className="bg-[#2A2A2A] rounded-xl p-5 w-[48%] mb-4 items-center">
+      <Text className="text-[#c0b29b] text-sm mb-2 text-center">{title}</Text>
+      <Text className={`text-2xl font-bold ${color}`}>{value}</Text>
     </View>
   );
 
   const renderReportItem = ({ item }) => (
-    <View style={styles.reportItem}>
-      <View style={styles.reportHeader}>
-        <Text style={styles.reportType}>{item.type.toUpperCase()}</Text>
-        <Text style={styles.reportDate}>{item.date}</Text>
+    <View className="bg-[#2A2A2A] rounded-xl p-5 mb-4">
+      <View className="flex-row justify-between items-center mb-2">
+        <Text className="bg-accent text-primary px-2 py-1 rounded-md text-xs font-bold">
+          {item.type.toUpperCase()}
+        </Text>
+        <Text className="text-[#c0b29b] text-xs">{item.date}</Text>
       </View>
-      <Text style={styles.reportContent}>{item.content}</Text>
-      <View style={styles.reportDetails}>
-        <Text style={styles.reportInfo}>
+      <Text className="text-white text-base mb-2">{item.content}</Text>
+      <View className="mb-4">
+        <Text className="text-[#c0b29b] text-sm mb-1">
           Reporter: {item.reporter} | Reported: {item.reported}
         </Text>
-        <Text style={styles.reportReason}>Reason: {item.reason}</Text>
+        <Text className="text-[#FF4444] text-sm">Reason: {item.reason}</Text>
       </View>
-      <View style={styles.reportActions}>
+      <View className="flex-row justify-between">
         <TouchableOpacity
-          style={[styles.actionButton, styles.approveButton]}
+          className="flex-1 py-2.5 rounded-md items-center mx-1 bg-[#4CAF50]"
           onPress={() => handleReportAction(item.id, 'approve')}
         >
-          <Text style={styles.actionButtonText}>Take Action</Text>
+          <Text className="text-white font-bold">Take Action</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={[styles.actionButton, styles.dismissButton]}
+          className="flex-1 py-2.5 rounded-md items-center mx-1 bg-[#666]"
           onPress={() => handleReportAction(item.id, 'dismiss')}
         >
-          <Text style={styles.actionButtonText}>Dismiss</Text>
+          <Text className="text-white font-bold">Dismiss</Text>
         </TouchableOpacity>
       </View>
     </View>
   );
 
   const renderActivityItem = ({ item }) => (
-    <View style={styles.activityItem}>
-      <Text style={styles.activityAction}>{item.action}</Text>
-      <Text style={styles.activityUser}>{item.user}</Text>
-      <Text style={styles.activityTime}>{item.timestamp}</Text>
+    <View className="bg-[#2A2A2A] rounded-md p-4 mb-2.5">
+      <Text className="text-white text-base mb-1">{item.action}</Text>
+      <Text className="text-accent text-sm mb-1">{item.user}</Text>
+      <Text className="text-[#c0b29b] text-xs">{item.timestamp}</Text>
     </View>
   );
 
   const renderOverview = () => (
-    <ScrollView style={styles.tabContent}>
-      <View style={styles.statsGrid}>
+    <ScrollView className="flex-1 px-5">
+      <View className="flex-row flex-wrap justify-between mb-8">
         {renderStatCard(
           'Total Users',
           dashboardData.totalUsers.toLocaleString()
@@ -163,17 +167,17 @@ const AdminDashboardScreen = ({ navigation }) => {
         {renderStatCard(
           'Total Revenue',
           `₦${dashboardData.totalRevenue.toLocaleString()}`,
-          '#4CAF50'
+          'text-[#4CAF50]'
         )}
         {renderStatCard(
           'Pending Reports',
           dashboardData.pendingReports.toString(),
-          '#FF4444'
+          'text-[#FF4444]'
         )}
       </View>
 
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Recent Activity</Text>
+      <View className="mb-5">
+        <Text className="text-white text-lg font-bold mb-4">Recent Activity</Text>
         <FlatList
           data={recentActivity}
           renderItem={renderActivityItem}
@@ -185,7 +189,7 @@ const AdminDashboardScreen = ({ navigation }) => {
   );
 
   const renderReports = () => (
-    <View style={styles.tabContent}>
+    <View className="flex-1 px-5">
       <FlatList
         data={reportedContent}
         renderItem={renderReportItem}
@@ -196,38 +200,33 @@ const AdminDashboardScreen = ({ navigation }) => {
   );
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Text style={styles.backButton}>←</Text>
+    <View className="flex-1 bg-[#1B1B1E]">
+      <WebHeader />
+      <View className="flex-row justify-between items-center px-5 pt-12 pb-5">
+        <TouchableOpacity onPress={() => router.back()}>
+          <Text className="text-white text-2xl">←</Text>
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Admin Dashboard</Text>
-        <View style={{ width: 24 }} />
+        <Text className="text-white text-lg font-bold">Admin Dashboard</Text>
+        <View className="w-6" />
       </View>
 
-      <View style={styles.tabBar}>
+      <View className="flex-row bg-[#2A2A2A] mx-5 rounded-full p-1.5 mb-5">
         <TouchableOpacity
-          style={[styles.tab, activeTab === 'overview' && styles.activeTab]}
+          className={`flex-1 py-3 items-center rounded-full ${activeTab === 'overview' ? 'bg-accent' : ''}`}
           onPress={() => setActiveTab('overview')}
         >
           <Text
-            style={[
-              styles.tabText,
-              activeTab === 'overview' && styles.activeTabText,
-            ]}
+            className={`font-bold ${activeTab === 'overview' ? 'text-primary' : 'text-[#c0b29b]'}`}
           >
             Overview
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={[styles.tab, activeTab === 'reports' && styles.activeTab]}
+          className={`flex-1 py-3 items-center rounded-full ${activeTab === 'reports' ? 'bg-accent' : ''}`}
           onPress={() => setActiveTab('reports')}
         >
           <Text
-            style={[
-              styles.tabText,
-              activeTab === 'reports' && styles.activeTabText,
-            ]}
+            className={`font-bold ${activeTab === 'reports' ? 'text-primary' : 'text-[#c0b29b]'}`}
           >
             Reports ({dashboardData.pendingReports})
           </Text>
@@ -238,173 +237,5 @@ const AdminDashboardScreen = ({ navigation }) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#1B1B1E',
-  },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 20,
-    paddingTop: 50,
-    paddingBottom: 20,
-  },
-  backButton: {
-    fontSize: 24,
-    color: '#FFFFFF',
-  },
-  headerTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#FFFFFF',
-  },
-  tabBar: {
-    flexDirection: 'row',
-    backgroundColor: '#2A2A2A',
-    marginHorizontal: 20,
-    borderRadius: 25,
-    padding: 5,
-    marginBottom: 20,
-  },
-  tab: {
-    flex: 1,
-    paddingVertical: 12,
-    alignItems: 'center',
-    borderRadius: 20,
-  },
-  activeTab: {
-    backgroundColor: '#F5A623',
-  },
-  tabText: {
-    color: '#c0b29b',
-    fontWeight: 'bold',
-  },
-  activeTabText: {
-    color: '#1B1B1E',
-  },
-  tabContent: {
-    flex: 1,
-    paddingHorizontal: 20,
-  },
-  statsGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-    marginBottom: 30,
-  },
-  statCard: {
-    backgroundColor: '#2A2A2A',
-    borderRadius: 15,
-    padding: 20,
-    width: '48%',
-    marginBottom: 15,
-    alignItems: 'center',
-  },
-  statTitle: {
-    fontSize: 14,
-    color: '#c0b29b',
-    marginBottom: 8,
-    textAlign: 'center',
-  },
-  statValue: {
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
-  section: {
-    marginBottom: 20,
-  },
-  sectionTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#FFFFFF',
-    marginBottom: 15,
-  },
-  activityItem: {
-    backgroundColor: '#2A2A2A',
-    borderRadius: 10,
-    padding: 15,
-    marginBottom: 10,
-  },
-  activityAction: {
-    fontSize: 16,
-    color: '#FFFFFF',
-    marginBottom: 3,
-  },
-  activityUser: {
-    fontSize: 14,
-    color: '#F5A623',
-    marginBottom: 3,
-  },
-  activityTime: {
-    fontSize: 12,
-    color: '#c0b29b',
-  },
-  reportItem: {
-    backgroundColor: '#2A2A2A',
-    borderRadius: 15,
-    padding: 20,
-    marginBottom: 15,
-  },
-  reportHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 10,
-  },
-  reportType: {
-    backgroundColor: '#F5A623',
-    color: '#1B1B1E',
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    borderRadius: 10,
-    fontSize: 12,
-    fontWeight: 'bold',
-  },
-  reportDate: {
-    fontSize: 12,
-    color: '#c0b29b',
-  },
-  reportContent: {
-    fontSize: 16,
-    color: '#FFFFFF',
-    marginBottom: 10,
-  },
-  reportDetails: {
-    marginBottom: 15,
-  },
-  reportInfo: {
-    fontSize: 14,
-    color: '#c0b29b',
-    marginBottom: 3,
-  },
-  reportReason: {
-    fontSize: 14,
-    color: '#FF4444',
-  },
-  reportActions: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  actionButton: {
-    flex: 1,
-    paddingVertical: 10,
-    borderRadius: 10,
-    alignItems: 'center',
-    marginHorizontal: 5,
-  },
-  approveButton: {
-    backgroundColor: '#4CAF50',
-  },
-  dismissButton: {
-    backgroundColor: '#666',
-  },
-  actionButtonText: {
-    color: '#FFFFFF',
-    fontWeight: 'bold',
-  },
-});
 
 export default AdminDashboardScreen;

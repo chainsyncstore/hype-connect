@@ -1,71 +1,33 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { View, Text, TouchableOpacity } from 'react-native';
+import { useRouter } from 'expo-router';
+import WebHeader from '../components/WebHeader';
 
-const SuccessScreen = ({ navigation: propNavigation }) => {
-  const nativeNavigation = useNavigation();
-  const navigation = propNavigation || nativeNavigation;
+const SuccessScreen = () => {
+  const router = useRouter();
 
   useEffect(() => {
     return () => {};
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Welcome to the Hype!</Text>
-      <Text style={styles.subtitle}>
+    <View className="flex-1 bg-[#221c11] justify-center items-center">
+      <WebHeader />
+      <Text className="text-white text-2xl font-bold text-center px-4 pb-3 pt-5">Welcome to the Hype!</Text>
+      <Text className="text-white text-base text-center px-4 pb-8">
         Your creative journey starts now. Explore the feed to connect with
         fellow artists and discover exciting opportunities.
       </Text>
       <TouchableOpacity
-        style={styles.exploreButton}
-        onPress={() => navigation.navigate('MainContent')}
+        className="bg-[#eead3e] rounded-full py-3.5 px-12"
+        onPress={() => router.push('/(tabs)/feed')}
       >
-        <Text style={styles.exploreButtonText}>Explore the Feed</Text>
+        <Text className="text-[#221c11] text-lg font-bold text-center">Explore the Feed</Text>
       </TouchableOpacity>
-      <View style={styles.bottomSpace} />
+      <View className="h-1.5 bg-[#221c11]" />
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#221c11',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  title: {
-    color: '#fff',
-    fontSize: 22,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    paddingHorizontal: 16,
-    paddingBottom: 12,
-    paddingTop: 20,
-  },
-  subtitle: {
-    color: '#fff',
-    fontSize: 16,
-    textAlign: 'center',
-    paddingHorizontal: 16,
-    paddingBottom: 32,
-  },
-  exploreButton: {
-    backgroundColor: '#eead3e',
-    borderRadius: 100,
-    paddingVertical: 14,
-    paddingHorizontal: 48,
-  },
-  exploreButtonText: {
-    color: '#221c11',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  bottomSpace: {
-    height: 5,
-    backgroundColor: '#221c11',
-  },
-});
 
 export default SuccessScreen;

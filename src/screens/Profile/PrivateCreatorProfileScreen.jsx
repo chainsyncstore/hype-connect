@@ -2,17 +2,17 @@ import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
-  StyleSheet,
   Image,
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useRouter } from 'expo-router';
 import ProfileMenuModal from '../../modals/ProfileMenuModal'; // This should be the only, clean import for this modal
+import WebHeader from '../../components/WebHeader';
 
 const PrivateCreatorProfileScreen = () => {
   const [menuVisible, setMenuVisible] = useState(false);
-  const navigation = useNavigation();
+  const router = useRouter();
 
   useEffect(() => {
     console.log('PrivateCreatorProfileScreen mounted');
@@ -22,178 +22,79 @@ const PrivateCreatorProfileScreen = () => {
   }, []);
 
   return (
-    <>
-      <ScrollView style={styles.container}>
-        <View style={styles.header}>
+    <View className="flex-1 bg-[#1f1b14]">
+      <WebHeader />
+      <ScrollView>
+        <View className="flex-row justify-end p-4">
           <TouchableOpacity
-            style={styles.menuButton}
+            className="p-2"
             onPress={() => setMenuVisible(true)}
           >
-            <Text style={styles.menuIcon}>⋮</Text>
+            <Text className="text-white text-2xl">⋮</Text>
           </TouchableOpacity>
         </View>
 
-        <View style={styles.profileSection}>
+        <View className="items-center p-4">
           <Image
             source={{
               uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC-FWY39n52wWmXVptxh8AG6yRm_Y2kRVpLxqvVygnqB5rM4ER52rmEQNlYyfJEuwKFsmGxqOphcfkxmnK4aQC3zN3LUzh6gDFBJdUTdMRwdEHBLRa6kYUpAfb781_kxW1mGbPstBU6DDLrpMpyqyXS_nlS8FU0MAVrxhor1p0yuYiNwBFzMEe0PtnJbrZuL16hXSIz14X9PRPFHIsh89GULISyz4kyzhWkMH3yObTp6_3IvB_7KMVPsvqdf2sgMFy4Orgg0WtTfj8',
             }}
-            style={styles.profileImage}
+            className="w-32 h-32 rounded-full mb-4"
           />
-          <Text style={styles.profileName}>Ethan Blake</Text>
-          <Text style={styles.profileTitle}>Illustrator</Text>
-          <Text style={styles.profileLocation}>Based in San Francisco</Text>
+          <Text className="text-white text-2xl font-bold">Ethan Blake</Text>
+          <Text className="text-[#bfb39b] text-base">Illustrator</Text>
+          <Text className="text-[#bfb39b] text-base">Based in San Francisco</Text>
         </View>
 
-        <View style={styles.actionButtons}>
+        <View className="flex-row justify-around p-4">
           <TouchableOpacity
-            style={styles.editButton}
-            onPress={() => navigation.navigate('EditProfile')}
+            className="bg-[#41392a] p-3 rounded-lg"
+            onPress={() => router.push('/(tabs)/profile/edit-profile')}
           >
-            <Text style={styles.editButtonText}>Edit Profile</Text>
+            <Text className="text-white font-bold">Edit Profile</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={styles.liveButton}
-            onPress={() => navigation.navigate('LiveStream')}
+            className="bg-[#f3e9d7] p-3 rounded-lg"
+            onPress={() => router.push('/(tabs)/live')}
           >
-            <Text style={styles.liveButtonText}>Go Live</Text>
+            <Text className="text-[#1f1b14] font-bold">Go Live</Text>
           </TouchableOpacity>
         </View>
 
-        <View style={styles.statsSection}>
-          <View style={styles.statBox}>
-            <Text style={styles.statNumber}>123</Text>
-            <Text style={styles.statLabel}>Posts</Text>
+        <View className="flex-row justify-around p-4">
+          <View className="items-center">
+            <Text className="text-white text-xl font-bold">123</Text>
+            <Text className="text-[#bfb39b] text-sm">Posts</Text>
           </View>
-          <View style={styles.statBox}>
-            <Text style={styles.statNumber}>456</Text>
-            <Text style={styles.statLabel}>Followers</Text>
+          <View className="items-center">
+            <Text className="text-white text-xl font-bold">456</Text>
+            <Text className="text-[#bfb39b] text-sm">Followers</Text>
           </View>
-          <View style={styles.statBox}>
-            <Text style={styles.statNumber}>789</Text>
-            <Text style={styles.statLabel}>Following</Text>
+          <View className="items-center">
+            <Text className="text-white text-xl font-bold">789</Text>
+            <Text className="text-[#bfb39b] text-sm">Following</Text>
           </View>
-          <View style={styles.statBox}>
-            <Text style={styles.statNumber}>4.5</Text>
-            <Text style={styles.statLabel}>Rating</Text>
+          <View className="items-center">
+            <Text className="text-white text-xl font-bold">4.5</Text>
+            <Text className="text-[#bfb39b] text-sm">Rating</Text>
           </View>
         </View>
 
-        <View style={styles.tabsSection}>
-          <Text style={styles.activeTab}>Posts</Text>
-          <Text style={styles.inactiveTab}>About</Text>
-          <Text style={styles.inactiveTab}>Skills</Text>
+        <View className="flex-row justify-around border-b border-[#5d523c] py-2">
+          <Text className="text-white font-bold">Posts</Text>
+          <Text className="text-[#bfb39b]">About</Text>
+          <Text className="text-[#bfb39b]">Skills</Text>
         </View>
 
-        <View style={styles.postsGrid}>{/* Future post grid content */}</View>
+        <View className="p-4">{/* Future post grid content */}</View>
       </ScrollView>
 
       <ProfileMenuModal
         visible={menuVisible}
         onClose={() => setMenuVisible(false)}
-        navigation={navigation}
       />
-    </>
+    </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#1f1b14',
-  },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-    padding: 16,
-  },
-  menuButton: {
-    padding: 8,
-  },
-  menuIcon: {
-    color: 'white',
-    fontSize: 24,
-  },
-  profileSection: {
-    alignItems: 'center',
-    padding: 16,
-  },
-  profileImage: {
-    width: 128,
-    height: 128,
-    borderRadius: 64,
-    marginBottom: 16,
-  },
-  profileName: {
-    color: 'white',
-    fontSize: 22,
-    fontWeight: 'bold',
-  },
-  profileTitle: {
-    color: '#bfb39b',
-    fontSize: 16,
-  },
-  profileLocation: {
-    color: '#bfb39b',
-    fontSize: 16,
-  },
-  actionButtons: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    padding: 16,
-  },
-  editButton: {
-    backgroundColor: '#41392a',
-    padding: 12,
-    borderRadius: 8,
-  },
-  editButtonText: {
-    color: 'white',
-    fontWeight: 'bold',
-  },
-  liveButton: {
-    backgroundColor: '#f3e9d7',
-    padding: 12,
-    borderRadius: 8,
-  },
-  liveButtonText: {
-    color: '#1f1b14',
-    fontWeight: 'bold',
-  },
-  statsSection: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    padding: 16,
-  },
-  statBox: {
-    alignItems: 'center',
-  },
-  statNumber: {
-    color: 'white',
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  statLabel: {
-    color: '#bfb39b',
-    fontSize: 14,
-  },
-  tabsSection: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    borderBottomWidth: 1,
-    borderBottomColor: '#5d523c',
-    paddingVertical: 8,
-  },
-  activeTab: {
-    color: 'white',
-    fontWeight: 'bold',
-  },
-  inactiveTab: {
-    color: '#bfb39b',
-  },
-  postsGrid: {
-    padding: 16,
-  },
-});
 
 export default PrivateCreatorProfileScreen;

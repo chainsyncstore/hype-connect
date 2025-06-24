@@ -1,11 +1,10 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, TextInput, ScrollView } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useRouter } from 'expo-router';
 import WebHeader from '../../components/WebHeader';
 
-const LiveStreamScreen = ({ navigation: propNavigation }) => {
-  const nativeNavigation = useNavigation();
-  const navigation = propNavigation || nativeNavigation;
+const LiveStreamScreen = () => {
+  const router = useRouter();
 
   const streamTitle = "DJ Set - Chill Vibes";
   const viewers = 123;

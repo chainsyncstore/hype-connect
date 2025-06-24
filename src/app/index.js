@@ -1,10 +1,12 @@
 import { View, Text, Button } from 'react-native';
 import { Link } from 'expo-router';
+import WebHeader from '../components/WebHeader';
 
 export default function Feed() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>For You Feed</Text>
+    <View className="flex-1 justify-center items-center bg-primary">
+      <WebHeader />
+      <Text className="text-white">For You Feed</Text>
       <Link href="/upload" asChild>
         <Button title="Go to Upload" />
       </Link>

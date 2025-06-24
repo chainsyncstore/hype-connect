@@ -8,17 +8,15 @@ import {
   Image,
   ScrollView,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useRouter } from 'expo-router';
 // import WebHeader from '../../components/WebHeader'; // Commented out as it does not exist
 
 // Ensure these are defined only once in the module scope
 const placeholderGigImage = 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHdvcmt8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=300&q=60';
 const placeholderAvatar = 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=50&q=60';
 
-const GigsMarketplaceScreen = ({ navigation: propNavigation }) => {
-  // Fallback to nativeNavigation if propNavigation is not passed (e.g. if not used in a higher-order navigator)
-  const nativeNavigation = useNavigation();
-  const navigation = propNavigation || nativeNavigation;
+const GigsMarketplaceScreen = () => {
+  const router = useRouter();
 
   const [gigs, setGigs] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -85,16 +83,19 @@ const GigsMarketplaceScreen = ({ navigation: propNavigation }) => {
   }, [selectedCategory, searchQuery]);
 
   const handleBookGig = (item) => {
-    navigation.navigate('BookingModal', {
-      gigTitle: item.title,
-      creatorName: item.creator.name,
-      price: item.price
+    router.push({
+      pathname: '/(modals)/book-now',
+      params: {
+        gigTitle: item.title,
+        creatorName: item.creator.name,
+        price: item.price
+      }
     });
   };
 
   const GigCard = ({ item }) => (
     <View className="flex-1 bg-gray-800 rounded-xl m-2 overflow-hidden max-w-sm">
-      <TouchableOpacity onPress={() => navigation.navigate('GigDetail', { gigId: item.id })} >
+      <TouchableOpacity onPress={() => router.push({ pathname: '/(tabs)/gigs/[gigId]', params: { gigId: item.id } })} >
         <Image source={{ uri: item.image }} className="w-full h-40" resizeMode="cover" />
         <View className="p-3">
           <Text className="text-white text-md font-bold mb-1 truncate" numberOfLines={1}>{item.title}</Text>
@@ -122,17 +123,14 @@ const GigsMarketplaceScreen = ({ navigation: propNavigation }) => {
 
   return (
     <View className="flex-1 bg-primary">
-      {/* <WebHeader /> */}{/* WebHeader usage commented out */}
+      <WebHeader />
       <View className="px-4 pt-4 pb-2 bg-primary">
-        {/* This header was from the version of the code I refactored. */}
-        {/* If your original GigsMarketplaceScreen had a different header, that would go here. */}
-        {/* For now, ensuring there's no conflict with the (now absent) WebHeader. */}
-        <View className="flex-row justify-between items-center mb-3 pt-10"> {/* Added pt-10 for status bar spacing if no WebHeader */} 
-            <TouchableOpacity onPress={() => navigation.goBack()} className="p-1">
+        <View className="flex-row justify-between items-center mb-3">
+            <TouchableOpacity onPress={() => router.back()} className="p-1">
                 <Text className="text-white text-2xl">‹</Text>
             </TouchableOpacity>
             <Text className="text-white text-xl font-bold">Gigs Marketplace</Text>
-            <TouchableOpacity onPress={() => navigation.navigate('GigCreationModal')} className="p-1">
+            <TouchableOpacity onPress={() => router.push('/create-gig')} className="p-1">
                 <Text className="text-accent text-2xl">+</Text>
             </TouchableOpacity>
         </View>

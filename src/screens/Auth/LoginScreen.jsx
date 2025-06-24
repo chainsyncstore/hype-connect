@@ -1,3 +1,4 @@
+// src/screens/Auth/LoginScreen.jsx
 import React, { useState } from 'react';
 import {
   View,
@@ -7,12 +8,11 @@ import {
   ScrollView,
   Alert,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useRouter, Link } from 'expo-router'; // Import useRouter and Link
+import WebHeader from '../../components/WebHeader';
 
-const LoginScreen = ({ navigation: propNavigation }) => {
-  const nativeNavigation = useNavigation();
-  const navigation = propNavigation || nativeNavigation;
-
+const LoginScreen = () => {
+  const router = useRouter(); 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -23,22 +23,25 @@ const LoginScreen = ({ navigation: propNavigation }) => {
     }
     console.log('Attempting login with:', email, password);
     Alert.alert('Demo Success', 'Login successful! (Demo)', [
-      { text: 'OK', onPress: () => navigation.navigate('MainContent') },
+      // Ensure '/(tabs)/feed' is the correct entry point for your main app content in expo-router
+      { text: 'OK', onPress: () => router.replace('/(tabs)/feed') }, 
     ]);
   };
 
   const handleGoBack = () => {
-    navigation.goBack();
-  };
-
-  const handleGoToSignup = () => {
-    navigation.navigate('SignUp');
+    // Check if router can go back, otherwise navigate to a default (e.g., welcome)
+    if (router.canGoBack()) {
+      router.back();
+    } else {
+      router.replace('/(auth)/welcome'); // Fallback to welcome if no back history
+    }
   };
 
   return (
     <View className="flex-1 bg-primary">
+      <WebHeader />
       <ScrollView contentContainerStyle={{ alignItems: 'center', paddingBottom: 20 }} className="pt-5">
-        <View className="flex-row items-center w-full px-4 py-4">
+        <View className="flex-row items-center w-full px-4 py-4 self-start">
           <TouchableOpacity onPress={handleGoBack} className="p-2">
             <Text className="text-white text-2xl">{'<'}</Text>
           </TouchableOpacity>
@@ -70,9 +73,12 @@ const LoginScreen = ({ navigation: propNavigation }) => {
           />
         </View>
 
-        <TouchableOpacity className="w-4/5 sm:w-3/5 lg:w-2/5 items-end mb-5">
-          <Text className="text-accent text-sm">Forgot password?</Text>
-        </TouchableOpacity>
+        {/* Assuming you will create a forgot-password screen in the (auth) group */}
+        <Link href="/(auth)/forgot-password" asChild>
+            <TouchableOpacity className="w-4/5 sm:w-3/5 lg:w-2/5 items-end mb-5">
+                <Text className="text-accent text-sm">Forgot password?</Text>
+            </TouchableOpacity>
+        </Link>
 
         <TouchableOpacity
           className="bg-accent py-3 rounded-lg my-5 w-4/5 sm:w-3/5 lg:w-2/5"
@@ -94,11 +100,13 @@ const LoginScreen = ({ navigation: propNavigation }) => {
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity onPress={handleGoToSignup} className="my-5">
-          <Text className="text-accent underline">
-            Don't have an account? Sign up
-          </Text>
-        </TouchableOpacity>
+        <Link href="/(auth)/signup" asChild>
+          <TouchableOpacity className="my-5">
+            <Text className="text-accent underline">
+              Don't have an account? Sign up
+            </Text>
+          </TouchableOpacity>
+        </Link>
         <View className="h-5" />
       </ScrollView>
     </View>

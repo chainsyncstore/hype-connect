@@ -1,3 +1,4 @@
+// src/screens/Feed/MainContentScreen.jsx
 import React, { useState } from 'react';
 import {
   View,
@@ -6,18 +7,16 @@ import {
   ScrollView,
   Image,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import WebHeader from '../../components/WebHeader'; // Corrected path for WebHeader
+import { Link } from 'expo-router'; // Import Link from expo-router
+import WebHeader from '../../components/WebHeader'; 
 
-// PRD Colors: #1B1B1E (background), #F5A623 (accent), #FFFFFF (text)
+// PRD Colors & Icons
 const CommentIcon = () => <Text className="text-gray-400">💬</Text>;
 const TipIcon = () => <Text className="text-gray-400">$</Text>;
 const SaveIcon = () => <Text className="text-gray-400">🔖</Text>;
 
-const MainContentScreen = ({ navigation: propNavigation }) => {
-  const nativeNavigation = useNavigation();
-  const navigation = propNavigation || nativeNavigation;
-
+const MainContentScreen = () => {
+  // Removed useNavigation and propNavigation as Link handles navigation context
   const [activeTab, setActiveTab] = useState('For You');
 
   const posts = [
@@ -48,40 +47,46 @@ const MainContentScreen = ({ navigation: propNavigation }) => {
   ];
 
   const PostItem = ({ post }) => (
-    <TouchableOpacity onPress={() => navigation.navigate('PostDetail', { postId: post.id })} className="bg-gray-800 rounded-lg overflow-hidden mb-6 mx-auto w-full max-w-md sm:max-w-lg md:max-w-xl">
-      <Image source={{ uri: post.imageUri }} className="w-full h-64" resizeMode="cover" />
-      <View className="p-4">
-        <Text className="text-gray-400 text-xs uppercase">{post.category}</Text>
-        <Text className="text-white text-xl font-bold my-1">{post.title}</Text>
-        <View className="flex-row justify-between items-center mt-1 mb-2">
-          <TouchableOpacity onPress={() => navigation.navigate('PublicCreatorProfile', { creatorId: post.authorId })}>
-            <Text className="text-accent text-sm">{post.author}</Text>
-          </TouchableOpacity>
+    // Main post item navigates to post detail
+    <Link href={`/(tabs)/feed/${post.id}`} asChild>
+      <TouchableOpacity className="bg-gray-800 rounded-lg overflow-hidden mb-6 mx-auto w-full max-w-md sm:max-w-lg md:max-w-xl">
+        <Image source={{ uri: post.imageUri }} className="w-full h-64" resizeMode="cover" />
+        <View className="p-4">
+          <Text className="text-gray-400 text-xs uppercase">{post.category}</Text>
+          <Text className="text-white text-xl font-bold my-1" numberOfLines={1}>{post.title}</Text>
+          <View className="flex-row justify-between items-center mt-1 mb-2">
+            {/* Author link navigates to their profile */}
+            <Link href={`/(tabs)/profile/${post.authorId}`} asChild>
+              <TouchableOpacity>
+                <Text className="text-accent text-sm">{post.author}</Text>
+              </TouchableOpacity>
+            </Link>
+          </View>
+          <Text className="text-gray-300 text-sm mb-3 leading-relaxed" numberOfLines={2}>{post.description}</Text>
+          <View className="flex-row justify-around items-center border-t border-gray-700 pt-2">
+            {/* These buttons are placeholders for interaction, no navigation change needed here yet */}
+            <TouchableOpacity className="flex-row items-center p-2">
+              <CommentIcon />
+              <Text className="text-gray-400 ml-1 text-xs">{post.comments}</Text>
+            </TouchableOpacity>
+            <TouchableOpacity className="flex-row items-center p-2">
+              <TipIcon />
+              <Text className="text-gray-400 ml-1 text-xs">{post.tips}</Text>
+            </TouchableOpacity>
+            <TouchableOpacity className="flex-row items-center p-2">
+              <SaveIcon />
+              <Text className="text-gray-400 ml-1 text-xs">{post.saves}</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-        <Text className="text-gray-300 text-sm mb-3 leading-relaxed">{post.description}</Text>
-        <View className="flex-row justify-around items-center border-t border-gray-700 pt-2">
-          <TouchableOpacity className="flex-row items-center p-2">
-            <CommentIcon />
-            <Text className="text-gray-400 ml-1 text-xs">{post.comments}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity className="flex-row items-center p-2">
-            <TipIcon />
-            <Text className="text-gray-400 ml-1 text-xs">{post.tips}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity className="flex-row items-center p-2">
-            <SaveIcon />
-            <Text className="text-gray-400 ml-1 text-xs">{post.saves}</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    </TouchableOpacity>
+      </TouchableOpacity>
+    </Link>
   );
 
   return (
     <View className="flex-1 bg-primary">
       <WebHeader />
-
-      {/* Tabs - These are specific to the Feed screen so they stay below WebHeader */}
+      {/* Tabs for "For You" and "Following" remain part of this screen's specific UI */}
       <View className="flex-row bg-gray-800 border-b border-gray-700">
         <TouchableOpacity
           onPress={() => setActiveTab('For You')}
@@ -97,10 +102,9 @@ const MainContentScreen = ({ navigation: propNavigation }) => {
         </TouchableOpacity>
       </View>
 
-      {/* Feed Content */}
       <ScrollView className="flex-1 p-4">
-        {posts.map(post => <PostItem key={post.id} post={post} navigation={navigation} />)}
-        <View className="h-16" />
+        {posts.map(post => <PostItem key={post.id} post={post} />)}
+        <View className="h-16" />{/* Spacer for bottom */}
       </ScrollView>
     </View>
   );

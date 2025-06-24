@@ -1,183 +1,117 @@
-import React, { useEffect } from 'react';
+// src/screens/InterestsScreen.jsx
+import React, { useState, useEffect } from 'react';
 import {
-  StyleSheet,
   View,
   Text,
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useRouter } from 'expo-router';
+import WebHeader from '../components/WebHeader';
 
-const InterestsScreen = ({ navigation: propNavigation }) => {
-  const nativeNavigation = useNavigation();
-  const navigation = propNavigation || nativeNavigation;
+// PRD Colors: #1B1B1E (background), #F5A623 (accent), #FFFFFF (text)
 
-  const interests = [
-    'Music Production',
-    'Videography',
-    'Fashion',
-    'Editing',
-    'Graphic Design',
-    'Photography',
-    'Illustration',
-    'Animation',
-    'Writing',
-    'Content Creation',
-    'Social Media',
-    'Marketing',
-    'Vocalist',
-    'Performance',
+const InterestsScreen = () => {
+  const router = useRouter();
+  const [selectedInterests, setSelectedInterests] = useState([]);
+
+  const allInterests = [
+    'Music Production', 'Videography', 'Fashion', 'Editing',
+    'Graphic Design', 'Photography', 'Illustration', 'Animation',
+    'Writing', 'Content Creation', 'Social Media', 'Marketing',
+    'Vocalist', 'Performance',
   ];
 
-  useEffect(() => {
-    console.log('InterestsScreen mounted');
-    return () => {
-      console.log('InterestsScreen unmounted');
-    };
-  }, []);
+  // useEffect(() => {
+  //   console.log('InterestsScreen mounted');
+  //   return () => {
+  //     console.log('InterestsScreen unmounted');
+  //   };
+  // }, []); // Original useEffect can be kept if needed for other logic, otherwise removed.
+
+  const toggleInterest = (interest) => {
+    setSelectedInterests(prev => 
+      prev.includes(interest) 
+        ? prev.filter(item => item !== interest)
+        : [...prev, interest]
+    );
+  };
+
+  const handleContinue = () => {
+    console.log('Selected Interests:', selectedInterests);
+    // Navigate to the success screen or next step in onboarding within the (auth) group or to tabs
+    // Assuming a success screen is next in the auth flow for now.
+    router.push('/(auth)/success'); 
+  };
+
+  const handleGoBack = () => {
+    if (router.canGoBack()) {
+      router.back();
+    } else {
+      // Fallback if no back history, e.g., to signup or welcome
+      router.replace('/(auth)/signup'); 
+    }
+  };
 
   return (
-    <View style={styles.container}>
-      <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <View style={styles.header}>
-          <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-            <Text style={styles.backButtonText}>{'<'}</Text>
+    <View className="flex-1 bg-primary text-white">
+      <WebHeader />
+      <ScrollView contentContainerStyle={{ alignItems: 'center', paddingBottom: 40 }} className="pt-5">
+        <View className="flex-row items-center w-full px-4 py-4 self-start">
+          <TouchableOpacity onPress={handleGoBack} className="p-2">
+            <Text className="text-white text-2xl">{'<'}</Text>
           </TouchableOpacity>
-          <Text style={styles.headerTitle}>Interests</Text>
+          <View className="flex-1 items-center">
+            <Text className="text-white text-xl font-bold text-center">Interests</Text>
+          </View>
+          <View className="w-10" /> {/* Spacer for centering title */}
         </View>
 
-        <View style={styles.progressContainer}>
-          <View style={styles.progressDot} />
-          <View style={styles.progressDotActive} />
-          <View style={styles.progressDot} />
+        {/* Placeholder for progress dots - can be implemented with more complex UI if needed */}
+        <View className="flex-row justify-center items-center py-5">
+          <View className="w-2 h-2 rounded-full bg-gray-600 mx-1" />
+          <View className="w-2.5 h-2.5 rounded-full bg-accent mx-1" />
+          <View className="w-2 h-2 rounded-full bg-gray-600 mx-1" />
         </View>
 
-        <Text style={styles.title}>What are your creative interests?</Text>
-        <Text style={styles.subtitle}>
+        <Text className="text-white text-2xl sm:text-3xl font-bold text-center px-4 pb-3">
+          What are your creative interests?
+        </Text>
+        <Text className="text-gray-300 text-sm sm:text-base text-center px-6 pb-8">
           Select all that apply to help us tailor your experience.
         </Text>
 
-        <View style={styles.interestsContainer}>
-          {interests.map((interest, index) => (
-            <TouchableOpacity key={index} style={styles.interestButton}>
-              <Text style={styles.interestButtonText}>{interest}</Text>
-            </TouchableOpacity>
-          ))}
+        <View className="flex-row flex-wrap justify-center px-4">
+          {allInterests.map((interest) => {
+            const isSelected = selectedInterests.includes(interest);
+            return (
+              <TouchableOpacity 
+                key={interest} 
+                className={`py-2 px-4 m-1.5 rounded-full border ${
+                  isSelected ? 'bg-accent border-accent' : 'border-gray-600 hover:border-accent'
+                }`}
+                onPress={() => toggleInterest(interest)}
+              >
+                <Text 
+                  className={`${isSelected ? 'text-primary' : 'text-white'} text-sm font-medium`}
+                >
+                  {interest}
+                </Text>
+              </TouchableOpacity>
+            );
+          })}
         </View>
 
         <TouchableOpacity
-          style={styles.continueButton}
-          onPress={() => navigation.navigate('Success')}
+          className="bg-accent rounded-full py-3.5 px-12 mt-10 mb-5 w-4/5 sm:w-auto max-w-xs"
+          onPress={handleContinue}
         >
-          <Text style={styles.continueButtonText}>Continue</Text>
+          <Text className="text-primary text-lg font-bold text-center">Continue</Text>
         </TouchableOpacity>
 
-        <View style={styles.bottomSpace} />
       </ScrollView>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#201b13',
-  },
-  scrollContainer: {
-    alignItems: 'center',
-    paddingBottom: 20,
-  },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#201b13',
-    paddingVertical: 16,
-    paddingHorizontal: 16,
-    width: '100%',
-  },
-  backButton: {
-    padding: 8,
-  },
-  backButtonText: {
-    color: '#fff',
-    fontSize: 20,
-  },
-  headerTitle: {
-    color: '#fff',
-    fontSize: 20,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    flex: 1,
-  },
-  progressContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingVertical: 20,
-  },
-  progressDot: {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-    backgroundColor: '#5f513a',
-    marginHorizontal: 4,
-  },
-  progressDotActive: {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-    backgroundColor: '#eedcbd',
-    marginHorizontal: 4,
-  },
-  title: {
-    color: '#fff',
-    fontSize: 28,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    paddingHorizontal: 16,
-    paddingBottom: 12,
-  },
-  subtitle: {
-    color: '#fff',
-    fontSize: 16,
-    textAlign: 'center',
-    paddingHorizontal: 16,
-    paddingBottom: 32,
-  },
-  interestsContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    paddingHorizontal: 16,
-    gap: 12,
-  },
-  interestButton: {
-    backgroundColor: '#423929',
-    borderRadius: 100,
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-    margin: 6,
-  },
-  interestButtonText: {
-    color: '#fff',
-    fontSize: 14,
-  },
-  continueButton: {
-    backgroundColor: '#eedcbd',
-    borderRadius: 100,
-    paddingVertical: 14,
-    paddingHorizontal: 48,
-    marginTop: 32,
-  },
-  continueButtonText: {
-    color: '#201b13',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  bottomSpace: {
-    height: 5,
-    backgroundColor: '#201b13',
-  },
-});
 
 export default InterestsScreen;

@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Modal } from 'react-native';
 import { useState } from 'react';
+import { useRouter } from 'expo-router';
 
-const ProfileMenuModal = ({ visible, onClose, navigation }) => {
+const ProfileMenuModal = ({ visible, onClose }) => {
+  const router = useRouter();
 
   useEffect(() => {
     return () => {};
@@ -24,7 +26,7 @@ const ProfileMenuModal = ({ visible, onClose, navigation }) => {
             style={styles.menuItem}
             onPress={() => {
               onClose();
-              navigation.navigate('CreatorEarnings');
+              router.push('/(tabs)/profile/earnings');
             }}
           >
             <Text style={styles.menuText}>View Earnings</Text>

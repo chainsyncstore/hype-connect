@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
-import { useNavigation, useRoute } from '@react-navigation/native';
-import WebHeader from './WebHeader';
+import { useRouter, useLocalSearchParams } from 'expo-router';
+import WebHeader from '../../components/WebHeader';
 
 // PRD Colors: #1B1B1E (background), #F5A623 (accent), #FFFFFF (text)
 const placeholderGigImage = 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHdvcmt8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60';
@@ -9,9 +9,8 @@ const placeholderAvatar = 'https://images.unsplash.com/photo-1535713875002-d1d0c
 
 
 const GigDetailScreen = () => {
-  const navigation = useNavigation();
-  const route = useRoute();
-  const gigId = route.params?.gigId || 'defaultGigId'; // Get gigId from route params
+  const router = useRouter();
+  const { gigId } = useLocalSearchParams();
 
   // Static gig data - in a real app, you'd fetch this based on gigId
   const gigData = {
@@ -42,15 +41,18 @@ const GigDetailScreen = () => {
   };
 
   const handleBookNow = () => {
-    navigation.navigate('BookingModal', {
-      gigTitle: gigData.title,
-      creatorName: gigData.creator.name,
-      price: gigData.price
+    router.push({
+      pathname: '/(modals)/book-now',
+      params: {
+        gigTitle: gigData.title,
+        creatorName: gigData.creator.name,
+        price: gigData.price
+      }
     });
   };
 
   const navigateToCreatorProfile = () => {
-    navigation.navigate('PublicCreatorProfile', { creatorId: gigData.creator.username });
+    router.push({ pathname: '/(tabs)/profile/[userId]', params: { userId: gigData.creator.username } });
   }
 
   return (

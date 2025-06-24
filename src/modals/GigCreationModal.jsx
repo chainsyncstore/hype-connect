@@ -43,6 +43,7 @@ const GigCreationModal = () => {
 
   return (
     <View className="flex-1 bg-primary p-4 pt-10">
+      <WebHeader />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View className="flex-row justify-between items-center mb-6">
           <Text className="text-white text-2xl font-bold">Create New Gig</Text>

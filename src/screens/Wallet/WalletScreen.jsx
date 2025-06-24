@@ -9,12 +9,11 @@ import {
   TextInput,
   ScrollView,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useRouter } from 'expo-router';
 import WebHeader from '../../components/WebHeader';
 
-const WalletScreen = ({ navigation: propNavigation }) => {
-  const nativeNavigation = useNavigation();
-  const navigation = propNavigation || nativeNavigation;
+const WalletScreen = () => {
+  const router = useRouter();
 
   const [walletData, setWalletData] = useState({
     balance: 125000,

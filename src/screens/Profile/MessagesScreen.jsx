@@ -5,9 +5,8 @@ import WebHeader from '../../components/WebHeader';
 
 const placeholderAvatar = 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=50&q=60';
 
-const MessagesScreen = ({ navigation: propNavigation }) => {
-  const nativeNavigation = useNavigation();
-  const navigation = propNavigation || nativeNavigation;
+const MessagesScreen = () => {
+  const router = useRouter();
 
   const [conversations, setConversations] = useState([
     { id: '1', user: { name: 'Beat Maker Pro', avatar: placeholderAvatar, online: true }, lastMessage: 'Thanks for the collaboration! The track sounds amazing.', timestamp: '10:30 AM', unreadCount: 2 },

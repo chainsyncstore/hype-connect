@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, FlatList, Image } from 'react-native';
+import WebHeader from '../../components/WebHeader';
 
 const dummyData = [
   // ... (dummy data for the feed)
@@ -20,20 +21,22 @@ export default function SearchFeedScreen() {
   };
 
   return (
-    <View style={{ flex: 1 }}>
+    <View className="flex-1 bg-primary">
+      <WebHeader />
       <TextInput
         placeholder="Search..."
         onChangeText={handleSearch}
         value={searchText}
-        style={{ padding: 10, borderWidth: 1, borderColor: 'gray', margin: 10 }}
+        className="p-2 border border-gray-400 m-2 text-white rounded-md"
+        placeholderTextColor="#A0A0A0"
       />
       <FlatList
         data={filteredData}
         keyExtractor={item => item.id}
         renderItem={({ item }) => (
-          <View style={{ padding: 10, borderBottomWidth: 1, borderBottomColor: '#ccc' }}>
-            <Text>{item.username}</Text>
-            <Image source={{ uri: item.avatar }} style={{ width: 50, height: 50 }} />
+          <View className="p-2 border-b border-gray-300">
+            <Text className="text-white">{item.username}</Text>
+            <Image source={{ uri: item.avatar }} className="w-12 h-12" />
             {/* Add more content here */}
           </View>
         )}

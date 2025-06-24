@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
   View,
-  StyleSheet,
   Text,
   TouchableOpacity,
   ScrollView,
@@ -9,11 +8,14 @@ import {
   TextInput,
   Platform, 
 } from 'react-native';
+import { useRouter } from 'expo-router';
 
 // Corrected import path and removed duplicate
 import ReportBlockModal from '../../modals/ReportBlockModal'; 
+import WebHeader from '../../components/WebHeader';
 
-const CommentSectionScreen = ({ navigation }) => {
+const CommentSectionScreen = () => {
+  const router = useRouter();
   const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
@@ -25,25 +27,26 @@ const CommentSectionScreen = ({ navigation }) => {
   const handleCloseModal = () => setModalVisible(false);
 
   const CommentItem = ({ name, time, comment, image }) => (
-    <View style={styles.commentContainer}>
-      <Image style={styles.commentProfileImage} source={{ uri: image }} />
-      <View style={styles.commentDetails}>
-        <View style={styles.commentHeader}>
-          <Text style={styles.commentName}>{name}</Text>
-          <Text style={styles.commentTime}>{time}</Text>
+    <View className="flex-row px-4 py-3">
+      <Image className="w-10 h-10 rounded-full mr-3" source={{ uri: image }} />
+      <View className="flex-1">
+        <View className="flex-row justify-between">
+          <Text className="text-white font-bold">{name}</Text>
+          <Text className="text-[#c0b29b]">{time}</Text>
         </View>
-        <Text style={styles.commentText}>{comment}</Text>
+        <Text className="text-white">{comment}</Text>
       </View>
     </View>
   );
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-          <Text style={{ color: 'white', fontSize: 24 }}>{'<'}</Text>
+    <View className="flex-1 bg-[#1f1b14]">
+      <WebHeader />
+      <View className="flex-row items-center px-4 py-3">
+        <TouchableOpacity className="p-2" onPress={() => router.back()}>
+          <Text className="text-white text-2xl">{'<'}</Text>
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Comments</Text>
+        <Text className="text-white text-lg font-bold text-center flex-1 pr-10">Comments</Text>
       </View>
 
       <ScrollView>
@@ -77,23 +80,23 @@ const CommentSectionScreen = ({ navigation }) => {
             <CommentItem {...item} />
           </TouchableOpacity>
         ))}
-        <View style={styles.bottomSpace} />
+        <View className="h-1.5" />
       </ScrollView>
 
-      <View style={styles.addCommentContainer}>
+      <View className="flex-row items-center p-3 border-t border-[#483a23]">
         <Image
-          style={styles.addCommentProfileImage}
+          className="w-10 h-10 rounded-full mr-3"
           source={{
             uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBxkaVhpUCeiE01evsjk1bcSASN6TLiAV1M4OHsnASFr-RC4RZ8dkzNsZfVIMronJaImTvAnkxH4FrK0OgPHtf1mkvWokIIL7lnwza8T9vXXnGXNANsqPbLpxiuYLaM_-a5MU9pujDxsQ6Ftiw-Irc8nbtPqzDU54OXbrGtYit2KBRKRhMLpq_zVMzqP7SrCeRxyBEDReFqGZ_C1LRBmKc2IXpuqgqGfEeeX5XZHK5fRQLgKfO5hcSvgW0Wm8sLYnfQZjDMxqaCv48',
           }}
         />
         <TextInput
-          style={styles.addCommentInput}
+          className="flex-1 bg-[#423929] text-white rounded-full px-4 py-2.5 text-sm"
           placeholder="Add a comment..."
           placeholderTextColor="#c0b29b"
         />
-        <TouchableOpacity style={styles.sendButton}>
-          <Text>Send</Text>
+        <TouchableOpacity className="px-4 py-2">
+          <Text className="text-white">Send</Text>
         </TouchableOpacity>
       </View>
       
@@ -101,67 +104,5 @@ const CommentSectionScreen = ({ navigation }) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#1f1b14' },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-  },
-  backButton: { padding: 8 },
-  headerTitle: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    flex: 1,
-    paddingRight: 40, 
-  },
-  commentContainer: {
-    flexDirection: 'row',
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-  },
-  commentProfileImage: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    marginRight: 12,
-  },
-  commentDetails: { flex: 1 },
-  commentHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  commentName: { color: '#fff', fontWeight: 'bold' },
-  commentTime: { color: '#c0b29b' },
-  commentText: { color: '#fff' },
-  addCommentContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    padding: 12,
-    borderTopWidth: 1,
-    borderTopColor: '#483a23',
-  },
-  addCommentProfileImage: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    marginRight: 12,
-  },
-  addCommentInput: {
-    flex: 1,
-    backgroundColor: '#423929',
-    color: '#fff',
-    borderRadius: 20,
-    paddingHorizontal: 16,
-    paddingVertical: Platform.OS === 'ios' ? 10 : 8, 
-    fontSize: 14,
-  },
-  sendButton: { paddingHorizontal: 16, paddingVertical: 8 },
-  bottomSpace: { height: 5 }, 
-});
 
 export default CommentSectionScreen;
