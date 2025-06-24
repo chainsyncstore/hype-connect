@@ -5,7 +5,7 @@ import { Link } from 'expo-router'; // useRouter might not be needed if all nav 
 
 let logoSource;
 try {
-  logoSource = require('../assets/logo.png'); 
+  logoSource = require('../../assets/images/logo.png'); 
 } catch (e) {
   console.warn("WebHeader: Could not load logo.png. Ensure path is correct. Falling back to text logo.");
   logoSource = null; 
@@ -39,7 +39,7 @@ const WebHeader = () => {
         {navItems.map((item) => (
           <Link key={item.name} href={item.href} asChild>
             <TouchableOpacity>
-              <Text className="text-white hover:text-accent text-xs lg:text-sm font-medium">{item.name}</Text>
+              <Text className="text-white text-xs lg:text-sm font-medium">{item.name}</Text>
             </TouchableOpacity>
           </Link>
         ))}
@@ -48,7 +48,7 @@ const WebHeader = () => {
       <View className="flex-row items-center space-x-2 sm:space-x-3">
         <Link href="/create-post" asChild>
           <TouchableOpacity 
-            className="bg-gray-700 p-1.5 sm:p-2 rounded-full hover:bg-gray-600"
+            className="bg-gray-700 p-1.5 sm:p-2 rounded-full"
             aria-label="Create Post"
           >
             <Text className="text-accent text-md sm:text-lg">✍️</Text> 
@@ -56,7 +56,7 @@ const WebHeader = () => {
         </Link>
         <Link href="/create-gig" asChild>
           <TouchableOpacity 
-            className="bg-gray-700 p-1.5 sm:p-2 rounded-full hover:bg-gray-600"
+            className="bg-gray-700 p-1.5 sm:p-2 rounded-full"
             aria-label="Create Gig"
           >
             <Text className="text-accent text-md sm:text-lg">💼</Text> 

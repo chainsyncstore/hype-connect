@@ -90,13 +90,13 @@ const LiveStreamScreen = () => {
             <View className="flex-row space-x-2">
                 <TouchableOpacity
                     onPress={handleSendComment}
-                    className="bg-gray-600 hover:bg-gray-500 flex-1 rounded-full py-2 items-center"
+                    className="bg-gray-600 flex-1 rounded-full py-2 items-center"
                     >
                     <Text className="text-white font-semibold text-xs">Send</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     onPress={handleSendTip}
-                    className="bg-accent hover:bg-yellow-600 flex-1 rounded-full py-2 items-center"
+                    className="bg-accent flex-1 rounded-full py-2 items-center"
                     >
                     <Text className="text-primary font-semibold text-xs">💰 Send Tip</Text>
                 </TouchableOpacity>

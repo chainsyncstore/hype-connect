@@ -65,7 +65,7 @@ export default function UploadScreen() {
           
           <TouchableOpacity 
             onPress={pickImage} 
-            className="mb-5 p-6 border-2 border-dashed border-gray-600 rounded-lg items-center justify-center hover:border-accent min-h-[150px]"
+            className="mb-5 p-6 border-2 border-dashed border-gray-600 rounded-lg items-center justify-center border-accent min-h-[150px]"
           >
             {image ? (
               <Image source={{ uri: image }} className="w-full h-48 rounded-md" resizeMode="cover" />
