@@ -1,10 +1,10 @@
-const { getDefaultConfig } = require('@react-native/metro-config');
+const { getExpoMetroConfig } = require('expo/metro-config');
 
 /**
  * @type {import('expo/metro-config').MetroConfig}
  */
-const config = getDefaultConfig(__dirname, {
-  // We are opting out of package exports for now to avoid breaking changes in SDK 53.
+const config = getExpoMetroConfig(__dirname, {
+  // Opt out of package exports in SDK 53 to avoid breaking changes.
   unstable_enablePackageExports: false,
 });
 
