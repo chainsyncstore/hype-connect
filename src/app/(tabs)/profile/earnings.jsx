@@ -1,2 +1,2 @@
-import CreatorEarningsScreen from '../../../../screens/Profile/CreatorEarningsScreen';
+import CreatorEarningsScreen from '../../../screens/Profile/CreatorEarningsScreen';
 export default CreatorEarningsScreen;
