@@ -88,7 +88,7 @@ const InterestsScreen = () => {
               <TouchableOpacity 
                 key={interest} 
                 className={`py-2 px-4 m-1.5 rounded-full border ${
-                  isSelected ? 'bg-accent border-accent' : 'border-gray-600 hover:border-accent'
+                  isSelected ? 'bg-accent border-accent' : 'border-gray-600 border-accent'
                 }`}
                 onPress={() => toggleInterest(interest)}
               >
