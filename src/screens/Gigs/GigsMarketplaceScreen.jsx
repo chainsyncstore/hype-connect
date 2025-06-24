@@ -9,7 +9,7 @@ import {
   ScrollView,
 } from 'react-native';
 import { useRouter } from 'expo-router';
-// import WebHeader from '../../components/WebHeader'; // Commented out as it does not exist
+import WebHeader from '../../components/WebHeader';
 
 // Ensure these are defined only once in the module scope
 const placeholderGigImage = 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHdvcmt8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=300&q=60';

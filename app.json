@@ -19,15 +19,15 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.yourcompany.hypeconnect",
-      "newArchEnabled": false
+      "bundleIdentifier": "com.yourcompany.hypeconnect"
+      
     },
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.yourcompany.hypeconnect",
-      "newArchEnabled": false
+      "package": "com.yourcompany.hypeconnect"
+      
     },
     "web": {
       "output": "static"

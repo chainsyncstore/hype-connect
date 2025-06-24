@@ -1,6 +1,7 @@
 // src/app/_layout.jsx
 import React, { useState, useEffect } from 'react';
 import { Stack, useRouter, SplashScreen } from 'expo-router';
+import { TailwindProvider } from 'tailwindcss-react-native';
 import { Text } from 'react-native';
 
 // Placeholder for actual auth state logic
@@ -53,20 +54,22 @@ export default function RootLayout() {
   }
 
   return (
-    <Stack screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="(auth)" />
-      <Stack.Screen name="(tabs)" />
-      {/* Add other global screens/modals here if needed, e.g., for settings not in tabs */}
-      {/* <Stack.Screen name="settings" component={SettingsScreen} /> */}
-      {/* Modals can also be defined here with presentation: 'modal' */}
-      <Stack.Screen name="(modals)/book-now" options={{ presentation: 'modal', title: 'Book Service' }}/>
-      <Stack.Screen name="(modals)/tip-creator" options={{ presentation: 'modal', title: 'Send a Tip' }}/>
-      <Stack.Screen name="(modals)/report-block" options={{ presentation: 'modal', title: 'Report/Block' }}/>
-      <Stack.Screen name="(modals)/profile-menu" options={{ presentation: 'modal', title: 'Menu' }}/>
-      
-      {/* Full screen modals / creation screens outside of auth/tabs flow */}
-      <Stack.Screen name="create-post" options={{ title: 'Create Post' }}/>
-      <Stack.Screen name="create-gig" options={{ title: 'Create Gig' }}/>
-    </Stack>
+    <TailwindProvider>
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="(auth)" />
+        <Stack.Screen name="(tabs)" />
+        {/* Add other global screens/modals here if needed, e.g., for settings not in tabs */}
+        {/* <Stack.Screen name="settings" component={SettingsScreen} /> */}
+        {/* Modals can also be defined here with presentation: 'modal' */}
+        <Stack.Screen name="(modals)/book-now" options={{ presentation: 'modal', title: 'Book Service' }}/>
+        <Stack.Screen name="(modals)/tip-creator" options={{ presentation: 'modal', title: 'Send a Tip' }}/>
+        <Stack.Screen name="(modals)/report-block" options={{ presentation: 'modal', title: 'Report/Block' }}/>
+        <Stack.Screen name="(modals)/profile-menu" options={{ presentation: 'modal', title: 'Menu' }}/>
+        
+        {/* Full screen modals / creation screens outside of auth/tabs flow */}
+        <Stack.Screen name="create-post" options={{ title: 'Create Post' }}/>
+        <Stack.Screen name="create-gig" options={{ title: 'Create Gig' }}/>
+      </Stack>
+    </TailwindProvider>
   );
 }

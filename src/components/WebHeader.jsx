@@ -5,7 +5,7 @@ import { Link } from 'expo-router'; // useRouter might not be needed if all nav 
 
 let logoSource;
 try {
-  logoSource = require('../../assets/logo.png'); 
+  logoSource = require('../assets/logo.png'); 
 } catch (e) {
   console.warn("WebHeader: Could not load logo.png. Ensure path is correct. Falling back to text logo.");
   logoSource = null; 
