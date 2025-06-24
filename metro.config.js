@@ -1,5 +1,5 @@
 const { getDefaultConfig } = require('@react-native/metro-config');
-const { withTailwind } = require('tailwindcss-react-native/metro');
+const { withTailwind } = require('tailwindcss-react-native');
 
 /**
  * @type {import('expo/metro-config').MetroConfig}
