@@ -1,2 +1,2 @@
-import EditProfileScreen from '../../../screens/Profile/UploadScreen';
+import EditProfileScreen from '../../../screens/Profile/EditProfileScreen';
 export default EditProfileScreen;

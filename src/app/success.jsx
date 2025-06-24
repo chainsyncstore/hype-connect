@@ -1,3 +1,3 @@
 // src/app/success.jsx
-import SuccessScreen from '../../screens/SuccessScreen';
+import SuccessScreen from '../screens/SuccessScreen';
 export default SuccessScreen;
