@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import ApiService from '@services/api';
 import { View, Text, TouchableOpacity, StyleSheet, Modal } from 'react-native';
 import { useState } from 'react';
 
@@ -41,7 +42,14 @@ const ProfileMenuModal = ({ visible, onClose, navigation }) => {
           <TouchableOpacity style={styles.menuItem}>
             <Text style={styles.menuText}>Support & Help Center</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.menuItem}>
+          <TouchableOpacity
+            style={styles.menuItem}
+            onPress={async () => {
+              await ApiService.logout();
+              onClose();
+              navigation.navigate('Welcome');
+            }}
+          >
             <Text style={styles.menuText}>Log Out</Text>
           </TouchableOpacity>
         </View>

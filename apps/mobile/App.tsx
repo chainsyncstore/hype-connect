@@ -9,14 +9,14 @@ import React from 'react';
 import { useColorScheme } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import WelcomeScreen from './src/WelcomeScreen.jsx';
-import SignUpScreen from './src/SignUpScreen.jsx';
-import LoginScreen from './src/LoginScreen.jsx';
-import InterestsScreen from './src/InterestsScreen.jsx';
-import SuccessScreen from './src/SuccessScreen.jsx';
-import MainContentScreen from './src/MainContentScreen.jsx';
-import PostDetailScreen from './src/PostDetailScreen.jsx';
-import CommentSectionScreen from './src/CommentSectionScreen.jsx';
+import WelcomeScreen from './src/screens/WelcomeScreen.jsx';
+import SignUpScreen from './src/screens/SignUpScreen.jsx';
+import LoginScreen from './src/screens/LoginScreen.jsx';
+import InterestsScreen from './src/screens/InterestsScreen.jsx';
+import SuccessScreen from './src/screens/SuccessScreen.jsx';
+import MainContentScreen from './src/screens/MainContentScreen.jsx';
+import PostDetailScreen from './src/screens/PostDetailScreen.jsx';
+import CommentSectionScreen from './src/screens/CommentSectionScreen.jsx';
 
 const Stack = createStackNavigator();
 

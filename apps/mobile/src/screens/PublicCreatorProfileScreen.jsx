@@ -7,7 +7,7 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import ApiService from './services/api';
+import ApiService from '@services/api';
 
 const PublicCreatorProfileScreen = ({ navigation, route }) => {
   const creatorId = route?.params?.creatorId;

@@ -9,7 +9,7 @@ import {
   Modal,
   TextInput,
 } from 'react-native';
-import ApiService from './services/api';
+import ApiService from '@services/api';
 
 const WalletScreen = ({ navigation }) => {
   const [walletData, setWalletData] = useState({

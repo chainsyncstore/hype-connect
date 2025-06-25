@@ -7,8 +7,8 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import ProfileMenuModal from './ProfileMenuModal';
-import ApiService, { supabase } from './services/api';
+import ProfileMenuModal from '../components/modals/ProfileMenuModal';
+import ApiService, { supabase } from '@services/api';
 
 const PrivateCreatorProfileScreen = ({ navigation }) => {
   const [menuVisible, setMenuVisible] = useState(false);

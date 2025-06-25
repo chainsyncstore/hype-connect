@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
-import ApiService from './services/api';
+import ApiService from '../../services/api';
 
 const CreatorCard = ({ creatorId }) => {
   const [profile, setProfile] = useState(null);

@@ -4,22 +4,22 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 // Import all screens
-import WelcomeScreen from './WelcomeScreen';
-import SignUpScreen from './SignUpScreen';
-import LoginScreen from './LoginScreen';
-import InterestsScreen from './InterestsScreen';
-import SuccessScreen from './SuccessScreen';
-import MainContentScreen from './MainContentScreen';
-import PostDetailScreen from './PostDetailScreen';
-import CommentSectionScreen from './CommentSectionScreen';
-import GigsMarketplaceScreen from './GigsMarketplaceScreen';
-import LiveStreamScreen from './LiveStreamScreen';
-import WalletScreen from './WalletScreen';
-import MessagesScreen from './MessagesScreen';
-import AdminDashboardScreen from './AdminDashboardScreen';
-import PrivateCreatorProfileScreen from './PrivateCreatorProfileScreen';
-import PublicCreatorProfileScreen from './PublicCreatorProfileScreen';
-import FollowersListScreen from './FollowersListScreen';
+import WelcomeScreen from './screens/WelcomeScreen.jsx';
+import SignUpScreen from './screens/SignUpScreen.jsx';
+import LoginScreen from './screens/LoginScreen.jsx';
+import InterestsScreen from './screens/InterestsScreen.jsx';
+import SuccessScreen from './screens/SuccessScreen.jsx';
+import MainContentScreen from './screens/MainContentScreen.jsx';
+import PostDetailScreen from './screens/PostDetailScreen.jsx';
+import CommentSectionScreen from './screens/CommentSectionScreen.jsx';
+import GigsMarketplaceScreen from './screens/GigsMarketplaceScreen.jsx';
+import LiveStreamScreen from './screens/LiveStreamScreen.jsx';
+import WalletScreen from './screens/WalletScreen.jsx';
+import MessagesScreen from './screens/MessagesScreen.jsx';
+import AdminDashboardScreen from './screens/AdminDashboardScreen.jsx';
+import PrivateCreatorProfileScreen from './screens/PrivateCreatorProfileScreen.jsx';
+import PublicCreatorProfileScreen from './screens/PublicCreatorProfileScreen.jsx';
+import FollowersListScreen from './screens/FollowersListScreen.jsx';
 
 const Stack = createNativeStackNavigator();
 

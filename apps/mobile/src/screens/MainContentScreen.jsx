@@ -8,7 +8,7 @@ import {
   Image,
   Modal,
 } from 'react-native';
-import CreatorCard from './CreatorCard';
+import CreatorCard from '../components/modals/CreatorCard';
 
 const MainContentScreen = ({ navigation }) => {
 

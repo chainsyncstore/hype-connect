@@ -9,7 +9,7 @@ import {
   Image,
   ScrollView,
 } from 'react-native';
-import ApiService from './services/api';
+import ApiService from '@services/api';
 
 const GigsMarketplaceScreen = ({ navigation }) => {
   const [gigs, setGigs] = useState([]);

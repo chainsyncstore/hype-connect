@@ -7,7 +7,7 @@ import {
   ScrollView,
   StyleSheet,
 } from 'react-native';
-import ApiService from './services/api';
+import ApiService from '@services/api';
 
 
 

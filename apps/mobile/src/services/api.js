@@ -1,10 +1,17 @@
 import { createClient } from '@supabase/supabase-js';
 
 // API Service Layer for Hype Connect
-const API_BASE_URL = 'https://your-api-endpoint.com/api/v1'; // optional REST fallback
-const SUPABASE_URL = 'YOUR_SUPABASE_URL';
-const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
-export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const API_BASE_URL = 'http://localhost:4000/api';
+const SUPABASE_URL = process.env.REACT_APP_SUPABASE_URL;
+const SUPABASE_ANON_KEY = process.env.REACT_APP_SUPABASE_ANON_KEY;
+
+// Fallback to a demo project if env vars are missing so the dev build doesn’t crash.
+const DEFAULT_SUPABASE_URL = 'https://demo.supabase.co';
+const DEFAULT_SUPABASE_KEY = 'public-anon-key';
+
+export const supabase = SUPABASE_URL && SUPABASE_ANON_KEY
+  ? createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+  : createClient(DEFAULT_SUPABASE_URL, DEFAULT_SUPABASE_KEY);
 
 const FLUTTERWAVE_PUBLIC_KEY = 'FLWPUBK_TEST-YOUR_PUBLIC_KEY';
 const CLOUDINARY_CLOUD_NAME = 'YOUR_CLOUDINARY_CLOUD_NAME';

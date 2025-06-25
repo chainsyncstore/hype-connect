@@ -9,7 +9,7 @@ import {
   TextInput,
 } from 'react-native';
 
-import ReportBlockModal from './ReportBlockModal';
+import ReportBlockModal from '../components/modals/ReportBlockModal';
 
 const CommentSectionScreen = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
