@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -7,17 +7,26 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
+import ApiService from './services/api';
 
-const PublicCreatorProfileScreen = ({ navigation }) => {
+const PublicCreatorProfileScreen = ({ navigation, route }) => {
+  const creatorId = route?.params?.creatorId;
+  const [profile, setProfile] = useState(null);
   console.log('PublicCreatorProfileScreen rendered');
 
   useEffect(() => {
-    console.log('PublicCreatorProfileScreen mounted');
-
-    return () => {
-      console.log('PublicCreatorProfileScreen unmounted');
+    const load = async () => {
+      try {
+        if (creatorId) {
+          const p = await ApiService.getProfile(creatorId);
+          setProfile(p);
+        }
+      } catch (e) {
+        console.error('Failed to load creator profile', e);
+      }
     };
-  }, []);
+    load();
+  }, [creatorId]);
 
   return (
     <View style={styles.container}>
@@ -40,15 +49,13 @@ const PublicCreatorProfileScreen = ({ navigation }) => {
       <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.profileSection}>
           <Image
-            source={{
-              uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCUsD4PV-NWVkwPYLn09JGAUVY_qh6_Cf88fW63-yK_4QsqCPo1T6b2qD3X3vp7x9Zb5s9BVHb_uzo9vtLk0htm-tNV7314rrKkH34YaMPziRnqgwHo4l0hWhbemB-9Huimbkx5XaokEynCNdoCSXrUFMtkBIbqsVxPCgHb8VmGfiWao2q13_21nx3Wjo3eC8V8HYaSvi6pcNfV_ELSzy1YV_ZuqdCAzSPL4YsPnN_XKQbs2A1G8KjwGDWgtonn4sTEw6wrMJRwaXE',
-            }}
+            source={{ uri: profile?.avatar_url || 'https://via.placeholder.com/150' }}
             style={styles.profileImage}
           />
           <View style={styles.profileInfo}>
-            <Text style={styles.name}>Ethan Carter</Text>
-            <Text style={styles.username}>@ethan_carter</Text>
-            <Text style={styles.bio}>Producer | Photographer</Text>
+            <Text style={styles.name}>{profile?.full_name || '...'}</Text>
+            <Text style={styles.username}>@{profile?.username || ''}</Text>
+            <Text style={styles.bio}>{profile?.bio || ''}</Text>
           </View>
         </View>
 

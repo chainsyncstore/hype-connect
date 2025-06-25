@@ -1,7 +1,11 @@
+import { createClient } from '@supabase/supabase-js';
+
 // API Service Layer for Hype Connect
-const API_BASE_URL = 'https://your-api-endpoint.com/api/v1';
+const API_BASE_URL = 'https://your-api-endpoint.com/api/v1'; // optional REST fallback
 const SUPABASE_URL = 'YOUR_SUPABASE_URL';
 const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
 const FLUTTERWAVE_PUBLIC_KEY = 'FLWPUBK_TEST-YOUR_PUBLIC_KEY';
 const CLOUDINARY_CLOUD_NAME = 'YOUR_CLOUDINARY_CLOUD_NAME';
 const CLOUDINARY_UPLOAD_PRESET = 'YOUR_UPLOAD_PRESET';
@@ -41,62 +45,66 @@ class ApiService {
 
   // Mock Auth APIs for testing
   async login(email, password) {
-    // Simulate API delay
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    // Mock successful login
-    if (email && password) {
-      const mockUser = {
-        id: '123',
-        email: email,
-        name: 'Test User',
-        token: 'mock_jwt_token_12345',
-      };
-      this.setAuthToken(mockUser.token);
-      return { success: true, user: mockUser };
-    } else {
-      throw new Error('Invalid credentials');
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+    if (error) {
+      console.error('Supabase login error:', error);
+      throw new Error(error.message || 'Login failed');
     }
+    return { success: true, user: data.user, session: data.session };
   }
 
   async signup(userData) {
-    // Simulate API delay
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    // Mock successful signup
-    if (userData.email && userData.password && userData.fullName) {
-      const mockUser = {
-        id: '123',
-        email: userData.email,
-        name: userData.fullName,
-        username: userData.username || userData.email.split('@')[0],
-        role: userData.role || 'creator',
-        token: 'mock_jwt_token_12345',
-      };
-      this.setAuthToken(mockUser.token);
-      return { success: true, user: mockUser };
-    } else {
-      throw new Error('Missing required fields');
+    const { email, password, fullName, username, role = 'creator' } = userData;
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: { full_name: fullName, username, role },
+      },
+    });
+    if (error) {
+      console.error('Supabase signup error:', error);
+      throw new Error(error.message || 'Signup failed');
     }
+
+    // Upsert into profiles table (ensure RLS allows this)
+    const { error: profileError } = await supabase.from('profiles').upsert({
+      id: data.user.id,
+      full_name: fullName,
+      username,
+      role,
+    });
+    if (profileError) {
+      console.error('Supabase profile upsert error:', profileError);
+      throw new Error(profileError.message || 'Failed to create profile');
+    }
+
+    return { success: true, user: data.user };
   }
 
   async logout() {
-    // Simulate API delay
-    await new Promise((resolve) => setTimeout(resolve, 500));
-    this.setAuthToken(null);
+    const { error } = await supabase.auth.signOut();
+    if (error) throw error;
     return { success: true };
   }
 
   // User Profile APIs
   async getProfile(userId) {
-    return this.request(`/users/${userId}`);
+    const { data, error } = await supabase.from('profiles').select('*').eq('id', userId).single();
+    if (error) throw error;
+    return data;
   }
 
   async updateProfile(userId, profileData) {
-    return this.request(`/users/${userId}`, {
-      method: 'PUT',
-      body: JSON.stringify(profileData),
-    });
+    const { data, error } = await supabase.from('profiles').update(profileData).eq('id', userId).select().single();
+    if (error) throw error;
+    return data;
+  }
+
+  async fetchAllProfiles() {
+    const { data, error } = await supabase.from('profiles').select('*');
+    if (error) throw error;
+    return data;
   }
 
   // Feed APIs

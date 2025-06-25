@@ -1,10 +1,22 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
+import ApiService from './services/api';
 
-const CreatorCard = () => {
+const CreatorCard = ({ creatorId }) => {
+  const [profile, setProfile] = useState(null);
   useEffect(() => {
-    return () => {};
-  }, []);
+    const load = async () => {
+      try {
+        if (creatorId) {
+          const p = await ApiService.getProfile(creatorId);
+          setProfile(p);
+        }
+      } catch (e) {
+        console.error('Failed to load creator profile', e);
+      }
+    };
+    load();
+  }, [creatorId]);
   return (
     <View style={styles.container}>
       <View style={styles.overlay}>
@@ -16,14 +28,12 @@ const CreatorCard = () => {
             <View style={styles.profileContainer}>
               <Image
                 style={styles.profileImage}
-                source={{
-                  uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC0uYL3YKnhwxXy83LDiqc0IGga8yBa0gbCpiquDaH4woJQLEAFMIhNgFAXerkwhhmBCMrNkOOeOasSPt1EAvMR6XzGOfxu8HCq-etC2AwGy0kL79J0CnIUkiy7LUMkJCPSM9P2jlkKJJmKibjv1G_HQ80kC734X78FzGP1ukojMlbP0AYWYLNBPKFAgNTT9lbCN9_1yeMY40-8JyA4L6gLshMvhE8PhF0JwZc-0WmA31vzUupJpgyJNsiwc9tmP8iL7gOA5Bzgi-8',
-                }}
+                source={{ uri: profile?.avatar_url || 'https://via.placeholder.com/150' }}
               />
               <View style={styles.profileDetails}>
-                <Text style={styles.profileName}>Ethan Carter</Text>
-                <Text style={styles.profileUsername}>@ethan.carter</Text>
-                <Text style={styles.profileTitle}>Photographer</Text>
+                <Text style={styles.profileName}>{profile?.full_name || '...'}</Text>
+                <Text style={styles.profileUsername}>@{profile?.username || ''}</Text>
+                <Text style={styles.profileTitle}>{profile?.role || ''}</Text>
               </View>
             </View>
             <View style={styles.interestsContainer}>

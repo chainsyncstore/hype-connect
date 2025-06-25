@@ -8,18 +8,27 @@ import {
   ScrollView,
 } from 'react-native';
 import ProfileMenuModal from './ProfileMenuModal';
+import ApiService, { supabase } from './services/api';
 
 const PrivateCreatorProfileScreen = ({ navigation }) => {
   const [menuVisible, setMenuVisible] = useState(false);
+  const [profile, setProfile] = useState(null);
 
   console.log('PrivateCreatorProfileScreen rendered');
 
   useEffect(() => {
-    console.log('PrivateCreatorProfileScreen mounted');
-
-    return () => {
-      console.log('PrivateCreatorProfileScreen unmounted');
+    const loadProfile = async () => {
+      try {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (user) {
+          const p = await ApiService.getProfile(user.id);
+          setProfile(p);
+        }
+      } catch (e) {
+        console.error('Failed to load profile', e);
+      }
     };
+    loadProfile();
   }, []);
 
   return (
@@ -34,14 +43,13 @@ const PrivateCreatorProfileScreen = ({ navigation }) => {
           </TouchableOpacity>
         </View>
         <View style={styles.profileSection}>
+          {profile && (
           <Image
-            source={{
-              uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC-FWY39n52wWmXVptxh8AG6yRm_Y2kRVpLxqvVygnqB5rM4ER52rmEQNlYyfJEuwKFsmGxqOphcfkxmnK4aQC3zN3LUzh6gDFBJdUTdMRwdEHBLRa6kYUpAfb781_kxW1mGbPstBU6DDLrpMpyqyXS_nlS8FU0MAVrxhor1p0yuYiNwBFzMEe0PtnJbrZuL16hXSIz14X9PRPFHIsh89GULISyz4kyzhWkMH3yObTp6_3IvB_7KMVPsvqdf2sgMFy4Orgg0WtTfj8',
-            }}
+            source={{ uri: profile.avatar_url || 'https://via.placeholder.com/150' }}
             style={styles.profileImage}
-          />
-          <Text style={styles.profileName}>Ethan Blake</Text>
-          <Text style={styles.profileTitle}>Illustrator</Text>
+          />)}
+          <Text style={styles.profileName}>{profile?.full_name || 'Loading...'}</Text>
+          <Text style={styles.profileTitle}>{profile?.role || ''}</Text>
           <Text style={styles.profileLocation}>Based in San Francisco</Text>
         </View>
         <View style={styles.actionButtons}>

@@ -1,3 +1,12 @@
 {
-  "extends": "@react-native/typescript-config"
+  "compilerOptions": {
+    "jsx": "react",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": false,
+    "noEmit": true
+  },
+  "include": ["src"]
 }
