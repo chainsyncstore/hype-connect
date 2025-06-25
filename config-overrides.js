@@ -22,12 +22,16 @@ module.exports = override(
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
     },
   ]),
-  addBabelPlugin([
-    'react-refresh/babel',
-    {
-      skipEnvCheck: true,
-    },
-  ]),
+  ...(process.env.NODE_ENV === 'production'
+    ? []
+    : [
+        addBabelPlugin([
+          'react-refresh/babel',
+          {
+            skipEnvCheck: true,
+          },
+        ]),
+      ]),
   (config) => {
     // Disable react-refresh for production builds
     // Remove ReactRefreshPlugin in production builds
