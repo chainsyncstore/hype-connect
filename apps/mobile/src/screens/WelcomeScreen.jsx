@@ -1,6 +1,6 @@
 
 import React, { useEffect } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const WelcomeScreen = () => {
@@ -55,7 +55,11 @@ const WelcomeScreen = () => {
   return (
     <View style={styles.container}>
       <View style={[styles.logo, styles.interactive]}>
-        <Text style={styles.logoText}>H</Text>
+        <Image
+          source={require('../../assets/logo.png')}
+          style={styles.logoImage}
+          resizeMode="contain"
+        />
       </View>
       <Text style={styles.headline}>
         Connect. <Text style={styles.accentColor}>Create.</Text> Cash Out.
@@ -98,6 +102,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  logoImage: {
+    width: '100%',
+    height: '100%',
+  },
+  // Retain if any other component uses it
   logoText: {
     fontSize: 48,
     fontWeight: 'bold',
