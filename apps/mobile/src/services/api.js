@@ -1,13 +1,13 @@
 import { createClient } from '@supabase/supabase-js';
+import { REACT_APP_SUPABASE_URL, REACT_APP_SUPABASE_ANON_KEY } from '@env';
 
 // API Service Layer for Hype Connect
 const API_BASE_URL = 'http://localhost:4000/api';
-const SUPABASE_URL = process.env.REACT_APP_SUPABASE_URL;
-const SUPABASE_ANON_KEY = process.env.REACT_APP_SUPABASE_ANON_KEY;
+// Supabase credentials injected via react-native-dotenv / CRA
+const SUPABASE_URL = REACT_APP_SUPABASE_URL;
+const SUPABASE_ANON_KEY = REACT_APP_SUPABASE_ANON_KEY;
 
-if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
-  throw new Error('Missing Supabase environment variables: REACT_APP_SUPABASE_URL and/or REACT_APP_SUPABASE_ANON_KEY');
-}
+
 
 export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 

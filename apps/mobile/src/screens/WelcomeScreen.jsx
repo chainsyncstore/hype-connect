@@ -97,8 +97,8 @@ const styles = StyleSheet.create({
   logo: {
     width: 100,
     height: 100,
-    backgroundColor: '#F5A623',
-    borderRadius: 50,
+    backgroundColor: 'transparent', // Removed circle background color
+    borderRadius: 0, // Removed rounded circle to prevent overlay
     alignItems: 'center',
     justifyContent: 'center',
   },
