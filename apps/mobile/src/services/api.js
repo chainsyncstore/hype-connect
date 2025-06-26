@@ -5,13 +5,11 @@ const API_BASE_URL = 'http://localhost:4000/api';
 const SUPABASE_URL = process.env.REACT_APP_SUPABASE_URL;
 const SUPABASE_ANON_KEY = process.env.REACT_APP_SUPABASE_ANON_KEY;
 
-// Fallback to a demo project if env vars are missing so the dev build doesn’t crash.
-const DEFAULT_SUPABASE_URL = 'https://demo.supabase.co';
-const DEFAULT_SUPABASE_KEY = 'public-anon-key';
+if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
+  throw new Error('Missing Supabase environment variables: REACT_APP_SUPABASE_URL and/or REACT_APP_SUPABASE_ANON_KEY');
+}
 
-export const supabase = SUPABASE_URL && SUPABASE_ANON_KEY
-  ? createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
-  : createClient(DEFAULT_SUPABASE_URL, DEFAULT_SUPABASE_KEY);
+export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 const FLUTTERWAVE_PUBLIC_KEY = 'FLWPUBK_TEST-YOUR_PUBLIC_KEY';
 const CLOUDINARY_CLOUD_NAME = 'YOUR_CLOUDINARY_CLOUD_NAME';
