@@ -49,9 +49,9 @@ const SignUpScreen = () => {
 
       const response = await ApiService.signup(userData);
       if (response.success) {
-        Alert.alert('Success', 'Account created successfully!', [
-          { text: 'OK', onPress: () => navigation.navigate('Interests') },
-        ]);
+        // For web, React Native's Alert might not support callback pressed. Navigate immediately.
+        navigation.navigate('Interests');
+        Alert.alert('Success', 'Account created successfully!');
       }
     } catch (error) {
       Alert.alert('Error', error.message || 'Signup failed');
