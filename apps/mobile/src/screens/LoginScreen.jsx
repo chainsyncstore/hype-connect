@@ -34,9 +34,8 @@ const LoginScreen = () => {
     try {
       const response = await ApiService.login(email, password);
       if (response.success) {
-        Alert.alert('Success', 'Login successful!', [
-          { text: 'OK', onPress: () => navigation.navigate('MainContent') },
-        ]);
+        navigation.navigate('MainContent');
+        Alert.alert('Success', 'Login successful!');
       }
     } catch (error) {
       Alert.alert('Error', error.message || 'Login failed');
