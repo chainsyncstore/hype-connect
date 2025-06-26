@@ -1,11 +1,22 @@
 import { createClient } from '@supabase/supabase-js';
-import { REACT_APP_SUPABASE_URL, REACT_APP_SUPABASE_ANON_KEY } from '@env';
 
 // API Service Layer for Hype Connect
 const API_BASE_URL = 'http://localhost:4000/api';
-// Supabase credentials injected via react-native-dotenv / CRA
-const SUPABASE_URL = REACT_APP_SUPABASE_URL;
-const SUPABASE_ANON_KEY = REACT_APP_SUPABASE_ANON_KEY;
+// Resolve Supabase credentials.
+// 1. Web (CRA) uses process.env injected at build time.
+// 2. React-Native uses react-native-dotenv, but we require it at runtime via eval()
+let SUPABASE_URL = process.env.REACT_APP_SUPABASE_URL;
+let SUPABASE_ANON_KEY = process.env.REACT_APP_SUPABASE_ANON_KEY;
+
+if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
+  try {
+    // Prevent webpack from trying to resolve '@env' at build time
+    // eslint-disable-next-line no-eval
+    const env = eval('require')("@env");
+    SUPABASE_URL = env.REACT_APP_SUPABASE_URL;
+    SUPABASE_ANON_KEY = env.REACT_APP_SUPABASE_ANON_KEY;
+  } catch {}
+}
 
 
 
