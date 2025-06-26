@@ -56,7 +56,7 @@ const WelcomeScreen = () => {
     <View style={styles.container}>
       <View style={[styles.logo, styles.interactive]}>
         <Image
-          source={require('../../assets/logo.png')}
+          source={require('../../assets/logo.PNG')}
           style={styles.logoImage}
           resizeMode="contain"
         />
